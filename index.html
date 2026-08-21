@@ -1815,8 +1815,8 @@ getVisitorId();
 
 const result =
 await supabaseClient
-.from("property_views")
-.insert([{
+.from("properties")
+.insert([property]);
 
 property_id:propertyId,
 
