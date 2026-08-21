@@ -175,6 +175,7 @@ overflow-x:auto;
 table{
 width:100%;
 border-collapse:collapse;
+min-width:850px;
 }
 
 th,
@@ -182,11 +183,40 @@ td{
 padding:12px;
 border-bottom:1px solid #ddd;
 text-align:left;
+vertical-align:middle;
 }
 
 th{
 background:#b40000;
 color:#fff;
+}
+
+.action-btn{
+border:0;
+padding:8px 12px;
+border-radius:5px;
+font-weight:700;
+cursor:pointer;
+margin-top:5px;
+margin-right:5px;
+}
+
+.edit-btn{
+background:#0066cc;
+color:#fff;
+}
+
+.edit-btn:hover{
+background:#004f9e;
+}
+
+.delete-btn{
+background:#c40000;
+color:#fff;
+}
+
+.delete-btn:hover{
+background:#8f0000;
 }
 
 .team-form{
@@ -234,23 +264,8 @@ padding:15px;
 margin-bottom:7px;
 }
 
-.action-btn{
-border:0;
-padding:8px 12px;
-border-radius:5px;
-font-weight:700;
-cursor:pointer;
-margin-top:10px;
-margin-right:5px;
-}
-
 .hide-btn{
 background:#222;
-color:#fff;
-}
-
-.delete-btn{
-background:#c40000;
 color:#fff;
 }
 
@@ -266,6 +281,51 @@ color:#c40000;
 text-align:center;
 padding:20px;
 color:#777;
+}
+
+/* EDIT POPUP */
+
+.edit-box{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.75);
+display:none;
+align-items:center;
+justify-content:center;
+z-index:9999;
+padding:20px;
+}
+
+.edit-content{
+background:#fff;
+width:100%;
+max-width:500px;
+padding:30px;
+border-radius:12px;
+box-shadow:0 10px 40px rgba(0,0,0,.5);
+border-top:6px solid #b40000;
+}
+
+.edit-content h2{
+color:#b40000;
+margin-bottom:20px;
+}
+
+.edit-actions{
+display:flex;
+gap:10px;
+margin-top:5px;
+}
+
+.cancel-btn{
+background:#222;
+}
+
+.cancel-btn:hover{
+background:#000;
 }
 
 @media(max-width:850px){
@@ -310,6 +370,10 @@ grid-template-columns:1fr;
 .dashboard-head{
 flex-direction:column;
 align-items:flex-start;
+}
+
+.edit-content{
+padding:22px;
 }
 
 }
@@ -417,7 +481,6 @@ LOGOUT
 
 <div class="stats">
 
-
 <div class="stat">
 
 <strong id="total-properties">
@@ -461,7 +524,6 @@ Team Members
 
 </div>
 
-
 </div>
 
 
@@ -469,7 +531,7 @@ Team Members
 
 <h2 class="section-title">
 
-📈 PROPERTY ANALYTICS
+📈 PROPERTY MANAGEMENT
 
 </h2>
 
@@ -500,6 +562,10 @@ Views
 
 <th>
 Calls
+</th>
+
+<th>
+Actions
 </th>
 
 </tr>
@@ -600,6 +666,87 @@ class="team-list">
 
 </div>
 
+
+</div>
+
+</div>
+
+
+<!-- PROPERTY EDIT POPUP -->
+
+<div
+id="edit-property-box"
+class="edit-box">
+
+<div class="edit-content">
+
+<h2>
+✏️ EDIT PROPERTY
+</h2>
+
+
+<input
+type="hidden"
+id="edit-property-id">
+
+
+<label>
+Property Type
+</label>
+
+<input
+class="input"
+id="edit-property-type"
+placeholder="Property Type">
+
+
+<label>
+Purpose
+</label>
+
+<input
+class="input"
+id="edit-property-purpose"
+placeholder="Sale / Purchase / Rent">
+
+
+<label>
+Property Size
+</label>
+
+<input
+class="input"
+id="edit-property-size"
+placeholder="5 Marla / 10 Marla / 1 Kanal">
+
+
+<div class="edit-actions">
+
+<button
+class="btn"
+onclick="saveEditedProperty()">
+
+💾 SAVE CHANGES
+
+</button>
+
+
+<button
+class="btn cancel-btn"
+onclick="closeEditProperty()">
+
+CANCEL
+
+</button>
+
+</div>
+
+
+<div
+id="edit-property-status"
+class="status">
+
+</div>
 
 </div>
 
@@ -874,7 +1021,7 @@ table.innerHTML = `
 <tr>
 
 <td
-colspan="5"
+colspan="6"
 class="no-data">
 
 No properties found.
@@ -930,6 +1077,7 @@ property.property_type
 
 </td>
 
+
 <td>
 
 ${escapeHTML(
@@ -937,6 +1085,7 @@ property.purpose
 )}
 
 </td>
+
 
 <td>
 
@@ -946,15 +1095,39 @@ property.property_size
 
 </td>
 
+
 <td>
 
 👁️ ${viewCount}
 
 </td>
 
+
 <td>
 
 📞 ${callCount}
+
+</td>
+
+
+<td>
+
+<button
+class="action-btn edit-btn"
+onclick="editProperty('${escapeHTML(property.id)}')">
+
+✏️ Edit
+
+</button>
+
+
+<button
+class="action-btn delete-btn"
+onclick="deleteProperty('${escapeHTML(property.id)}')">
+
+🗑️ Delete
+
+</button>
 
 </td>
 
@@ -964,6 +1137,254 @@ property.property_size
 table.appendChild(row);
 
 });
+
+}
+
+
+/* =========================================
+EDIT PROPERTY
+========================================= */
+
+async function editProperty(id){
+
+const result =
+await supabaseClient
+.from("properties")
+.select("*")
+.eq("id",id)
+.single();
+
+
+if(result.error){
+
+alert(
+"Property load nahi ho saki:\n" +
+result.error.message
+);
+
+return;
+
+}
+
+
+const property =
+result.data;
+
+
+document.getElementById(
+"edit-property-id"
+).value =
+property.id;
+
+
+document.getElementById(
+"edit-property-type"
+).value =
+property.property_type || "";
+
+
+document.getElementById(
+"edit-property-purpose"
+).value =
+property.purpose || "";
+
+
+document.getElementById(
+"edit-property-size"
+).value =
+property.property_size || "";
+
+
+document.getElementById(
+"edit-property-status"
+).innerText =
+"";
+
+
+document.getElementById(
+"edit-property-box"
+).style.display =
+"flex";
+
+}
+
+
+/* =========================================
+SAVE EDITED PROPERTY
+========================================= */
+
+async function saveEditedProperty(){
+
+const id =
+document.getElementById(
+"edit-property-id"
+).value;
+
+
+const propertyType =
+document.getElementById(
+"edit-property-type"
+).value.trim();
+
+
+const purpose =
+document.getElementById(
+"edit-property-purpose"
+).value.trim();
+
+
+const propertySize =
+document.getElementById(
+"edit-property-size"
+).value.trim();
+
+
+const status =
+document.getElementById(
+"edit-property-status"
+);
+
+
+if(!propertyType ||
+!purpose ||
+!propertySize){
+
+status.className =
+"status error";
+
+status.innerText =
+"❌ Sab fields fill karein.";
+
+return;
+
+}
+
+
+status.className =
+"status";
+
+status.innerText =
+"Saving changes...";
+
+
+const result =
+await supabaseClient
+.from("properties")
+.update({
+
+property_type:
+propertyType,
+
+purpose:
+purpose,
+
+property_size:
+propertySize
+
+})
+.eq(
+"id",
+id
+);
+
+
+if(result.error){
+
+console.error(result.error);
+
+status.className =
+"status error";
+
+status.innerText =
+"❌ Property update nahi ho saki: " +
+result.error.message;
+
+return;
+
+}
+
+
+status.className =
+"status success";
+
+status.innerText =
+"✅ Property updated successfully!";
+
+
+setTimeout(async function(){
+
+closeEditProperty();
+
+await loadAnalytics();
+
+},700);
+
+}
+
+
+/* =========================================
+CLOSE EDIT PROPERTY
+========================================= */
+
+function closeEditProperty(){
+
+document.getElementById(
+"edit-property-box"
+).style.display =
+"none";
+
+}
+
+
+/* =========================================
+DELETE PROPERTY
+========================================= */
+
+async function deleteProperty(id){
+
+const confirmDelete =
+confirm(
+"⚠️ Kya aap is purani property ko permanently delete karna chahte hain?"
+);
+
+
+if(!confirmDelete){
+
+return;
+
+}
+
+
+const result =
+await supabaseClient
+.from("properties")
+.delete()
+.eq(
+"id",
+id
+);
+
+
+if(result.error){
+
+console.error(result.error);
+
+alert(
+"❌ Property delete nahi ho saki:\n" +
+result.error.message
+);
+
+return;
+
+}
+
+
+alert(
+"✅ Property successfully delete ho gayi."
+);
+
+
+await loadAnalytics();
 
 }
 
@@ -979,15 +1400,18 @@ document.getElementById(
 "team-name"
 ).value.trim();
 
+
 const phone =
 document.getElementById(
 "team-phone"
 ).value.trim();
 
+
 const file =
 document.getElementById(
 "team-image"
 ).files[0];
+
 
 const status =
 document.getElementById(
@@ -1115,9 +1539,11 @@ document.getElementById(
 "team-name"
 ).value = "";
 
+
 document.getElementById(
 "team-phone"
 ).value = "";
+
 
 document.getElementById(
 "team-image"
@@ -1125,6 +1551,7 @@ document.getElementById(
 
 
 await loadAdminTeam();
+
 
 }catch(error){
 
@@ -1212,6 +1639,7 @@ members.forEach(function(member){
 const card =
 document.createElement("div");
 
+
 card.className =
 "team-card";
 
@@ -1234,13 +1662,16 @@ alt="${escapeHTML(member.name)}">
 ${escapeHTML(member.name)}
 </h3>
 
+
 <p>
 📞 ${escapeHTML(member.phone)}
 </p>
 
+
 <p style="margin-top:7px">
 
 Status:
+
 <b>
 
 ${
@@ -1259,7 +1690,7 @@ member.is_active
 <button
 class="action-btn hide-btn"
 onclick="toggleTeamMember(
-${member.id},
+'${escapeHTML(member.id)}',
 ${member.is_active}
 )">
 
@@ -1277,7 +1708,7 @@ member.is_active
 <button
 class="action-btn delete-btn"
 onclick="deleteTeamMember(
-${member.id}
+'${escapeHTML(member.id)}'
 )">
 
 Delete
