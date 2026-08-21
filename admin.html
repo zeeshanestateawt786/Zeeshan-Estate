@@ -8,9 +8,7 @@
 <meta name="viewport"
 content="width=device-width, initial-scale=1.0">
 
-<title>
-Zeeshan Estate AWT | Admin Dashboard
-</title>
+<title>Zeeshan Estate AWT | Admin CRM</title>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
@@ -58,8 +56,8 @@ text-decoration:none;
 }
 
 .container{
-max-width:1200px;
-margin:40px auto;
+max-width:1250px;
+margin:35px auto;
 padding:0 20px;
 }
 
@@ -79,24 +77,32 @@ text-align:center;
 margin-bottom:25px;
 }
 
-.input{
+.input,
+select,
+textarea{
 width:100%;
-padding:14px;
+padding:13px;
 border:1px solid #ccc;
 border-radius:6px;
-margin-bottom:15px;
-font-size:16px;
+margin:7px 0 15px;
+font-size:15px;
+font-family:Arial;
+}
+
+textarea{
+min-height:100px;
+resize:vertical;
 }
 
 .btn{
 border:0;
 background:#b40000;
 color:#fff;
-padding:13px 20px;
+padding:12px 18px;
 border-radius:6px;
 font-weight:800;
 cursor:pointer;
-font-size:15px;
+font-size:14px;
 }
 
 .btn:hover{
@@ -108,9 +114,17 @@ width:100%;
 }
 
 .status{
-margin-top:15px;
+margin-top:12px;
 text-align:center;
 font-weight:700;
+}
+
+.success{
+color:#168c3b;
+}
+
+.error{
+color:#c40000;
 }
 
 .dashboard{
@@ -142,14 +156,14 @@ background:#111;
 
 .stats{
 display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:18px;
+grid-template-columns:repeat(6,1fr);
+gap:14px;
 margin-bottom:35px;
 }
 
 .stat{
 background:#fafafa;
-padding:22px;
+padding:18px 10px;
 border-radius:8px;
 border-top:5px solid #c40000;
 text-align:center;
@@ -157,15 +171,37 @@ text-align:center;
 
 .stat strong{
 display:block;
-font-size:34px;
+font-size:28px;
 color:#c40000;
 margin-bottom:5px;
 }
 
 .section-title{
 color:#b40000;
-font-size:25px;
+font-size:24px;
 margin:30px 0 15px;
+}
+
+.crm-form{
+background:#fafafa;
+padding:22px;
+border-radius:8px;
+border:1px solid #ddd;
+}
+
+.form-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:12px;
+}
+
+.full{
+grid-column:1/-1;
+}
+
+label{
+font-weight:700;
+font-size:14px;
 }
 
 .table-wrap{
@@ -175,12 +211,12 @@ overflow-x:auto;
 table{
 width:100%;
 border-collapse:collapse;
-min-width:850px;
+min-width:1250px;
 }
 
 th,
 td{
-padding:12px;
+padding:11px;
 border-bottom:1px solid #ddd;
 text-align:left;
 vertical-align:middle;
@@ -193,12 +229,11 @@ color:#fff;
 
 .action-btn{
 border:0;
-padding:8px 12px;
+padding:7px 10px;
 border-radius:5px;
 font-weight:700;
 cursor:pointer;
-margin-top:5px;
-margin-right:5px;
+margin:3px;
 }
 
 .edit-btn{
@@ -206,17 +241,136 @@ background:#0066cc;
 color:#fff;
 }
 
-.edit-btn:hover{
-background:#004f9e;
-}
-
 .delete-btn{
 background:#c40000;
 color:#fff;
 }
 
-.delete-btn:hover{
-background:#8f0000;
+.whatsapp-btn{
+background:#168c3b;
+color:#fff;
+}
+
+.follow-btn{
+background:#f0a000;
+color:#111;
+}
+
+.filter-box{
+display:grid;
+grid-template-columns:2fr 1fr 1fr;
+gap:10px;
+margin-bottom:15px;
+}
+
+.followup-box{
+background:#fff4d6;
+border-left:6px solid #f0a000;
+padding:18px;
+border-radius:8px;
+margin-bottom:20px;
+}
+
+.followup-item{
+padding:12px;
+background:#fff;
+border:1px solid #ddd;
+border-radius:7px;
+margin-top:8px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:10px;
+}
+
+.badge{
+display:inline-block;
+padding:5px 8px;
+border-radius:15px;
+font-size:12px;
+font-weight:800;
+}
+
+.new{
+background:#e5e5e5;
+}
+
+.contacted{
+background:#d8ecff;
+color:#00528a;
+}
+
+.interested{
+background:#fff0b3;
+}
+
+.followup{
+background:#ffe1a8;
+}
+
+.sitevisit{
+background:#d8f3dc;
+color:#126b2c;
+}
+
+.negotiation{
+background:#eadcff;
+}
+
+.closed{
+background:#b7e4c7;
+color:#075c28;
+}
+
+.lost{
+background:#ffd6d6;
+color:#8a0000;
+}
+
+.no-data{
+text-align:center;
+padding:20px;
+color:#777;
+}
+
+.edit-box{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.75);
+display:none;
+align-items:center;
+justify-content:center;
+z-index:9999;
+padding:20px;
+}
+
+.edit-content{
+background:#fff;
+width:100%;
+max-width:650px;
+max-height:90vh;
+overflow-y:auto;
+padding:28px;
+border-radius:12px;
+border-top:6px solid #b40000;
+}
+
+.edit-content h2{
+color:#b40000;
+margin-bottom:20px;
+}
+
+.edit-actions{
+display:flex;
+gap:10px;
+margin-top:5px;
+}
+
+.cancel-btn{
+background:#222;
 }
 
 .team-form{
@@ -230,10 +384,6 @@ border:1px solid #ddd;
 display:grid;
 grid-template-columns:1fr 1fr;
 gap:15px;
-}
-
-.full{
-grid-column:1/-1;
 }
 
 .team-list{
@@ -260,102 +410,38 @@ object-fit:cover;
 padding:15px;
 }
 
-.team-body h3{
-margin-bottom:7px;
-}
-
-.hide-btn{
-background:#222;
-color:#fff;
-}
-
-.success{
-color:#168c3b;
-}
-
-.error{
-color:#c40000;
-}
-
-.no-data{
-text-align:center;
-padding:20px;
-color:#777;
-}
-
-/* EDIT POPUP */
-
-.edit-box{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,.75);
-display:none;
-align-items:center;
-justify-content:center;
-z-index:9999;
-padding:20px;
-}
-
-.edit-content{
-background:#fff;
-width:100%;
-max-width:500px;
-padding:30px;
-border-radius:12px;
-box-shadow:0 10px 40px rgba(0,0,0,.5);
-border-top:6px solid #b40000;
-}
-
-.edit-content h2{
-color:#b40000;
-margin-bottom:20px;
-}
-
-.edit-actions{
-display:flex;
-gap:10px;
-margin-top:5px;
-}
-
-.cancel-btn{
-background:#222;
-}
-
-.cancel-btn:hover{
-background:#000;
-}
-
-@media(max-width:850px){
+@media(max-width:1000px){
 
 .stats{
+grid-template-columns:repeat(3,1fr);
+}
+
+.form-grid{
 grid-template-columns:1fr 1fr;
 }
 
-.team-list{
-grid-template-columns:1fr 1fr;
 }
 
-}
-
-@media(max-width:600px){
+@media(max-width:650px){
 
 .header{
 flex-direction:column;
 align-items:flex-start;
 }
 
-.container{
-margin:25px auto;
-}
-
 .dashboard-box{
-padding:20px;
+padding:18px;
 }
 
 .stats{
+grid-template-columns:1fr 1fr;
+}
+
+.form-grid{
+grid-template-columns:1fr;
+}
+
+.filter-box{
 grid-template-columns:1fr;
 }
 
@@ -372,21 +458,14 @@ flex-direction:column;
 align-items:flex-start;
 }
 
-.edit-content{
-padding:22px;
-}
-
 }
 
 </style>
 
 </head>
 
-
 <body>
 
-
-<!-- HEADER -->
 
 <header class="header">
 
@@ -416,9 +495,7 @@ class="container">
 
 <div class="login-box">
 
-<h1>
-🔐 ADMIN LOGIN
-</h1>
+<h1>🔐 ADMIN LOGIN</h1>
 
 <input
 class="input"
@@ -463,7 +540,7 @@ class="container dashboard">
 <div class="dashboard-head">
 
 <h1>
-📊 ADMIN DASHBOARD
+📊 ADMIN CRM DASHBOARD
 </h1>
 
 <button
@@ -482,58 +559,316 @@ LOGOUT
 <div class="stats">
 
 <div class="stat">
-
-<strong id="total-properties">
-0
-</strong>
-
+<strong id="total-properties">0</strong>
 Properties
-
 </div>
-
 
 <div class="stat">
-
-<strong id="total-views">
-0
-</strong>
-
-Total Views
-
+<strong id="total-views">0</strong>
+Views
 </div>
-
 
 <div class="stat">
-
-<strong id="total-calls">
-0
-</strong>
-
-Call Clicks
-
+<strong id="total-calls">0</strong>
+Calls
 </div>
-
 
 <div class="stat">
+<strong id="total-team">0</strong>
+Team
+</div>
 
-<strong id="total-team">
-0
-</strong>
+<div class="stat">
+<strong id="total-clients">0</strong>
+Clients
+</div>
 
-Team Members
-
+<div class="stat">
+<strong id="total-hot">0</strong>
+Hot Leads
 </div>
 
 </div>
 
 
-<!-- PROPERTY ANALYTICS -->
+<!-- TODAY FOLLOW UPS -->
 
 <h2 class="section-title">
-
-📈 PROPERTY MANAGEMENT
-
+📅 TODAY'S FOLLOW-UPS
 </h2>
+
+<div
+id="today-followups"
+class="followup-box">
+
+Loading follow-ups...
+
+</div>
+
+
+<!-- CRM -->
+
+<h2 class="section-title">
+👥 CLIENT CRM
+</h2>
+
+
+<div class="crm-form">
+
+<div class="form-grid">
+
+
+<div>
+
+<label>Client Name</label>
+
+<input
+class="input"
+id="client-name"
+placeholder="Client Name">
+
+</div>
+
+
+<div>
+
+<label>WhatsApp / Mobile</label>
+
+<input
+class="input"
+id="client-phone"
+placeholder="0300-0000000">
+
+</div>
+
+
+<div>
+
+<label>Alternate Number</label>
+
+<input
+class="input"
+id="client-alt-phone"
+placeholder="Optional">
+
+</div>
+
+
+<div>
+
+<label>Requirement</label>
+
+<select
+id="client-requirement">
+
+<option value="">Select Requirement</option>
+<option>Buy</option>
+<option>Sell</option>
+<option>Rent</option>
+</select>
+
+</div>
+
+
+<div>
+
+<label>Property Type</label>
+
+<select
+id="client-property-type">
+
+<option value="">Select Property</option>
+<option>Plot</option>
+<option>House</option>
+<option>Commercial</option>
+<option>Apartment</option>
+<option>Farm House</option>
+<option>Other</option>
+
+</select>
+
+</div>
+
+
+<div>
+
+<label>Purpose</label>
+
+<select
+id="client-purpose">
+
+<option value="">Select</option>
+<option>Sale</option>
+<option>Purchase</option>
+<option>Rent</option>
+</select>
+
+</div>
+
+
+<div>
+
+<label>Preferred Location</label>
+
+<input
+class="input"
+id="client-location"
+placeholder="AWT Phase 2 / Lahore">
+
+</div>
+
+
+<div>
+
+<label>Budget</label>
+
+<input
+class="input"
+id="client-budget"
+placeholder="e.g. 2 Crore">
+
+</div>
+
+
+<div>
+
+<label>Lead Source</label>
+
+<select
+id="client-source">
+
+<option value="">Select Source</option>
+<option>Website</option>
+<option>WhatsApp</option>
+<option>Facebook</option>
+<option>Instagram</option>
+<option>Reference</option>
+<option>Walk-in</option>
+<option>Phone Call</option>
+<option>Other</option>
+
+</select>
+
+</div>
+
+
+<div>
+
+<label>Lead Status</label>
+
+<select
+id="client-status">
+
+<option>New</option>
+<option>Contacted</option>
+<option>Interested</option>
+<option>Follow-up</option>
+<option>Site Visit</option>
+<option>Negotiation</option>
+<option>Closed</option>
+<option>Lost</option>
+
+</select>
+
+</div>
+
+
+<div>
+
+<label>Follow-up Date</label>
+
+<input
+class="input"
+type="date"
+id="client-follow-date">
+
+</div>
+
+
+<div>
+
+<label>Follow-up Time</label>
+
+<input
+class="input"
+type="time"
+id="client-follow-time">
+
+</div>
+
+
+<div class="full">
+
+<label>Notes</label>
+
+<textarea
+id="client-notes"
+placeholder="Client ki requirement / conversation notes..."></textarea>
+
+</div>
+
+
+</div>
+
+
+<button
+class="btn"
+onclick="addClient()">
+
+➕ ADD CLIENT
+
+</button>
+
+
+<div
+id="client-status-message"
+class="status">
+
+</div>
+
+</div>
+
+
+<br>
+
+
+<!-- CLIENT SEARCH -->
+
+<div class="filter-box">
+
+<input
+class="input"
+id="client-search"
+placeholder="🔎 Search client name or phone..."
+oninput="filterClients()">
+
+
+<select
+id="status-filter"
+onchange="filterClients()">
+
+<option value="">All Status</option>
+<option>New</option>
+<option>Contacted</option>
+<option>Interested</option>
+<option>Follow-up</option>
+<option>Site Visit</option>
+<option>Negotiation</option>
+<option>Closed</option>
+<option>Lost</option>
+
+</select>
+
+
+<button
+class="btn"
+onclick="loadClients()">
+
+🔄 REFRESH
+
+</button>
+
+</div>
 
 
 <div class="table-wrap">
@@ -544,29 +879,50 @@ Team Members
 
 <tr>
 
-<th>
-Property
-</th>
+<th>Client</th>
+<th>Phone</th>
+<th>Requirement</th>
+<th>Property</th>
+<th>Location</th>
+<th>Budget</th>
+<th>Status</th>
+<th>Follow-up</th>
+<th>Actions</th>
 
-<th>
-Purpose
-</th>
+</tr>
 
-<th>
-Size
-</th>
+</thead>
 
-<th>
-Views
-</th>
+<tbody
+id="clients-table">
 
-<th>
-Calls
-</th>
+</tbody>
 
-<th>
-Actions
-</th>
+</table>
+
+</div>
+
+
+<!-- PROPERTY ANALYTICS -->
+
+<h2 class="section-title">
+📈 PROPERTY MANAGEMENT
+</h2>
+
+<div class="table-wrap">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Property</th>
+<th>Purpose</th>
+<th>Size</th>
+<th>Views</th>
+<th>Calls</th>
+<th>Actions</th>
 
 </tr>
 
@@ -585,22 +941,16 @@ id="analytics-table">
 <!-- TEAM MANAGEMENT -->
 
 <h2 class="section-title">
-
 👥 TEAM MANAGEMENT
-
 </h2>
-
 
 <div class="team-form">
 
 <div class="team-grid">
 
-
 <div>
 
-<label>
-Name
-</label>
+<label>Name</label>
 
 <input
 class="input"
@@ -609,12 +959,9 @@ placeholder="Team Member Name">
 
 </div>
 
-
 <div>
 
-<label>
-Mobile Number
-</label>
+<label>Mobile Number</label>
 
 <input
 class="input"
@@ -623,12 +970,9 @@ placeholder="0300-0000000">
 
 </div>
 
+<div>
 
-<div class="full">
-
-<label>
-Picture
-</label>
+<label>Picture</label>
 
 <input
 class="input"
@@ -638,9 +982,7 @@ accept="image/jpeg,image/png,image/webp">
 
 </div>
 
-
 </div>
-
 
 <button
 class="btn"
@@ -649,7 +991,6 @@ onclick="addTeamMember()">
 ➕ ADD TEAM MEMBER
 
 </button>
-
 
 <div
 id="team-status"
@@ -672,6 +1013,227 @@ class="team-list">
 </div>
 
 
+<!-- CLIENT EDIT POPUP -->
+
+<div
+id="edit-client-box"
+class="edit-box">
+
+<div class="edit-content">
+
+<h2>
+✏️ EDIT CLIENT
+</h2>
+
+<input
+type="hidden"
+id="edit-client-id">
+
+
+<div class="form-grid">
+
+<div>
+
+<label>Name</label>
+
+<input
+class="input"
+id="edit-client-name">
+
+</div>
+
+<div>
+
+<label>Phone</label>
+
+<input
+class="input"
+id="edit-client-phone">
+
+</div>
+
+<div>
+
+<label>Alternate Phone</label>
+
+<input
+class="input"
+id="edit-client-alt-phone">
+
+</div>
+
+<div>
+
+<label>Requirement</label>
+
+<select
+id="edit-client-requirement">
+
+<option>Buy</option>
+<option>Sell</option>
+<option>Rent</option>
+
+</select>
+
+</div>
+
+<div>
+
+<label>Property Type</label>
+
+<select
+id="edit-client-property-type">
+
+<option>Plot</option>
+<option>House</option>
+<option>Commercial</option>
+<option>Apartment</option>
+<option>Farm House</option>
+<option>Other</option>
+
+</select>
+
+</div>
+
+<div>
+
+<label>Purpose</label>
+
+<select
+id="edit-client-purpose">
+
+<option>Sale</option>
+<option>Purchase</option>
+<option>Rent</option>
+
+</select>
+
+</div>
+
+<div>
+
+<label>Location</label>
+
+<input
+class="input"
+id="edit-client-location">
+
+</div>
+
+<div>
+
+<label>Budget</label>
+
+<input
+class="input"
+id="edit-client-budget">
+
+</div>
+
+<div>
+
+<label>Lead Source</label>
+
+<select
+id="edit-client-source">
+
+<option>Website</option>
+<option>WhatsApp</option>
+<option>Facebook</option>
+<option>Instagram</option>
+<option>Reference</option>
+<option>Walk-in</option>
+<option>Phone Call</option>
+<option>Other</option>
+
+</select>
+
+</div>
+
+<div>
+
+<label>Status</label>
+
+<select
+id="edit-client-status">
+
+<option>New</option>
+<option>Contacted</option>
+<option>Interested</option>
+<option>Follow-up</option>
+<option>Site Visit</option>
+<option>Negotiation</option>
+<option>Closed</option>
+<option>Lost</option>
+
+</select>
+
+</div>
+
+<div>
+
+<label>Follow-up Date</label>
+
+<input
+class="input"
+type="date"
+id="edit-client-follow-date">
+
+</div>
+
+<div>
+
+<label>Follow-up Time</label>
+
+<input
+class="input"
+type="time"
+id="edit-client-follow-time">
+
+</div>
+
+<div class="full">
+
+<label>Notes</label>
+
+<textarea
+id="edit-client-notes"></textarea>
+
+</div>
+
+</div>
+
+<div class="edit-actions">
+
+<button
+class="btn"
+onclick="saveEditedClient()">
+
+💾 SAVE CHANGES
+
+</button>
+
+<button
+class="btn cancel-btn"
+onclick="closeEditClient()">
+
+CANCEL
+
+</button>
+
+</div>
+
+<div
+id="edit-client-status"
+class="status">
+
+</div>
+
+</div>
+
+</div>
+
+
 <!-- PROPERTY EDIT POPUP -->
 
 <div
@@ -684,41 +1246,27 @@ class="edit-box">
 ✏️ EDIT PROPERTY
 </h2>
 
-
 <input
 type="hidden"
 id="edit-property-id">
 
-
-<label>
-Property Type
-</label>
+<label>Property Type</label>
 
 <input
 class="input"
-id="edit-property-type"
-placeholder="Property Type">
+id="edit-property-type">
 
-
-<label>
-Purpose
-</label>
+<label>Purpose</label>
 
 <input
 class="input"
-id="edit-property-purpose"
-placeholder="Sale / Purchase / Rent">
+id="edit-property-purpose">
 
-
-<label>
-Property Size
-</label>
+<label>Property Size</label>
 
 <input
 class="input"
-id="edit-property-size"
-placeholder="5 Marla / 10 Marla / 1 Kanal">
-
+id="edit-property-size">
 
 <div class="edit-actions">
 
@@ -730,7 +1278,6 @@ onclick="saveEditedProperty()">
 
 </button>
 
-
 <button
 class="btn cancel-btn"
 onclick="closeEditProperty()">
@@ -740,7 +1287,6 @@ CANCEL
 </button>
 
 </div>
-
 
 <div
 id="edit-property-status"
@@ -773,7 +1319,14 @@ SUPABASE_KEY
 
 
 /* =========================================
-SECURITY
+GLOBAL CLIENT DATA
+========================================= */
+
+let allClients = [];
+
+
+/* =========================================
+ESCAPE HTML
 ========================================= */
 
 function escapeHTML(value){
@@ -796,84 +1349,48 @@ return String(value)
 
 
 /* =========================================
-ADMIN LOGIN
+LOGIN
 ========================================= */
 
 async function adminLogin(){
 
 const email =
-document.getElementById(
-"admin-email"
-).value.trim();
+document.getElementById("admin-email")
+.value.trim();
 
 const password =
-document.getElementById(
-"admin-password"
-).value;
+document.getElementById("admin-password")
+.value;
 
 const status =
-document.getElementById(
-"login-status"
-);
-
+document.getElementById("login-status");
 
 if(!email || !password){
 
-status.className =
-"status error";
-
-status.innerText =
-"Email aur password required hain.";
-
+status.className="status error";
+status.innerText="Email aur password required hain.";
 return;
 
 }
 
-
-status.className =
-"status";
-
-status.innerText =
-"Logging in...";
-
+status.innerText="Logging in...";
 
 const result =
 await supabaseClient.auth
 .signInWithPassword({
-
 email:email,
-
 password:password
-
 });
-
 
 if(result.error){
 
-status.className =
-"status error";
-
-status.innerText =
-"❌ " +
-result.error.message;
-
+status.className="status error";
+status.innerText="❌ "+result.error.message;
 return;
 
 }
 
-
-status.className =
-"status success";
-
-status.innerText =
-"Login successful!";
-
-
-setTimeout(function(){
-
 showDashboard();
-
-},500);
 
 }
 
@@ -884,20 +1401,16 @@ SHOW DASHBOARD
 
 async function showDashboard(){
 
-document.getElementById(
-"login-section"
-).style.display =
-"none";
+document.getElementById("login-section")
+.style.display="none";
 
-document.getElementById(
-"dashboard-section"
-).style.display =
-"block";
-
+document.getElementById("dashboard-section")
+.style.display="block";
 
 await loadAnalytics();
-
 await loadAdminTeam();
+await loadClients();
+await loadTodayFollowups();
 
 }
 
@@ -910,25 +1423,871 @@ async function adminLogout(){
 
 await supabaseClient.auth.signOut();
 
-document.getElementById(
-"dashboard-section"
-).style.display =
-"none";
-
-document.getElementById(
-"login-section"
-).style.display =
-"block";
-
-document.getElementById(
-"admin-password"
-).value = "";
+location.reload();
 
 }
 
 
 /* =========================================
-GET PROPERTIES
+CLIENT CRM
+========================================= */
+
+async function addClient(){
+
+const name =
+document.getElementById("client-name")
+.value.trim();
+
+const phone =
+document.getElementById("client-phone")
+.value.trim();
+
+const altPhone =
+document.getElementById("client-alt-phone")
+.value.trim();
+
+const requirement =
+document.getElementById("client-requirement")
+.value;
+
+const propertyType =
+document.getElementById("client-property-type")
+.value;
+
+const purpose =
+document.getElementById("client-purpose")
+.value;
+
+const location =
+document.getElementById("client-location")
+.value.trim();
+
+const budget =
+document.getElementById("client-budget")
+.value.trim();
+
+const source =
+document.getElementById("client-source")
+.value;
+
+const statusValue =
+document.getElementById("client-status")
+.value;
+
+const followDate =
+document.getElementById("client-follow-date")
+.value || null;
+
+const followTime =
+document.getElementById("client-follow-time")
+.value || null;
+
+const notes =
+document.getElementById("client-notes")
+.value.trim();
+
+const message =
+document.getElementById("client-status-message");
+
+
+if(!name || !phone){
+
+message.className="status error";
+message.innerText="❌ Client name aur phone required hain.";
+return;
+
+}
+
+message.className="status";
+message.innerText="Saving client...";
+
+
+const result =
+await supabaseClient
+.from("clients")
+.insert([{
+
+name:name,
+phone:phone,
+alternate_phone:altPhone,
+requirement:requirement,
+property_type:propertyType,
+purpose:purpose,
+location:location,
+budget:budget,
+lead_source:source,
+lead_status:statusValue,
+follow_up_date:followDate,
+follow_up_time:followTime,
+notes:notes
+
+}]);
+
+
+if(result.error){
+
+console.error(result.error);
+
+message.className="status error";
+message.innerText=
+"❌ Client save nahi ho saka: "+
+result.error.message;
+
+return;
+
+}
+
+
+message.className="status success";
+message.innerText="✅ Client successfully add ho gaya.";
+
+
+document.getElementById("client-name").value="";
+document.getElementById("client-phone").value="";
+document.getElementById("client-alt-phone").value="";
+document.getElementById("client-requirement").value="";
+document.getElementById("client-property-type").value="";
+document.getElementById("client-purpose").value="";
+document.getElementById("client-location").value="";
+document.getElementById("client-budget").value="";
+document.getElementById("client-source").value="";
+document.getElementById("client-status").value="New";
+document.getElementById("client-follow-date").value="";
+document.getElementById("client-follow-time").value="";
+document.getElementById("client-notes").value="";
+
+
+await loadClients();
+await loadTodayFollowups();
+
+}
+
+
+/* =========================================
+LOAD CLIENTS
+========================================= */
+
+async function loadClients(){
+
+const result =
+await supabaseClient
+.from("clients")
+.select("*")
+.order("created_at",{ascending:false});
+
+
+if(result.error){
+
+console.error(result.error);
+
+document.getElementById("clients-table")
+.innerHTML=`
+<tr>
+<td colspan="9" class="no-data">
+❌ Clients load nahi ho sake:<br>
+${escapeHTML(result.error.message)}
+</td>
+</tr>`;
+
+return;
+
+}
+
+
+allClients =
+result.data || [];
+
+
+document.getElementById("total-clients")
+.innerText=
+allClients.length;
+
+
+document.getElementById("total-hot")
+.innerText=
+allClients.filter(function(client){
+
+return client.lead_status === "Interested" ||
+client.lead_status === "Site Visit" ||
+client.lead_status === "Negotiation";
+
+}).length;
+
+
+renderClients(allClients);
+
+}
+
+
+/* =========================================
+RENDER CLIENTS
+========================================= */
+
+function renderClients(clients){
+
+const table =
+document.getElementById("clients-table");
+
+table.innerHTML="";
+
+
+if(clients.length===0){
+
+table.innerHTML=`
+<tr>
+<td colspan="9" class="no-data">
+No clients found.
+</td>
+</tr>`;
+
+return;
+
+}
+
+
+clients.forEach(function(client){
+
+const row =
+document.createElement("tr");
+
+const statusClass =
+String(client.lead_status || "new")
+.toLowerCase()
+.replace(/\s+/g,"");
+
+
+const phone =
+String(client.phone || "")
+.replace(/\D/g,"");
+
+
+let whatsappNumber=phone;
+
+if(whatsappNumber.startsWith("0")){
+
+whatsappNumber =
+"92"+
+whatsappNumber.substring(1);
+
+}
+
+
+const whatsappMessage =
+encodeURIComponent(
+"Assalam-o-Alaikum "+(client.name || "")+
+", Zeeshan Estate AWT se aapki property requirement ke hawale se follow-up kar raha hoon. Agar aap abhi property search kar rahe hain to hum aapko suitable options share kar sakte hain."
+);
+
+
+const whatsappURL =
+"https://wa.me/"+
+whatsappNumber+
+"?text="+
+whatsappMessage;
+
+
+row.innerHTML=`
+
+<td>
+
+<b>${escapeHTML(client.name)}</b>
+
+<br>
+
+<small>
+${escapeHTML(client.lead_source || "")}
+</small>
+
+</td>
+
+
+<td>
+
+${escapeHTML(client.phone)}
+
+</td>
+
+
+<td>
+
+${escapeHTML(client.requirement)}
+
+</td>
+
+
+<td>
+
+${escapeHTML(client.property_type)}
+
+<br>
+
+<small>
+${escapeHTML(client.purpose)}
+</small>
+
+</td>
+
+
+<td>
+
+${escapeHTML(client.location)}
+
+</td>
+
+
+<td>
+
+${escapeHTML(client.budget)}
+
+</td>
+
+
+<td>
+
+<span class="badge ${statusClass}">
+
+${escapeHTML(client.lead_status)}
+
+</span>
+
+</td>
+
+
+<td>
+
+${escapeHTML(client.follow_up_date || "-")}
+
+<br>
+
+${escapeHTML(client.follow_up_time || "")}
+
+</td>
+
+
+<td>
+
+<a
+href="${whatsappURL}"
+target="_blank"
+class="action-btn whatsapp-btn">
+
+💬 WhatsApp
+
+</a>
+
+
+<button
+class="action-btn follow-btn"
+onclick="addFollowup('${escapeHTML(client.id)}')">
+
+📅 Follow-up
+
+</button>
+
+
+<button
+class="action-btn edit-btn"
+onclick="editClient('${escapeHTML(client.id)}')">
+
+✏️ Edit
+
+</button>
+
+
+<button
+class="action-btn delete-btn"
+onclick="deleteClient('${escapeHTML(client.id)}')">
+
+🗑️ Delete
+
+</button>
+
+</td>
+
+`;
+
+
+table.appendChild(row);
+
+});
+
+}
+
+
+/* =========================================
+SEARCH CLIENTS
+========================================= */
+
+function filterClients(){
+
+const search =
+document.getElementById("client-search")
+.value
+.toLowerCase()
+.trim();
+
+const selectedStatus =
+document.getElementById("status-filter")
+.value;
+
+
+const filtered =
+allClients.filter(function(client){
+
+const text =
+(
+(client.name || "")+
+" "+
+(client.phone || "")+
+" "+
+(client.location || "")+
+" "+
+(client.budget || "")
+)
+.toLowerCase();
+
+
+const matchesSearch =
+!search ||
+text.includes(search);
+
+
+const matchesStatus =
+!selectedStatus ||
+client.lead_status === selectedStatus;
+
+
+return matchesSearch &&
+matchesStatus;
+
+});
+
+
+renderClients(filtered);
+
+}
+
+
+/* =========================================
+EDIT CLIENT
+========================================= */
+
+async function editClient(id){
+
+const result =
+await supabaseClient
+.from("clients")
+.select("*")
+.eq("id",id)
+.single();
+
+
+if(result.error){
+
+alert(
+"Client load nahi ho saka:\n"+
+result.error.message
+);
+
+return;
+
+}
+
+
+const c =
+result.data;
+
+
+document.getElementById("edit-client-id").value=c.id;
+
+document.getElementById("edit-client-name").value=c.name || "";
+
+document.getElementById("edit-client-phone").value=c.phone || "";
+
+document.getElementById("edit-client-alt-phone").value=c.alternate_phone || "";
+
+document.getElementById("edit-client-requirement").value=c.requirement || "Buy";
+
+document.getElementById("edit-client-property-type").value=c.property_type || "Plot";
+
+document.getElementById("edit-client-purpose").value=c.purpose || "Sale";
+
+document.getElementById("edit-client-location").value=c.location || "";
+
+document.getElementById("edit-client-budget").value=c.budget || "";
+
+document.getElementById("edit-client-source").value=c.lead_source || "Website";
+
+document.getElementById("edit-client-status").value=c.lead_status || "New";
+
+document.getElementById("edit-client-follow-date").value=c.follow_up_date || "";
+
+document.getElementById("edit-client-follow-time").value=c.follow_up_time || "";
+
+document.getElementById("edit-client-notes").value=c.notes || "";
+
+document.getElementById("edit-client-status").innerText="";
+
+document.getElementById("edit-client-box").style.display="flex";
+
+}
+
+
+/* =========================================
+SAVE CLIENT
+========================================= */
+
+async function saveEditedClient(){
+
+const id =
+document.getElementById("edit-client-id").value;
+
+const status =
+document.getElementById("edit-client-status");
+
+
+const data={
+
+name:document.getElementById("edit-client-name").value.trim(),
+
+phone:document.getElementById("edit-client-phone").value.trim(),
+
+alternate_phone:document.getElementById("edit-client-alt-phone").value.trim(),
+
+requirement:document.getElementById("edit-client-requirement").value,
+
+property_type:document.getElementById("edit-client-property-type").value,
+
+purpose:document.getElementById("edit-client-purpose").value,
+
+location:document.getElementById("edit-client-location").value.trim(),
+
+budget:document.getElementById("edit-client-budget").value.trim(),
+
+lead_source:document.getElementById("edit-client-source").value,
+
+lead_status:document.getElementById("edit-client-status").value,
+
+follow_up_date:document.getElementById("edit-client-follow-date").value || null,
+
+follow_up_time:document.getElementById("edit-client-follow-time").value || null,
+
+notes:document.getElementById("edit-client-notes").value.trim(),
+
+updated_at:new Date().toISOString()
+
+};
+
+
+if(!data.name || !data.phone){
+
+status.className="status error";
+status.innerText="❌ Name aur phone required hain.";
+return;
+
+}
+
+
+status.className="status";
+status.innerText="Saving...";
+
+
+const result =
+await supabaseClient
+.from("clients")
+.update(data)
+.eq("id",id);
+
+
+if(result.error){
+
+status.className="status error";
+status.innerText=
+"❌ Update nahi hua: "+
+result.error.message;
+
+return;
+
+}
+
+
+status.className="status success";
+status.innerText="✅ Client updated.";
+
+
+setTimeout(async function(){
+
+closeEditClient();
+
+await loadClients();
+await loadTodayFollowups();
+
+},600);
+
+}
+
+
+/* =========================================
+CLOSE CLIENT
+========================================= */
+
+function closeEditClient(){
+
+document.getElementById("edit-client-box")
+.style.display="none";
+
+}
+
+
+/* =========================================
+DELETE CLIENT
+========================================= */
+
+async function deleteClient(id){
+
+if(!confirm(
+"⚠️ Kya aap is client ko permanently delete karna chahte hain?"
+)){
+
+return;
+
+}
+
+
+const result =
+await supabaseClient
+.from("clients")
+.delete()
+.eq("id",id);
+
+
+if(result.error){
+
+alert(
+"❌ Client delete nahi ho saka:\n"+
+result.error.message
+);
+
+return;
+
+}
+
+
+alert("✅ Client delete ho gaya.");
+
+await loadClients();
+await loadTodayFollowups();
+
+}
+
+
+/* =========================================
+ADD FOLLOWUP
+========================================= */
+
+async function addFollowup(id){
+
+const date =
+prompt(
+"Follow-up date YYYY-MM-DD mein enter karein:",
+new Date().toISOString().slice(0,10)
+);
+
+
+if(!date){
+
+return;
+
+}
+
+
+const note =
+prompt(
+"Follow-up note:"
+);
+
+
+const result =
+await supabaseClient
+.from("client_followups")
+.insert([{
+
+client_id:id,
+follow_up_date:date,
+note:note || ""
+
+}]);
+
+
+if(result.error){
+
+alert(
+"❌ Follow-up save nahi hua:\n"+
+result.error.message
+);
+
+return;
+
+}
+
+
+const updateClient =
+await supabaseClient
+.from("clients")
+.update({
+
+lead_status:"Follow-up",
+follow_up_date:date
+
+})
+.eq("id",id);
+
+
+if(updateClient.error){
+
+alert(updateClient.error.message);
+
+return;
+
+}
+
+
+alert("✅ Follow-up save ho gaya.");
+
+await loadClients();
+await loadTodayFollowups();
+
+}
+
+
+/* =========================================
+TODAY FOLLOWUPS
+========================================= */
+
+async function loadTodayFollowups(){
+
+const today =
+new Date()
+.toISOString()
+.slice(0,10);
+
+
+const result =
+await supabaseClient
+.from("clients")
+.select("*")
+.eq("follow_up_date",today)
+.order("follow_up_time",{ascending:true});
+
+
+const box =
+document.getElementById("today-followups");
+
+
+if(result.error){
+
+box.innerHTML=
+"❌ Follow-ups load nahi ho سکے.";
+
+return;
+
+}
+
+
+const clients =
+result.data || [];
+
+
+if(clients.length===0){
+
+box.innerHTML=
+"✅ Aaj koi follow-up pending nahi hai.";
+
+return;
+
+}
+
+
+box.innerHTML=
+"<b>Today ke follow-ups: "+
+clients.length+
+"</b>";
+
+
+clients.forEach(function(client){
+
+const div =
+document.createElement("div");
+
+div.className="followup-item";
+
+
+const phone =
+String(client.phone || "")
+.replace(/\D/g,"");
+
+let whatsappNumber=phone;
+
+if(whatsappNumber.startsWith("0")){
+
+whatsappNumber=
+"92"+
+whatsappNumber.substring(1);
+
+}
+
+
+const message =
+encodeURIComponent(
+"Assalam-o-Alaikum "+
+client.name+
+", Zeeshan Estate AWT se aapki property requirement ke hawale se follow-up kar raha hoon. Aapki requirement ke mutabiq suitable property options available hon to hum share kar sakte hain."
+);
+
+
+div.innerHTML=`
+
+<div>
+
+<b>
+${escapeHTML(client.name)}
+</b>
+
+<br>
+
+📞 ${escapeHTML(client.phone)}
+
+<br>
+
+🕐 ${escapeHTML(client.follow_up_time || "Any time")}
+
+<br>
+
+${escapeHTML(client.notes || "")}
+
+</div>
+
+
+<a
+class="action-btn whatsapp-btn"
+target="_blank"
+href="https://wa.me/${whatsappNumber}?text=${message}">
+
+💬 WhatsApp
+
+</a>
+
+`;
+
+box.appendChild(div);
+
+});
+
+}
+
+
+/* =========================================
+PROPERTY MANAGEMENT
 ========================================= */
 
 async function getProperties(){
@@ -937,12 +2296,7 @@ const result =
 await supabaseClient
 .from("properties")
 .select("*")
-.order(
-"created_at",
-{
-ascending:false
-}
-);
+.order("created_at",{ascending:false});
 
 
 if(result.error){
@@ -957,10 +2311,6 @@ return result.data || [];
 
 }
 
-
-/* =========================================
-ANALYTICS
-========================================= */
 
 async function loadAnalytics(){
 
@@ -987,42 +2337,29 @@ const calls =
 callsResult.data || [];
 
 
-document.getElementById(
-"total-properties"
-).innerText =
-properties.length;
+document.getElementById("total-properties")
+.innerText=properties.length;
 
+document.getElementById("total-views")
+.innerText=views.length;
 
-document.getElementById(
-"total-views"
-).innerText =
-views.length;
-
-
-document.getElementById(
-"total-calls"
-).innerText =
-calls.length;
+document.getElementById("total-calls")
+.innerText=calls.length;
 
 
 const table =
-document.getElementById(
-"analytics-table"
-);
+document.getElementById("analytics-table");
+
+table.innerHTML="";
 
 
-table.innerHTML = "";
+if(properties.length===0){
 
-
-if(properties.length === 0){
-
-table.innerHTML = `
+table.innerHTML=`
 
 <tr>
 
-<td
-colspan="6"
-class="no-data">
+<td colspan="6" class="no-data">
 
 No properties found.
 
@@ -1042,11 +2379,8 @@ properties.forEach(function(property){
 const viewCount =
 views.filter(function(item){
 
-return String(
-item.property_id
-) === String(
-property.id
-);
+return String(item.property_id) ===
+String(property.id);
 
 }).length;
 
@@ -1054,11 +2388,8 @@ property.id
 const callCount =
 calls.filter(function(item){
 
-return String(
-item.property_id
-) === String(
-property.id
-);
+return String(item.property_id) ===
+String(property.id);
 
 }).length;
 
@@ -1067,48 +2398,27 @@ const row =
 document.createElement("tr");
 
 
-row.innerHTML = `
+row.innerHTML=`
 
 <td>
-
-${escapeHTML(
-property.property_type
-)}
-
+${escapeHTML(property.property_type)}
 </td>
 
-
 <td>
-
-${escapeHTML(
-property.purpose
-)}
-
+${escapeHTML(property.purpose)}
 </td>
 
-
 <td>
-
-${escapeHTML(
-property.property_size
-)}
-
+${escapeHTML(property.property_size)}
 </td>
 
-
 <td>
-
 👁️ ${viewCount}
-
 </td>
-
 
 <td>
-
 📞 ${callCount}
-
 </td>
-
 
 <td>
 
@@ -1119,7 +2429,6 @@ onclick="editProperty('${escapeHTML(property.id)}')">
 ✏️ Edit
 
 </button>
-
 
 <button
 class="action-btn delete-btn"
@@ -1132,7 +2441,6 @@ onclick="deleteProperty('${escapeHTML(property.id)}')">
 </td>
 
 `;
-
 
 table.appendChild(row);
 
@@ -1158,7 +2466,7 @@ await supabaseClient
 if(result.error){
 
 alert(
-"Property load nahi ho saki:\n" +
+"Property load nahi ho saki:\n"+
 result.error.message
 );
 
@@ -1167,104 +2475,61 @@ return;
 }
 
 
-const property =
-result.data;
+const property=result.data;
 
 
-document.getElementById(
-"edit-property-id"
-).value =
-property.id;
+document.getElementById("edit-property-id").value=property.id;
 
-
-document.getElementById(
-"edit-property-type"
-).value =
+document.getElementById("edit-property-type").value=
 property.property_type || "";
 
-
-document.getElementById(
-"edit-property-purpose"
-).value =
+document.getElementById("edit-property-purpose").value=
 property.purpose || "";
 
-
-document.getElementById(
-"edit-property-size"
-).value =
+document.getElementById("edit-property-size").value=
 property.property_size || "";
 
+document.getElementById("edit-property-status").innerText="";
 
-document.getElementById(
-"edit-property-status"
-).innerText =
-"";
-
-
-document.getElementById(
-"edit-property-box"
-).style.display =
-"flex";
+document.getElementById("edit-property-box").style.display="flex";
 
 }
 
 
 /* =========================================
-SAVE EDITED PROPERTY
+SAVE PROPERTY
 ========================================= */
 
 async function saveEditedProperty(){
 
 const id =
-document.getElementById(
-"edit-property-id"
-).value;
-
+document.getElementById("edit-property-id").value;
 
 const propertyType =
-document.getElementById(
-"edit-property-type"
-).value.trim();
-
+document.getElementById("edit-property-type").value.trim();
 
 const purpose =
-document.getElementById(
-"edit-property-purpose"
-).value.trim();
-
+document.getElementById("edit-property-purpose").value.trim();
 
 const propertySize =
-document.getElementById(
-"edit-property-size"
-).value.trim();
-
+document.getElementById("edit-property-size").value.trim();
 
 const status =
-document.getElementById(
-"edit-property-status"
-);
+document.getElementById("edit-property-status");
 
 
 if(!propertyType ||
 !purpose ||
 !propertySize){
 
-status.className =
-"status error";
-
-status.innerText =
-"❌ Sab fields fill karein.";
-
+status.className="status error";
+status.innerText="❌ Sab fields fill karein.";
 return;
 
 }
 
 
-status.className =
-"status";
-
-status.innerText =
-"Saving changes...";
+status.innerText="Saving...";
 
 
 const result =
@@ -1272,31 +2537,19 @@ await supabaseClient
 .from("properties")
 .update({
 
-property_type:
-propertyType,
-
-purpose:
-purpose,
-
-property_size:
-propertySize
+property_type:propertyType,
+purpose:purpose,
+property_size:propertySize
 
 })
-.eq(
-"id",
-id
-);
+.eq("id",id);
 
 
 if(result.error){
 
-console.error(result.error);
-
-status.className =
-"status error";
-
-status.innerText =
-"❌ Property update nahi ho saki: " +
+status.className="status error";
+status.innerText=
+"❌ Property update nahi ho saki: "+
 result.error.message;
 
 return;
@@ -1304,34 +2557,28 @@ return;
 }
 
 
-status.className =
-"status success";
-
-status.innerText =
-"✅ Property updated successfully!";
+status.className="status success";
+status.innerText="✅ Property updated.";
 
 
 setTimeout(async function(){
 
 closeEditProperty();
-
 await loadAnalytics();
 
-},700);
+},600);
 
 }
 
 
 /* =========================================
-CLOSE EDIT PROPERTY
+CLOSE PROPERTY
 ========================================= */
 
 function closeEditProperty(){
 
-document.getElementById(
-"edit-property-box"
-).style.display =
-"none";
+document.getElementById("edit-property-box")
+.style.display="none";
 
 }
 
@@ -1342,13 +2589,9 @@ DELETE PROPERTY
 
 async function deleteProperty(id){
 
-const confirmDelete =
-confirm(
-"⚠️ Kya aap is purani property ko permanently delete karna chahte hain?"
-);
-
-
-if(!confirmDelete){
+if(!confirm(
+"⚠️ Kya aap is property ko permanently delete karna chahte hain?"
+)){
 
 return;
 
@@ -1359,18 +2602,13 @@ const result =
 await supabaseClient
 .from("properties")
 .delete()
-.eq(
-"id",
-id
-);
+.eq("id",id);
 
 
 if(result.error){
 
-console.error(result.error);
-
 alert(
-"❌ Property delete nahi ho saki:\n" +
+"❌ Property delete nahi ho saki:\n"+
 result.error.message
 );
 
@@ -1379,10 +2617,7 @@ return;
 }
 
 
-alert(
-"✅ Property successfully delete ho gayi."
-);
-
+alert("✅ Property successfully delete ho gayi.");
 
 await loadAnalytics();
 
@@ -1390,41 +2625,31 @@ await loadAnalytics();
 
 
 /* =========================================
-ADD TEAM MEMBER
+TEAM MANAGEMENT
 ========================================= */
 
 async function addTeamMember(){
 
 const name =
-document.getElementById(
-"team-name"
-).value.trim();
-
+document.getElementById("team-name")
+.value.trim();
 
 const phone =
-document.getElementById(
-"team-phone"
-).value.trim();
-
+document.getElementById("team-phone")
+.value.trim();
 
 const file =
-document.getElementById(
-"team-image"
-).files[0];
-
+document.getElementById("team-image")
+.files[0];
 
 const status =
-document.getElementById(
-"team-status"
-);
+document.getElementById("team-status");
 
 
 if(!name || !phone){
 
-status.className =
-"status error";
-
-status.innerText =
+status.className="status error";
+status.innerText=
 "Name aur mobile number required hain.";
 
 return;
@@ -1434,20 +2659,15 @@ return;
 
 try{
 
-status.className =
-"status";
-
-status.innerText =
-"Saving team member...";
+status.innerText="Saving team member...";
 
 
-let imageUrl = "";
+let imageUrl="";
 
 
 if(file){
 
-if(file.size >
-8 * 1024 * 1024){
+if(file.size > 8*1024*1024){
 
 throw new Error(
 "Picture 8MB se kam honi chahiye."
@@ -1457,21 +2677,17 @@ throw new Error(
 
 
 const extension =
-file.name
-.split(".")
-.pop()
-.toLowerCase();
+file.name.split(".").pop().toLowerCase();
 
 
 const path =
-"team/" +
-Date.now() +
-"-" +
+"team/"+
+Date.now()+
+"-"+
 Math.random()
 .toString(36)
-.substring(2,8) +
-"." +
-extension;
+.substring(2,8)+
+"."+extension;
 
 
 const upload =
@@ -1511,11 +2727,8 @@ await supabaseClient
 .insert([{
 
 name:name,
-
 phone:phone,
-
 image_url:imageUrl,
-
 is_active:true
 
 }]);
@@ -1528,26 +2741,14 @@ throw result.error;
 }
 
 
-status.className =
-"status success";
-
-status.innerText =
+status.className="status success";
+status.innerText=
 "✅ Team member added successfully.";
 
 
-document.getElementById(
-"team-name"
-).value = "";
-
-
-document.getElementById(
-"team-phone"
-).value = "";
-
-
-document.getElementById(
-"team-image"
-).value = "";
+document.getElementById("team-name").value="";
+document.getElementById("team-phone").value="";
+document.getElementById("team-image").value="";
 
 
 await loadAdminTeam();
@@ -1557,13 +2758,9 @@ await loadAdminTeam();
 
 console.error(error);
 
-status.className =
-"status error";
-
-status.innerText =
-"❌ " +
-(error.message ||
-"Team member add nahi ho saka.");
+status.className="status error";
+status.innerText=
+"❌ "+(error.message || "Error");
 
 }
 
@@ -1571,32 +2768,25 @@ status.innerText =
 
 
 /* =========================================
-LOAD ADMIN TEAM
+LOAD TEAM
 ========================================= */
 
 async function loadAdminTeam(){
 
 const container =
-document.getElementById(
-"admin-team-list"
-);
+document.getElementById("admin-team-list");
 
 
 const result =
 await supabaseClient
 .from("team_members")
 .select("*")
-.order(
-"created_at",
-{
-ascending:true
-}
-);
+.order("created_at",{ascending:true});
 
 
 if(result.error){
 
-container.innerHTML =
+container.innerHTML=
 "<p>Team data unavailable.</p>";
 
 return;
@@ -1608,26 +2798,19 @@ const members =
 result.data || [];
 
 
-document.getElementById(
-"total-team"
-).innerText =
-members.length;
+document.getElementById("total-team")
+.innerText=members.length;
 
 
-container.innerHTML = "";
+container.innerHTML="";
 
 
-if(members.length === 0){
+if(members.length===0){
 
-container.innerHTML = `
-
-<div class="no-data">
-
+container.innerHTML=
+`<div class="no-data">
 No team members added yet.
-
-</div>
-
-`;
+</div>`;
 
 return;
 
@@ -1639,9 +2822,7 @@ members.forEach(function(member){
 const card =
 document.createElement("div");
 
-
-card.className =
-"team-card";
+card.className="team-card";
 
 
 const image =
@@ -1649,7 +2830,7 @@ member.image_url ||
 "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=700&q=80";
 
 
-card.innerHTML = `
+card.innerHTML=`
 
 <img
 src="${escapeHTML(image)}"
@@ -1662,48 +2843,31 @@ alt="${escapeHTML(member.name)}">
 ${escapeHTML(member.name)}
 </h3>
 
-
 <p>
 📞 ${escapeHTML(member.phone)}
 </p>
-
 
 <p style="margin-top:7px">
 
 Status:
 
 <b>
-
-${
-member.is_active
-?
-"Active"
-:
-"Hidden"
-}
-
+${member.is_active ? "Active" : "Hidden"}
 </b>
 
 </p>
 
-
 <button
-class="action-btn hide-btn"
+class="action-btn"
+style="background:#222;color:#fff"
 onclick="toggleTeamMember(
 '${escapeHTML(member.id)}',
 ${member.is_active}
 )">
 
-${
-member.is_active
-?
-"Hide"
-:
-"Show"
-}
+${member.is_active ? "Hide" : "Show"}
 
 </button>
-
 
 <button
 class="action-btn delete-btn"
@@ -1719,7 +2883,6 @@ Delete
 
 `;
 
-
 container.appendChild(card);
 
 });
@@ -1728,35 +2891,25 @@ container.appendChild(card);
 
 
 /* =========================================
-TOGGLE TEAM MEMBER
+TOGGLE TEAM
 ========================================= */
 
-async function toggleTeamMember(
-id,
-currentStatus
-){
+async function toggleTeamMember(id,currentStatus){
 
 const result =
 await supabaseClient
 .from("team_members")
 .update({
 
-is_active:
-!currentStatus
+is_active:!currentStatus
 
 })
-.eq(
-"id",
-id
-);
+.eq("id",id);
 
 
 if(result.error){
 
-alert(
-result.error.message
-);
-
+alert(result.error.message);
 return;
 
 }
@@ -1768,18 +2921,14 @@ await loadAdminTeam();
 
 
 /* =========================================
-DELETE TEAM MEMBER
+DELETE TEAM
 ========================================= */
 
 async function deleteTeamMember(id){
 
-const confirmDelete =
-confirm(
+if(!confirm(
 "Is team member ko delete karna hai?"
-);
-
-
-if(!confirmDelete){
+)){
 
 return;
 
@@ -1790,18 +2939,12 @@ const result =
 await supabaseClient
 .from("team_members")
 .delete()
-.eq(
-"id",
-id
-);
+.eq("id",id);
 
 
 if(result.error){
 
-alert(
-result.error.message
-);
-
+alert(result.error.message);
 return;
 
 }
@@ -1819,8 +2962,7 @@ CHECK SESSION
 async function checkSession(){
 
 const result =
-await supabaseClient.auth
-.getSession();
+await supabaseClient.auth.getSession();
 
 
 if(result.data.session){
@@ -1845,7 +2987,6 @@ checkSession();
 });
 
 </script>
-
 
 </body>
 
