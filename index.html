@@ -1,12 +1,233 @@
-<!DOCTYPE html>
+
+      <d<!DOCTYPE html>
 <html lang="en">
 <head>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Zeeshan Estate AWT | Army Welfare Trust Phase 2 Lahore</title>
 <meta name="description" content="Zeeshan Estate AWT - Authorized Dealer for property sale and purchase in Army Welfare Trust Phase 2, Lahore.">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
+  <script>
+const SUPABASE_URL = "https://rhzsfjolkxqovhonylti.supabase.co";
+
+/* یہاں اپنی Supabase Publishable Key paste کریں */
+const SUPABASE_KEY = "sb_publishable_DjOGYqDCgPNMngD7mwMmcw_BM-UUCg8";
+
+const supabaseClient = supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+);
+
+
+/* Load Properties */
+async function loadProperties() {
+
+  const container = document.getElementById("online-properties");
+
+  if (!container) return;
+
+  container.innerHTML = "<p style='text-align:center'>Loading properties...</p>";
+
+  const { data, error } = await supabaseClient
+    .from("properties")
+    .select("*")
+    .order("created_at", { ascending:false });
+
+  if (error) {
+    container.innerHTML =
+      "<p style='text-align:center;color:red'>Unable to load properties.</p>";
+
+    console.error(error);
+    return;
+  }
+
+  if (!data || data.length === 0) {
+    container.innerHTML =
+      "<p style='text-align:center'>No properties listed yet.</p>";
+    return;
+  }
+
+  container.innerHTML = "";
+
+  data.forEach(property => {
+
+    const card = document.createElement("div");
+
+    card.className = "card";
+
+    card.innerHTML = `
+      <div class="pic">
+        ${escapeHTML(property.property_size)}
+      </div>
+
+      <h3>
+        ${escapeHTML(property.property_type)}
+      </h3>
+iv class="body">
+
+        <div>
+          <b>${escapeHTML(property.purpose)}</b>
+        </div>
+
+        <div class="price">
+          ${escapeHTML(property.price)}
+        </div>
+
+        <p>
+          📍 ${escapeHTML(property.location)}
+        </p>
+
+        <p>
+          ${escapeHTML(property.details || "")}
+        </p>
+
+        <br>
+
+        <a
+          href="https://wa.me/923020941013?text=${encodeURIComponent(
+            "Assalam o Alaikum, I am interested in this property:\n\n" +
+            "Property: " + property.property_type + "\n" +
+            "Size: " + property.property_size + "\n" +
+            "Price: " + property.price + "\n" +
+            "Location: " + property.location
+          )}"
+          target="_blank"
+          class="btn red"
+          style="display:inline-block;color:white;border:0"
+        >
+          📲 CONTACT ON WHATSAPP
+        </a>
+
+      </div>
+    `;
+
+    container.appendChild(card);
+
+  });
+}
+
+
+/* Submit Property */
+async function submitProperty(event) {
+
+  event.preventDefault();
+
+  const button =
+    document.getElementById("submit-property-btn");
+
+  button.disabled = true;
+  button.innerText = "Saving Property...";
+
+  const property = {
+
+    purpose:
+      document.getElementById("purpose").value,
+
+    property_type:
+      document.getElementById("propertyType").value,
+
+    property_size:
+      document.getElementById("propertySize").value,
+
+    price:
+      document.getElementById("price").value,
+
+    location:
+      document.getElementById("location").value,
+
+    details:
+      document.getElementById("details").value,
+
+    owner_name:
+      document.getElementById("ownerName").value,
+
+    owner_phone:
+      document.getElementById("ownerPhone").value
+  };
+
+
+  const { data, error } =
+    await supabaseClient
+      .from("properties")
+      .insert([property])
+      .select();
+
+
+  if (error) {
+
+    console.error(error);
+
+    alert(
+      "Property save nahi ho saki.\n\n" +
+      error.message
+    );
+
+    button.disabled = false;
+    button.innerText = "SUBMIT PROPERTY";
+
+    return;
+  }
+
+
+  alert(
+    "✅ Property successfully listed!"
+  );
+
+
+  document.getElementById("property-form").reset();
+
+  button.disabled = false;
+  button.innerText = "SUBMIT PROPERTY";
+
+
+  loadProperties();
+
+
+  document
+    .getElementById("online-properties")
+    .scrollIntoView({
+      behavior:"smooth"
+    });
+}
+
+
+/* Security helper */
+function escapeHTML(value) {
+
+  if (value === null || value === undefined)
+    return "";
+
+  return String(value)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
+
+/* Start */
+document.addEventListener(
+  "DOMContentLoaded",
+  function() {
+
+    const form =
+      document.getElementById("property-form");
+
+    if (form) {
+      form.addEventListener(
+        "submit",
+        submitProperty
+      );
+    }
+
+    loadProperties();
+
+  }
+);
+</script>
 body{font-family:Arial,Helvetica,sans-serif;color:#171717;background:#fff;line-height:1.5}
 a{text-decoration:none;color:inherit}
 .top{background:#b40000;color:#fff;padding:10px 5%;display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap;font-weight:700}
@@ -123,6 +344,10 @@ nav a:hover{color:#c40000}
       <div class="body"><div>Demand</div><div class="price">1.50 Crore – 3 Crore</div><p>Location/plot position may affect price.</p></div>
     </article>
   </div>
+  <div id="online-properties"
+     class="cards"
+     style="margin-top:30px">
+</div>
 </section>
 
 <section class="section" id="why">
