@@ -1,0 +1,1421 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>
+Zeeshan Estate AWT | Admin Dashboard
+</title>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<style>
+
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+}
+
+body{
+font-family:Arial,Helvetica,sans-serif;
+background:#111;
+color:#111;
+min-height:100vh;
+}
+
+.header{
+background:#b40000;
+color:#fff;
+padding:18px 6%;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:15px;
+}
+
+.logo{
+font-size:26px;
+font-weight:900;
+}
+
+.logo span{
+color:#ffe000;
+}
+
+.back-btn{
+background:#fff;
+color:#b40000;
+padding:10px 16px;
+border-radius:6px;
+font-weight:800;
+text-decoration:none;
+}
+
+.container{
+max-width:1200px;
+margin:40px auto;
+padding:0 20px;
+}
+
+.login-box{
+max-width:450px;
+margin:70px auto;
+background:#fff;
+padding:35px;
+border-radius:12px;
+box-shadow:0 10px 35px rgba(0,0,0,.4);
+border-top:6px solid #c40000;
+}
+
+.login-box h1{
+color:#b40000;
+text-align:center;
+margin-bottom:25px;
+}
+
+.input{
+width:100%;
+padding:14px;
+border:1px solid #ccc;
+border-radius:6px;
+margin-bottom:15px;
+font-size:16px;
+}
+
+.btn{
+border:0;
+background:#b40000;
+color:#fff;
+padding:13px 20px;
+border-radius:6px;
+font-weight:800;
+cursor:pointer;
+font-size:15px;
+}
+
+.btn:hover{
+background:#8f0000;
+}
+
+.login-btn{
+width:100%;
+}
+
+.status{
+margin-top:15px;
+text-align:center;
+font-weight:700;
+}
+
+.dashboard{
+display:none;
+}
+
+.dashboard-box{
+background:#fff;
+padding:30px;
+border-radius:12px;
+box-shadow:0 8px 30px rgba(0,0,0,.35);
+}
+
+.dashboard-head{
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:15px;
+margin-bottom:25px;
+}
+
+.dashboard-head h1{
+color:#b40000;
+}
+
+.logout{
+background:#111;
+}
+
+.stats{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:18px;
+margin-bottom:35px;
+}
+
+.stat{
+background:#fafafa;
+padding:22px;
+border-radius:8px;
+border-top:5px solid #c40000;
+text-align:center;
+}
+
+.stat strong{
+display:block;
+font-size:34px;
+color:#c40000;
+margin-bottom:5px;
+}
+
+.section-title{
+color:#b40000;
+font-size:25px;
+margin:30px 0 15px;
+}
+
+.table-wrap{
+overflow-x:auto;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+}
+
+th,
+td{
+padding:12px;
+border-bottom:1px solid #ddd;
+text-align:left;
+}
+
+th{
+background:#b40000;
+color:#fff;
+}
+
+.team-form{
+background:#fafafa;
+padding:20px;
+border-radius:8px;
+border:1px solid #ddd;
+}
+
+.team-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:15px;
+}
+
+.full{
+grid-column:1/-1;
+}
+
+.team-list{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:18px;
+margin-top:20px;
+}
+
+.team-card{
+border:1px solid #ddd;
+border-radius:8px;
+overflow:hidden;
+background:#fff;
+}
+
+.team-card img{
+width:100%;
+height:190px;
+object-fit:cover;
+}
+
+.team-body{
+padding:15px;
+}
+
+.team-body h3{
+margin-bottom:7px;
+}
+
+.action-btn{
+border:0;
+padding:8px 12px;
+border-radius:5px;
+font-weight:700;
+cursor:pointer;
+margin-top:10px;
+margin-right:5px;
+}
+
+.hide-btn{
+background:#222;
+color:#fff;
+}
+
+.delete-btn{
+background:#c40000;
+color:#fff;
+}
+
+.success{
+color:#168c3b;
+}
+
+.error{
+color:#c40000;
+}
+
+.no-data{
+text-align:center;
+padding:20px;
+color:#777;
+}
+
+@media(max-width:850px){
+
+.stats{
+grid-template-columns:1fr 1fr;
+}
+
+.team-list{
+grid-template-columns:1fr 1fr;
+}
+
+}
+
+@media(max-width:600px){
+
+.header{
+flex-direction:column;
+align-items:flex-start;
+}
+
+.container{
+margin:25px auto;
+}
+
+.dashboard-box{
+padding:20px;
+}
+
+.stats{
+grid-template-columns:1fr;
+}
+
+.team-grid{
+grid-template-columns:1fr;
+}
+
+.team-list{
+grid-template-columns:1fr;
+}
+
+.dashboard-head{
+flex-direction:column;
+align-items:flex-start;
+}
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- HEADER -->
+
+<header class="header">
+
+<div class="logo">
+
+ZEESHAN
+<span>ESTATE AWT</span>
+
+</div>
+
+<a
+href="index.html"
+class="back-btn">
+
+← BACK TO WEBSITE
+
+</a>
+
+</header>
+
+
+<!-- LOGIN -->
+
+<div
+id="login-section"
+class="container">
+
+<div class="login-box">
+
+<h1>
+🔐 ADMIN LOGIN
+</h1>
+
+<input
+class="input"
+type="email"
+id="admin-email"
+placeholder="Admin Email">
+
+<input
+class="input"
+type="password"
+id="admin-password"
+placeholder="Password">
+
+<button
+class="btn login-btn"
+onclick="adminLogin()">
+
+LOGIN
+
+</button>
+
+<div
+id="login-status"
+class="status">
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- DASHBOARD -->
+
+<div
+id="dashboard-section"
+class="container dashboard">
+
+<div class="dashboard-box">
+
+
+<div class="dashboard-head">
+
+<h1>
+📊 ADMIN DASHBOARD
+</h1>
+
+<button
+class="btn logout"
+onclick="adminLogout()">
+
+LOGOUT
+
+</button>
+
+</div>
+
+
+<!-- STATS -->
+
+<div class="stats">
+
+
+<div class="stat">
+
+<strong id="total-properties">
+0
+</strong>
+
+Properties
+
+</div>
+
+
+<div class="stat">
+
+<strong id="total-views">
+0
+</strong>
+
+Total Views
+
+</div>
+
+
+<div class="stat">
+
+<strong id="total-calls">
+0
+</strong>
+
+Call Clicks
+
+</div>
+
+
+<div class="stat">
+
+<strong id="total-team">
+0
+</strong>
+
+Team Members
+
+</div>
+
+
+</div>
+
+
+<!-- PROPERTY ANALYTICS -->
+
+<h2 class="section-title">
+
+📈 PROPERTY ANALYTICS
+
+</h2>
+
+
+<div class="table-wrap">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>
+Property
+</th>
+
+<th>
+Purpose
+</th>
+
+<th>
+Size
+</th>
+
+<th>
+Views
+</th>
+
+<th>
+Calls
+</th>
+
+</tr>
+
+</thead>
+
+<tbody
+id="analytics-table">
+
+</tbody>
+
+</table>
+
+</div>
+
+
+<!-- TEAM MANAGEMENT -->
+
+<h2 class="section-title">
+
+👥 TEAM MANAGEMENT
+
+</h2>
+
+
+<div class="team-form">
+
+<div class="team-grid">
+
+
+<div>
+
+<label>
+Name
+</label>
+
+<input
+class="input"
+id="team-name"
+placeholder="Team Member Name">
+
+</div>
+
+
+<div>
+
+<label>
+Mobile Number
+</label>
+
+<input
+class="input"
+id="team-phone"
+placeholder="0300-0000000">
+
+</div>
+
+
+<div class="full">
+
+<label>
+Picture
+</label>
+
+<input
+class="input"
+type="file"
+id="team-image"
+accept="image/jpeg,image/png,image/webp">
+
+</div>
+
+
+</div>
+
+
+<button
+class="btn"
+onclick="addTeamMember()">
+
+➕ ADD TEAM MEMBER
+
+</button>
+
+
+<div
+id="team-status"
+class="status">
+
+</div>
+
+</div>
+
+
+<div
+id="admin-team-list"
+class="team-list">
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<script>
+
+/* =========================================
+SUPABASE
+========================================= */
+
+const SUPABASE_URL =
+"https://rhzsfjolkxqovhonylti.supabase.co";
+
+const SUPABASE_KEY =
+"sb_publishable_DjOGYqDCgPNMngD7mwMmcw_BM-UUCg8";
+
+const supabaseClient =
+supabase.createClient(
+SUPABASE_URL,
+SUPABASE_KEY
+);
+
+
+/* =========================================
+SECURITY
+========================================= */
+
+function escapeHTML(value){
+
+if(value === null ||
+value === undefined){
+
+return "";
+
+}
+
+return String(value)
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
+
+}
+
+
+/* =========================================
+ADMIN LOGIN
+========================================= */
+
+async function adminLogin(){
+
+const email =
+document.getElementById(
+"admin-email"
+).value.trim();
+
+const password =
+document.getElementById(
+"admin-password"
+).value;
+
+const status =
+document.getElementById(
+"login-status"
+);
+
+
+if(!email || !password){
+
+status.className =
+"status error";
+
+status.innerText =
+"Email aur password required hain.";
+
+return;
+
+}
+
+
+status.className =
+"status";
+
+status.innerText =
+"Logging in...";
+
+
+const result =
+await supabaseClient.auth
+.signInWithPassword({
+
+email:email,
+
+password:password
+
+});
+
+
+if(result.error){
+
+status.className =
+"status error";
+
+status.innerText =
+"❌ " +
+result.error.message;
+
+return;
+
+}
+
+
+status.className =
+"status success";
+
+status.innerText =
+"Login successful!";
+
+
+setTimeout(function(){
+
+showDashboard();
+
+},500);
+
+}
+
+
+/* =========================================
+SHOW DASHBOARD
+========================================= */
+
+async function showDashboard(){
+
+document.getElementById(
+"login-section"
+).style.display =
+"none";
+
+document.getElementById(
+"dashboard-section"
+).style.display =
+"block";
+
+
+await loadAnalytics();
+
+await loadAdminTeam();
+
+}
+
+
+/* =========================================
+LOGOUT
+========================================= */
+
+async function adminLogout(){
+
+await supabaseClient.auth.signOut();
+
+document.getElementById(
+"dashboard-section"
+).style.display =
+"none";
+
+document.getElementById(
+"login-section"
+).style.display =
+"block";
+
+document.getElementById(
+"admin-password"
+).value = "";
+
+}
+
+
+/* =========================================
+GET PROPERTIES
+========================================= */
+
+async function getProperties(){
+
+const result =
+await supabaseClient
+.from("properties")
+.select("*")
+.order(
+"created_at",
+{
+ascending:false
+}
+);
+
+
+if(result.error){
+
+console.error(result.error);
+
+return [];
+
+}
+
+return result.data || [];
+
+}
+
+
+/* =========================================
+ANALYTICS
+========================================= */
+
+async function loadAnalytics(){
+
+const properties =
+await getProperties();
+
+
+const viewsResult =
+await supabaseClient
+.from("property_views")
+.select("property_id");
+
+
+const callsResult =
+await supabaseClient
+.from("property_calls")
+.select("property_id");
+
+
+const views =
+viewsResult.data || [];
+
+const calls =
+callsResult.data || [];
+
+
+document.getElementById(
+"total-properties"
+).innerText =
+properties.length;
+
+
+document.getElementById(
+"total-views"
+).innerText =
+views.length;
+
+
+document.getElementById(
+"total-calls"
+).innerText =
+calls.length;
+
+
+const table =
+document.getElementById(
+"analytics-table"
+);
+
+
+table.innerHTML = "";
+
+
+if(properties.length === 0){
+
+table.innerHTML = `
+
+<tr>
+
+<td
+colspan="5"
+class="no-data">
+
+No properties found.
+
+</td>
+
+</tr>
+
+`;
+
+return;
+
+}
+
+
+properties.forEach(function(property){
+
+const viewCount =
+views.filter(function(item){
+
+return String(
+item.property_id
+) === String(
+property.id
+);
+
+}).length;
+
+
+const callCount =
+calls.filter(function(item){
+
+return String(
+item.property_id
+) === String(
+property.id
+);
+
+}).length;
+
+
+const row =
+document.createElement("tr");
+
+
+row.innerHTML = `
+
+<td>
+
+${escapeHTML(
+property.property_type
+)}
+
+</td>
+
+<td>
+
+${escapeHTML(
+property.purpose
+)}
+
+</td>
+
+<td>
+
+${escapeHTML(
+property.property_size
+)}
+
+</td>
+
+<td>
+
+👁️ ${viewCount}
+
+</td>
+
+<td>
+
+📞 ${callCount}
+
+</td>
+
+`;
+
+
+table.appendChild(row);
+
+});
+
+}
+
+
+/* =========================================
+ADD TEAM MEMBER
+========================================= */
+
+async function addTeamMember(){
+
+const name =
+document.getElementById(
+"team-name"
+).value.trim();
+
+const phone =
+document.getElementById(
+"team-phone"
+).value.trim();
+
+const file =
+document.getElementById(
+"team-image"
+).files[0];
+
+const status =
+document.getElementById(
+"team-status"
+);
+
+
+if(!name || !phone){
+
+status.className =
+"status error";
+
+status.innerText =
+"Name aur mobile number required hain.";
+
+return;
+
+}
+
+
+try{
+
+status.className =
+"status";
+
+status.innerText =
+"Saving team member...";
+
+
+let imageUrl = "";
+
+
+if(file){
+
+if(file.size >
+8 * 1024 * 1024){
+
+throw new Error(
+"Picture 8MB se kam honi chahiye."
+);
+
+}
+
+
+const extension =
+file.name
+.split(".")
+.pop()
+.toLowerCase();
+
+
+const path =
+"team/" +
+Date.now() +
+"-" +
+Math.random()
+.toString(36)
+.substring(2,8) +
+"." +
+extension;
+
+
+const upload =
+await supabaseClient
+.storage
+.from("team-images")
+.upload(
+path,
+file,
+{
+upsert:false,
+contentType:file.type
+}
+);
+
+
+if(upload.error){
+
+throw upload.error;
+
+}
+
+
+imageUrl =
+supabaseClient
+.storage
+.from("team-images")
+.getPublicUrl(path)
+.data.publicUrl;
+
+}
+
+
+const result =
+await supabaseClient
+.from("team_members")
+.insert([{
+
+name:name,
+
+phone:phone,
+
+image_url:imageUrl,
+
+is_active:true
+
+}]);
+
+
+if(result.error){
+
+throw result.error;
+
+}
+
+
+status.className =
+"status success";
+
+status.innerText =
+"✅ Team member added successfully.";
+
+
+document.getElementById(
+"team-name"
+).value = "";
+
+document.getElementById(
+"team-phone"
+).value = "";
+
+document.getElementById(
+"team-image"
+).value = "";
+
+
+await loadAdminTeam();
+
+}catch(error){
+
+console.error(error);
+
+status.className =
+"status error";
+
+status.innerText =
+"❌ " +
+(error.message ||
+"Team member add nahi ho saka.");
+
+}
+
+}
+
+
+/* =========================================
+LOAD ADMIN TEAM
+========================================= */
+
+async function loadAdminTeam(){
+
+const container =
+document.getElementById(
+"admin-team-list"
+);
+
+
+const result =
+await supabaseClient
+.from("team_members")
+.select("*")
+.order(
+"created_at",
+{
+ascending:true
+}
+);
+
+
+if(result.error){
+
+container.innerHTML =
+"<p>Team data unavailable.</p>";
+
+return;
+
+}
+
+
+const members =
+result.data || [];
+
+
+document.getElementById(
+"total-team"
+).innerText =
+members.length;
+
+
+container.innerHTML = "";
+
+
+if(members.length === 0){
+
+container.innerHTML = `
+
+<div class="no-data">
+
+No team members added yet.
+
+</div>
+
+`;
+
+return;
+
+}
+
+
+members.forEach(function(member){
+
+const card =
+document.createElement("div");
+
+card.className =
+"team-card";
+
+
+const image =
+member.image_url ||
+"https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=700&q=80";
+
+
+card.innerHTML = `
+
+<img
+src="${escapeHTML(image)}"
+alt="${escapeHTML(member.name)}">
+
+
+<div class="team-body">
+
+<h3>
+${escapeHTML(member.name)}
+</h3>
+
+<p>
+📞 ${escapeHTML(member.phone)}
+</p>
+
+<p style="margin-top:7px">
+
+Status:
+<b>
+
+${
+member.is_active
+?
+"Active"
+:
+"Hidden"
+}
+
+</b>
+
+</p>
+
+
+<button
+class="action-btn hide-btn"
+onclick="toggleTeamMember(
+${member.id},
+${member.is_active}
+)">
+
+${
+member.is_active
+?
+"Hide"
+:
+"Show"
+}
+
+</button>
+
+
+<button
+class="action-btn delete-btn"
+onclick="deleteTeamMember(
+${member.id}
+)">
+
+Delete
+
+</button>
+
+</div>
+
+`;
+
+
+container.appendChild(card);
+
+});
+
+}
+
+
+/* =========================================
+TOGGLE TEAM MEMBER
+========================================= */
+
+async function toggleTeamMember(
+id,
+currentStatus
+){
+
+const result =
+await supabaseClient
+.from("team_members")
+.update({
+
+is_active:
+!currentStatus
+
+})
+.eq(
+"id",
+id
+);
+
+
+if(result.error){
+
+alert(
+result.error.message
+);
+
+return;
+
+}
+
+
+await loadAdminTeam();
+
+}
+
+
+/* =========================================
+DELETE TEAM MEMBER
+========================================= */
+
+async function deleteTeamMember(id){
+
+const confirmDelete =
+confirm(
+"Is team member ko delete karna hai?"
+);
+
+
+if(!confirmDelete){
+
+return;
+
+}
+
+
+const result =
+await supabaseClient
+.from("team_members")
+.delete()
+.eq(
+"id",
+id
+);
+
+
+if(result.error){
+
+alert(
+result.error.message
+);
+
+return;
+
+}
+
+
+await loadAdminTeam();
+
+}
+
+
+/* =========================================
+CHECK SESSION
+========================================= */
+
+async function checkSession(){
+
+const result =
+await supabaseClient.auth
+.getSession();
+
+
+if(result.data.session){
+
+showDashboard();
+
+}
+
+}
+
+
+/* =========================================
+START
+========================================= */
+
+document.addEventListener(
+"DOMContentLoaded",
+function(){
+
+checkSession();
+
+});
+
+</script>
+
+
+</body>
+
+</html>
