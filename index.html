@@ -11,6 +11,7 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
+
 *{
   box-sizing:border-box;
   margin:0;
@@ -222,7 +223,7 @@ nav a:hover{
   font-weight:900
 }
 
-/* LIST YOUR PROPERTY */
+/* LIST PROPERTY */
 
 .list-box{
   max-width:950px;
@@ -284,6 +285,34 @@ nav a:hover{
   resize:vertical
 }
 
+.file-input{
+  background:#fafafa;
+  padding:15px!important;
+  border:2px dashed #c40000!important;
+  cursor:pointer
+}
+
+.image-preview{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
+  margin-top:12px
+}
+
+.image-preview img{
+  width:100%;
+  height:100px;
+  object-fit:cover;
+  border-radius:7px;
+  border:2px solid #ddd
+}
+
+.image-help{
+  color:#777;
+  font-size:13px;
+  margin-top:6px
+}
+
 .submit-btn{
   width:100%;
   border:0;
@@ -330,23 +359,41 @@ nav a:hover{
   overflow:hidden
 }
 
-.property-card .property-top{
+.property-gallery{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:3px;
+  background:#111
+}
+
+.property-gallery.single{
+  grid-template-columns:1fr
+}
+
+.property-gallery img{
+  width:100%;
+  height:180px;
+  object-fit:cover;
+  display:block
+}
+
+.property-top{
   background:#c40000;
   color:#fff;
   padding:18px;
   text-align:center
 }
 
-.property-card .property-top h3{
+.property-top h3{
   font-size:22px
 }
 
-.property-card .property-body{
+.property-body{
   padding:20px;
   text-align:center
 }
 
-.property-card .property-price{
+.property-price{
   color:#c40000;
   font-size:24px;
   font-weight:900;
@@ -363,8 +410,6 @@ nav a:hover{
   font-weight:800
 }
 
-/* WHY */
-
 .why{
   display:grid;
   grid-template-columns:repeat(5,1fr);
@@ -376,8 +421,6 @@ nav a:hover{
   padding:15px;
   font-weight:700
 }
-
-/* FOOTER */
 
 .footer{
   background:#b40000;
@@ -399,8 +442,6 @@ nav a:hover{
   text-align:center;
   padding:14px
 }
-
-/* MOBILE */
 
 @media(max-width:850px){
 
@@ -438,6 +479,10 @@ nav a:hover{
   .form-group.full{
     grid-column:auto
   }
+
+  .image-preview{
+    grid-template-columns:repeat(3,1fr)
+  }
 }
 
 @media(max-width:520px){
@@ -463,21 +508,25 @@ nav a:hover{
   .hero h1{
     font-size:48px
   }
+
+  .image-preview{
+    grid-template-columns:1fr 1fr
+  }
+
+  .property-gallery img{
+    height:130px
+  }
 }
+
 </style>
 </head>
 
 <body>
 
-<!-- TOP BAR -->
-
 <div class="top">
   <div>📍 Army Welfare Trust Phase 2, Lahore</div>
   <div>📞 0302-0941013</div>
 </div>
-
-
-<!-- NAVIGATION -->
 
 <header class="nav">
 
@@ -509,9 +558,6 @@ nav a:hover{
   </nav>
 
 </header>
-
-
-<!-- HERO -->
 
 <section class="hero" id="home">
 
@@ -550,7 +596,6 @@ nav a:hover{
 
   </div>
 
-
   <div class="contact-card">
 
     <small>
@@ -569,9 +614,6 @@ nav a:hover{
 
 </section>
 
-
-<!-- ABOUT -->
-
 <section class="section" id="about">
 
   <div class="about">
@@ -589,7 +631,6 @@ nav a:hover{
       </p>
 
     </div>
-
 
     <div class="features">
 
@@ -619,17 +660,11 @@ nav a:hover{
 
 </section>
 
-
-<!-- PROPERTIES -->
-
 <section class="section properties" id="properties">
 
   <h2 style="font-size:42px;text-align:center;margin-bottom:30px">
     PLOTS FOR SALE
   </h2>
-
-
-  <!-- HOME PROPERTIES -->
 
   <div class="cards">
 
@@ -639,15 +674,11 @@ nav a:hover{
         5 MARLA
       </div>
 
-      <h3>
-        5 MARLA
-      </h3>
+      <h3>5 MARLA</h3>
 
       <div class="body">
 
-        <div>
-          Demand
-        </div>
+        <div>Demand</div>
 
         <div class="price">
           55 Lac – 90 Lac
@@ -661,22 +692,17 @@ nav a:hover{
 
     </article>
 
-
     <article class="card">
 
       <div class="pic">
         10 MARLA
       </div>
 
-      <h3>
-        10 MARLA
-      </h3>
+      <h3>10 MARLA</h3>
 
       <div class="body">
 
-        <div>
-          Demand
-        </div>
+        <div>Demand</div>
 
         <div class="price">
           1 Crore – 1.60 Crore
@@ -690,22 +716,17 @@ nav a:hover{
 
     </article>
 
-
     <article class="card">
 
       <div class="pic">
         1 KANAL
       </div>
 
-      <h3>
-        1 KANAL
-      </h3>
+      <h3>1 KANAL</h3>
 
       <div class="body">
 
-        <div>
-          Demand
-        </div>
+        <div>Demand</div>
 
         <div class="price">
           1.50 Crore – 3 Crore
@@ -721,9 +742,6 @@ nav a:hover{
 
   </div>
 
-
-  <!-- LIST YOUR PROPERTY -->
-
   <div class="list-box">
 
     <h2>
@@ -734,11 +752,9 @@ nav a:hover{
       Apni property Zeeshan Estate AWT ke through list karein.
     </p>
 
-
     <form id="property-form">
 
       <div class="form-grid">
-
 
         <div class="form-group">
 
@@ -763,7 +779,6 @@ nav a:hover{
           </select>
 
         </div>
-
 
         <div class="form-group">
 
@@ -805,7 +820,6 @@ nav a:hover{
 
         </div>
 
-
         <div class="form-group">
 
           <label>
@@ -820,7 +834,6 @@ nav a:hover{
           >
 
         </div>
-
 
         <div class="form-group">
 
@@ -837,7 +850,6 @@ nav a:hover{
 
         </div>
 
-
         <div class="form-group full">
 
           <label>
@@ -853,6 +865,30 @@ nav a:hover{
 
         </div>
 
+        <div class="form-group full">
+
+          <label>
+            Property Pictures
+          </label>
+
+          <input
+            class="file-input"
+            type="file"
+            id="propertyImages"
+            accept="image/jpeg,image/png,image/webp"
+            multiple
+          >
+
+          <div class="image-help">
+            📸 Multiple pictures select kar sakte hain. JPG, PNG aur WEBP supported hain.
+          </div>
+
+          <div
+            id="image-preview"
+            class="image-preview">
+          </div>
+
+        </div>
 
         <div class="form-group full">
 
@@ -866,7 +902,6 @@ nav a:hover{
           ></textarea>
 
         </div>
-
 
         <div class="form-group">
 
@@ -883,7 +918,6 @@ nav a:hover{
 
         </div>
 
-
         <div class="form-group">
 
           <label>
@@ -899,9 +933,7 @@ nav a:hover{
 
         </div>
 
-
       </div>
-
 
       <button
         type="submit"
@@ -912,7 +944,6 @@ nav a:hover{
 
       </button>
 
-
       <div
         id="form-status"
         class="status">
@@ -921,9 +952,6 @@ nav a:hover{
     </form>
 
   </div>
-
-
-  <!-- ONLINE PROPERTIES -->
 
   <h2 class="online-title">
     AVAILABLE LISTED PROPERTIES
@@ -941,9 +969,6 @@ nav a:hover{
 
 </section>
 
-
-<!-- WHY US -->
-
 <section class="section" id="why">
 
   <h2 style="
@@ -955,7 +980,6 @@ nav a:hover{
     WHY CHOOSE ZEESHAN ESTATE AWT?
 
   </h2>
-
 
   <div class="why">
 
@@ -988,9 +1012,6 @@ nav a:hover{
 
 </section>
 
-
-<!-- FOOTER -->
-
 <footer class="footer">
 
   <div>
@@ -1011,7 +1032,6 @@ nav a:hover{
 
   </div>
 
-
   <div>
 
     <h3>
@@ -1028,7 +1048,6 @@ nav a:hover{
 
   </div>
 
-
   <div>
 
     <h3>
@@ -1043,32 +1062,24 @@ nav a:hover{
 
 </footer>
 
-
 <div class="copyright">
-
   © 2026 Zeeshan Estate AWT. All Rights Reserved.
-
 </div>
-
 
 <script>
 
 /* =========================================
-   SUPABASE CONNECTION
+   SUPABASE
 ========================================= */
 
 const SUPABASE_URL =
 "https://rhzsfjolkxqovhonylti.supabase.co";
 
-/*
-   IMPORTANT:
-   Replace YOUR_PUBLISHABLE_KEY with
-   your Supabase Publishable Key.
-*/
-
 const SUPABASE_KEY =
 "sb_publishable_DjOGYqDCgPNMngD7mwMmcw_BM-UUCg8";
 
+const STORAGE_BUCKET =
+"property-images";
 
 const supabaseClient =
 supabase.createClient(
@@ -1098,6 +1109,152 @@ function escapeHTML(value){
 
 
 /* =========================================
+   IMAGE PREVIEW
+========================================= */
+
+const imageInput =
+document.getElementById("propertyImages");
+
+const imagePreview =
+document.getElementById("image-preview");
+
+
+if(imageInput){
+
+  imageInput.addEventListener(
+    "change",
+    function(){
+
+      imagePreview.innerHTML = "";
+
+      const files =
+        Array.from(this.files || []);
+
+      files.forEach(function(file){
+
+        if(!file.type.startsWith("image/")){
+          return;
+        }
+
+        const reader =
+          new FileReader();
+
+        reader.onload =
+          function(event){
+
+            const img =
+              document.createElement("img");
+
+            img.src =
+              event.target.result;
+
+            imagePreview.appendChild(img);
+
+          };
+
+        reader.readAsDataURL(file);
+
+      });
+
+    }
+  );
+
+}
+
+
+/* =========================================
+   UPLOAD IMAGES
+========================================= */
+
+async function uploadPropertyImages(files){
+
+  const imageUrls = [];
+
+  if(!files || files.length === 0){
+    return imageUrls;
+  }
+
+  for(let i = 0; i < files.length; i++){
+
+    const file = files[i];
+
+    if(!file.type.startsWith("image/")){
+      continue;
+    }
+
+    if(file.size > 8 * 1024 * 1024){
+
+      throw new Error(
+        "Image " +
+        file.name +
+        " is larger than 8MB."
+      );
+
+    }
+
+    const extension =
+      file.name
+        .split(".")
+        .pop()
+        .toLowerCase();
+
+    const uniqueName =
+      Date.now() +
+      "-" +
+      Math.random()
+        .toString(36)
+        .substring(2,10) +
+      "." +
+      extension;
+
+    const filePath =
+      "properties/" +
+      uniqueName;
+
+
+    const uploadResult =
+      await supabaseClient
+        .storage
+        .from(STORAGE_BUCKET)
+        .upload(
+          filePath,
+          file,
+          {
+            cacheControl:"3600",
+            upsert:false,
+            contentType:file.type
+          }
+        );
+
+
+    if(uploadResult.error){
+
+      throw uploadResult.error;
+
+    }
+
+
+    const publicResult =
+      supabaseClient
+        .storage
+        .from(STORAGE_BUCKET)
+        .getPublicUrl(filePath);
+
+
+    const publicUrl =
+      publicResult.data.publicUrl;
+
+
+    imageUrls.push(publicUrl);
+
+  }
+
+  return imageUrls;
+
+}
+
+
+/* =========================================
    LOAD ONLINE PROPERTIES
 ========================================= */
 
@@ -1108,11 +1265,9 @@ async function loadProperties(){
       "online-properties"
     );
 
-
   if(!container){
     return;
   }
-
 
   container.innerHTML =
     "<p style='text-align:center'>Loading properties...</p>";
@@ -1130,8 +1285,11 @@ async function loadProperties(){
       );
 
 
-  const data = result.data;
-  const error = result.error;
+  const data =
+    result.data;
+
+  const error =
+    result.error;
 
 
   if(error){
@@ -1164,31 +1322,77 @@ async function loadProperties(){
     const card =
       document.createElement("article");
 
-
     card.className =
       "property-card";
+
+
+    let images = [];
+
+    try{
+
+      if(Array.isArray(property.image_urls)){
+
+        images =
+          property.image_urls;
+
+      }
+
+    }catch(e){
+
+      images = [];
+
+    }
+
+
+    let galleryHTML = "";
+
+
+    if(images.length > 0){
+
+      galleryHTML =
+        `<div class="property-gallery ${images.length === 1 ? "single" : ""}">` +
+
+        images
+          .slice(0,6)
+          .map(function(url){
+
+            return `
+              <img
+                src="${escapeHTML(url)}"
+                alt="Zeeshan Estate Property"
+                loading="lazy">
+            `;
+
+          })
+          .join("") +
+
+        `</div>`;
+
+    }
 
 
     const whatsappMessage =
       "Assalam o Alaikum, I am interested in this property:\n\n" +
 
       "Property: " +
-      property.property_type +
+      (property.property_type || "") +
 
       "\nPurpose: " +
-      property.purpose +
+      (property.purpose || "") +
 
       "\nSize: " +
-      property.property_size +
+      (property.property_size || "") +
 
       "\nPrice: " +
-      property.price +
+      (property.price || "") +
 
       "\nLocation: " +
-      property.location;
+      (property.location || "");
 
 
     card.innerHTML = `
+
+      ${galleryHTML}
 
       <div class="property-top">
 
@@ -1198,7 +1402,6 @@ async function loadProperties(){
 
       </div>
 
-
       <div class="property-body">
 
         <p>
@@ -1207,30 +1410,25 @@ async function loadProperties(){
           </b>
         </p>
 
-
         <div class="property-price">
 
           ${escapeHTML(property.price)}
 
         </div>
 
-
         <p>
           📐 ${escapeHTML(property.property_size)}
         </p>
 
-
         <p>
           📍 ${escapeHTML(property.location)}
         </p>
-
 
         <p style="margin-top:10px">
 
           ${escapeHTML(property.details || "")}
 
         </p>
-
 
         <a
           class="whatsapp-btn"
@@ -1274,72 +1472,140 @@ async function submitProperty(event){
     );
 
 
+  const imageFiles =
+    document.getElementById(
+      "propertyImages"
+    ).files;
+
+
   button.disabled = true;
 
   button.innerText =
-    "Saving Property...";
-
+    "Uploading Property...";
 
   status.innerText = "";
 
 
-  const property = {
+  try{
 
-    purpose:
-      document.getElementById(
-        "purpose"
-      ).value,
+    const property = {
 
-    property_type:
-      document.getElementById(
-        "propertyType"
-      ).value,
+      purpose:
+        document.getElementById(
+          "purpose"
+        ).value,
 
-    property_size:
-      document.getElementById(
-        "propertySize"
-      ).value,
+      property_type:
+        document.getElementById(
+          "propertyType"
+        ).value,
 
-    price:
-      document.getElementById(
-        "price"
-      ).value,
+      property_size:
+        document.getElementById(
+          "propertySize"
+        ).value,
 
-    location:
-      document.getElementById(
-        "location"
-      ).value,
+      price:
+        document.getElementById(
+          "price"
+        ).value,
 
-    details:
-      document.getElementById(
-        "details"
-      ).value,
+      location:
+        document.getElementById(
+          "location"
+        ).value,
 
-    owner_name:
-      document.getElementById(
-        "ownerName"
-      ).value,
+      details:
+        document.getElementById(
+          "details"
+        ).value,
 
-    owner_phone:
-      document.getElementById(
-        "ownerPhone"
-      ).value
+      owner_name:
+        document.getElementById(
+          "ownerName"
+        ).value,
 
-  };
+      owner_phone:
+        document.getElementById(
+          "ownerPhone"
+        ).value,
 
+      image_urls:[]
 
-  const result =
-    await supabaseClient
-      .from("properties")
-      .insert([property])
-      .select();
+    };
 
 
-  const error =
-    result.error;
+    /* UPLOAD PICTURES */
+
+    if(imageFiles.length > 0){
+
+      button.innerText =
+        "Uploading Pictures...";
+
+      property.image_urls =
+        await uploadPropertyImages(
+          imageFiles
+        );
+
+    }
 
 
-  if(error){
+    /* SAVE PROPERTY */
+
+    button.innerText =
+      "Saving Property...";
+
+
+    const result =
+      await supabaseClient
+        .from("properties")
+        .insert([property])
+        .select();
+
+
+    if(result.error){
+
+      throw result.error;
+
+    }
+
+
+    status.style.color =
+      "#168c3b";
+
+    status.innerText =
+      "✅ Property successfully listed with pictures!";
+
+
+    document
+      .getElementById(
+        "property-form"
+      )
+      .reset();
+
+
+    imagePreview.innerHTML = "";
+
+
+    button.disabled = false;
+
+    button.innerText =
+      "📲 SUBMIT PROPERTY";
+
+
+    await loadProperties();
+
+
+    document
+      .getElementById(
+        "online-properties"
+      )
+      .scrollIntoView({
+        behavior:"smooth"
+      });
+
+
+  }catch(error){
 
     console.error(error);
 
@@ -1348,7 +1614,7 @@ async function submitProperty(event){
 
     status.innerText =
       "❌ Property save nahi ho saki: " +
-      error.message;
+      (error.message || "Unknown error");
 
 
     button.disabled = false;
@@ -1356,47 +1622,13 @@ async function submitProperty(event){
     button.innerText =
       "📲 SUBMIT PROPERTY";
 
-    return;
-
   }
-
-
-  status.style.color =
-    "#168c3b";
-
-  status.innerText =
-    "✅ Property successfully listed!";
-
-
-  document
-    .getElementById(
-      "property-form"
-    )
-    .reset();
-
-
-  button.disabled = false;
-
-  button.innerText =
-    "📲 SUBMIT PROPERTY";
-
-
-  await loadProperties();
-
-
-  document
-    .getElementById(
-      "online-properties"
-    )
-    .scrollIntoView({
-      behavior:"smooth"
-    });
 
 }
 
 
 /* =========================================
-   START WEBSITE
+   START
 ========================================= */
 
 document.addEventListener(
