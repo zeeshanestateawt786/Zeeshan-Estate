@@ -12,7 +12,7 @@
 content="Zeeshan Estate AWT - Authorized Dealer for property sale and purchase in Army Welfare Trust Phase 2 Lahore.">
 
 <meta name="keywords"
-content="property for sale Lahore, Lahore property, AWT Phase 2 property, Army Welfare Trust Phase 2 Lahore, plots for sale Lahore, 5 Marla plot Lahore, 10 Marla plot Lahore, 1 Kanal plot Lahore, Zeeshan Estate AWT">
+content="property for sale Lahore, AWT Phase 2 property, Army Welfare Trust Phase 2 Lahore, plots for sale Lahore, Zeeshan Estate AWT">
 
 <meta name="robots" content="index, follow">
 
@@ -118,7 +118,6 @@ font-weight:900;
 
 .admin-link:hover{
 background:#8f0000;
-color:#fff!important;
 }
 
 
@@ -299,7 +298,7 @@ object-fit:cover;
 display:block;
 }
 
-.team-card .team-body{
+.team-body{
 padding:20px;
 }
 
@@ -407,6 +406,81 @@ font-weight:900;
 }
 
 
+/* ONLINE PROPERTIES */
+
+.online-title{
+text-align:center;
+font-size:32px;
+margin:50px 0 25px;
+color:#fff;
+}
+
+.property-card{
+background:#fff;
+color:#111;
+border-radius:10px;
+overflow:hidden;
+box-shadow:0 5px 18px rgba(0,0,0,.25);
+}
+
+.property-gallery{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:3px;
+background:#111;
+}
+
+.property-gallery.single{
+grid-template-columns:1fr;
+}
+
+.property-gallery img{
+width:100%;
+height:180px;
+object-fit:cover;
+display:block;
+}
+
+.property-top{
+background:#c40000;
+color:#fff;
+padding:18px;
+text-align:center;
+}
+
+.property-top h3{
+font-size:22px;
+}
+
+.property-body{
+padding:20px;
+text-align:center;
+}
+
+.property-price{
+color:#c40000;
+font-size:24px;
+font-weight:900;
+margin:8px 0;
+}
+
+.call-btn{
+display:inline-block;
+margin-top:15px;
+padding:12px 20px;
+background:#c40000;
+color:#fff;
+border-radius:6px;
+font-weight:800;
+}
+
+.view-count{
+font-size:13px;
+color:#777;
+margin-top:12px;
+}
+
+
 /* LIST PROPERTY */
 
 .list-box{
@@ -427,7 +501,7 @@ font-size:36px;
 margin-bottom:10px;
 }
 
-.list-box .subtitle{
+.subtitle{
 text-align:center;
 color:#666;
 margin-bottom:25px;
@@ -523,81 +597,6 @@ cursor:not-allowed;
 text-align:center;
 margin-top:15px;
 font-weight:700;
-}
-
-
-/* ONLINE PROPERTY */
-
-.online-title{
-text-align:center;
-font-size:32px;
-margin:50px 0 25px;
-color:#fff;
-}
-
-.property-card{
-background:#fff;
-color:#111;
-border-radius:10px;
-overflow:hidden;
-box-shadow:0 5px 18px rgba(0,0,0,.25);
-}
-
-.property-gallery{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:3px;
-background:#111;
-}
-
-.property-gallery.single{
-grid-template-columns:1fr;
-}
-
-.property-gallery img{
-width:100%;
-height:180px;
-object-fit:cover;
-display:block;
-}
-
-.property-top{
-background:#c40000;
-color:#fff;
-padding:18px;
-text-align:center;
-}
-
-.property-top h3{
-font-size:22px;
-}
-
-.property-body{
-padding:20px;
-text-align:center;
-}
-
-.property-price{
-color:#c40000;
-font-size:24px;
-font-weight:900;
-margin:8px 0;
-}
-
-.call-btn{
-display:inline-block;
-margin-top:15px;
-padding:12px 20px;
-background:#c40000;
-color:#fff;
-border-radius:6px;
-font-weight:800;
-}
-
-.view-count{
-font-size:13px;
-color:#777;
-margin-top:12px;
 }
 
 
@@ -730,21 +729,8 @@ height:130px;
 
 }
 
-
-/* MOBILE ADMIN BUTTON */
-
-@media(max-width:850px){
-
-.admin-link{
-display:inline-block;
-}
-
-}
-
 </style>
 
-
-<!-- STRUCTURED DATA -->
 
 <script type="application/ld+json">
 
@@ -770,7 +756,6 @@ display:inline-block;
 </script>
 
 </head>
-
 
 <body>
 
@@ -806,37 +791,20 @@ AUTHORIZED DEALER
 
 </div>
 
-
 <nav>
 
-<a href="#home">
-HOME
-</a>
+<a href="#home">HOME</a>
 
-<a href="#about">
-ABOUT US
-</a>
+<a href="#about">ABOUT US</a>
 
-<a href="#properties">
-PROPERTIES
-</a>
+<a href="#properties">PROPERTIES</a>
 
-<a href="#why">
-WHY US
-</a>
+<a href="#why">WHY US</a>
 
-<a href="#contact">
-CONTACT US
-</a>
+<a href="#contact">CONTACT US</a>
 
-<!-- SEPARATE ADMIN PAGE -->
-
-<a
-href="admin.html"
-class="admin-link">
-
+<a href="admin.html" class="admin-link">
 🔐 ADMIN
-
 </a>
 
 </nav>
@@ -850,31 +818,25 @@ class="admin-link">
 
 <div class="hero-slides">
 
-<div
-class="hero-slide active"
+<div class="hero-slide active"
 style="background-image:url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1800&q=85')">
 </div>
 
-<div
-class="hero-slide"
+<div class="hero-slide"
 style="background-image:url('https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1800&q=85')">
 </div>
 
-<div
-class="hero-slide"
+<div class="hero-slide"
 style="background-image:url('https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1800&q=85')">
 </div>
 
-<div
-class="hero-slide"
+<div class="hero-slide"
 style="background-image:url('https://images.unsplash.com/photo-1600607688969-a5bfcd646154?auto=format&fit=crop&w=1800&q=85')">
 </div>
 
 </div>
 
-
 <div class="hero-overlay"></div>
-
 
 <div class="hero-content">
 
@@ -885,37 +847,25 @@ ZEESHAN<br>
 <span>ESTATE AWT</span>
 </h1>
 
-<p>
-Aapka Apna, Pura Bharosa
-</p>
+<p>Aapka Apna, Pura Bharosa</p>
 
-<p>
-<b>Authorized Dealer</b>
-</p>
+<p><b>Authorized Dealer</b></p>
 
-<p>
-Army Welfare Trust Phase 2, Lahore
-</p>
-
+<p>Army Welfare Trust Phase 2, Lahore</p>
 
 <div class="btns">
 
-<a
-class="btn red"
-href="#properties">
+<a class="btn red" href="#properties">
 VIEW PROPERTIES
 </a>
 
-<a
-class="btn call"
-href="tel:+923020941013">
+<a class="btn call" href="tel:+923020941013">
 📞 CALL US
 </a>
 
 </div>
 
 </div>
-
 
 <div class="contact-card">
 
@@ -951,59 +901,33 @@ ABOUT ZEESHAN ESTATE AWT
 </h2>
 
 <p style="margin-top:15px">
-
 Zeeshan Estate AWT provides property sale and purchase
 services for residential and commercial plots in Army
 Welfare Trust Phase 2, Lahore.
-
 </p>
 
 </div>
 
-
 <div class="features">
 
 <div class="feature">
-
-<b>
-✓ Authorized Dealer
-</b>
-
+<b>✓ Authorized Dealer</b>
 Professional property assistance
-
 </div>
 
-
 <div class="feature">
-
-<b>
-📍 Prime Location
-</b>
-
+<b>📍 Prime Location</b>
 Property in AWT Phase 2
-
 </div>
 
-
 <div class="feature">
-
-<b>
-🛡 Secure Investment
-</b>
-
+<b>🛡 Secure Investment</b>
 Guidance for buyers
-
 </div>
 
-
 <div class="feature">
-
-<b>
-🤝 Trusted Service
-</b>
-
+<b>🤝 Trusted Service</b>
 Clear dealing &amp; support
-
 </div>
 
 </div>
@@ -1017,9 +941,7 @@ Clear dealing &amp; support
 OUR TEAM
 </h2>
 
-<div
-id="public-team"
-class="team-grid">
+<div id="public-team" class="team-grid">
 
 <p>
 Loading team members...
@@ -1032,17 +954,13 @@ Loading team members...
 
 <!-- PROPERTIES -->
 
-<section
-class="section properties"
-id="properties">
+<section class="section properties" id="properties">
 
 <h2 style="
 font-size:42px;
 text-align:center;
 margin-bottom:30px">
-
 PLOTS FOR SALE
-
 </h2>
 
 
@@ -1052,22 +970,14 @@ PLOTS FOR SALE
 <article class="card">
 
 <div class="pic plot5">
-
-<span>
-5 MARLA
-</span>
-
+<span>5 MARLA</span>
 </div>
 
-<h3>
-5 MARLA
-</h3>
+<h3>5 MARLA</h3>
 
 <div class="body">
 
-<div>
-Demand
-</div>
+<div>Demand</div>
 
 <div class="price">
 55 Lac – 90 Lac
@@ -1085,22 +995,14 @@ Location/plot position may affect price.
 <article class="card">
 
 <div class="pic plot10">
-
-<span>
-10 MARLA
-</span>
-
+<span>10 MARLA</span>
 </div>
 
-<h3>
-10 MARLA
-</h3>
+<h3>10 MARLA</h3>
 
 <div class="body">
 
-<div>
-Demand
-</div>
+<div>Demand</div>
 
 <div class="price">
 1 Crore – 1.60 Crore
@@ -1118,22 +1020,14 @@ Location/plot position may affect price.
 <article class="card">
 
 <div class="pic plot1">
-
-<span>
-1 KANAL
-</span>
-
+<span>1 KANAL</span>
 </div>
 
-<h3>
-1 KANAL
-</h3>
+<h3>1 KANAL</h3>
 
 <div class="body">
 
-<div>
-Demand
-</div>
+<div>Demand</div>
 
 <div class="price">
 1.50 Crore – 3 Crore
@@ -1156,10 +1050,7 @@ Location/plot position may affect price.
 AVAILABLE LISTED PROPERTIES
 </h2>
 
-
-<div
-id="online-properties"
-class="cards">
+<div id="online-properties" class="cards">
 
 <p style="text-align:center">
 Loading properties...
@@ -1168,7 +1059,7 @@ Loading properties...
 </div>
 
 
-<!-- LIST PROPERTY FORM -->
+<!-- LIST PROPERTY -->
 
 <div class="list-box">
 
@@ -1188,15 +1079,11 @@ Apni property Zeeshan Estate AWT ke through list karein.
 
 <div class="form-group">
 
-<label>
-Property Purpose
-</label>
+<label>Property Purpose</label>
 
 <select id="purpose" required>
 
-<option value="">
-Select Purpose
-</option>
+<option value="">Select Purpose</option>
 
 <option value="For Sale">
 For Sale
@@ -1213,9 +1100,7 @@ For Rent
 
 <div class="form-group">
 
-<label>
-Property Type
-</label>
+<label>Property Type</label>
 
 <select id="propertyType" required>
 
@@ -1254,9 +1139,7 @@ Other
 
 <div class="form-group">
 
-<label>
-Property Size
-</label>
+<label>Property Size</label>
 
 <input
 type="text"
@@ -1269,9 +1152,7 @@ required>
 
 <div class="form-group">
 
-<label>
-Expected Price
-</label>
+<label>Expected Price</label>
 
 <input
 type="text"
@@ -1284,9 +1165,7 @@ required>
 
 <div class="form-group full">
 
-<label>
-Property Location
-</label>
+<label>Property Location</label>
 
 <input
 type="text"
@@ -1299,9 +1178,7 @@ required>
 
 <div class="form-group full">
 
-<label>
-Property Pictures
-</label>
+<label>Property Pictures</label>
 
 <input
 class="file-input"
@@ -1314,19 +1191,14 @@ multiple>
 📸 Multiple pictures select kar sakte hain.
 </div>
 
-<div
-id="image-preview"
-class="image-preview">
-</div>
+<div id="image-preview" class="image-preview"></div>
 
 </div>
 
 
 <div class="form-group full">
 
-<label>
-Property Details
-</label>
+<label>Property Details</label>
 
 <textarea
 id="details"
@@ -1338,9 +1210,7 @@ placeholder="Enter property details">
 
 <div class="form-group">
 
-<label>
-Owner Name
-</label>
+<label>Owner Name</label>
 
 <input
 type="text"
@@ -1353,9 +1223,7 @@ required>
 
 <div class="form-group">
 
-<label>
-Owner Phone
-</label>
+<label>Owner Phone</label>
 
 <input
 type="tel"
@@ -1364,7 +1232,6 @@ placeholder="03XX-XXXXXXX"
 required>
 
 </div>
-
 
 </div>
 
@@ -1379,11 +1246,7 @@ class="submit-btn">
 </button>
 
 
-<div
-id="form-status"
-class="status">
-</div>
-
+<div id="form-status" class="status"></div>
 
 </form>
 
@@ -1407,9 +1270,7 @@ LATEST PROPERTIES
 
 </h2>
 
-<div
-id="home-properties"
-class="cards">
+<div id="home-properties" class="cards">
 
 <p style="text-align:center">
 Loading properties...
@@ -1422,9 +1283,7 @@ Loading properties...
 
 <!-- WHY -->
 
-<section
-class="section"
-id="why">
+<section class="section" id="why">
 
 <h2 style="
 font-size:36px;
@@ -1435,7 +1294,6 @@ margin-bottom:25px">
 WHY CHOOSE ZEESHAN ESTATE AWT?
 
 </h2>
-
 
 <div class="why">
 
@@ -1471,9 +1329,7 @@ Investment Potential
 
 <!-- FOOTER -->
 
-<footer
-class="footer"
-id="contact">
+<footer class="footer" id="contact">
 
 <div>
 
@@ -1537,12 +1393,8 @@ All Rights Reserved.
 
 <br>
 
-<a
-href="admin.html"
-style="font-size:12px;opacity:.7">
-
+<a href="admin.html" style="font-size:12px;opacity:.7">
 🔐 Admin Login
-
 </a>
 
 </div>
@@ -1571,16 +1423,13 @@ SUPABASE_KEY
 
 
 /* =========================================
-SECURITY
+ESCAPE HTML
 ========================================= */
 
 function escapeHTML(value){
 
-if(value === null ||
-value === undefined){
-
+if(value === null || value === undefined){
 return "";
-
 }
 
 return String(value)
@@ -1627,15 +1476,13 @@ return id;
 
 
 /* =========================================
-HERO SLIDESHOW
+HERO SLIDER
 ========================================= */
 
 let heroIndex = 0;
 
 const heroSlides =
-document.querySelectorAll(
-".hero-slide"
-);
+document.querySelectorAll(".hero-slide");
 
 setInterval(function(){
 
@@ -1661,14 +1508,10 @@ IMAGE PREVIEW
 ========================================= */
 
 const imageInput =
-document.getElementById(
-"propertyImages"
-);
+document.getElementById("propertyImages");
 
 const imagePreview =
-document.getElementById(
-"image-preview"
-);
+document.getElementById("image-preview");
 
 if(imageInput){
 
@@ -1711,7 +1554,7 @@ reader.readAsDataURL(file);
 
 
 /* =========================================
-UPLOAD PROPERTY IMAGES
+UPLOAD IMAGES
 ========================================= */
 
 async function uploadPropertyImages(files){
@@ -1729,8 +1572,7 @@ continue;
 if(file.size > 8 * 1024 * 1024){
 
 throw new Error(
-"Image " +
-file.name +
+"Image " + file.name +
 " is larger than 8MB."
 );
 
@@ -1793,12 +1635,12 @@ return imageUrls;
 
 
 /* =========================================
-RECORD VIEW
+RECORD PROPERTY VIEW
 ========================================= */
 
-async function recordPropertyView(
-propertyId
-){
+async function recordPropertyView(propertyId){
+
+try{
 
 const key =
 "viewed_property_" +
@@ -1815,8 +1657,8 @@ getVisitorId();
 
 const result =
 await supabaseClient
-.from("properties")
-.insert([property]);
+.from("property_views")
+.insert([{
 
 property_id:propertyId,
 
@@ -1833,16 +1675,25 @@ result.error.message
 
 }
 
+}catch(error){
+
+console.log(
+"View tracking error:",
+error.message
+);
+
+}
+
 }
 
 
 /* =========================================
-RECORD CALL
+RECORD PROPERTY CALL
 ========================================= */
 
-async function recordPropertyCall(
-propertyId
-){
+async function recordPropertyCall(propertyId){
+
+try{
 
 const visitorId =
 getVisitorId();
@@ -1867,11 +1718,20 @@ result.error.message
 
 }
 
+}catch(error){
+
+console.log(
+"Call tracking error:",
+error.message
+);
+
+}
+
 }
 
 
 /* =========================================
-LOAD PROPERTIES
+GET PROPERTIES
 ========================================= */
 
 async function getProperties(){
@@ -1889,7 +1749,10 @@ ascending:false
 
 if(result.error){
 
-console.error(result.error);
+console.error(
+"Properties error:",
+result.error
+);
 
 return [];
 
@@ -1901,18 +1764,17 @@ return result.data || [];
 
 
 /* =========================================
-PROPERTY CARD
+CREATE PROPERTY CARD
 ========================================= */
 
-function createPropertyCard(
-property
-){
+function createPropertyCard(property){
 
 const card =
 document.createElement("article");
 
 card.className =
 "property-card";
+
 
 let images = [];
 
@@ -1923,16 +1785,20 @@ property.image_urls;
 
 }
 
+
 let galleryHTML = "";
+
 
 if(images.length > 0){
 
 galleryHTML = `
 
-<div class="property-gallery
-${images.length === 1 ? "single" : ""}">
+<div class="property-gallery ${
+images.length === 1 ? "single" : ""
+}">
 
-${images
+${
+images
 .slice(0,6)
 .map(function(url){
 
@@ -1946,7 +1812,8 @@ loading="lazy">
 `;
 
 })
-.join("")}
+.join("")
+}
 
 </div>
 
@@ -1962,72 +1829,46 @@ ${galleryHTML}
 <div class="property-top">
 
 <h3>
-${escapeHTML(
-property.property_type
-)}
+${escapeHTML(property.property_type)}
 </h3>
 
 </div>
-
 
 <div class="property-body">
 
 <p>
 <b>
-${escapeHTML(
-property.purpose
-)}
+${escapeHTML(property.purpose)}
 </b>
 </p>
 
-
 <div class="property-price">
-
-${escapeHTML(
-property.price
-)}
-
+${escapeHTML(property.price)}
 </div>
 
-
 <p>
-📐 ${escapeHTML(
-property.property_size
-)}
+📐 ${escapeHTML(property.property_size)}
 </p>
 
-
 <p>
-📍 ${escapeHTML(
-property.location
-)}
+📍 ${escapeHTML(property.location)}
 </p>
-
 
 <p style="margin-top:10px">
-
-${escapeHTML(
-property.details || ""
-)}
-
+${escapeHTML(property.details || "")}
 </p>
-
 
 <a
 class="call-btn"
 href="tel:+923020941013"
-onclick="recordPropertyCall(${property.id})">
+onclick="recordPropertyCall(${Number(property.id)})">
 
 📞 CALL US
 
 </a>
 
-
-<div
-class="view-count">
-
+<div class="view-count">
 👁️ Property viewed
-
 </div>
 
 </div>
@@ -2048,9 +1889,7 @@ return card;
 RENDER PROPERTIES
 ========================================= */
 
-function renderProperties(
-properties
-){
+function renderProperties(properties){
 
 const home =
 document.getElementById(
@@ -2061,6 +1900,7 @@ const online =
 document.getElementById(
 "online-properties"
 );
+
 
 if(home){
 home.innerHTML = "";
@@ -2116,7 +1956,7 @@ createPropertyCard(property)
 
 
 /* =========================================
-LOAD PUBLIC PROPERTIES
+LOAD PROPERTIES
 ========================================= */
 
 async function loadProperties(){
@@ -2139,6 +1979,7 @@ async function submitProperty(event){
 
 event.preventDefault();
 
+
 const button =
 document.getElementById(
 "submit-property-btn"
@@ -2158,12 +1999,13 @@ document.getElementById(
 button.disabled = true;
 
 button.innerText =
-"Uploading Property...";
+"Saving Property...";
 
 status.innerText = "";
 
 
 try{
+
 
 const property = {
 
@@ -2271,15 +2113,17 @@ await loadProperties();
 
 }catch(error){
 
-console.error(error);
+console.error(
+"Property save error:",
+error
+);
 
 status.style.color =
 "#c40000";
 
 status.innerText =
 "❌ Property save nahi ho saki: " +
-(error.message ||
-"Unknown error");
+(error.message || "Unknown error");
 
 
 button.disabled = false;
@@ -2303,6 +2147,19 @@ document.getElementById(
 "public-team"
 );
 
+
+if(!container){
+return;
+}
+
+
+container.innerHTML =
+"<p style='text-align:center'>Loading team members...</p>";
+
+
+try{
+
+
 const result =
 await supabaseClient
 .from("team_members")
@@ -2318,8 +2175,13 @@ ascending:true
 
 if(result.error){
 
+console.error(
+"Team Members error:",
+result.error
+);
+
 container.innerHTML =
-"<p>Team information unavailable.</p>";
+"<p style='text-align:center;color:#c40000'>Team information unavailable.</p>";
 
 return;
 
@@ -2358,22 +2220,22 @@ card.innerHTML = `
 
 <img
 src="${escapeHTML(image)}"
-alt="${escapeHTML(member.name)}"
+alt="${escapeHTML(member.name || "Team Member")}"
 loading="lazy">
 
 <div class="team-body">
 
 <h3>
-${escapeHTML(member.name)}
+${escapeHTML(member.name || "")}
 </h3>
 
 <p>
-📞 ${escapeHTML(member.phone)}
+📞 ${escapeHTML(member.phone || "")}
 </p>
 
 <a
 class="call-team"
-href="tel:${escapeHTML(member.phone)}">
+href="tel:${escapeHTML(member.phone || "")}">
 
 📞 CALL US
 
@@ -2387,16 +2249,30 @@ container.appendChild(card);
 
 });
 
+
+}catch(error){
+
+console.error(
+"Team loading error:",
+error
+);
+
+container.innerHTML =
+"<p style='text-align:center;color:#c40000'>Unable to load team members.</p>";
+
+}
+
 }
 
 
 /* =========================================
-START
+START WEBSITE
 ========================================= */
 
 document.addEventListener(
 "DOMContentLoaded",
 function(){
+
 
 const form =
 document.getElementById(
@@ -2423,5 +2299,4 @@ loadTeamMembers();
 </script>
 
 </body>
-
 </html>
