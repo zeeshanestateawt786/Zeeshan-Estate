@@ -1,1075 +1,1915 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Zeeshan Estate AWT | Army Welfare Trust Phase 2 Lahore</title>
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
-<meta name="description" content="Zeeshan Estate AWT - Authorized Dealer for property sale and purchase in Army Welfare Trust Phase 2, Lahore.">
+<title>
+Zeeshan Estate AWT | Property for Sale in Lahore | AWT Phase 2
+</title>
+
+<meta name="description"
+content="Zeeshan Estate AWT - Authorized Dealer for property sale and purchase in Army Welfare Trust Phase 2 Lahore. View residential and commercial plots, houses and properties for sale.">
+
+<meta name="keywords"
+content="property for sale Lahore, Lahore property, AWT Phase 2 property, Army Welfare Trust Phase 2 Lahore, plots for sale Lahore, 5 Marla plot Lahore, 10 Marla plot Lahore, 1 Kanal plot Lahore, Zeeshan Estate AWT">
+
+<meta name="robots" content="index, follow">
+
+<link rel="canonical"
+href="https://zeeshanestateawt786.github.io/Zeeshan-Estate/">
+
+<meta property="og:title"
+content="Zeeshan Estate AWT | AWT Phase 2 Lahore">
+
+<meta property="og:description"
+content="Authorized Dealer for property sale and purchase in Army Welfare Trust Phase 2 Lahore.">
+
+<meta property="og:type"
+content="website">
+
+<meta property="og:url"
+content="https://zeeshanestateawt786.github.io/Zeeshan-Estate/">
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
 
 *{
-  box-sizing:border-box;
-  margin:0;
-  padding:0
+box-sizing:border-box;
+margin:0;
+padding:0
+}
+
+html{
+scroll-behavior:smooth
 }
 
 body{
-  font-family:Arial,Helvetica,sans-serif;
-  color:#171717;
-  background:#fff;
-  line-height:1.5
+font-family:Arial,Helvetica,sans-serif;
+color:#171717;
+background:#fff;
+line-height:1.5
 }
 
 a{
-  text-decoration:none;
-  color:inherit
+text-decoration:none;
+color:inherit
 }
 
 .top{
-  background:#b40000;
-  color:#fff;
-  padding:10px 5%;
-  display:flex;
-  justify-content:space-between;
-  gap:15px;
-  flex-wrap:wrap;
-  font-weight:700
+background:#b40000;
+color:#fff;
+padding:10px 5%;
+display:flex;
+justify-content:space-between;
+gap:15px;
+flex-wrap:wrap;
+font-weight:700
 }
 
 .nav{
-  padding:18px 5%;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:20px;
-  background:#fff
+padding:18px 5%;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:20px;
+background:#fff;
+position:relative;
+z-index:20
 }
 
 .logo{
-  font-size:30px;
-  font-weight:900;
-  letter-spacing:-1px
+font-size:30px;
+font-weight:900;
+letter-spacing:-1px
 }
 
 .logo span{
-  color:#c40000
+color:#c40000
 }
 
 .badge{
-  font-size:13px;
-  letter-spacing:2px;
-  color:#444;
-  font-weight:700
+font-size:13px;
+letter-spacing:2px;
+color:#444;
+font-weight:700
 }
 
 nav{
-  display:flex;
-  gap:20px;
-  flex-wrap:wrap;
-  font-weight:700
+display:flex;
+gap:20px;
+flex-wrap:wrap;
+font-weight:700
 }
 
 nav a:hover{
-  color:#c40000
+color:#c40000
 }
 
+
+/* HERO SLIDESHOW */
+
 .hero{
-  min-height:570px;
-  background:
-  linear-gradient(90deg,rgba(0,0,0,.72),rgba(0,0,0,.2)),
-  url("https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1800&q=85")
-  center/cover;
-  display:flex;
-  align-items:center;
-  padding:60px 7%;
-  color:#fff
+min-height:570px;
+position:relative;
+display:flex;
+align-items:center;
+padding:60px 7%;
+color:#fff;
+overflow:hidden
+}
+
+.hero-slides{
+position:absolute;
+inset:0;
+z-index:0
+}
+
+.hero-slide{
+position:absolute;
+inset:0;
+background-size:cover;
+background-position:center;
+opacity:0;
+transition:opacity 1.2s ease
+}
+
+.hero-slide.active{
+opacity:1
+}
+
+.hero-overlay{
+position:absolute;
+inset:0;
+background:
+linear-gradient(
+90deg,
+rgba(0,0,0,.78),
+rgba(0,0,0,.30)
+);
+z-index:1
+}
+
+.hero-content{
+position:relative;
+z-index:3;
+width:100%;
+display:flex;
+align-items:center;
+gap:40px
 }
 
 .hero h1{
-  font-size:clamp(44px,7vw,82px);
-  line-height:.95;
-  margin-bottom:20px
+font-size:clamp(44px,7vw,82px);
+line-height:.95;
+margin-bottom:20px
 }
 
 .hero h1 span{
-  color:#e00000
+color:#e00000
 }
 
 .hero p{
-  font-size:23px;
-  margin:8px 0
+font-size:23px;
+margin:8px 0
 }
 
 .btns{
-  display:flex;
-  gap:14px;
-  flex-wrap:wrap;
-  margin-top:28px
+display:flex;
+gap:14px;
+flex-wrap:wrap;
+margin-top:28px
 }
 
 .btn{
-  padding:14px 25px;
-  border-radius:5px;
-  font-weight:800;
-  border:2px solid #fff;
-  display:inline-block
+padding:14px 25px;
+border-radius:5px;
+font-weight:800;
+border:2px solid #fff;
+display:inline-block
 }
 
 .btn.red{
-  background:#d00000;
-  border-color:#d00000;
-  color:#fff
+background:#d00000;
+border-color:#d00000;
+color:#fff
+}
+
+.btn.call{
+background:#fff;
+border-color:#fff;
+color:#b40000
 }
 
 .contact-card{
-  margin-left:auto;
-  background:#c80000;
-  padding:22px 28px;
-  border-radius:10px;
-  max-width:330px;
-  box-shadow:0 10px 30px #0008
+margin-left:auto;
+background:#c80000;
+padding:22px 28px;
+border-radius:10px;
+max-width:330px;
+box-shadow:0 10px 30px #0008
 }
 
 .contact-card small{
-  color:#ffe000;
-  font-weight:800
+color:#ffe000;
+font-weight:800
 }
 
 .contact-card strong{
-  display:block;
-  font-size:25px;
-  margin:5px 0
+display:block;
+font-size:25px;
+margin:5px 0
 }
 
+
+/* SECTIONS */
+
 .section{
-  padding:55px 6%
+padding:55px 6%
 }
 
 .about{
-  display:grid;
-  grid-template-columns:1.3fr 2fr;
-  gap:35px;
-  align-items:center
+display:grid;
+grid-template-columns:1.3fr 2fr;
+gap:35px;
+align-items:center
 }
 
 .features{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:18px
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:18px
 }
 
 .feature{
-  padding:22px;
-  border-top:4px solid #c40000;
-  background:#fafafa;
-  text-align:center
+padding:22px;
+border-top:4px solid #c40000;
+background:#fafafa;
+text-align:center
 }
 
 .feature b{
-  display:block;
-  margin-bottom:8px
+display:block;
+margin-bottom:8px
 }
 
+
+/* TEAM */
+
+.team-title{
+text-align:center;
+font-size:34px;
+color:#b40000;
+margin:50px 0 25px
+}
+
+.team-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:22px
+}
+
+.team-card{
+background:#fff;
+border-radius:10px;
+overflow:hidden;
+box-shadow:0 5px 20px rgba(0,0,0,.12);
+text-align:center;
+border-top:5px solid #c40000
+}
+
+.team-card img{
+width:100%;
+height:240px;
+object-fit:cover;
+display:block
+}
+
+.team-card .team-body{
+padding:20px
+}
+
+.team-card h3{
+font-size:22px;
+margin-bottom:7px
+}
+
+.call-team{
+display:inline-block;
+margin-top:12px;
+padding:11px 20px;
+background:#c40000;
+color:#fff;
+border-radius:6px;
+font-weight:800
+}
+
+
+/* PROPERTIES */
+
 .properties{
-  background:#110606;
-  color:#fff
+background:#110606;
+color:#fff
 }
 
 .cards{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:22px
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:22px
 }
 
 .card{
-  background:#fff;
-  color:#111;
-  border-radius:10px;
-  overflow:hidden
+background:#fff;
+color:#111;
+border-radius:10px;
+overflow:hidden
 }
 
 .card .pic{
-  height:190px;
-  background:linear-gradient(135deg,#ddd,#888);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:28px;
-  font-weight:900;
-  color:#333
+height:210px;
+background-size:cover;
+background-position:center;
+display:flex;
+align-items:flex-end;
+justify-content:center;
+font-size:28px;
+font-weight:900;
+color:#fff;
+padding:15px;
+text-shadow:0 2px 8px #000;
+position:relative
+}
+
+.card .pic:after{
+content:"";
+position:absolute;
+inset:0;
+background:linear-gradient(transparent,rgba(0,0,0,.65))
+}
+
+.card .pic span{
+position:relative;
+z-index:2
+}
+
+.plot5{
+background-image:
+url("https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1000&q=85")
+}
+
+.plot10{
+background-image:
+url("https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1000&q=85")
+}
+
+.plot1{
+background-image:
+url("https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=85")
 }
 
 .card h3{
-  background:#c40000;
-  color:#fff;
-  padding:10px;
-  text-align:center;
-  font-size:23px
+background:#c40000;
+color:#fff;
+padding:10px;
+text-align:center;
+font-size:23px
 }
 
 .card .body{
-  padding:20px;
-  text-align:center
+padding:20px;
+text-align:center
 }
 
 .price{
-  font-size:25px;
-  color:#c40000;
-  font-weight:900
+font-size:25px;
+color:#c40000;
+font-weight:900
 }
+
 
 /* LIST PROPERTY */
 
 .list-box{
-  max-width:950px;
-  margin:45px auto 0;
-  background:#fff;
-  color:#111;
-  padding:30px;
-  border-radius:12px;
-  border-top:6px solid #c40000;
-  box-shadow:0 8px 30px rgba(0,0,0,.2)
+max-width:950px;
+margin:45px auto 0;
+background:#fff;
+color:#111;
+padding:30px;
+border-radius:12px;
+border-top:6px solid #c40000;
+box-shadow:0 8px 30px rgba(0,0,0,.2)
 }
 
 .list-box h2{
-  color:#b40000;
-  text-align:center;
-  font-size:36px;
-  margin-bottom:10px
+color:#b40000;
+text-align:center;
+font-size:36px;
+margin-bottom:10px
 }
 
 .list-box .subtitle{
-  text-align:center;
-  color:#666;
-  margin-bottom:25px
+text-align:center;
+color:#666;
+margin-bottom:25px
 }
 
 .form-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:18px
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:18px
 }
 
 .form-group{
-  display:flex;
-  flex-direction:column
+display:flex;
+flex-direction:column
 }
 
 .form-group.full{
-  grid-column:1/-1
+grid-column:1/-1
 }
 
 .form-group label{
-  font-weight:800;
-  margin-bottom:7px
+font-weight:800;
+margin-bottom:7px
 }
 
 .form-group input,
 .form-group select,
 .form-group textarea{
-  width:100%;
-  padding:13px;
-  border:1px solid #ccc;
-  border-radius:6px;
-  font-size:16px;
-  font-family:Arial,Helvetica,sans-serif
+width:100%;
+padding:13px;
+border:1px solid #ccc;
+border-radius:6px;
+font-size:16px;
+font-family:Arial,Helvetica,sans-serif
 }
 
 .form-group textarea{
-  min-height:110px;
-  resize:vertical
+min-height:110px;
+resize:vertical
 }
 
 .file-input{
-  background:#fafafa;
-  padding:15px!important;
-  border:2px dashed #c40000!important;
-  cursor:pointer
+background:#fafafa;
+padding:15px!important;
+border:2px dashed #c40000!important;
+cursor:pointer
 }
 
 .image-preview{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:10px;
-  margin-top:12px
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:10px;
+margin-top:12px
 }
 
 .image-preview img{
-  width:100%;
-  height:100px;
-  object-fit:cover;
-  border-radius:7px;
-  border:2px solid #ddd
+width:100%;
+height:100px;
+object-fit:cover;
+border-radius:7px;
+border:2px solid #ddd
 }
 
 .image-help{
-  color:#777;
-  font-size:13px;
-  margin-top:6px
+color:#777;
+font-size:13px;
+margin-top:6px
 }
 
 .submit-btn{
-  width:100%;
-  border:0;
-  background:#c40000;
-  color:#fff;
-  padding:16px;
-  margin-top:20px;
-  border-radius:6px;
-  font-size:18px;
-  font-weight:900;
-  cursor:pointer
+width:100%;
+border:0;
+background:#c40000;
+color:#fff;
+padding:16px;
+margin-top:20px;
+border-radius:6px;
+font-size:18px;
+font-weight:900;
+cursor:pointer
 }
 
 .submit-btn:hover{
-  background:#a90000
+background:#a90000
 }
 
 .submit-btn:disabled{
-  background:#777;
-  cursor:not-allowed
+background:#777;
+cursor:not-allowed
 }
 
 .status{
-  text-align:center;
-  margin-top:15px;
-  font-weight:700
+text-align:center;
+margin-top:15px;
+font-weight:700
 }
+
+
+/* ONLINE PROPERTY */
 
 .online-title{
-  text-align:center;
-  font-size:32px;
-  margin:50px 0 25px;
-  color:#fff
-}
-
-#online-properties{
-  margin-top:20px
+text-align:center;
+font-size:32px;
+margin:50px 0 25px;
+color:#fff
 }
 
 .property-card{
-  background:#fff;
-  color:#111;
-  border-radius:10px;
-  overflow:hidden
+background:#fff;
+color:#111;
+border-radius:10px;
+overflow:hidden;
+box-shadow:0 5px 18px rgba(0,0,0,.25)
 }
 
 .property-gallery{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:3px;
-  background:#111
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:3px;
+background:#111
 }
 
 .property-gallery.single{
-  grid-template-columns:1fr
+grid-template-columns:1fr
 }
 
 .property-gallery img{
-  width:100%;
-  height:180px;
-  object-fit:cover;
-  display:block
+width:100%;
+height:180px;
+object-fit:cover;
+display:block
 }
 
 .property-top{
-  background:#c40000;
-  color:#fff;
-  padding:18px;
-  text-align:center
+background:#c40000;
+color:#fff;
+padding:18px;
+text-align:center
 }
 
 .property-top h3{
-  font-size:22px
+font-size:22px
 }
 
 .property-body{
-  padding:20px;
-  text-align:center
+padding:20px;
+text-align:center
 }
 
 .property-price{
-  color:#c40000;
-  font-size:24px;
-  font-weight:900;
-  margin:8px 0
+color:#c40000;
+font-size:24px;
+font-weight:900;
+margin:8px 0
 }
 
-.whatsapp-btn{
-  display:inline-block;
-  margin-top:15px;
-  padding:12px 18px;
-  background:#168c3b;
-  color:#fff;
-  border-radius:6px;
-  font-weight:800
+.call-btn{
+display:inline-block;
+margin-top:15px;
+padding:12px 20px;
+background:#c40000;
+color:#fff;
+border-radius:6px;
+font-weight:800
 }
+
+.view-count{
+font-size:13px;
+color:#777;
+margin-top:12px
+}
+
+
+/* WHY */
 
 .why{
-  display:grid;
-  grid-template-columns:repeat(5,1fr);
-  gap:14px;
-  text-align:center
+display:grid;
+grid-template-columns:repeat(5,1fr);
+gap:14px;
+text-align:center
 }
 
 .why div{
-  padding:15px;
-  font-weight:700
+padding:15px;
+font-weight:700
 }
 
+
+/* ADMIN */
+
+.admin-section{
+display:none;
+background:#111;
+color:#fff;
+padding:50px 6%
+}
+
+.admin-box{
+max-width:1100px;
+margin:auto;
+background:#fff;
+color:#111;
+border-radius:12px;
+padding:30px
+}
+
+.admin-login{
+max-width:450px;
+margin:auto
+}
+
+.admin-box h2{
+color:#b40000;
+margin-bottom:20px
+}
+
+.admin-input{
+width:100%;
+padding:13px;
+margin-bottom:12px;
+border:1px solid #ccc;
+border-radius:6px
+}
+
+.admin-btn{
+border:0;
+background:#b40000;
+color:#fff;
+padding:13px 20px;
+border-radius:6px;
+font-weight:800;
+cursor:pointer
+}
+
+.admin-logout{
+float:right;
+background:#111
+}
+
+.stats{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:15px;
+margin:25px 0
+}
+
+.stat{
+background:#fafafa;
+border-top:5px solid #c40000;
+padding:20px;
+text-align:center;
+border-radius:8px
+}
+
+.stat strong{
+display:block;
+font-size:32px;
+color:#c40000
+}
+
+.admin-table{
+width:100%;
+border-collapse:collapse;
+margin-top:20px
+}
+
+.admin-table th,
+.admin-table td{
+padding:10px;
+border-bottom:1px solid #ddd;
+text-align:left
+}
+
+.admin-table th{
+background:#b40000;
+color:#fff
+}
+
+.admin-action{
+padding:7px 10px;
+border:0;
+border-radius:4px;
+cursor:pointer;
+font-weight:700
+}
+
+.delete-btn{
+background:#c40000;
+color:#fff
+}
+
+.team-admin{
+margin-top:40px;
+padding-top:25px;
+border-top:2px solid #ddd
+}
+
+.team-form{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:15px
+}
+
+.team-form .full{
+grid-column:1/-1
+}
+
+.team-list{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:15px;
+margin-top:20px
+}
+
+.team-admin-card{
+border:1px solid #ddd;
+padding:12px;
+border-radius:8px
+}
+
+.team-admin-card img{
+width:100%;
+height:160px;
+object-fit:cover
+}
+
+
+/* FOOTER */
+
 .footer{
-  background:#b40000;
-  color:#fff;
-  padding:35px 6%;
-  display:grid;
-  grid-template-columns:1fr 1fr 1fr;
-  gap:25px
+background:#b40000;
+color:#fff;
+padding:35px 6%;
+display:grid;
+grid-template-columns:1fr 1fr 1fr;
+gap:25px
 }
 
 .footer h3{
-  font-size:24px;
-  margin-bottom:10px
+font-size:24px;
+margin-bottom:10px
 }
 
 .copyright{
-  background:#111;
-  color:#fff;
-  text-align:center;
-  padding:14px
+background:#111;
+color:#fff;
+text-align:center;
+padding:14px
 }
+
+
+/* MOBILE */
 
 @media(max-width:850px){
 
-  .nav{
-    flex-direction:column;
-    align-items:flex-start
-  }
+.nav{
+flex-direction:column;
+align-items:flex-start
+}
 
-  .hero{
-    padding:45px 6%
-  }
+.hero{
+padding:45px 6%
+}
 
-  .contact-card{
-    margin:30px 0 0
-  }
+.hero-content{
+flex-direction:column;
+align-items:flex-start
+}
 
-  .about,
-  .cards,
-  .footer{
-    grid-template-columns:1fr
-  }
+.contact-card{
+margin:30px 0 0
+}
 
-  .features{
-    grid-template-columns:1fr 1fr
-  }
+.about,
+.cards,
+.footer,
+.team-grid{
+grid-template-columns:1fr
+}
 
-  .why{
-    grid-template-columns:1fr 1fr
-  }
+.features{
+grid-template-columns:1fr 1fr
+}
 
-  .form-grid{
-    grid-template-columns:1fr
-  }
+.why{
+grid-template-columns:1fr 1fr
+}
 
-  .form-group.full{
-    grid-column:auto
-  }
+.form-grid{
+grid-template-columns:1fr
+}
 
-  .image-preview{
-    grid-template-columns:repeat(3,1fr)
-  }
+.form-group.full{
+grid-column:auto
+}
+
+.image-preview{
+grid-template-columns:repeat(3,1fr)
+}
+
+.stats{
+grid-template-columns:1fr 1fr
+}
+
+.team-form{
+grid-template-columns:1fr
+}
+
+.team-form .full{
+grid-column:auto
+}
+
+.team-list{
+grid-template-columns:1fr 1fr
+}
+
 }
 
 @media(max-width:520px){
 
-  .features,
-  .why{
-    grid-template-columns:1fr
-  }
+.features,
+.why,
+.stats,
+.team-list{
+grid-template-columns:1fr
+}
 
-  .logo{
-    font-size:25px
-  }
+.logo{
+font-size:25px
+}
 
-  nav{
-    gap:13px;
-    font-size:13px
-  }
+nav{
+gap:13px;
+font-size:13px
+}
 
-  .list-box{
-    padding:20px
-  }
+.list-box{
+padding:20px
+}
 
-  .hero h1{
-    font-size:48px
-  }
+.hero h1{
+font-size:48px
+}
 
-  .image-preview{
-    grid-template-columns:1fr 1fr
-  }
+.image-preview{
+grid-template-columns:1fr 1fr
+}
 
-  .property-gallery img{
-    height:130px
-  }
+.property-gallery img{
+height:130px
+}
+
 }
 
 </style>
+
+<!-- STRUCTURED DATA -->
+
+<script type="application/ld+json">
+
+{
+"@context":"https://schema.org",
+"@type":"RealEstateAgent",
+"name":"Zeeshan Estate AWT",
+"url":"https://zeeshanestateawt786.github.io/Zeeshan-Estate/",
+"telephone":"+923020941013",
+"description":"Authorized Dealer for property sale and purchase in Army Welfare Trust Phase 2 Lahore.",
+"address":{
+"@type":"PostalAddress",
+"addressLocality":"Lahore",
+"addressRegion":"Punjab",
+"addressCountry":"PK"
+},
+"areaServed":[
+"Lahore",
+"Army Welfare Trust Phase 2"
+]
+}
+
+</script>
+
 </head>
+
 
 <body>
 
+
 <div class="top">
-  <div>📍 Army Welfare Trust Phase 2, Lahore</div>
-  <div>📞 0302-0941013</div>
+
+<div>
+📍 Army Welfare Trust Phase 2, Lahore
 </div>
+
+<div>
+📞 0302-0941013
+</div>
+
+</div>
+
 
 <header class="nav">
 
-  <div>
-    <div class="logo">
-      ZEESHAN <span>ESTATE AWT</span>
-    </div>
+<div>
 
-    <div class="badge">
-      AUTHORIZED DEALER
-    </div>
-  </div>
+<div class="logo">
+ZEESHAN <span>ESTATE AWT</span>
+</div>
 
-  <nav>
+<div class="badge">
+AUTHORIZED DEALER
+</div>
 
-    <a href="#home">HOME</a>
+</div>
 
-    <a href="#about">ABOUT US</a>
 
-    <a href="#properties">PROPERTIES</a>
+<nav>
 
-    <a href="#why">WHY US</a>
+<a href="#home">
+HOME
+</a>
 
-    <a href="https://wa.me/923020941013?text=Assalam%20o%20Alaikum%2C%20I%20want%20to%20contact%20Zeeshan%20Estate%20AWT."
-       target="_blank">
-      CONTACT US
-    </a>
+<a href="#about">
+ABOUT US
+</a>
 
-  </nav>
+<a href="#properties">
+PROPERTIES
+</a>
+
+<a href="#why">
+WHY US
+</a>
+
+<a href="#contact">
+CONTACT US
+</a>
+
+</nav>
 
 </header>
 
+
+<!-- HERO -->
+
 <section class="hero" id="home">
 
-  <div>
 
-    <h1>
-      ZEESHAN<br>
-      <span>ESTATE AWT</span>
-    </h1>
+<div class="hero-slides">
 
-    <p>
-      Aapka Apna, Pura Bharosa
-    </p>
+<!-- Replace these URLs with your actual AWT Phase 2 photographs if available -->
 
-    <p>
-      <b>Authorized Dealer</b>
-    </p>
+<div
+class="hero-slide active"
+style="background-image:url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1800&q=85')">
+</div>
 
-    <p>
-      Army Welfare Trust Phase 2, Lahore
-    </p>
+<div
+class="hero-slide"
+style="background-image:url('https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1800&q=85')">
+</div>
 
-    <div class="btns">
+<div
+class="hero-slide"
+style="background-image:url('https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1800&q=85')">
+</div>
 
-      <a class="btn red" href="#properties">
-        VIEW PROPERTIES
-      </a>
+<div
+class="hero-slide"
+style="background-image:url('https://images.unsplash.com/photo-1600607688969-a5bfcd646154?auto=format&fit=crop&w=1800&q=85')">
+</div>
 
-      <a class="btn"
-         href="https://wa.me/923020941013?text=Assalam%20o%20Alaikum%2C%20I%20want%20to%20contact%20Zeeshan%20Estate%20AWT."
-         target="_blank">
-        CONTACT US
-      </a>
+</div>
 
-    </div>
 
-  </div>
+<div class="hero-overlay"></div>
 
-  <div class="contact-card">
 
-    <small>
-      For Booking &amp; Details
-    </small>
+<div class="hero-content">
 
-    <strong>
-      Eng. Ahsan Ali
-    </strong>
+<div>
 
-    <a href="tel:+923020941013">
-      📞 0302-0941013
-    </a>
+<h1>
+ZEESHAN<br>
+<span>ESTATE AWT</span>
+</h1>
 
-  </div>
+<p>
+Aapka Apna, Pura Bharosa
+</p>
+
+<p>
+<b>Authorized Dealer</b>
+</p>
+
+<p>
+Army Welfare Trust Phase 2, Lahore
+</p>
+
+
+<div class="btns">
+
+<a
+class="btn red"
+href="#properties">
+VIEW PROPERTIES
+</a>
+
+
+<a
+class="btn call"
+href="tel:+923020941013">
+📞 CALL US
+</a>
+
+</div>
+
+</div>
+
+
+<div class="contact-card">
+
+<small>
+For Booking &amp; Details
+</small>
+
+<strong>
+Eng. Ahsan Ali
+</strong>
+
+<a href="tel:+923020941013">
+📞 0302-0941013
+</a>
+
+</div>
+
+</div>
 
 </section>
+
+
+<!-- ABOUT -->
 
 <section class="section" id="about">
 
-  <div class="about">
 
-    <div>
+<div class="about">
 
-      <h2 style="font-size:38px;color:#b40000">
-        ABOUT ZEESHAN ESTATE AWT
-      </h2>
+<div>
 
-      <p style="margin-top:15px">
-        Zeeshan Estate AWT provides property sale and purchase
-        services for residential and commercial plots in Army
-        Welfare Trust Phase 2, Lahore.
-      </p>
+<h2 style="font-size:38px;color:#b40000">
+ABOUT ZEESHAN ESTATE AWT
+</h2>
 
-    </div>
+<p style="margin-top:15px">
 
-    <div class="features">
+Zeeshan Estate AWT provides property sale and purchase
+services for residential and commercial plots in Army
+Welfare Trust Phase 2, Lahore.
 
-      <div class="feature">
-        <b>✓ Authorized Dealer</b>
-        Professional property assistance
-      </div>
+</p>
 
-      <div class="feature">
-        <b>📍 Prime Location</b>
-        Property in AWT Phase 2
-      </div>
+</div>
 
-      <div class="feature">
-        <b>🛡 Secure Investment</b>
-        Guidance for buyers
-      </div>
 
-      <div class="feature">
-        <b>🤝 Trusted Service</b>
-        Clear dealing &amp; support
-      </div>
+<div class="features">
 
-    </div>
+<div class="feature">
 
-  </div>
+<b>
+✓ Authorized Dealer
+</b>
+
+Professional property assistance
+
+</div>
+
+
+<div class="feature">
+
+<b>
+📍 Prime Location
+</b>
+
+Property in AWT Phase 2
+
+</div>
+
+
+<div class="feature">
+
+<b>
+🛡 Secure Investment
+</b>
+
+Guidance for buyers
+
+</div>
+
+
+<div class="feature">
+
+<b>
+🤝 Trusted Service
+</b>
+
+Clear dealing &amp; support
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- TEAM -->
+
+<h2 class="team-title">
+OUR TEAM
+</h2>
+
+<div
+id="public-team"
+class="team-grid">
+
+<p>
+Loading team members...
+</p>
+
+</div>
 
 </section>
 
-<section class="section properties" id="properties">
 
-  <h2 style="font-size:42px;text-align:center;margin-bottom:30px">
-    PLOTS FOR SALE
-  </h2>
+<!-- PROPERTIES -->
 
-  <div class="cards">
+<section
+class="section properties"
+id="properties">
 
-    <article class="card">
 
-      <div class="pic">
-        5 MARLA
-      </div>
+<h2 style="
+font-size:42px;
+text-align:center;
+margin-bottom:30px">
 
-      <h3>5 MARLA</h3>
+PLOTS FOR SALE
 
-      <div class="body">
+</h2>
 
-        <div>Demand</div>
 
-        <div class="price">
-          55 Lac – 90 Lac
-        </div>
+<div class="cards">
 
-        <p>
-          Location/plot position may affect price.
-        </p>
 
-      </div>
+<article class="card">
 
-    </article>
+<div class="pic plot5">
 
-    <article class="card">
+<span>
+5 MARLA
+</span>
 
-      <div class="pic">
-        10 MARLA
-      </div>
+</div>
 
-      <h3>10 MARLA</h3>
+<h3>
+5 MARLA
+</h3>
 
-      <div class="body">
+<div class="body">
 
-        <div>Demand</div>
+<div>
+Demand
+</div>
 
-        <div class="price">
-          1 Crore – 1.60 Crore
-        </div>
+<div class="price">
+55 Lac – 90 Lac
+</div>
 
-        <p>
-          Location/plot position may affect price.
-        </p>
+<p>
+Location/plot position may affect price.
+</p>
 
-      </div>
+</div>
 
-    </article>
+</article>
 
-    <article class="card">
 
-      <div class="pic">
-        1 KANAL
-      </div>
+<article class="card">
 
-      <h3>1 KANAL</h3>
+<div class="pic plot10">
 
-      <div class="body">
+<span>
+10 MARLA
+</span>
 
-        <div>Demand</div>
+</div>
 
-        <div class="price">
-          1.50 Crore – 3 Crore
-        </div>
+<h3>
+10 MARLA
+</h3>
 
-        <p>
-          Location/plot position may affect price.
-        </p>
+<div class="body">
 
-      </div>
+<div>
+Demand
+</div>
 
-    </article>
+<div class="price">
+1 Crore – 1.60 Crore
+</div>
 
-  </div>
+<p>
+Location/plot position may affect price.
+</p>
 
-  <div class="list-box">
+</div>
 
-    <h2>
-      LIST YOUR PROPERTY
-    </h2>
+</article>
 
-    <p class="subtitle">
-      Apni property Zeeshan Estate AWT ke through list karein.
-    </p>
 
-    <form id="property-form">
+<article class="card">
 
-      <div class="form-grid">
+<div class="pic plot1">
 
-        <div class="form-group">
+<span>
+1 KANAL
+</span>
 
-          <label>
-            Property Purpose
-          </label>
+</div>
 
-          <select id="purpose" required>
+<h3>
+1 KANAL
+</h3>
 
-            <option value="">
-              Select Purpose
-            </option>
+<div class="body">
 
-            <option value="For Sale">
-              For Sale
-            </option>
+<div>
+Demand
+</div>
 
-            <option value="For Rent">
-              For Rent
-            </option>
+<div class="price">
+1.50 Crore – 3 Crore
+</div>
 
-          </select>
+<p>
+Location/plot position may affect price.
+</p>
 
-        </div>
+</div>
 
-        <div class="form-group">
+</article>
 
-          <label>
-            Property Type
-          </label>
 
-          <select id="propertyType" required>
+</div>
 
-            <option value="">
-              Select Property Type
-            </option>
 
-            <option value="Residential Plot">
-              Residential Plot
-            </option>
+<!-- SAME LISTED PROPERTIES ON HOME/PAGE -->
 
-            <option value="Commercial Plot">
-              Commercial Plot
-            </option>
+<h2 class="online-title">
+AVAILABLE LISTED PROPERTIES
+</h2>
 
-            <option value="House">
-              House
-            </option>
 
-            <option value="Shop">
-              Shop
-            </option>
+<div
+id="online-properties"
+class="cards">
 
-            <option value="Office">
-              Office
-            </option>
+<p style="text-align:center">
+Loading properties...
+</p>
 
-            <option value="Other">
-              Other
-            </option>
+</div>
 
-          </select>
 
-        </div>
+<!-- LIST FORM ONLY HERE -->
 
-        <div class="form-group">
+<div class="list-box">
 
-          <label>
-            Property Size
-          </label>
+<h2>
+LIST YOUR PROPERTY
+</h2>
 
-          <input
-            type="text"
-            id="propertySize"
-            placeholder="e.g. 5 Marla / 10 Marla / 1 Kanal"
-            required
-          >
+<p class="subtitle">
+Apni property Zeeshan Estate AWT ke through list karein.
+</p>
 
-        </div>
 
-        <div class="form-group">
+<form id="property-form">
 
-          <label>
-            Expected Price
-          </label>
+<div class="form-grid">
 
-          <input
-            type="text"
-            id="price"
-            placeholder="e.g. 80 Lac"
-            required
-          >
 
-        </div>
+<div class="form-group">
 
-        <div class="form-group full">
+<label>
+Property Purpose
+</label>
 
-          <label>
-            Property Location
-          </label>
+<select id="purpose" required>
 
-          <input
-            type="text"
-            id="location"
-            placeholder="Block / Street / Location"
-            required
-          >
+<option value="">
+Select Purpose
+</option>
 
-        </div>
+<option value="For Sale">
+For Sale
+</option>
 
-        <div class="form-group full">
+<option value="For Rent">
+For Rent
+</option>
 
-          <label>
-            Property Pictures
-          </label>
+</select>
 
-          <input
-            class="file-input"
-            type="file"
-            id="propertyImages"
-            accept="image/jpeg,image/png,image/webp"
-            multiple
-          >
+</div>
 
-          <div class="image-help">
-            📸 Multiple pictures select kar sakte hain. JPG, PNG aur WEBP supported hain.
-          </div>
 
-          <div
-            id="image-preview"
-            class="image-preview">
-          </div>
+<div class="form-group">
 
-        </div>
+<label>
+Property Type
+</label>
 
-        <div class="form-group full">
+<select id="propertyType" required>
 
-          <label>
-            Property Details
-          </label>
+<option value="">
+Select Property Type
+</option>
 
-          <textarea
-            id="details"
-            placeholder="Enter property details"
-          ></textarea>
+<option value="Residential Plot">
+Residential Plot
+</option>
 
-        </div>
+<option value="Commercial Plot">
+Commercial Plot
+</option>
 
-        <div class="form-group">
+<option value="House">
+House
+</option>
 
-          <label>
-            Owner Name
-          </label>
+<option value="Shop">
+Shop
+</option>
 
-          <input
-            type="text"
-            id="ownerName"
-            placeholder="Your Name"
-            required
-          >
+<option value="Office">
+Office
+</option>
 
-        </div>
+<option value="Other">
+Other
+</option>
 
-        <div class="form-group">
+</select>
 
-          <label>
-            Owner Phone
-          </label>
+</div>
 
-          <input
-            type="tel"
-            id="ownerPhone"
-            placeholder="03XX-XXXXXXX"
-            required
-          >
 
-        </div>
+<div class="form-group">
 
-      </div>
+<label>
+Property Size
+</label>
 
-      <button
-        type="submit"
-        id="submit-property-btn"
-        class="submit-btn">
+<input
+type="text"
+id="propertySize"
+placeholder="e.g. 5 Marla / 10 Marla / 1 Kanal"
+required>
 
-        📲 SUBMIT PROPERTY
+</div>
 
-      </button>
 
-      <div
-        id="form-status"
-        class="status">
-      </div>
+<div class="form-group">
 
-    </form>
+<label>
+Expected Price
+</label>
 
-  </div>
+<input
+type="text"
+id="price"
+placeholder="e.g. 80 Lac"
+required>
 
-  <h2 class="online-title">
-    AVAILABLE LISTED PROPERTIES
-  </h2>
+</div>
 
-  <div
-    id="online-properties"
-    class="cards">
 
-    <p style="text-align:center">
-      Loading properties...
-    </p>
+<div class="form-group full">
 
-  </div>
+<label>
+Property Location
+</label>
+
+<input
+type="text"
+id="location"
+placeholder="Block / Street / Location"
+required>
+
+</div>
+
+
+<div class="form-group full">
+
+<label>
+Property Pictures
+</label>
+
+<input
+class="file-input"
+type="file"
+id="propertyImages"
+accept="image/jpeg,image/png,image/webp"
+multiple>
+
+<div class="image-help">
+📸 Multiple pictures select kar sakte hain.
+</div>
+
+<div
+id="image-preview"
+class="image-preview">
+</div>
+
+</div>
+
+
+<div class="form-group full">
+
+<label>
+Property Details
+</label>
+
+<textarea
+id="details"
+placeholder="Enter property details">
+</textarea>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+Owner Name
+</label>
+
+<input
+type="text"
+id="ownerName"
+placeholder="Your Name"
+required>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+Owner Phone
+</label>
+
+<input
+type="tel"
+id="ownerPhone"
+placeholder="03XX-XXXXXXX"
+required>
+
+</div>
+
+
+</div>
+
+
+<button
+type="submit"
+id="submit-property-btn"
+class="submit-btn">
+
+📲 SUBMIT PROPERTY
+
+</button>
+
+
+<div
+id="form-status"
+class="status">
+</div>
+
+
+</form>
+
+</div>
 
 </section>
 
-<section class="section" id="why">
 
-  <h2 style="
-    font-size:36px;
-    text-align:center;
-    color:#b40000;
-    margin-bottom:25px">
+<!-- HOME LISTINGS -->
 
-    WHY CHOOSE ZEESHAN ESTATE AWT?
+<section
+class="section"
+style="background:#110606;color:#fff">
 
-  </h2>
+<h2 style="
+font-size:36px;
+text-align:center;
+margin-bottom:25px">
 
-  <div class="why">
+LATEST PROPERTIES
 
-    <div>
-      📄<br>
-      Clear Documentation
-    </div>
+</h2>
 
-    <div>
-      📍<br>
-      Prime Location
-    </div>
+<div
+id="home-properties"
+class="cards">
 
-    <div>
-      🛡️<br>
-      Secure Investment
-    </div>
+<p style="text-align:center">
+Loading properties...
+</p>
 
-    <div>
-      🏘️<br>
-      Gated Community
-    </div>
-
-    <div>
-      📈<br>
-      Investment Potential
-    </div>
-
-  </div>
+</div>
 
 </section>
 
-<footer class="footer">
 
-  <div>
+<!-- WHY -->
 
-    <h3>
-      For Booking &amp; Details
-    </h3>
+<section
+class="section"
+id="why">
 
-    <p>
-      Eng. Ahsan Ali
-    </p>
+<h2 style="
+font-size:36px;
+text-align:center;
+color:#b40000;
+margin-bottom:25px">
 
-    <p>
-      <a href="tel:+923020941013">
-        📞 0302-0941013
-      </a>
-    </p>
+WHY CHOOSE ZEESHAN ESTATE AWT?
 
-  </div>
+</h2>
 
-  <div>
 
-    <h3>
-      Zeeshan Estate AWT
-    </h3>
+<div class="why">
 
-    <p>
-      Authorized Dealer
-    </p>
+<div>
+📄<br>
+Clear Documentation
+</div>
 
-    <p>
-      📍 Army Welfare Trust Phase 2, Lahore
-    </p>
+<div>
+📍<br>
+Prime Location
+</div>
 
-  </div>
+<div>
+🛡️<br>
+Secure Investment
+</div>
 
-  <div>
+<div>
+🏘️<br>
+Gated Community
+</div>
 
-    <h3>
-      Connect With Us
-    </h3>
+<div>
+📈<br>
+Investment Potential
+</div>
 
-    <p>
-      WhatsApp • Facebook • Instagram
-    </p>
+</div>
 
-  </div>
+</section>
+
+
+<!-- ADMIN -->
+
+<section
+class="admin-section"
+id="admin">
+
+
+<div class="admin-box">
+
+
+<div
+id="admin-login-box"
+class="admin-login">
+
+<h2>
+🔐 ADMIN LOGIN
+</h2>
+
+<input
+class="admin-input"
+type="email"
+id="admin-email"
+placeholder="Admin Email">
+
+<input
+class="admin-input"
+type="password"
+id="admin-password"
+placeholder="Password">
+
+<button
+class="admin-btn"
+onclick="adminLogin()">
+
+LOGIN
+
+</button>
+
+<p
+id="admin-status"
+style="margin-top:12px">
+</p>
+
+</div>
+
+
+<div
+id="admin-dashboard"
+style="display:none">
+
+
+<button
+class="admin-btn admin-logout"
+onclick="adminLogout()">
+
+LOGOUT
+
+</button>
+
+
+<h2>
+ZEESHAN ESTATE ADMIN DASHBOARD
+</h2>
+
+
+<div class="stats">
+
+
+<div class="stat">
+
+<strong id="total-properties">
+0
+</strong>
+
+Properties
+
+</div>
+
+
+<div class="stat">
+
+<strong id="total-views">
+0
+</strong>
+
+Total Views
+
+</div>
+
+
+<div class="stat">
+
+<strong id="total-calls">
+0
+</strong>
+
+Call Clicks
+
+</div>
+
+
+<div class="stat">
+
+<strong id="total-team">
+0
+</strong>
+
+Team Members
+
+</div>
+
+
+</div>
+
+
+<h3>
+PROPERTY ANALYTICS
+</h3>
+
+
+<table class="admin-table">
+
+<thead>
+
+<tr>
+
+<th>
+Property
+</th>
+
+<th>
+Views
+</th>
+
+<th>
+Calls
+</th>
+
+</tr>
+
+</thead>
+
+<tbody id="analytics-table">
+
+</tbody>
+
+</table>
+
+
+<!-- TEAM MANAGEMENT -->
+
+<div class="team-admin">
+
+<h3>
+👥 TEAM MANAGEMENT
+</h3>
+
+<br>
+
+
+<div class="team-form">
+
+
+<div>
+
+<label>
+Name
+</label>
+
+<input
+class="admin-input"
+id="team-name"
+placeholder="Team Member Name">
+
+</div>
+
+
+<div>
+
+<label>
+Mobile Number
+</label>
+
+<input
+class="admin-input"
+id="team-phone"
+placeholder="0300-0000000">
+
+</div>
+
+
+<div class="full">
+
+<label>
+Picture
+</label>
+
+<input
+class="admin-input"
+type="file"
+id="team-image"
+accept="image/jpeg,image/png,image/webp">
+
+</div>
+
+
+</div>
+
+
+<button
+class="admin-btn"
+onclick="addTeamMember()">
+
+➕ ADD TEAM MEMBER
+
+</button>
+
+
+<p
+id="team-status"
+style="margin-top:10px">
+</p>
+
+
+<div
+id="admin-team-list"
+class="team-list">
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<footer
+class="footer"
+id="contact">
+
+
+<div>
+
+<h3>
+For Booking &amp; Details
+</h3>
+
+<p>
+Eng. Ahsan Ali
+</p>
+
+<p>
+<a href="tel:+923020941013">
+📞 0302-0941013
+</a>
+</p>
+
+</div>
+
+
+<div>
+
+<h3>
+Zeeshan Estate AWT
+</h3>
+
+<p>
+Authorized Dealer
+</p>
+
+<p>
+📍 Army Welfare Trust Phase 2, Lahore
+</p>
+
+</div>
+
+
+<div>
+
+<h3>
+Contact Us
+</h3>
+
+<p>
+📞 0302-0941013
+</p>
+
+<p>
+Army Welfare Trust Phase 2, Lahore
+</p>
+
+</div>
 
 </footer>
 
+
 <div class="copyright">
-  © 2026 Zeeshan Estate AWT. All Rights Reserved.
+
+© 2026 Zeeshan Estate AWT.
+All Rights Reserved.
+
+<br>
+
+<a
+href="#admin"
+style="font-size:11px;opacity:.55">
+
+Admin
+
+</a>
+
 </div>
+
 
 <script>
 
+
 /* =========================================
-   SUPABASE
+SUPABASE
 ========================================= */
 
 const SUPABASE_URL =
@@ -1083,580 +1923,1449 @@ const STORAGE_BUCKET =
 
 const supabaseClient =
 supabase.createClient(
-  SUPABASE_URL,
-  SUPABASE_KEY
+SUPABASE_URL,
+SUPABASE_KEY
 );
 
 
 /* =========================================
-   SECURITY
+SECURITY
 ========================================= */
 
 function escapeHTML(value){
 
-  if(value === null || value === undefined){
-    return "";
-  }
+if(value === null ||
+value === undefined){
 
-  return String(value)
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;")
-    .replace(/'/g,"&#039;");
+return "";
+
+}
+
+return String(value)
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
 
 }
 
 
 /* =========================================
-   IMAGE PREVIEW
+VISITOR ID
+========================================= */
+
+function getVisitorId(){
+
+let id =
+localStorage.getItem(
+"zeeshan_estate_visitor_id"
+);
+
+if(!id){
+
+id =
+"v-" +
+Date.now() +
+"-" +
+Math.random()
+.toString(36)
+.substring(2,12);
+
+localStorage.setItem(
+"zeeshan_estate_visitor_id",
+id
+);
+
+}
+
+return id;
+
+}
+
+
+/* =========================================
+HERO SLIDESHOW
+========================================= */
+
+let heroIndex = 0;
+
+const heroSlides =
+document.querySelectorAll(
+".hero-slide"
+);
+
+setInterval(function(){
+
+if(heroSlides.length === 0){
+return;
+}
+
+heroSlides[heroIndex]
+.classList.remove("active");
+
+heroIndex =
+(heroIndex + 1) %
+heroSlides.length;
+
+heroSlides[heroIndex]
+.classList.add("active");
+
+},5000);
+
+
+/* =========================================
+IMAGE PREVIEW
 ========================================= */
 
 const imageInput =
-document.getElementById("propertyImages");
+document.getElementById(
+"propertyImages"
+);
 
 const imagePreview =
-document.getElementById("image-preview");
+document.getElementById(
+"image-preview"
+);
 
 
 if(imageInput){
 
-  imageInput.addEventListener(
-    "change",
-    function(){
+imageInput.addEventListener(
+"change",
+function(){
 
-      imagePreview.innerHTML = "";
+imagePreview.innerHTML = "";
 
-      const files =
-        Array.from(this.files || []);
+Array.from(this.files || [])
+.forEach(function(file){
 
-      files.forEach(function(file){
+if(!file.type.startsWith("image/")){
+return;
+}
 
-        if(!file.type.startsWith("image/")){
-          return;
-        }
+const reader =
+new FileReader();
 
-        const reader =
-          new FileReader();
+reader.onload =
+function(event){
 
-        reader.onload =
-          function(event){
+const img =
+document.createElement("img");
 
-            const img =
-              document.createElement("img");
+img.src =
+event.target.result;
 
-            img.src =
-              event.target.result;
+imagePreview.appendChild(img);
 
-            imagePreview.appendChild(img);
+};
 
-          };
+reader.readAsDataURL(file);
 
-        reader.readAsDataURL(file);
+});
 
-      });
-
-    }
-  );
+});
 
 }
 
 
 /* =========================================
-   UPLOAD IMAGES
+UPLOAD PROPERTY IMAGES
 ========================================= */
 
 async function uploadPropertyImages(files){
 
-  const imageUrls = [];
+const imageUrls = [];
 
-  if(!files || files.length === 0){
-    return imageUrls;
-  }
+for(let i=0;i<files.length;i++){
 
-  for(let i = 0; i < files.length; i++){
+const file = files[i];
 
-    const file = files[i];
+if(!file.type.startsWith("image/")){
+continue;
+}
 
-    if(!file.type.startsWith("image/")){
-      continue;
-    }
+if(file.size > 8 * 1024 * 1024){
 
-    if(file.size > 8 * 1024 * 1024){
+throw new Error(
+"Image " +
+file.name +
+" is larger than 8MB."
+);
 
-      throw new Error(
-        "Image " +
-        file.name +
-        " is larger than 8MB."
-      );
+}
 
-    }
+const extension =
+file.name
+.split(".")
+.pop()
+.toLowerCase();
 
-    const extension =
-      file.name
-        .split(".")
-        .pop()
-        .toLowerCase();
+const uniqueName =
+Date.now() +
+"-" +
+Math.random()
+.toString(36)
+.substring(2,10) +
+"." +
+extension;
 
-    const uniqueName =
-      Date.now() +
-      "-" +
-      Math.random()
-        .toString(36)
-        .substring(2,10) +
-      "." +
-      extension;
-
-    const filePath =
-      "properties/" +
-      uniqueName;
+const filePath =
+"properties/" +
+uniqueName;
 
 
-    const uploadResult =
-      await supabaseClient
-        .storage
-        .from(STORAGE_BUCKET)
-        .upload(
-          filePath,
-          file,
-          {
-            cacheControl:"3600",
-            upsert:false,
-            contentType:file.type
-          }
-        );
+const result =
+await supabaseClient
+.storage
+.from(STORAGE_BUCKET)
+.upload(
+filePath,
+file,
+{
+cacheControl:"3600",
+upsert:false,
+contentType:file.type
+}
+);
+
+if(result.error){
+throw result.error;
+}
 
 
-    if(uploadResult.error){
-
-      throw uploadResult.error;
-
-    }
-
-
-    const publicResult =
-      supabaseClient
-        .storage
-        .from(STORAGE_BUCKET)
-        .getPublicUrl(filePath);
+const publicResult =
+supabaseClient
+.storage
+.from(STORAGE_BUCKET)
+.getPublicUrl(filePath);
 
 
-    const publicUrl =
-      publicResult.data.publicUrl;
+imageUrls.push(
+publicResult.data.publicUrl
+);
 
+}
 
-    imageUrls.push(publicUrl);
-
-  }
-
-  return imageUrls;
+return imageUrls;
 
 }
 
 
 /* =========================================
-   LOAD ONLINE PROPERTIES
+RECORD VIEW
+========================================= */
+
+async function recordPropertyView(
+propertyId
+){
+
+const key =
+"viewed_property_" +
+propertyId;
+
+if(sessionStorage.getItem(key)){
+return;
+}
+
+sessionStorage.setItem(key,"1");
+
+const visitorId =
+getVisitorId();
+
+const result =
+await supabaseClient
+.from("property_views")
+.insert([{
+
+property_id:propertyId,
+
+visitor_id:visitorId
+
+}]);
+
+if(result.error){
+
+console.log(
+"View tracking:",
+result.error.message
+);
+
+}
+
+}
+
+
+/* =========================================
+RECORD CALL
+========================================= */
+
+async function recordPropertyCall(
+propertyId
+){
+
+const visitorId =
+getVisitorId();
+
+await supabaseClient
+.from("property_calls")
+.insert([{
+
+property_id:propertyId,
+
+visitor_id:visitorId
+
+}]);
+
+}
+
+
+/* =========================================
+LOAD PROPERTIES
+========================================= */
+
+async function getProperties(){
+
+const result =
+await supabaseClient
+.from("properties")
+.select("*")
+.order(
+"created_at",
+{
+ascending:false
+}
+);
+
+if(result.error){
+
+console.error(result.error);
+
+return [];
+
+}
+
+return result.data || [];
+
+}
+
+
+/* =========================================
+PROPERTY CARD
+========================================= */
+
+function createPropertyCard(
+property
+){
+
+const card =
+document.createElement("article");
+
+card.className =
+"property-card";
+
+let images = [];
+
+if(Array.isArray(property.image_urls)){
+
+images =
+property.image_urls;
+
+}
+
+
+let galleryHTML = "";
+
+if(images.length > 0){
+
+galleryHTML = `
+
+<div class="property-gallery
+${images.length === 1 ? "single" : ""}">
+
+${images
+.slice(0,6)
+.map(function(url){
+
+return `
+
+<img
+src="${escapeHTML(url)}"
+alt="Property for sale in AWT Phase 2 Lahore"
+loading="lazy">
+
+`;
+
+})
+.join("")}
+
+</div>
+
+`;
+
+}
+
+
+card.innerHTML = `
+
+${galleryHTML}
+
+<div class="property-top">
+
+<h3>
+${escapeHTML(
+property.property_type
+)}
+
+</h3>
+
+</div>
+
+
+<div class="property-body">
+
+<p>
+
+<b>
+${escapeHTML(
+property.purpose
+)}
+
+</b>
+
+</p>
+
+
+<div class="property-price">
+
+${escapeHTML(
+property.price
+)}
+
+</div>
+
+
+<p>
+📐 ${escapeHTML(
+property.property_size
+)}
+</p>
+
+
+<p>
+📍 ${escapeHTML(
+property.location
+)}
+</p>
+
+
+<p style="margin-top:10px">
+
+${escapeHTML(
+property.details || ""
+)}
+
+</p>
+
+
+<a
+class="call-btn"
+href="tel:+923020941013"
+onclick="recordPropertyCall(${property.id})">
+
+📞 CALL US
+
+</a>
+
+
+<div
+class="view-count"
+data-view-id="${property.id}">
+
+👁️ Property viewed
+
+</div>
+
+</div>
+
+`;
+
+
+recordPropertyView(
+property.id
+);
+
+
+return card;
+
+}
+
+
+/* =========================================
+RENDER PROPERTIES
+========================================= */
+
+function renderProperties(
+properties
+){
+
+const home =
+document.getElementById(
+"home-properties"
+);
+
+const online =
+document.getElementById(
+"online-properties"
+);
+
+
+if(home){
+home.innerHTML = "";
+}
+
+if(online){
+online.innerHTML = "";
+}
+
+
+if(properties.length === 0){
+
+if(home){
+
+home.innerHTML =
+"<p style='text-align:center'>No properties listed yet.</p>";
+
+}
+
+if(online){
+
+online.innerHTML =
+"<p style='text-align:center'>No properties listed yet.</p>";
+
+}
+
+return;
+
+}
+
+
+properties.forEach(function(property){
+
+if(home){
+
+home.appendChild(
+createPropertyCard(property)
+);
+
+}
+
+if(online){
+
+online.appendChild(
+createPropertyCard(property)
+);
+
+}
+
+});
+
+}
+
+
+/* =========================================
+LOAD PUBLIC PROPERTIES
 ========================================= */
 
 async function loadProperties(){
 
-  const container =
-    document.getElementById(
-      "online-properties"
-    );
-
-  if(!container){
-    return;
-  }
-
-  container.innerHTML =
-    "<p style='text-align:center'>Loading properties...</p>";
-
-
-  const result =
-    await supabaseClient
-      .from("properties")
-      .select("*")
-      .order(
-        "created_at",
-        {
-          ascending:false
-        }
-      );
-
-
-  const data =
-    result.data;
-
-  const error =
-    result.error;
-
-
-  if(error){
-
-    console.error(error);
-
-    container.innerHTML =
-      "<p style='text-align:center'>Properties could not be loaded.</p>";
-
-    return;
-
-  }
-
-
-  if(!data || data.length === 0){
-
-    container.innerHTML =
-      "<p style='text-align:center'>No properties listed yet.</p>";
-
-    return;
-
-  }
-
-
-  container.innerHTML = "";
-
-
-  data.forEach(function(property){
-
-    const card =
-      document.createElement("article");
-
-    card.className =
-      "property-card";
-
-
-    let images = [];
-
-    try{
-
-      if(Array.isArray(property.image_urls)){
-
-        images =
-          property.image_urls;
-
-      }
-
-    }catch(e){
-
-      images = [];
-
-    }
-
-
-    let galleryHTML = "";
-
-
-    if(images.length > 0){
-
-      galleryHTML =
-        `<div class="property-gallery ${images.length === 1 ? "single" : ""}">` +
-
-        images
-          .slice(0,6)
-          .map(function(url){
-
-            return `
-              <img
-                src="${escapeHTML(url)}"
-                alt="Zeeshan Estate Property"
-                loading="lazy">
-            `;
-
-          })
-          .join("") +
-
-        `</div>`;
-
-    }
-
-
-    const whatsappMessage =
-      "Assalam o Alaikum, I am interested in this property:\n\n" +
-
-      "Property: " +
-      (property.property_type || "") +
-
-      "\nPurpose: " +
-      (property.purpose || "") +
-
-      "\nSize: " +
-      (property.property_size || "") +
-
-      "\nPrice: " +
-      (property.price || "") +
-
-      "\nLocation: " +
-      (property.location || "");
-
-
-    card.innerHTML = `
-
-      ${galleryHTML}
-
-      <div class="property-top">
-
-        <h3>
-          ${escapeHTML(property.property_type)}
-        </h3>
-
-      </div>
-
-      <div class="property-body">
-
-        <p>
-          <b>
-            ${escapeHTML(property.purpose)}
-          </b>
-        </p>
-
-        <div class="property-price">
-
-          ${escapeHTML(property.price)}
-
-        </div>
-
-        <p>
-          📐 ${escapeHTML(property.property_size)}
-        </p>
-
-        <p>
-          📍 ${escapeHTML(property.location)}
-        </p>
-
-        <p style="margin-top:10px">
-
-          ${escapeHTML(property.details || "")}
-
-        </p>
-
-        <a
-          class="whatsapp-btn"
-          href="https://wa.me/923020941013?text=${encodeURIComponent(whatsappMessage)}"
-          target="_blank">
-
-          📲 CONTACT ON WHATSAPP
-
-        </a>
-
-      </div>
-
-    `;
-
-
-    container.appendChild(card);
-
-  });
+const properties =
+await getProperties();
+
+renderProperties(
+properties
+);
 
 }
 
 
 /* =========================================
-   SUBMIT PROPERTY
+SUBMIT PROPERTY
 ========================================= */
 
 async function submitProperty(event){
 
-  event.preventDefault();
+event.preventDefault();
+
+const button =
+document.getElementById(
+"submit-property-btn"
+);
+
+const status =
+document.getElementById(
+"form-status"
+);
+
+const imageFiles =
+document.getElementById(
+"propertyImages"
+).files;
 
 
-  const button =
-    document.getElementById(
-      "submit-property-btn"
-    );
+button.disabled = true;
+
+button.innerText =
+"Uploading Property...";
+
+status.innerText = "";
 
 
-  const status =
-    document.getElementById(
-      "form-status"
-    );
+try{
+
+const property = {
+
+purpose:
+document.getElementById(
+"purpose"
+).value,
+
+property_type:
+document.getElementById(
+"propertyType"
+).value,
+
+property_size:
+document.getElementById(
+"propertySize"
+).value,
+
+price:
+document.getElementById(
+"price"
+).value,
+
+location:
+document.getElementById(
+"location"
+).value,
+
+details:
+document.getElementById(
+"details"
+).value,
+
+owner_name:
+document.getElementById(
+"ownerName"
+).value,
+
+owner_phone:
+document.getElementById(
+"ownerPhone"
+).value,
+
+image_urls:[]
+
+};
 
 
-  const imageFiles =
-    document.getElementById(
-      "propertyImages"
-    ).files;
+if(imageFiles.length > 0){
+
+button.innerText =
+"Uploading Pictures...";
+
+property.image_urls =
+await uploadPropertyImages(
+imageFiles
+);
+
+}
 
 
-  button.disabled = true;
-
-  button.innerText =
-    "Uploading Property...";
-
-  status.innerText = "";
+button.innerText =
+"Saving Property...";
 
 
-  try{
-
-    const property = {
-
-      purpose:
-        document.getElementById(
-          "purpose"
-        ).value,
-
-      property_type:
-        document.getElementById(
-          "propertyType"
-        ).value,
-
-      property_size:
-        document.getElementById(
-          "propertySize"
-        ).value,
-
-      price:
-        document.getElementById(
-          "price"
-        ).value,
-
-      location:
-        document.getElementById(
-          "location"
-        ).value,
-
-      details:
-        document.getElementById(
-          "details"
-        ).value,
-
-      owner_name:
-        document.getElementById(
-          "ownerName"
-        ).value,
-
-      owner_phone:
-        document.getElementById(
-          "ownerPhone"
-        ).value,
-
-      image_urls:[]
-
-    };
+const result =
+await supabaseClient
+.from("properties")
+.insert([property])
+.select();
 
 
-    /* UPLOAD PICTURES */
+if(result.error){
 
-    if(imageFiles.length > 0){
+throw result.error;
 
-      button.innerText =
-        "Uploading Pictures...";
-
-      property.image_urls =
-        await uploadPropertyImages(
-          imageFiles
-        );
-
-    }
+}
 
 
-    /* SAVE PROPERTY */
+status.style.color =
+"#168c3b";
 
-    button.innerText =
-      "Saving Property...";
-
-
-    const result =
-      await supabaseClient
-        .from("properties")
-        .insert([property])
-        .select();
+status.innerText =
+"✅ Property successfully listed!";
 
 
-    if(result.error){
-
-      throw result.error;
-
-    }
-
-
-    status.style.color =
-      "#168c3b";
-
-    status.innerText =
-      "✅ Property successfully listed with pictures!";
+document
+.getElementById(
+"property-form"
+)
+.reset();
 
 
-    document
-      .getElementById(
-        "property-form"
-      )
-      .reset();
+imagePreview.innerHTML = "";
 
 
-    imagePreview.innerHTML = "";
+button.disabled = false;
+
+button.innerText =
+"📲 SUBMIT PROPERTY";
 
 
-    button.disabled = false;
-
-    button.innerText =
-      "📲 SUBMIT PROPERTY";
+await loadProperties();
 
 
-    await loadProperties();
+}catch(error){
+
+console.error(error);
+
+status.style.color =
+"#c40000";
+
+status.innerText =
+"❌ Property save nahi ho saki: " +
+(error.message ||
+"Unknown error");
 
 
-    document
-      .getElementById(
-        "online-properties"
-      )
-      .scrollIntoView({
-        behavior:"smooth"
-      });
+button.disabled = false;
 
+button.innerText =
+"📲 SUBMIT PROPERTY";
 
-  }catch(error){
-
-    console.error(error);
-
-    status.style.color =
-      "#c40000";
-
-    status.innerText =
-      "❌ Property save nahi ho saki: " +
-      (error.message || "Unknown error");
-
-
-    button.disabled = false;
-
-    button.innerText =
-      "📲 SUBMIT PROPERTY";
-
-  }
+}
 
 }
 
 
 /* =========================================
-   START
+TEAM MEMBERS
+========================================= */
+
+async function loadTeamMembers(){
+
+const container =
+document.getElementById(
+"public-team"
+);
+
+const result =
+await supabaseClient
+.from("team_members")
+.select("*")
+.eq("is_active",true)
+.order(
+"created_at",
+{
+ascending:true
+}
+);
+
+
+if(result.error){
+
+container.innerHTML =
+"<p>Team information unavailable.</p>";
+
+return;
+
+}
+
+
+if(!result.data ||
+result.data.length === 0){
+
+container.innerHTML =
+"<p style='text-align:center'>Our team information will be available soon.</p>";
+
+return;
+
+}
+
+
+container.innerHTML = "";
+
+
+result.data.forEach(function(member){
+
+const card =
+document.createElement("div");
+
+card.className =
+"team-card";
+
+
+const image =
+member.image_url ||
+"https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=700&q=80";
+
+
+card.innerHTML = `
+
+<img
+src="${escapeHTML(image)}"
+alt="${escapeHTML(member.name)}">
+
+<div class="team-body">
+
+<h3>
+${escapeHTML(member.name)}
+</h3>
+
+<p>
+📞 ${escapeHTML(member.phone)}
+</p>
+
+<a
+class="call-team"
+href="tel:${escapeHTML(member.phone)}">
+
+📞 CALL US
+
+</a>
+
+</div>
+
+`;
+
+container.appendChild(card);
+
+});
+
+}
+
+
+/* =========================================
+ADMIN LOGIN
+========================================= */
+
+async function adminLogin(){
+
+const email =
+document.getElementById(
+"admin-email"
+).value.trim();
+
+const password =
+document.getElementById(
+"admin-password"
+).value;
+
+const status =
+document.getElementById(
+"admin-status"
+);
+
+
+status.innerText =
+"Logging in...";
+
+
+const result =
+await supabaseClient.auth.signInWithPassword({
+
+email:email,
+
+password:password
+
+});
+
+
+if(result.error){
+
+status.style.color =
+"#c40000";
+
+status.innerText =
+"❌ " +
+result.error.message;
+
+return;
+
+}
+
+
+status.innerText = "";
+
+showAdminDashboard();
+
+}
+
+
+/* =========================================
+ADMIN LOGOUT
+========================================= */
+
+async function adminLogout(){
+
+await supabaseClient.auth.signOut();
+
+document.getElementById(
+"admin-dashboard"
+).style.display =
+"none";
+
+document.getElementById(
+"admin-login-box"
+).style.display =
+"block";
+
+}
+
+
+/* =========================================
+SHOW ADMIN
+========================================= */
+
+async function showAdminDashboard(){
+
+document.getElementById(
+"admin-login-box"
+).style.display =
+"none";
+
+document.getElementById(
+"admin-dashboard"
+).style.display =
+"block";
+
+
+await loadAdminAnalytics();
+
+await loadAdminTeam();
+
+}
+
+
+/* =========================================
+ADMIN ANALYTICS
+========================================= */
+
+async function loadAdminAnalytics(){
+
+const properties =
+await getProperties();
+
+
+const viewsResult =
+await supabaseClient
+.from("property_views")
+.select("property_id");
+
+
+const callsResult =
+await supabaseClient
+.from("property_calls")
+.select("property_id");
+
+
+const views =
+viewsResult.data || [];
+
+const calls =
+callsResult.data || [];
+
+
+document.getElementById(
+"total-properties"
+).innerText =
+properties.length;
+
+
+document.getElementById(
+"total-views"
+).innerText =
+views.length;
+
+
+document.getElementById(
+"total-calls"
+).innerText =
+calls.length;
+
+
+const table =
+document.getElementById(
+"analytics-table"
+);
+
+table.innerHTML = "";
+
+
+properties.forEach(function(property){
+
+const viewCount =
+views.filter(function(item){
+
+return String(item.property_id) ===
+String(property.id);
+
+}).length;
+
+
+const callCount =
+calls.filter(function(item){
+
+return String(item.property_id) ===
+String(property.id);
+
+}).length;
+
+
+const row =
+document.createElement("tr");
+
+
+row.innerHTML = `
+
+<td>
+${escapeHTML(
+property.property_type
+)}
+-
+${escapeHTML(
+property.property_size
+)}
+</td>
+
+<td>
+👁️ ${viewCount}
+</td>
+
+<td>
+📞 ${callCount}
+</td>
+
+`;
+
+
+table.appendChild(row);
+
+});
+
+}
+
+
+/* =========================================
+ADD TEAM MEMBER
+========================================= */
+
+async function addTeamMember(){
+
+const name =
+document.getElementById(
+"team-name"
+).value.trim();
+
+const phone =
+document.getElementById(
+"team-phone"
+).value.trim();
+
+const file =
+document.getElementById(
+"team-image"
+).files[0];
+
+const status =
+document.getElementById(
+"team-status"
+);
+
+
+if(!name || !phone){
+
+status.style.color =
+"#c40000";
+
+status.innerText =
+"Name aur mobile number required hain.";
+
+return;
+
+}
+
+
+try{
+
+let imageUrl = "";
+
+
+if(file){
+
+if(file.size >
+8 * 1024 * 1024){
+
+throw new Error(
+"Team picture 8MB se kam honi chahiye."
+);
+
+}
+
+
+const extension =
+file.name
+.split(".")
+.pop()
+.toLowerCase();
+
+
+const path =
+"team/" +
+Date.now() +
+"-" +
+Math.random()
+.toString(36)
+.substring(2,8) +
+"." +
+extension;
+
+
+const upload =
+await supabaseClient
+.storage
+.from("team-images")
+.upload(
+path,
+file,
+{
+upsert:false,
+contentType:file.type
+}
+);
+
+
+if(upload.error){
+throw upload.error;
+}
+
+
+imageUrl =
+supabaseClient
+.storage
+.from("team-images")
+.getPublicUrl(path)
+.data.publicUrl;
+
+}
+
+
+const result =
+await supabaseClient
+.from("team_members")
+.insert([{
+
+name:name,
+
+phone:phone,
+
+image_url:imageUrl,
+
+is_active:true
+
+}]);
+
+
+if(result.error){
+throw result.error;
+}
+
+
+status.style.color =
+"#168c3b";
+
+status.innerText =
+"✅ Team member added.";
+
+
+document.getElementById(
+"team-name"
+).value = "";
+
+document.getElementById(
+"team-phone"
+).value = "";
+
+document.getElementById(
+"team-image"
+).value = "";
+
+
+await loadTeamMembers();
+
+await loadAdminTeam();
+
+
+}catch(error){
+
+console.error(error);
+
+status.style.color =
+"#c40000";
+
+status.innerText =
+"❌ " +
+(error.message ||
+"Team member add nahi ho saka.");
+
+}
+
+}
+
+
+/* =========================================
+ADMIN TEAM LIST
+========================================= */
+
+async function loadAdminTeam(){
+
+const container =
+document.getElementById(
+"admin-team-list"
+);
+
+
+const result =
+await supabaseClient
+.from("team_members")
+.select("*")
+.order(
+"created_at",
+{
+ascending:true
+}
+);
+
+
+if(result.error){
+
+container.innerHTML =
+"<p>Team data unavailable.</p>";
+
+return;
+
+}
+
+
+document.getElementById(
+"total-team"
+).innerText =
+(result.data || []).length;
+
+
+container.innerHTML = "";
+
+
+(result.data || [])
+.forEach(function(member){
+
+const card =
+document.createElement("div");
+
+card.className =
+"team-admin-card";
+
+
+card.innerHTML = `
+
+${
+member.image_url
+?
+`<img src="${escapeHTML(member.image_url)}">`
+:
+`<div style="
+height:160px;
+background:#eee;
+display:flex;
+align-items:center;
+justify-content:center">
+No Picture
+</div>`
+}
+
+
+<h4 style="margin-top:10px">
+${escapeHTML(member.name)}
+</h4>
+
+<p>
+📞 ${escapeHTML(member.phone)}
+</p>
+
+<p>
+Status:
+${member.is_active ? "Active" : "Hidden"}
+</p>
+
+<button
+class="admin-action"
+onclick="toggleTeamMember(${member.id},${member.is_active})">
+
+${member.is_active ? "Hide" : "Show"}
+
+</button>
+
+
+<button
+class="admin-action delete-btn"
+onclick="deleteTeamMember(${member.id})">
+
+Delete
+
+</button>
+
+`;
+
+container.appendChild(card);
+
+});
+
+}
+
+
+/* =========================================
+TOGGLE TEAM
+========================================= */
+
+async function toggleTeamMember(
+id,
+currentStatus
+){
+
+const result =
+await supabaseClient
+.from("team_members")
+.update({
+
+is_active:!currentStatus
+
+})
+.eq("id",id);
+
+
+if(result.error){
+
+alert(
+result.error.message
+);
+
+return;
+
+}
+
+
+await loadTeamMembers();
+
+await loadAdminTeam();
+
+}
+
+
+/* =========================================
+DELETE TEAM
+========================================= */
+
+async function deleteTeamMember(id){
+
+if(!confirm(
+"Is team member ko delete karna hai?"
+)){
+
+return;
+
+}
+
+
+const result =
+await supabaseClient
+.from("team_members")
+.delete()
+.eq("id",id);
+
+
+if(result.error){
+
+alert(
+result.error.message
+);
+
+return;
+
+}
+
+
+await loadTeamMembers();
+
+await loadAdminTeam();
+
+}
+
+
+/* =========================================
+AUTH SESSION CHECK
+========================================= */
+
+async function checkAdminSession(){
+
+const result =
+await supabaseClient.auth.getSession();
+
+if(result.data.session){
+
+showAdminDashboard();
+
+}
+
+}
+
+
+/* =========================================
+START
 ========================================= */
 
 document.addEventListener(
-  "DOMContentLoaded",
-  function(){
+"DOMContentLoaded",
+function(){
 
-    const form =
-      document.getElementById(
-        "property-form"
-      );
-
-
-    if(form){
-
-      form.addEventListener(
-        "submit",
-        submitProperty
-      );
-
-    }
-
-
-    loadProperties();
-
-  }
+const form =
+document.getElementById(
+"property-form"
 );
+
+
+if(form){
+
+form.addEventListener(
+"submit",
+submitProperty
+);
+
+}
+
+
+loadProperties();
+
+loadTeamMembers();
+
+checkAdminSession();
+
+});
 
 </script>
 
+
 </body>
+
 </html>
