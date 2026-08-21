@@ -1,383 +1,1430 @@
-
-      <d<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Zeeshan Estate AWT | Army Welfare Trust Phase 2 Lahore</title>
+
 <meta name="description" content="Zeeshan Estate AWT - Authorized Dealer for property sale and purchase in Army Welfare Trust Phase 2, Lahore.">
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-  <script>
-const SUPABASE_URL = "https://rhzsfjolkxqovhonylti.supabase.co";
-
-/* یہاں اپنی Supabase Publishable Key paste کریں */
-const SUPABASE_KEY = "sb_publishable_DjOGYqDCgPNMngD7mwMmcw_BM-UUCg8";
-
-const supabaseClient = supabase.createClient(
-  SUPABASE_URL,
-  SUPABASE_KEY
-);
-
-
-/* Load Properties */
-async function loadProperties() {
-
-  const container = document.getElementById("online-properties");
-
-  if (!container) return;
-
-  container.innerHTML = "<p style='text-align:center'>Loading properties...</p>";
-
-  const { data, error } = await supabaseClient
-    .from("properties")
-    .select("*")
-    .order("created_at", { ascending:false });
-
-  if (error) {
-    container.innerHTML =
-      "<p style='text-align:center;color:red'>Unable to load properties.</p>";
-
-    console.error(error);
-    return;
-  }
-
-  if (!data || data.length === 0) {
-    container.innerHTML =
-      "<p style='text-align:center'>No properties listed yet.</p>";
-    return;
-  }
-
-  container.innerHTML = "";
-
-  data.forEach(property => {
-
-    const card = document.createElement("div");
-
-    card.className = "card";
-
-    card.innerHTML = `
-      <div class="pic">
-        ${escapeHTML(property.property_size)}
-      </div>
-
-      <h3>
-        ${escapeHTML(property.property_type)}
-      </h3>
-iv class="body">
-
-        <div>
-          <b>${escapeHTML(property.purpose)}</b>
-        </div>
-
-        <div class="price">
-          ${escapeHTML(property.price)}
-        </div>
-
-        <p>
-          📍 ${escapeHTML(property.location)}
-        </p>
-
-        <p>
-          ${escapeHTML(property.details || "")}
-        </p>
-
-        <br>
-
-        <a
-          href="https://wa.me/923020941013?text=${encodeURIComponent(
-            "Assalam o Alaikum, I am interested in this property:\n\n" +
-            "Property: " + property.property_type + "\n" +
-            "Size: " + property.property_size + "\n" +
-            "Price: " + property.price + "\n" +
-            "Location: " + property.location
-          )}"
-          target="_blank"
-          class="btn red"
-          style="display:inline-block;color:white;border:0"
-        >
-          📲 CONTACT ON WHATSAPP
-        </a>
-
-      </div>
-    `;
-
-    container.appendChild(card);
-
-  });
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0
 }
 
-
-/* Submit Property */
-async function submitProperty(event) {
-
-  event.preventDefault();
-
-  const button =
-    document.getElementById("submit-property-btn");
-
-  button.disabled = true;
-  button.innerText = "Saving Property...";
-
-  const property = {
-
-    purpose:
-      document.getElementById("purpose").value,
-
-    property_type:
-      document.getElementById("propertyType").value,
-
-    property_size:
-      document.getElementById("propertySize").value,
-
-    price:
-      document.getElementById("price").value,
-
-    location:
-      document.getElementById("location").value,
-
-    details:
-      document.getElementById("details").value,
-
-    owner_name:
-      document.getElementById("ownerName").value,
-
-    owner_phone:
-      document.getElementById("ownerPhone").value
-  };
-
-
-  const { data, error } =
-    await supabaseClient
-      .from("properties")
-      .insert([property])
-      .select();
-
-
-  if (error) {
-
-    console.error(error);
-
-    alert(
-      "Property save nahi ho saki.\n\n" +
-      error.message
-    );
-
-    button.disabled = false;
-    button.innerText = "SUBMIT PROPERTY";
-
-    return;
-  }
-
-
-  alert(
-    "✅ Property successfully listed!"
-  );
-
-
-  document.getElementById("property-form").reset();
-
-  button.disabled = false;
-  button.innerText = "SUBMIT PROPERTY";
-
-
-  loadProperties();
-
-
-  document
-    .getElementById("online-properties")
-    .scrollIntoView({
-      behavior:"smooth"
-    });
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  color:#171717;
+  background:#fff;
+  line-height:1.5
 }
 
-
-/* Security helper */
-function escapeHTML(value) {
-
-  if (value === null || value === undefined)
-    return "";
-
-  return String(value)
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#039;");
+a{
+  text-decoration:none;
+  color:inherit
 }
 
+.top{
+  background:#b40000;
+  color:#fff;
+  padding:10px 5%;
+  display:flex;
+  justify-content:space-between;
+  gap:15px;
+  flex-wrap:wrap;
+  font-weight:700
+}
 
-/* Start */
-document.addEventListener(
-  "DOMContentLoaded",
-  function() {
+.nav{
+  padding:18px 5%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  background:#fff
+}
 
-    const form =
-      document.getElementById("property-form");
+.logo{
+  font-size:30px;
+  font-weight:900;
+  letter-spacing:-1px
+}
 
-    if (form) {
-      form.addEventListener(
-        "submit",
-        submitProperty
-      );
-    }
+.logo span{
+  color:#c40000
+}
 
-    loadProperties();
+.badge{
+  font-size:13px;
+  letter-spacing:2px;
+  color:#444;
+  font-weight:700
+}
 
-  }
-);
-</script>
-body{font-family:Arial,Helvetica,sans-serif;color:#171717;background:#fff;line-height:1.5}
-a{text-decoration:none;color:inherit}
-.top{background:#b40000;color:#fff;padding:10px 5%;display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap;font-weight:700}
-.nav{padding:18px 5%;display:flex;align-items:center;justify-content:space-between;gap:20px;background:#fff}
-.logo{font-size:30px;font-weight:900;letter-spacing:-1px}
-.logo span{color:#c40000}
-.badge{font-size:13px;letter-spacing:2px;color:#444;font-weight:700}
-nav{display:flex;gap:25px;flex-wrap:wrap;font-weight:700}
-nav a:hover{color:#c40000}
-.hero{min-height:570px;background:linear-gradient(90deg,rgba(0,0,0,.72),rgba(0,0,0,.2)),url("https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1800&q=85") center/cover;display:flex;align-items:center;padding:60px 7%;color:#fff}
-.hero h1{font-size:clamp(44px,7vw,82px);line-height:.95;margin-bottom:20px}
-.hero h1 span{color:#e00000}
-.hero p{font-size:23px;margin:8px 0}
-.btns{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px}
-.btn{padding:14px 25px;border-radius:5px;font-weight:800;border:2px solid #fff}
-.btn.red{background:#d00000;border-color:#d00000}
-.contact-card{margin-left:auto;background:#c80000;padding:22px 28px;border-radius:10px;max-width:330px;box-shadow:0 10px 30px #0008}
-.contact-card small{color:#ffe000;font-weight:800}
-.contact-card strong{display:block;font-size:25px;margin:5px 0}
-.section{padding:55px 6%}
-.about{display:grid;grid-template-columns:1.3fr 2fr;gap:35px;align-items:center}
-.features{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-.feature{padding:22px;border-top:4px solid #c40000;background:#fafafa;text-align:center}
-.feature b{display:block;margin-bottom:8px}
-.properties{background:#110606;color:#fff}
-.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-.card{background:#fff;color:#111;border-radius:10px;overflow:hidden}
-.card .pic{height:190px;background:linear-gradient(135deg,#ddd,#888);display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:900;color:#333}
-.card h3{background:#c40000;color:#fff;padding:10px;text-align:center;font-size:23px}
-.card .body{padding:20px;text-align:center}
-.price{font-size:25px;color:#c40000;font-weight:900}
-.why{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;text-align:center}
-.why div{padding:15px;font-weight:700}
-.footer{background:#b40000;color:#fff;padding:35px 6%;display:grid;grid-template-columns:1fr 1fr 1fr;gap:25px}
-.footer h3{font-size:24px;margin-bottom:10px}
-.copyright{background:#111;color:#fff;text-align:center;padding:14px}
+nav{
+  display:flex;
+  gap:20px;
+  flex-wrap:wrap;
+  font-weight:700
+}
+
+nav a:hover{
+  color:#c40000
+}
+
+.hero{
+  min-height:570px;
+  background:
+  linear-gradient(90deg,rgba(0,0,0,.72),rgba(0,0,0,.2)),
+  url("https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1800&q=85")
+  center/cover;
+  display:flex;
+  align-items:center;
+  padding:60px 7%;
+  color:#fff
+}
+
+.hero h1{
+  font-size:clamp(44px,7vw,82px);
+  line-height:.95;
+  margin-bottom:20px
+}
+
+.hero h1 span{
+  color:#e00000
+}
+
+.hero p{
+  font-size:23px;
+  margin:8px 0
+}
+
+.btns{
+  display:flex;
+  gap:14px;
+  flex-wrap:wrap;
+  margin-top:28px
+}
+
+.btn{
+  padding:14px 25px;
+  border-radius:5px;
+  font-weight:800;
+  border:2px solid #fff;
+  display:inline-block
+}
+
+.btn.red{
+  background:#d00000;
+  border-color:#d00000;
+  color:#fff
+}
+
+.contact-card{
+  margin-left:auto;
+  background:#c80000;
+  padding:22px 28px;
+  border-radius:10px;
+  max-width:330px;
+  box-shadow:0 10px 30px #0008
+}
+
+.contact-card small{
+  color:#ffe000;
+  font-weight:800
+}
+
+.contact-card strong{
+  display:block;
+  font-size:25px;
+  margin:5px 0
+}
+
+.section{
+  padding:55px 6%
+}
+
+.about{
+  display:grid;
+  grid-template-columns:1.3fr 2fr;
+  gap:35px;
+  align-items:center
+}
+
+.features{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px
+}
+
+.feature{
+  padding:22px;
+  border-top:4px solid #c40000;
+  background:#fafafa;
+  text-align:center
+}
+
+.feature b{
+  display:block;
+  margin-bottom:8px
+}
+
+.properties{
+  background:#110606;
+  color:#fff
+}
+
+.cards{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:22px
+}
+
+.card{
+  background:#fff;
+  color:#111;
+  border-radius:10px;
+  overflow:hidden
+}
+
+.card .pic{
+  height:190px;
+  background:linear-gradient(135deg,#ddd,#888);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:28px;
+  font-weight:900;
+  color:#333
+}
+
+.card h3{
+  background:#c40000;
+  color:#fff;
+  padding:10px;
+  text-align:center;
+  font-size:23px
+}
+
+.card .body{
+  padding:20px;
+  text-align:center
+}
+
+.price{
+  font-size:25px;
+  color:#c40000;
+  font-weight:900
+}
+
+/* LIST YOUR PROPERTY */
+
+.list-box{
+  max-width:950px;
+  margin:45px auto 0;
+  background:#fff;
+  color:#111;
+  padding:30px;
+  border-radius:12px;
+  border-top:6px solid #c40000;
+  box-shadow:0 8px 30px rgba(0,0,0,.2)
+}
+
+.list-box h2{
+  color:#b40000;
+  text-align:center;
+  font-size:36px;
+  margin-bottom:10px
+}
+
+.list-box .subtitle{
+  text-align:center;
+  color:#666;
+  margin-bottom:25px
+}
+
+.form-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px
+}
+
+.form-group{
+  display:flex;
+  flex-direction:column
+}
+
+.form-group.full{
+  grid-column:1/-1
+}
+
+.form-group label{
+  font-weight:800;
+  margin-bottom:7px
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea{
+  width:100%;
+  padding:13px;
+  border:1px solid #ccc;
+  border-radius:6px;
+  font-size:16px;
+  font-family:Arial,Helvetica,sans-serif
+}
+
+.form-group textarea{
+  min-height:110px;
+  resize:vertical
+}
+
+.submit-btn{
+  width:100%;
+  border:0;
+  background:#c40000;
+  color:#fff;
+  padding:16px;
+  margin-top:20px;
+  border-radius:6px;
+  font-size:18px;
+  font-weight:900;
+  cursor:pointer
+}
+
+.submit-btn:hover{
+  background:#a90000
+}
+
+.submit-btn:disabled{
+  background:#777;
+  cursor:not-allowed
+}
+
+.status{
+  text-align:center;
+  margin-top:15px;
+  font-weight:700
+}
+
+.online-title{
+  text-align:center;
+  font-size:32px;
+  margin:50px 0 25px;
+  color:#fff
+}
+
+#online-properties{
+  margin-top:20px
+}
+
+.property-card{
+  background:#fff;
+  color:#111;
+  border-radius:10px;
+  overflow:hidden
+}
+
+.property-card .property-top{
+  background:#c40000;
+  color:#fff;
+  padding:18px;
+  text-align:center
+}
+
+.property-card .property-top h3{
+  font-size:22px
+}
+
+.property-card .property-body{
+  padding:20px;
+  text-align:center
+}
+
+.property-card .property-price{
+  color:#c40000;
+  font-size:24px;
+  font-weight:900;
+  margin:8px 0
+}
+
+.whatsapp-btn{
+  display:inline-block;
+  margin-top:15px;
+  padding:12px 18px;
+  background:#168c3b;
+  color:#fff;
+  border-radius:6px;
+  font-weight:800
+}
+
+/* WHY */
+
+.why{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:14px;
+  text-align:center
+}
+
+.why div{
+  padding:15px;
+  font-weight:700
+}
+
+/* FOOTER */
+
+.footer{
+  background:#b40000;
+  color:#fff;
+  padding:35px 6%;
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:25px
+}
+
+.footer h3{
+  font-size:24px;
+  margin-bottom:10px
+}
+
+.copyright{
+  background:#111;
+  color:#fff;
+  text-align:center;
+  padding:14px
+}
+
+/* MOBILE */
+
 @media(max-width:850px){
-.nav{flex-direction:column;align-items:flex-start}.hero{padding:45px 6%;}.contact-card{margin:30px 0 0}
-.about,.cards,.footer{grid-template-columns:1fr}.features{grid-template-columns:1fr 1fr}.why{grid-template-columns:1fr 1fr}
+
+  .nav{
+    flex-direction:column;
+    align-items:flex-start
+  }
+
+  .hero{
+    padding:45px 6%
+  }
+
+  .contact-card{
+    margin:30px 0 0
+  }
+
+  .about,
+  .cards,
+  .footer{
+    grid-template-columns:1fr
+  }
+
+  .features{
+    grid-template-columns:1fr 1fr
+  }
+
+  .why{
+    grid-template-columns:1fr 1fr
+  }
+
+  .form-grid{
+    grid-template-columns:1fr
+  }
+
+  .form-group.full{
+    grid-column:auto
+  }
 }
-@media(max-width:520px){.features,.why{grid-template-columns:1fr}.logo{font-size:25px}nav{gap:13px;font-size:14px}}
+
+@media(max-width:520px){
+
+  .features,
+  .why{
+    grid-template-columns:1fr
+  }
+
+  .logo{
+    font-size:25px
+  }
+
+  nav{
+    gap:13px;
+    font-size:13px
+  }
+
+  .list-box{
+    padding:20px
+  }
+
+  .hero h1{
+    font-size:48px
+  }
+}
 </style>
 </head>
+
 <body>
+
+<!-- TOP BAR -->
 
 <div class="top">
   <div>📍 Army Welfare Trust Phase 2, Lahore</div>
   <div>📞 0302-0941013</div>
 </div>
 
+
+<!-- NAVIGATION -->
+
 <header class="nav">
+
   <div>
-    <div class="logo">ZEESHAN <span>ESTATE AWT</span></div>
-    <div class="badge">AUTHORIZED DEALER</div>
+    <div class="logo">
+      ZEESHAN <span>ESTATE AWT</span>
+    </div>
+
+    <div class="badge">
+      AUTHORIZED DEALER
+    </div>
   </div>
+
   <nav>
+
     <a href="#home">HOME</a>
+
     <a href="#about">ABOUT US</a>
+
     <a href="#properties">PROPERTIES</a>
+
     <a href="#why">WHY US</a>
-    <a href="#contact">CONTACT US</a>
+
+    <a href="https://wa.me/923020941013?text=Assalam%20o%20Alaikum%2C%20I%20want%20to%20contact%20Zeeshan%20Estate%20AWT."
+       target="_blank">
+      CONTACT US
+    </a>
+
   </nav>
+
 </header>
 
+
+<!-- HERO -->
+
 <section class="hero" id="home">
+
   <div>
-    <h1>ZEESHAN<br><span>ESTATE AWT</span></h1>
-    <p>Aapka Apna, Pura Bharosa</p>
-    <p><b>Authorized Dealer</b></p>
-    <p>Army Welfare Trust Phase 2, Lahore</p>
+
+    <h1>
+      ZEESHAN<br>
+      <span>ESTATE AWT</span>
+    </h1>
+
+    <p>
+      Aapka Apna, Pura Bharosa
+    </p>
+
+    <p>
+      <b>Authorized Dealer</b>
+    </p>
+
+    <p>
+      Army Welfare Trust Phase 2, Lahore
+    </p>
+
     <div class="btns">
-      <a class="btn red" href="#properties">VIEW PROPERTIES</a>
-      <a class="btn" href="tel:+923020941013">CONTACT US</a>
+
+      <a class="btn red" href="#properties">
+        VIEW PROPERTIES
+      </a>
+
+      <a class="btn"
+         href="https://wa.me/923020941013?text=Assalam%20o%20Alaikum%2C%20I%20want%20to%20contact%20Zeeshan%20Estate%20AWT."
+         target="_blank">
+        CONTACT US
+      </a>
+
     </div>
+
   </div>
+
+
   <div class="contact-card">
-    <small>For Booking &amp; Details</small>
-    <strong>Eng. Ahsan Ali</strong>
-    <a href="tel:+923020941013">📞 0302-0941013</a>
+
+    <small>
+      For Booking &amp; Details
+    </small>
+
+    <strong>
+      Eng. Ahsan Ali
+    </strong>
+
+    <a href="tel:+923020941013">
+      📞 0302-0941013
+    </a>
+
   </div>
+
 </section>
+
+
+<!-- ABOUT -->
 
 <section class="section" id="about">
+
   <div class="about">
+
     <div>
-      <h2 style="font-size:38px;color:#b40000">ABOUT ZEESHAN ESTATE AWT</h2>
-      <p style="margin-top:15px">Zeeshan Estate AWT provides property sale and purchase services for residential and commercial plots in Army Welfare Trust Phase 2, Lahore.</p>
+
+      <h2 style="font-size:38px;color:#b40000">
+        ABOUT ZEESHAN ESTATE AWT
+      </h2>
+
+      <p style="margin-top:15px">
+        Zeeshan Estate AWT provides property sale and purchase
+        services for residential and commercial plots in Army
+        Welfare Trust Phase 2, Lahore.
+      </p>
+
     </div>
+
+
     <div class="features">
-      <div class="feature"><b>✓ Authorized Dealer</b>Professional property assistance</div>
-      <div class="feature"><b>📍 Prime Location</b>Property in AWT Phase 2</div>
-      <div class="feature"><b>🛡 Secure Investment</b>Guidance for buyers</div>
-      <div class="feature"><b>🤝 Trusted Service</b>Clear dealing & support</div>
+
+      <div class="feature">
+        <b>✓ Authorized Dealer</b>
+        Professional property assistance
+      </div>
+
+      <div class="feature">
+        <b>📍 Prime Location</b>
+        Property in AWT Phase 2
+      </div>
+
+      <div class="feature">
+        <b>🛡 Secure Investment</b>
+        Guidance for buyers
+      </div>
+
+      <div class="feature">
+        <b>🤝 Trusted Service</b>
+        Clear dealing &amp; support
+      </div>
+
     </div>
+
   </div>
+
 </section>
+
+
+<!-- PROPERTIES -->
 
 <section class="section properties" id="properties">
-  <h2 style="font-size:42px;text-align:center;margin-bottom:30px">PLOTS FOR SALE</h2>
+
+  <h2 style="font-size:42px;text-align:center;margin-bottom:30px">
+    PLOTS FOR SALE
+  </h2>
+
+
+  <!-- HOME PROPERTIES -->
+
   <div class="cards">
+
     <article class="card">
-      <div class="pic">5 MARLA</div>
-      <h3>5 MARLA</h3>
-      <div class="body"><div>Demand</div><div class="price">55 Lac – 90 Lac</div><p>Location/plot position may affect price.</p></div>
+
+      <div class="pic">
+        5 MARLA
+      </div>
+
+      <h3>
+        5 MARLA
+      </h3>
+
+      <div class="body">
+
+        <div>
+          Demand
+        </div>
+
+        <div class="price">
+          55 Lac – 90 Lac
+        </div>
+
+        <p>
+          Location/plot position may affect price.
+        </p>
+
+      </div>
+
     </article>
+
+
     <article class="card">
-      <div class="pic">10 MARLA</div>
-      <h3>10 MARLA</h3>
-      <div class="body"><div>Demand</div><div class="price">1 Crore – 1.60 Crore</div><p>Location/plot position may affect price.</p></div>
+
+      <div class="pic">
+        10 MARLA
+      </div>
+
+      <h3>
+        10 MARLA
+      </h3>
+
+      <div class="body">
+
+        <div>
+          Demand
+        </div>
+
+        <div class="price">
+          1 Crore – 1.60 Crore
+        </div>
+
+        <p>
+          Location/plot position may affect price.
+        </p>
+
+      </div>
+
     </article>
+
+
     <article class="card">
-      <div class="pic">1 KANAL</div>
-      <h3>1 KANAL</h3>
-      <div class="body"><div>Demand</div><div class="price">1.50 Crore – 3 Crore</div><p>Location/plot position may affect price.</p></div>
+
+      <div class="pic">
+        1 KANAL
+      </div>
+
+      <h3>
+        1 KANAL
+      </h3>
+
+      <div class="body">
+
+        <div>
+          Demand
+        </div>
+
+        <div class="price">
+          1.50 Crore – 3 Crore
+        </div>
+
+        <p>
+          Location/plot position may affect price.
+        </p>
+
+      </div>
+
     </article>
+
   </div>
-  <div id="online-properties"
-     class="cards"
-     style="margin-top:30px">
-</div>
+
+
+  <!-- LIST YOUR PROPERTY -->
+
+  <div class="list-box">
+
+    <h2>
+      LIST YOUR PROPERTY
+    </h2>
+
+    <p class="subtitle">
+      Apni property Zeeshan Estate AWT ke through list karein.
+    </p>
+
+
+    <form id="property-form">
+
+      <div class="form-grid">
+
+
+        <div class="form-group">
+
+          <label>
+            Property Purpose
+          </label>
+
+          <select id="purpose" required>
+
+            <option value="">
+              Select Purpose
+            </option>
+
+            <option value="For Sale">
+              For Sale
+            </option>
+
+            <option value="For Rent">
+              For Rent
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label>
+            Property Type
+          </label>
+
+          <select id="propertyType" required>
+
+            <option value="">
+              Select Property Type
+            </option>
+
+            <option value="Residential Plot">
+              Residential Plot
+            </option>
+
+            <option value="Commercial Plot">
+              Commercial Plot
+            </option>
+
+            <option value="House">
+              House
+            </option>
+
+            <option value="Shop">
+              Shop
+            </option>
+
+            <option value="Office">
+              Office
+            </option>
+
+            <option value="Other">
+              Other
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label>
+            Property Size
+          </label>
+
+          <input
+            type="text"
+            id="propertySize"
+            placeholder="e.g. 5 Marla / 10 Marla / 1 Kanal"
+            required
+          >
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label>
+            Expected Price
+          </label>
+
+          <input
+            type="text"
+            id="price"
+            placeholder="e.g. 80 Lac"
+            required
+          >
+
+        </div>
+
+
+        <div class="form-group full">
+
+          <label>
+            Property Location
+          </label>
+
+          <input
+            type="text"
+            id="location"
+            placeholder="Block / Street / Location"
+            required
+          >
+
+        </div>
+
+
+        <div class="form-group full">
+
+          <label>
+            Property Details
+          </label>
+
+          <textarea
+            id="details"
+            placeholder="Enter property details"
+          ></textarea>
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label>
+            Owner Name
+          </label>
+
+          <input
+            type="text"
+            id="ownerName"
+            placeholder="Your Name"
+            required
+          >
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label>
+            Owner Phone
+          </label>
+
+          <input
+            type="tel"
+            id="ownerPhone"
+            placeholder="03XX-XXXXXXX"
+            required
+          >
+
+        </div>
+
+
+      </div>
+
+
+      <button
+        type="submit"
+        id="submit-property-btn"
+        class="submit-btn">
+
+        📲 SUBMIT PROPERTY
+
+      </button>
+
+
+      <div
+        id="form-status"
+        class="status">
+      </div>
+
+    </form>
+
+  </div>
+
+
+  <!-- ONLINE PROPERTIES -->
+
+  <h2 class="online-title">
+    AVAILABLE LISTED PROPERTIES
+  </h2>
+
+  <div
+    id="online-properties"
+    class="cards">
+
+    <p style="text-align:center">
+      Loading properties...
+    </p>
+
+  </div>
+
 </section>
+
+
+<!-- WHY US -->
 
 <section class="section" id="why">
-  <h2 style="font-size:36px;text-align:center;color:#b40000;margin-bottom:25px">WHY CHOOSE ZEESHAN ESTATE AWT?</h2>
+
+  <h2 style="
+    font-size:36px;
+    text-align:center;
+    color:#b40000;
+    margin-bottom:25px">
+
+    WHY CHOOSE ZEESHAN ESTATE AWT?
+
+  </h2>
+
+
   <div class="why">
-    <div>📄<br>Clear Documentation</div>
-    <div>📍<br>Prime Location</div>
-    <div>🛡️<br>Secure Investment</div>
-    <div>🏘️<br>Gated Community</div>
-    <div>📈<br>Investment Potential</div>
+
+    <div>
+      📄<br>
+      Clear Documentation
+    </div>
+
+    <div>
+      📍<br>
+      Prime Location
+    </div>
+
+    <div>
+      🛡️<br>
+      Secure Investment
+    </div>
+
+    <div>
+      🏘️<br>
+      Gated Community
+    </div>
+
+    <div>
+      📈<br>
+      Investment Potential
+    </div>
+
   </div>
+
 </section>
 
-<footer class="footer" id="contact">
+
+<!-- FOOTER -->
+
+<footer class="footer">
+
   <div>
-    <h3>For Booking &amp; Details</h3>
-    <p>Eng. Ahsan Ali</p>
-    <p><a href="tel:+923020941013">📞 0302-0941013</a></p>
+
+    <h3>
+      For Booking &amp; Details
+    </h3>
+
+    <p>
+      Eng. Ahsan Ali
+    </p>
+
+    <p>
+      <a href="tel:+923020941013">
+        📞 0302-0941013
+      </a>
+    </p>
+
   </div>
+
+
   <div>
-    <h3>Zeeshan Estate AWT</h3>
-    <p>Authorized Dealer</p>
-    <p>📍 Army Welfare Trust Phase 2, Lahore</p>
+
+    <h3>
+      Zeeshan Estate AWT
+    </h3>
+
+    <p>
+      Authorized Dealer
+    </p>
+
+    <p>
+      📍 Army Welfare Trust Phase 2, Lahore
+    </p>
+
   </div>
+
+
   <div>
-    <h3>Connect With Us</h3>
-    <p>Facebook • Instagram • WhatsApp</p>
+
+    <h3>
+      Connect With Us
+    </h3>
+
+    <p>
+      WhatsApp • Facebook • Instagram
+    </p>
+
   </div>
+
 </footer>
-<div class="copyright">© 2026 Zeeshan Estate AWT. All Rights Reserved.</div>
+
+
+<div class="copyright">
+
+  © 2026 Zeeshan Estate AWT. All Rights Reserved.
+
+</div>
+
+
+<script>
+
+/* =========================================
+   SUPABASE CONNECTION
+========================================= */
+
+const SUPABASE_URL =
+"https://rhzsfjolkxqovhonylti.supabase.co";
+
+/*
+   IMPORTANT:
+   Replace YOUR_PUBLISHABLE_KEY with
+   your Supabase Publishable Key.
+*/
+
+const SUPABASE_KEY =
+"sb_publishable_DjOGYqDCgPNMngD7mwMmcw_BM-UUCg8";
+
+
+const supabaseClient =
+supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+);
+
+
+/* =========================================
+   SECURITY
+========================================= */
+
+function escapeHTML(value){
+
+  if(value === null || value === undefined){
+    return "";
+  }
+
+  return String(value)
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+
+}
+
+
+/* =========================================
+   LOAD ONLINE PROPERTIES
+========================================= */
+
+async function loadProperties(){
+
+  const container =
+    document.getElementById(
+      "online-properties"
+    );
+
+
+  if(!container){
+    return;
+  }
+
+
+  container.innerHTML =
+    "<p style='text-align:center'>Loading properties...</p>";
+
+
+  const result =
+    await supabaseClient
+      .from("properties")
+      .select("*")
+      .order(
+        "created_at",
+        {
+          ascending:false
+        }
+      );
+
+
+  const data = result.data;
+  const error = result.error;
+
+
+  if(error){
+
+    console.error(error);
+
+    container.innerHTML =
+      "<p style='text-align:center'>Properties could not be loaded.</p>";
+
+    return;
+
+  }
+
+
+  if(!data || data.length === 0){
+
+    container.innerHTML =
+      "<p style='text-align:center'>No properties listed yet.</p>";
+
+    return;
+
+  }
+
+
+  container.innerHTML = "";
+
+
+  data.forEach(function(property){
+
+    const card =
+      document.createElement("article");
+
+
+    card.className =
+      "property-card";
+
+
+    const whatsappMessage =
+      "Assalam o Alaikum, I am interested in this property:\n\n" +
+
+      "Property: " +
+      property.property_type +
+
+      "\nPurpose: " +
+      property.purpose +
+
+      "\nSize: " +
+      property.property_size +
+
+      "\nPrice: " +
+      property.price +
+
+      "\nLocation: " +
+      property.location;
+
+
+    card.innerHTML = `
+
+      <div class="property-top">
+
+        <h3>
+          ${escapeHTML(property.property_type)}
+        </h3>
+
+      </div>
+
+
+      <div class="property-body">
+
+        <p>
+          <b>
+            ${escapeHTML(property.purpose)}
+          </b>
+        </p>
+
+
+        <div class="property-price">
+
+          ${escapeHTML(property.price)}
+
+        </div>
+
+
+        <p>
+          📐 ${escapeHTML(property.property_size)}
+        </p>
+
+
+        <p>
+          📍 ${escapeHTML(property.location)}
+        </p>
+
+
+        <p style="margin-top:10px">
+
+          ${escapeHTML(property.details || "")}
+
+        </p>
+
+
+        <a
+          class="whatsapp-btn"
+          href="https://wa.me/923020941013?text=${encodeURIComponent(whatsappMessage)}"
+          target="_blank">
+
+          📲 CONTACT ON WHATSAPP
+
+        </a>
+
+      </div>
+
+    `;
+
+
+    container.appendChild(card);
+
+  });
+
+}
+
+
+/* =========================================
+   SUBMIT PROPERTY
+========================================= */
+
+async function submitProperty(event){
+
+  event.preventDefault();
+
+
+  const button =
+    document.getElementById(
+      "submit-property-btn"
+    );
+
+
+  const status =
+    document.getElementById(
+      "form-status"
+    );
+
+
+  button.disabled = true;
+
+  button.innerText =
+    "Saving Property...";
+
+
+  status.innerText = "";
+
+
+  const property = {
+
+    purpose:
+      document.getElementById(
+        "purpose"
+      ).value,
+
+    property_type:
+      document.getElementById(
+        "propertyType"
+      ).value,
+
+    property_size:
+      document.getElementById(
+        "propertySize"
+      ).value,
+
+    price:
+      document.getElementById(
+        "price"
+      ).value,
+
+    location:
+      document.getElementById(
+        "location"
+      ).value,
+
+    details:
+      document.getElementById(
+        "details"
+      ).value,
+
+    owner_name:
+      document.getElementById(
+        "ownerName"
+      ).value,
+
+    owner_phone:
+      document.getElementById(
+        "ownerPhone"
+      ).value
+
+  };
+
+
+  const result =
+    await supabaseClient
+      .from("properties")
+      .insert([property])
+      .select();
+
+
+  const error =
+    result.error;
+
+
+  if(error){
+
+    console.error(error);
+
+    status.style.color =
+      "#c40000";
+
+    status.innerText =
+      "❌ Property save nahi ho saki: " +
+      error.message;
+
+
+    button.disabled = false;
+
+    button.innerText =
+      "📲 SUBMIT PROPERTY";
+
+    return;
+
+  }
+
+
+  status.style.color =
+    "#168c3b";
+
+  status.innerText =
+    "✅ Property successfully listed!";
+
+
+  document
+    .getElementById(
+      "property-form"
+    )
+    .reset();
+
+
+  button.disabled = false;
+
+  button.innerText =
+    "📲 SUBMIT PROPERTY";
+
+
+  await loadProperties();
+
+
+  document
+    .getElementById(
+      "online-properties"
+    )
+    .scrollIntoView({
+      behavior:"smooth"
+    });
+
+}
+
+
+/* =========================================
+   START WEBSITE
+========================================= */
+
+document.addEventListener(
+  "DOMContentLoaded",
+  function(){
+
+    const form =
+      document.getElementById(
+        "property-form"
+      );
+
+
+    if(form){
+
+      form.addEventListener(
+        "submit",
+        submitProperty
+      );
+
+    }
+
+
+    loadProperties();
+
+  }
+);
+
+</script>
 
 </body>
 </html>
