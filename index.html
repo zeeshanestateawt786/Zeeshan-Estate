@@ -17,14 +17,20 @@ content="property for sale Lahore, AWT Phase 2 property, plots for sale Lahore, 
 
 <link rel="canonical"
 href="https://zeeshanestateawt786.github.io/Zeeshan-Estate/">
-  <link rel="preload" href="map.jpg" as="image" fetchpriority="high">
+
+<link rel="preload"
+href="map.jpg"
+as="image"
+fetchpriority="high">
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 
 <style>
 
-/* =========================================
+/* =====================================================
 GLOBAL
-========================================= */
+===================================================== */
 
 *{
 box-sizing:border-box;
@@ -48,10 +54,17 @@ text-decoration:none;
 color:inherit;
 }
 
+button,
+input,
+select,
+textarea{
+font-family:inherit;
+}
 
-/* =========================================
+
+/* =====================================================
 TOP BAR
-========================================= */
+===================================================== */
 
 .top{
 background:#b40000;
@@ -65,12 +78,12 @@ font-weight:700;
 }
 
 
-/* =========================================
+/* =====================================================
 NAVIGATION
-========================================= */
+===================================================== */
 
 .nav{
-padding:18px 5%;
+padding:17px 5%;
 display:flex;
 align-items:center;
 justify-content:space-between;
@@ -99,10 +112,14 @@ font-weight:700;
 
 nav{
 display:flex;
-gap:18px;
+gap:12px;
 flex-wrap:wrap;
 align-items:center;
 font-weight:700;
+}
+
+nav a{
+padding:9px 8px;
 }
 
 nav a:hover{
@@ -130,9 +147,9 @@ background:#c40000;
 }
 
 
-/* =========================================
+/* =====================================================
 HERO
-========================================= */
+===================================================== */
 
 .hero{
 min-height:570px;
@@ -246,9 +263,9 @@ margin:5px 0;
 }
 
 
-/* =========================================
+/* =====================================================
 SECTIONS
-========================================= */
+===================================================== */
 
 .section{
 padding:55px 6%;
@@ -280,9 +297,9 @@ margin-bottom:8px;
 }
 
 
-/* =========================================
+/* =====================================================
 TEAM
-========================================= */
+===================================================== */
 
 .team-title{
 text-align:center;
@@ -333,9 +350,9 @@ font-weight:800;
 }
 
 
-/* =========================================
-PROPERTIES
-========================================= */
+/* =====================================================
+PLOTS SECTION
+===================================================== */
 
 .properties{
 background:#110606;
@@ -423,217 +440,250 @@ font-weight:900;
 }
 
 
-/* =========================================
-PROPERTY FORM
-========================================= */
-
-.list-box{
-max-width:950px;
-margin:45px auto 0;
-background:#fff;
-color:#111;
-padding:30px;
-border-radius:12px;
-border-top:6px solid #c40000;
-box-shadow:0 8px 30px rgba(0,0,0,.2);
-}
-
-.list-box h2{
-color:#b40000;
-text-align:center;
-font-size:36px;
-margin-bottom:10px;
-}
-
-.subtitle{
-text-align:center;
-color:#666;
-margin-bottom:25px;
-}
-
-.form-grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:18px;
-}
-
-.form-group{
-display:flex;
-flex-direction:column;
-}
-
-.form-group.full{
-grid-column:1/-1;
-}
-
-.form-group label{
-font-weight:800;
-margin-bottom:7px;
-}
-
-.form-group input,
-.form-group select,
-.form-group textarea{
-width:100%;
-padding:13px;
-border:1px solid #ccc;
-border-radius:6px;
-font-size:16px;
-font-family:Arial,Helvetica,sans-serif;
-}
-
-.form-group textarea{
-min-height:110px;
-resize:vertical;
-}
-
-.file-input{
-background:#fafafa;
-padding:15px!important;
-border:2px dashed #c40000!important;
-cursor:pointer;
-}
-
-.image-preview{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:10px;
-margin-top:12px;
-}
-
-.image-preview img{
-width:100%;
-height:100px;
-object-fit:cover;
-border-radius:7px;
-border:2px solid #ddd;
-}
-
-.image-help{
-color:#777;
-font-size:13px;
-margin-top:6px;
-}
-
-.submit-btn{
-width:100%;
-border:0;
-background:#c40000;
-color:#fff;
-padding:16px;
-margin-top:20px;
-border-radius:6px;
-font-size:18px;
-font-weight:900;
-cursor:pointer;
-}
-
-.submit-btn:disabled{
-background:#777;
-cursor:not-allowed;
-}
-
-.status{
-text-align:center;
-margin-top:15px;
-font-weight:700;
-}
-
-
-/* =========================================
-ONLINE PROPERTIES
-========================================= */
+/* =====================================================
+AVAILABLE PROPERTIES
+ZAMEEN STYLE
+===================================================== */
 
 .online-title{
 text-align:center;
-font-size:32px;
-margin:50px 0 25px;
+font-size:34px;
+margin:65px 0 10px;
 color:#fff;
 }
 
+.online-subtitle{
+text-align:center;
+color:#ccc;
+margin-bottom:30px;
+}
+
+
+/* Main property grid */
+
+#online-properties{
+display:grid;
+grid-template-columns:repeat(3,minmax(0,1fr));
+gap:24px;
+}
+
+
+/* Property card */
+
 .property-card{
 background:#fff;
-color:#111;
-border-radius:10px;
+color:#222;
+border-radius:7px;
 overflow:hidden;
-box-shadow:0 5px 18px rgba(0,0,0,.25);
+box-shadow:0 3px 14px rgba(0,0,0,.28);
 cursor:pointer;
-transition:.2s;
+transition:transform .2s ease,box-shadow .2s ease;
+position:relative;
 }
 
 .property-card:hover{
 transform:translateY(-4px);
-box-shadow:0 10px 25px rgba(0,0,0,.35);
+box-shadow:0 9px 25px rgba(0,0,0,.38);
 }
+
+
+/* Gallery */
 
 .property-gallery{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:3px;
-background:#111;
-}
-
-.property-gallery.single{
-grid-template-columns:1fr;
+height:225px;
+position:relative;
+background:#ddd;
+overflow:hidden;
 }
 
 .property-gallery img{
 width:100%;
-height:180px;
+height:100%;
 object-fit:cover;
 display:block;
 }
 
-.property-top{
+.property-gallery.multi{
+display:grid;
+grid-template-columns:2fr 1fr;
+gap:3px;
+}
+
+.property-gallery.multi .gallery-main{
+height:225px;
+}
+
+.property-gallery.multi .gallery-side{
+display:grid;
+grid-template-rows:1fr 1fr;
+gap:3px;
+}
+
+.property-gallery.multi .gallery-side img{
+height:111px;
+}
+
+
+/* More pictures badge */
+
+.more-images{
+position:absolute;
+right:10px;
+bottom:10px;
+background:rgba(0,0,0,.75);
+color:#fff;
+padding:6px 10px;
+border-radius:4px;
+font-size:12px;
+font-weight:700;
+z-index:5;
+}
+
+
+/* Purpose badge */
+
+.property-purpose{
+position:absolute;
+left:12px;
+top:12px;
+z-index:5;
 background:#c40000;
 color:#fff;
-padding:18px;
-text-align:center;
+padding:6px 11px;
+border-radius:4px;
+font-size:12px;
+font-weight:800;
+text-transform:uppercase;
 }
 
-.property-top h3{
-font-size:22px;
+
+/* Favorite */
+
+.property-favorite{
+position:absolute;
+right:12px;
+top:12px;
+z-index:6;
+width:38px;
+height:38px;
+border-radius:50%;
+border:0;
+background:#fff;
+box-shadow:0 2px 8px rgba(0,0,0,.25);
+font-size:21px;
+cursor:pointer;
 }
+
+
+/* Card content */
 
 .property-body{
-padding:20px;
-text-align:center;
+padding:17px 18px 18px;
+}
+
+.property-type{
+font-size:19px;
+font-weight:800;
+color:#222;
+margin-bottom:6px;
+}
+
+.property-location{
+font-size:14px;
+color:#777;
+white-space:nowrap;
+overflow:hidden;
+text-overflow:ellipsis;
+margin-bottom:10px;
 }
 
 .property-price{
-color:#c40000;
-font-size:24px;
+font-size:23px;
 font-weight:900;
-margin:8px 0;
+color:#c40000;
+margin-bottom:9px;
 }
 
-.call-btn{
-display:inline-block;
-margin-top:15px;
-padding:12px 20px;
+.property-meta{
+display:flex;
+gap:8px;
+flex-wrap:wrap;
+font-size:13px;
+color:#555;
+margin-bottom:13px;
+}
+
+.property-meta span{
+background:#f3f3f3;
+padding:5px 8px;
+border-radius:3px;
+}
+
+.property-description{
+font-size:13px;
+color:#666;
+line-height:1.5;
+display:-webkit-box;
+-webkit-line-clamp:2;
+-webkit-box-orient:vertical;
+overflow:hidden;
+min-height:39px;
+}
+
+.property-footer{
+border-top:1px solid #eee;
+padding:12px 18px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:8px;
+}
+
+.property-view{
+font-size:12px;
+color:#888;
+}
+
+.property-call{
 background:#c40000;
 color:#fff;
-border-radius:6px;
+padding:9px 14px;
+border-radius:4px;
+font-size:13px;
 font-weight:800;
 }
 
-.view-count{
-font-size:13px;
-color:#777;
-margin-top:12px;
-}
-
-.click-hint{
-font-size:13px;
-color:#b40000;
-font-weight:800;
-margin-top:8px;
+.property-call:hover{
+background:#a80000;
 }
 
 
-/* =========================================
+/* Loading */
+
+.property-loading{
+grid-column:1/-1;
+text-align:center;
+padding:45px 15px;
+color:#ccc;
+font-size:17px;
+}
+
+
+/* No property */
+
+.property-empty{
+grid-column:1/-1;
+text-align:center;
+padding:55px 20px;
+background:#fff;
+color:#555;
+border-radius:8px;
+}
+
+
+/* =====================================================
 SOCIETY MAP
-========================================= */
+===================================================== */
 
 .society-map-section{
 background:#110606;
@@ -690,9 +740,9 @@ padding:9px 13px;
 }
 
 
-/* =========================================
+/* =====================================================
 MAP CONTAINER
-========================================= */
+===================================================== */
 
 .map-container{
 width:100%;
@@ -704,43 +754,25 @@ border-radius:12px;
 overflow:hidden;
 box-shadow:0 10px 35px rgba(0,0,0,.5);
 position:relative;
-
 touch-action:none;
 overscroll-behavior:none;
 }
 
-
-/* =========================================
-MAP IMAGE
-IMPORTANT:
-Initial map is fitted by JavaScript.
-After zoom it can become larger.
-========================================= */
-
 .map-container img{
 position:absolute;
-
 left:0;
 top:0;
-
 width:auto;
 height:auto;
-
 max-width:none;
 max-height:none;
-
 display:block;
-
 transform-origin:0 0;
-
 cursor:grab;
-
 user-select:none;
 -webkit-user-select:none;
 -webkit-user-drag:none;
-
 touch-action:none;
-
 will-change:transform;
 }
 
@@ -749,24 +781,19 @@ cursor:grabbing;
 }
 
 
-/* =========================================
-FULLSCREEN MAP
-========================================= */
+/* =====================================================
+FULLSCREEN
+===================================================== */
 
 .map-container:fullscreen{
 width:100vw!important;
 height:100vh!important;
 max-width:none!important;
-
 margin:0!important;
 padding:0!important;
-
 border-radius:0!important;
-
 background:#111!important;
-
 overflow:hidden!important;
-
 touch-action:none!important;
 }
 
@@ -774,16 +801,11 @@ touch-action:none!important;
 width:100vw!important;
 height:100vh!important;
 max-width:none!important;
-
 margin:0!important;
 padding:0!important;
-
 border-radius:0!important;
-
 background:#111!important;
-
 overflow:hidden!important;
-
 touch-action:none!important;
 }
 
@@ -793,9 +815,9 @@ touch-action:none!important;
 }
 
 
-/* =========================================
+/* =====================================================
 MAP HELP
-========================================= */
+===================================================== */
 
 .map-help{
 text-align:center;
@@ -805,9 +827,9 @@ font-size:14px;
 }
 
 
-/* =========================================
+/* =====================================================
 WHY US
-========================================= */
+===================================================== */
 
 .why{
 display:grid;
@@ -822,9 +844,9 @@ font-weight:700;
 }
 
 
-/* =========================================
+/* =====================================================
 FOOTER
-========================================= */
+===================================================== */
 
 .footer{
 background:#b40000;
@@ -848,9 +870,37 @@ padding:14px;
 }
 
 
-/* =========================================
+/* =====================================================
 RESPONSIVE
-========================================= */
+===================================================== */
+
+@media(max-width:1000px){
+
+#online-properties{
+grid-template-columns:repeat(2,minmax(0,1fr));
+}
+
+.about,
+.cards,
+.footer,
+.team-grid{
+grid-template-columns:1fr;
+}
+
+.features{
+grid-template-columns:1fr 1fr;
+}
+
+.why{
+grid-template-columns:1fr 1fr;
+}
+
+}
+
+
+/* =====================================================
+TABLET / MOBILE
+===================================================== */
 
 @media(max-width:850px){
 
@@ -872,36 +922,9 @@ align-items:flex-start;
 margin:30px 0 0;
 }
 
-.about,
-.cards,
-.footer,
-.team-grid{
-grid-template-columns:1fr;
-}
-
-.features{
-grid-template-columns:1fr 1fr;
-}
-
-.why{
-grid-template-columns:1fr 1fr;
-}
-
-.form-grid{
-grid-template-columns:1fr;
-}
-
-.form-group.full{
-grid-column:auto;
-}
-
-.image-preview{
-grid-template-columns:repeat(3,1fr);
-}
-
 nav{
 width:100%;
-gap:12px;
+gap:8px;
 }
 
 .map-container{
@@ -911,36 +934,74 @@ height:550px;
 }
 
 
-@media(max-width:520px){
+/* =====================================================
+MOBILE
+===================================================== */
 
-.features,
-.why{
-grid-template-columns:1fr;
+@media(max-width:600px){
+
+.top{
+font-size:13px;
+padding:9px 4%;
 }
 
 .logo{
-font-size:25px;
+font-size:24px;
 }
 
 nav{
-gap:10px;
 font-size:12px;
 }
 
-.list-box{
-padding:20px;
+nav a{
+padding:7px 5px;
+}
+
+.hero{
+min-height:560px;
 }
 
 .hero h1{
 font-size:48px;
 }
 
-.image-preview{
-grid-template-columns:1fr 1fr;
+.hero p{
+font-size:18px;
 }
 
-.property-gallery img{
-height:130px;
+.features,
+.why{
+grid-template-columns:1fr;
+}
+
+.list-box{
+padding:20px;
+}
+
+#online-properties{
+grid-template-columns:1fr;
+gap:18px;
+}
+
+.online-title{
+font-size:29px;
+margin-top:50px;
+}
+
+.property-gallery{
+height:220px;
+}
+
+.property-gallery.multi{
+grid-template-columns:2fr 1fr;
+}
+
+.property-gallery.multi .gallery-main{
+height:220px;
+}
+
+.property-gallery.multi .gallery-side img{
+height:108px;
 }
 
 .map-title{
@@ -961,6 +1022,47 @@ margin-bottom:0!important;
 .society-map-section{
 padding-bottom:10px!important;
 margin-bottom:0!important;
+}
+
+}
+
+
+/* =====================================================
+SMALL MOBILE
+===================================================== */
+
+@media(max-width:390px){
+
+.logo{
+font-size:22px;
+}
+
+.property-body{
+padding:15px;
+}
+
+.property-type{
+font-size:18px;
+}
+
+.property-price{
+font-size:21px;
+}
+
+.property-gallery{
+height:200px;
+}
+
+.property-gallery.multi .gallery-main{
+height:200px;
+}
+
+.property-gallery.multi .gallery-side img{
+height:98px;
+}
+
+.map-container{
+height:470px;
 }
 
 }
@@ -991,9 +1093,9 @@ margin-bottom:0!important;
 <body>
 
 
-<!-- =========================================
+<!-- =====================================================
 TOP BAR
-========================================= -->
+===================================================== -->
 
 <div class="top">
 
@@ -1008,9 +1110,9 @@ TOP BAR
 </div>
 
 
-<!-- =========================================
+<!-- =====================================================
 NAVIGATION
-========================================= -->
+===================================================== -->
 
 <header class="nav">
 
@@ -1025,6 +1127,7 @@ AUTHORIZED DEALER
 </div>
 
 </div>
+
 
 <nav>
 
@@ -1061,9 +1164,9 @@ CONTACT US
 </header>
 
 
-<!-- =========================================
+<!-- =====================================================
 HERO
-========================================= -->
+===================================================== -->
 
 <section class="hero" id="home">
 
@@ -1089,6 +1192,7 @@ style="background-image:url('https://images.unsplash.com/photo-1600607688969-a5b
 
 <div class="hero-overlay"></div>
 
+
 <div class="hero-content">
 
 <div>
@@ -1110,6 +1214,7 @@ Aapka Apna, Pura Bharosa
 Army Welfare Trust Phase 2, Lahore
 </p>
 
+
 <div class="btns">
 
 <a class="btn red" href="#properties">
@@ -1123,6 +1228,7 @@ VIEW PROPERTIES
 </div>
 
 </div>
+
 
 <div class="contact-card">
 
@@ -1145,9 +1251,9 @@ Eng. Ahsan Ali
 </section>
 
 
-<!-- =========================================
+<!-- =====================================================
 ABOUT
-========================================= -->
+===================================================== -->
 
 <section class="section" id="about">
 
@@ -1166,6 +1272,7 @@ Welfare Trust Phase 2, Lahore.
 </p>
 
 </div>
+
 
 <div class="features">
 
@@ -1198,6 +1305,7 @@ Clear dealing &amp; support
 OUR TEAM
 </h2>
 
+
 <div id="public-team" class="team-grid">
 
 <p>
@@ -1209,15 +1317,21 @@ Loading team members...
 </section>
 
 
-<!-- =========================================
+<!-- =====================================================
 PROPERTIES
-========================================= -->
+===================================================== -->
 
 <section class="section properties" id="properties">
 
-<h2 style="font-size:42px;text-align:center;margin-bottom:30px">
+<h2 style="
+font-size:42px;
+text-align:center;
+margin-bottom:30px">
+
 PLOTS FOR SALE
+
 </h2>
+
 
 <div class="cards">
 
@@ -1310,245 +1424,38 @@ Location/plot position may affect price.
 </div>
 
 
+<!-- =====================================================
+AVAILABLE LISTED PROPERTIES
+===================================================== -->
+
 <h2 class="online-title">
 AVAILABLE LISTED PROPERTIES
 </h2>
 
-<div id="online-properties" class="cards">
-
-<p style="text-align:center">
-Loading properties...
+<p class="online-subtitle">
+Latest properties available through Zeeshan Estate AWT
 </p>
 
+
+<div id="online-properties">
+
+<div class="property-loading">
+Loading available properties...
 </div>
-
-
-<!-- =========================================
-LIST PROPERTY
-========================================= -->
-
-<div class="list-box">
-
-<h2>
-LIST YOUR PROPERTY
-</h2>
-
-<p class="subtitle">
-Apni property Zeeshan Estate AWT ke through list karein.
-</p>
-
-<form id="property-form">
-
-<div class="form-grid">
-
-
-<div class="form-group">
-
-<label>
-Property Purpose
-</label>
-
-<select id="purpose" required>
-
-<option value="">
-Select Purpose
-</option>
-
-<option value="For Sale">
-For Sale
-</option>
-
-<option value="For Rent">
-For Rent
-</option>
-
-</select>
-
-</div>
-
-
-<div class="form-group">
-
-<label>
-Property Type
-</label>
-
-<select id="propertyType" required>
-
-<option value="">
-Select Property Type
-</option>
-
-<option value="Residential Plot">
-Residential Plot
-</option>
-
-<option value="Commercial Plot">
-Commercial Plot
-</option>
-
-<option value="House">
-House
-</option>
-
-<option value="Shop">
-Shop
-</option>
-
-<option value="Office">
-Office
-</option>
-
-<option value="Other">
-Other
-</option>
-
-</select>
-
-</div>
-
-
-<div class="form-group">
-
-<label>
-Property Size
-</label>
-
-<input
-type="text"
-id="propertySize"
-placeholder="e.g. 5 Marla / 10 Marla / 1 Kanal"
-required>
-
-</div>
-
-
-<div class="form-group">
-
-<label>
-Expected Price
-</label>
-
-<input
-type="text"
-id="price"
-placeholder="e.g. 80 Lac"
-required>
-
-</div>
-
-
-<div class="form-group full">
-
-<label>
-Property Location
-</label>
-
-<input
-type="text"
-id="location"
-placeholder="Block / Street / Location"
-required>
-
-</div>
-
-
-<div class="form-group full">
-
-<label>
-Property Pictures
-</label>
-
-<input
-class="file-input"
-type="file"
-id="propertyImages"
-accept="image/jpeg,image/png,image/webp"
-multiple>
-
-<div class="image-help">
-📸 Multiple pictures select kar sakte hain.
-</div>
-
-<div id="image-preview" class="image-preview">
-</div>
-
-</div>
-
-
-<div class="form-group full">
-
-<label>
-Property Details
-</label>
-
-<textarea
-id="details"
-placeholder="Enter property details">
-</textarea>
-
-</div>
-
-
-<div class="form-group">
-
-<label>
-Owner Name
-</label>
-
-<input
-type="text"
-id="ownerName"
-placeholder="Your Name"
-required>
-
-</div>
-
-
-<div class="form-group">
-
-<label>
-Owner Phone
-</label>
-
-<input
-type="tel"
-id="ownerPhone"
-placeholder="03XX-XXXXXXX"
-required>
-
-</div>
-
-</div>
-
-
-<button
-type="submit"
-id="submit-property-btn"
-class="submit-btn">
-
-📲 SUBMIT PROPERTY
-
-</button>
-
-
-<div id="form-status" class="status">
-</div>
-
-</form>
 
 </div>
 
 </section>
 
 
-<!-- =========================================
+<!-- =====================================================
 SOCIETY MAP
-========================================= -->
+===================================================== -->
 
 <section
 class="section society-map-section"
 id="society-map">
+
 
 <h2 class="map-title">
 📍 SOCIETY MAP
@@ -1627,9 +1534,9 @@ Zoom ke baad 1 finger se map move karein.
 </section>
 
 
-<!-- =========================================
+<!-- =====================================================
 WHY US
-========================================= -->
+===================================================== -->
 
 <section class="section" id="why">
 
@@ -1642,6 +1549,7 @@ margin-bottom:25px">
 WHY CHOOSE ZEESHAN ESTATE AWT?
 
 </h2>
+
 
 <div class="why">
 
@@ -1675,9 +1583,9 @@ Investment Potential
 </section>
 
 
-<!-- =========================================
+<!-- =====================================================
 FOOTER
-========================================= -->
+===================================================== -->
 
 <footer class="footer" id="contact">
 
@@ -1752,18 +1660,15 @@ All Rights Reserved.
 
 <script>
 
-/* =========================================
+/* =====================================================
 SUPABASE
-========================================= */
+===================================================== */
 
 const SUPABASE_URL =
 "https://rhzsfjolkxqovhonylti.supabase.co";
 
 const SUPABASE_KEY =
 "sb_publishable_DjOGYqDCgPNMngD7mwMmcw_BM-UUCg8";
-
-const STORAGE_BUCKET =
-"property-images";
 
 const supabaseClient =
 supabase.createClient(
@@ -1772,17 +1677,23 @@ SUPABASE_KEY
 );
 
 
-/* =========================================
+/* =====================================================
 ESCAPE HTML
-========================================= */
+===================================================== */
 
 function escapeHTML(value){
 
-if(value === null || value === undefined){
+if(
+value === null ||
+value === undefined
+){
+
 return "";
+
 }
 
 return String(value)
+
 .replace(/&/g,"&amp;")
 .replace(/</g,"&lt;")
 .replace(/>/g,"&gt;")
@@ -1792,9 +1703,9 @@ return String(value)
 }
 
 
-/* =========================================
+/* =====================================================
 VISITOR ID
-========================================= */
+===================================================== */
 
 function getVisitorId(){
 
@@ -1825,9 +1736,9 @@ return id;
 }
 
 
-/* =========================================
+/* =====================================================
 HERO SLIDER
-========================================= */
+===================================================== */
 
 let heroIndex = 0;
 
@@ -1855,145 +1766,9 @@ heroSlides[heroIndex]
 },5000);
 
 
-/* =========================================
-IMAGE PREVIEW
-========================================= */
-
-const imageInput =
-document.getElementById(
-"propertyImages"
-);
-
-const imagePreview =
-document.getElementById(
-"image-preview"
-);
-
-if(imageInput){
-
-imageInput.addEventListener(
-"change",
-function(){
-
-imagePreview.innerHTML = "";
-
-Array.from(this.files || [])
-.forEach(function(file){
-
-if(!file.type.startsWith("image/")){
-return;
-}
-
-const reader =
-new FileReader();
-
-reader.onload =
-function(event){
-
-const img =
-document.createElement("img");
-
-img.src =
-event.target.result;
-
-imagePreview.appendChild(img);
-
-};
-
-reader.readAsDataURL(file);
-
-});
-
-});
-
-}
-
-
-/* =========================================
-UPLOAD IMAGES
-========================================= */
-
-async function uploadPropertyImages(files){
-
-const imageUrls = [];
-
-for(const file of Array.from(files)){
-
-if(!file.type.startsWith("image/")){
-continue;
-}
-
-if(file.size > 8 * 1024 * 1024){
-
-throw new Error(
-"Image " + file.name +
-" is larger than 8MB."
-);
-
-}
-
-const extension =
-file.name
-.split(".")
-.pop()
-.toLowerCase();
-
-const uniqueName =
-Date.now() +
-"-" +
-Math.random()
-.toString(36)
-.substring(2,10) +
-"." +
-extension;
-
-const filePath =
-"properties/" +
-uniqueName;
-
-const uploadResult =
-await supabaseClient
-.storage
-.from(STORAGE_BUCKET)
-.upload(
-filePath,
-file,
-{
-cacheControl:"3600",
-upsert:false,
-contentType:file.type
-}
-);
-
-if(uploadResult.error){
-throw uploadResult.error;
-}
-
-const publicResult =
-supabaseClient
-.storage
-.from(STORAGE_BUCKET)
-.getPublicUrl(filePath);
-
-if(publicResult.data &&
-publicResult.data.publicUrl){
-
-imageUrls.push(
-publicResult.data.publicUrl
-);
-
-}
-
-}
-
-return imageUrls;
-
-}
-
-
-/* =========================================
+/* =====================================================
 PROPERTY VIEW
-========================================= */
+===================================================== */
 
 async function recordPropertyView(propertyId){
 
@@ -2018,7 +1793,6 @@ await supabaseClient
 .insert([{
 
 property_id:propertyId,
-
 visitor_id:visitorId
 
 }]);
@@ -2044,9 +1818,9 @@ error.message
 }
 
 
-/* =========================================
+/* =====================================================
 PROPERTY CALL
-========================================= */
+===================================================== */
 
 async function recordPropertyCall(propertyId){
 
@@ -2061,7 +1835,6 @@ await supabaseClient
 .insert([{
 
 property_id:propertyId,
-
 visitor_id:visitorId
 
 }]);
@@ -2087,9 +1860,9 @@ error.message
 }
 
 
-/* =========================================
+/* =====================================================
 GET PROPERTIES
-========================================= */
+===================================================== */
 
 async function getProperties(){
 
@@ -2133,9 +1906,9 @@ return [];
 }
 
 
-/* =========================================
+/* =====================================================
 CREATE PROPERTY CARD
-========================================= */
+===================================================== */
 
 function createPropertyCard(property){
 
@@ -2145,141 +1918,343 @@ document.createElement("article");
 card.className =
 "property-card";
 
+
 const propertyId =
 Number(property.id) || 0;
-
-card.addEventListener(
-"click",
-function(event){
-
-if(event.target.closest(".call-btn")){
-return;
-}
-
-if(!propertyId){
-return;
-}
-
-window.open(
-"property.html?id=" +
-encodeURIComponent(propertyId),
-"_blank"
-);
-
-});
 
 
 let images = [];
 
-if(Array.isArray(property.image_urls)){
-images = property.image_urls;
+if(
+Array.isArray(
+property.image_urls
+)
+){
+
+images =
+property.image_urls.filter(
+function(url){
+
+return (
+typeof url === "string" &&
+url.trim() !== ""
+);
+
 }
+);
+
+}
+
+
+/* =====================================================
+GALLERY
+===================================================== */
 
 let galleryHTML = "";
 
-if(images.length > 0){
+
+if(images.length === 1){
 
 galleryHTML = `
 
-<div class="property-gallery ${
-images.length === 1 ? "single" : ""
-}">
+<div class="property-gallery">
 
-${images
-.slice(0,6)
-.map(function(url){
+<div class="property-purpose">
 
-return `
+${escapeHTML(
+property.purpose || "For Sale"
+)}
+
+</div>
 
 <img
-src="${escapeHTML(url)}"
-alt="Property for sale in AWT Phase 2 Lahore"
+src="${escapeHTML(images[0])}"
+alt="Property in AWT Phase 2 Lahore"
 loading="lazy">
-
-`;
-
-})
-.join("")}
 
 </div>
 
 `;
 
 }
+
+
+else if(images.length >= 2){
+
+galleryHTML = `
+
+<div class="property-gallery multi">
+
+<div class="property-purpose">
+
+${escapeHTML(
+property.purpose || "For Sale"
+)}
+
+</div>
+
+<div class="gallery-main">
+
+<img
+src="${escapeHTML(images[0])}"
+alt="Property in AWT Phase 2 Lahore"
+loading="lazy">
+
+</div>
+
+<div class="gallery-side">
+
+<img
+src="${escapeHTML(images[1])}"
+alt="Property image"
+loading="lazy">
+
+${
+images.length >= 3
+?
+
+`<img
+src="${escapeHTML(images[2])}"
+alt="Property image"
+loading="lazy">`
+
+:
+
+`<div style="
+background:#222;
+color:#fff;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:13px;
+">
+Property
+</div>`
+
+}
+
+</div>
+
+${
+images.length > 3
+?
+
+`<div class="more-images">
++${images.length - 3} Photos
+</div>`
+
+:
+
+""
+
+}
+
+</div>
+
+`;
+
+}
+
+
+else{
+
+galleryHTML = `
+
+<div class="property-gallery">
+
+<div class="property-purpose">
+
+${escapeHTML(
+property.purpose || "For Sale"
+)}
+
+</div>
+
+<div style="
+width:100%;
+height:100%;
+display:flex;
+align-items:center;
+justify-content:center;
+background:#e9e9e9;
+color:#777;
+font-size:16px;
+">
+
+📷 No Image Available
+
+</div>
+
+</div>
+
+`;
+
+}
+
+
+/* =====================================================
+CARD HTML
+===================================================== */
+
+const type =
+property.property_type ||
+"Property";
+
+
+const purpose =
+property.purpose ||
+"For Sale";
+
+
+const size =
+property.property_size ||
+"";
+
+
+const price =
+property.price ||
+"Price on Call";
+
+
+const location =
+property.location ||
+"Army Welfare Trust Phase 2, Lahore";
+
+
+const details =
+property.details ||
+"";
 
 
 card.innerHTML = `
 
 ${galleryHTML}
 
-<div class="property-top">
-
-<h3>
-${escapeHTML(
-property.property_type
-)}
-</h3>
-
-</div>
 
 <div class="property-body">
 
-<p>
-<b>
-${escapeHTML(
-property.purpose
-)}
-</b>
-</p>
+
+<div class="property-type">
+
+${escapeHTML(type)}
+
+</div>
+
+
+<div class="property-location">
+
+📍 ${escapeHTML(location)}
+
+</div>
+
 
 <div class="property-price">
-${escapeHTML(
-property.price
-)}
+
+${escapeHTML(price)}
+
 </div>
 
-<p>
-📐 ${escapeHTML(
-property.property_size
-)}
-</p>
 
-<p>
-📍 ${escapeHTML(
-property.location
-)}
-</p>
+<div class="property-meta">
 
-<p style="margin-top:10px">
-${escapeHTML(
-property.details || ""
-)}
-</p>
+${
+size
+?
 
-<div class="click-hint">
-👆 Click property to view complete details
+`<span>
+📐 ${escapeHTML(size)}
+</span>`
+
+:
+
+""
+}
+
+
+<span>
+✓ ${escapeHTML(purpose)}
+</span>
+
+
+<span>
+🏠 AWT Phase 2
+</span>
+
 </div>
+
+
+<div class="property-description">
+
+${escapeHTML(details)}
+
+</div>
+
+
+</div>
+
+
+<div class="property-footer">
+
+<div class="property-view">
+
+Zeeshan Estate AWT
+
+</div>
+
 
 <a
-class="call-btn"
+class="property-call"
 href="tel:+923020941013"
 data-property-id="${propertyId}">
 
-📞 CALL US
+📞 Call
 
 </a>
-
-<div class="view-count">
-👁️ Property listed online
-</div>
 
 </div>
 
 `;
 
 
+/* =====================================================
+CARD CLICK
+===================================================== */
+
+card.addEventListener(
+"click",
+function(event){
+
+if(
+event.target.closest(".property-call")
+){
+
+return;
+
+}
+
+if(!propertyId){
+
+return;
+
+}
+
+window.location.href =
+"property.html?id=" +
+encodeURIComponent(
+propertyId
+);
+
+});
+
+
+/* =====================================================
+CALL TRACKING
+===================================================== */
+
 const callButton =
-card.querySelector(".call-btn");
+card.querySelector(
+".property-call"
+);
 
 if(callButton){
 
@@ -2297,67 +2272,133 @@ propertyId
 
 }
 
+
+/* =====================================================
+VIEW TRACKING
+===================================================== */
+
 if(propertyId){
-recordPropertyView(propertyId);
+
+recordPropertyView(
+propertyId
+);
+
 }
+
 
 return card;
 
 }
 
 
-/* =========================================
+/* =====================================================
 RENDER PROPERTIES
-========================================= */
+===================================================== */
 
-function renderProperties(properties){
+function renderProperties(
+properties
+){
 
 const online =
 document.getElementById(
 "online-properties"
 );
 
-if(online){
-online.innerHTML = "";
-}
 
-if(!properties ||
-properties.length === 0){
-
-const message =
-"<p style='text-align:center;grid-column:1/-1'>No properties listed yet.</p>";
-
-if(online){
-online.innerHTML = message;
-}
+if(!online){
 
 return;
 
 }
 
-properties.forEach(function(property){
 
-if(online){
+online.innerHTML = "";
 
-online.appendChild(
-createPropertyCard(property)
-);
+
+if(
+!properties ||
+properties.length === 0
+){
+
+online.innerHTML = `
+
+<div class="property-empty">
+
+<div style="
+font-size:40px;
+margin-bottom:10px;
+">
+
+🏠
+
+</div>
+
+<h3 style="
+color:#b40000;
+margin-bottom:8px;
+">
+
+No Properties Listed Yet
+
+</h3>
+
+<p>
+New properties will appear here soon.
+</p>
+
+</div>
+
+`;
+
+return;
 
 }
+
+
+properties.forEach(
+function(property){
+
+online.appendChild(
+createPropertyCard(
+property
+)
+);
 
 });
 
 }
 
 
-/* =========================================
+/* =====================================================
 LOAD PROPERTIES
-========================================= */
+===================================================== */
 
 async function loadProperties(){
 
+const online =
+document.getElementById(
+"online-properties"
+);
+
+
+if(online){
+
+online.innerHTML = `
+
+<div class="property-loading">
+
+Loading available properties...
+
+</div>
+
+`;
+
+}
+
+
 const properties =
 await getProperties();
+
 
 renderProperties(
 properties
@@ -2366,169 +2407,9 @@ properties
 }
 
 
-/* =========================================
-SUBMIT PROPERTY
-========================================= */
-
-async function submitProperty(event){
-
-event.preventDefault();
-
-const button =
-document.getElementById(
-"submit-property-btn"
-);
-
-const status =
-document.getElementById(
-"form-status"
-);
-
-const imageFiles =
-document.getElementById(
-"propertyImages"
-).files;
-
-button.disabled = true;
-
-button.innerText =
-"Saving Property...";
-
-status.style.color =
-"#333";
-
-status.innerText =
-"Please wait...";
-
-try{
-
-const property = {
-
-purpose:
-document.getElementById(
-"purpose"
-).value.trim(),
-
-property_type:
-document.getElementById(
-"propertyType"
-).value.trim(),
-
-property_size:
-document.getElementById(
-"propertySize"
-).value.trim(),
-
-price:
-document.getElementById(
-"price"
-).value.trim(),
-
-location:
-document.getElementById(
-"location"
-).value.trim(),
-
-details:
-document.getElementById(
-"details"
-).value.trim(),
-
-owner_name:
-document.getElementById(
-"ownerName"
-).value.trim(),
-
-owner_phone:
-document.getElementById(
-"ownerPhone"
-).value.trim(),
-
-image_urls:[]
-
-};
-
-
-if(imageFiles.length > 0){
-
-button.innerText =
-"Uploading Pictures...";
-
-property.image_urls =
-await uploadPropertyImages(
-imageFiles
-);
-
-}
-
-
-button.innerText =
-"Saving Property...";
-
-const result =
-await supabaseClient
-.from("properties")
-.insert([property])
-.select()
-.single();
-
-if(result.error){
-
-throw result.error;
-
-}
-
-
-status.style.color =
-"#168c3b";
-
-status.innerText =
-"✅ Property successfully listed!";
-
-document
-.getElementById(
-"property-form"
-)
-.reset();
-
-imagePreview.innerHTML = "";
-
-button.disabled = false;
-
-button.innerText =
-"📲 SUBMIT PROPERTY";
-
-await loadProperties();
-
-
-}catch(error){
-
-console.error(
-"PROPERTY SAVE ERROR:",
-error
-);
-
-status.style.color =
-"#c40000";
-
-status.innerText =
-"❌ Property save nahi ho saki: " +
-(error.message ||
-"Unknown error");
-
-button.disabled = false;
-
-button.innerText =
-"📲 SUBMIT PROPERTY";
-
-}
-
-}
-
-
-/* =========================================
+/* =====================================================
 TEAM MEMBERS
-========================================= */
+===================================================== */
 
 async function loadTeamMembers(){
 
@@ -2537,26 +2418,39 @@ document.getElementById(
 "public-team"
 );
 
+
 if(!container){
+
 return;
+
 }
+
 
 try{
 
 container.innerHTML =
 "<p>Loading team members...</p>";
 
+
 const result =
 await supabaseClient
+
 .from("team_members")
+
 .select("*")
-.eq("is_active",true)
+
+.eq(
+"is_active",
+true
+)
+
 .order(
 "created_at",
 {
 ascending:true
 }
 );
+
 
 if(result.error){
 
@@ -2567,17 +2461,12 @@ result.error
 
 container.innerHTML = `
 
-<p style="text-align:center;grid-column:1/-1">
+<p style="
+text-align:center;
+grid-column:1/-1;
+">
 
 Team information unavailable.
-
-<br>
-
-<small>
-${escapeHTML(
-result.error.message
-)}
-</small>
 
 </p>
 
@@ -2587,29 +2476,49 @@ return;
 
 }
 
-if(!result.data ||
-result.data.length === 0){
 
-container.innerHTML =
-"<p style='text-align:center;grid-column:1/-1'>Our team information will be available soon.</p>";
+if(
+!result.data ||
+result.data.length === 0
+){
+
+container.innerHTML = `
+
+<p style="
+text-align:center;
+grid-column:1/-1;
+">
+
+Our team information will be available soon.
+
+</p>
+
+`;
 
 return;
 
 }
 
+
 container.innerHTML = "";
 
-result.data.forEach(function(member){
+
+result.data.forEach(
+function(member){
 
 const card =
-document.createElement("div");
+document.createElement(
+"div"
+);
 
 card.className =
 "team-card";
 
+
 const image =
 member.image_url ||
 "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=700&q=80";
+
 
 card.innerHTML = `
 
@@ -2618,19 +2527,27 @@ src="${escapeHTML(image)}"
 alt="${escapeHTML(member.name)}"
 loading="lazy">
 
+
 <div class="team-body">
 
 <h3>
-${escapeHTML(member.name)}
+${escapeHTML(
+member.name
+)}
 </h3>
 
 <p>
-📞 ${escapeHTML(member.phone || "")}
+📞 ${escapeHTML(
+member.phone || ""
+)}
 </p>
+
 
 <a
 class="call-team"
-href="tel:${escapeHTML(member.phone || "")}">
+href="tel:${escapeHTML(
+member.phone || ""
+)}">
 
 📞 CALL US
 
@@ -2640,7 +2557,10 @@ href="tel:${escapeHTML(member.phone || "")}">
 
 `;
 
-container.appendChild(card);
+
+container.appendChild(
+card
+);
 
 });
 
@@ -2651,18 +2571,27 @@ console.error(
 error
 );
 
-container.innerHTML =
-"<p style='text-align:center;grid-column:1/-1'>Unable to load team members.</p>";
+container.innerHTML = `
+
+<p style="
+text-align:center;
+grid-column:1/-1;
+">
+
+Unable to load team members.
+
+</p>
+
+`;
 
 }
 
 }
 
 
-/* =========================================
-SOCIETY MAP
-FIT + PINCH ZOOM + PAN
-========================================= */
+/* =====================================================
+MAP VARIABLES
+===================================================== */
 
 const mapContainer =
 document.getElementById(
@@ -2674,12 +2603,6 @@ document.getElementById(
 "society-map-image"
 );
 
-
-/*
-mapScale = current zoom
-baseScale = size required
-to fit complete map inside box
-*/
 
 let mapScale = 1;
 
@@ -2704,18 +2627,21 @@ let pinchStartDistance = 0;
 let pinchStartScale = 1;
 
 
-/* =========================================
-FIT COMPLETE MAP INSIDE BOX
-========================================= */
+/* =====================================================
+FIT MAP
+===================================================== */
 
 function fitMap(){
 
-if(!mapContainer ||
-!mapImage){
+if(
+!mapContainer ||
+!mapImage
+){
 
 return;
 
 }
+
 
 if(
 !mapImage.naturalWidth ||
@@ -2741,14 +2667,6 @@ const imageHeight =
 mapImage.naturalHeight;
 
 
-/*
-IMPORTANT:
-
-Math.min means the complete
-image will always fit inside
-the map box.
-*/
-
 baseScale =
 Math.min(
 boxWidth / imageWidth,
@@ -2756,17 +2674,9 @@ boxHeight / imageHeight
 );
 
 
-/*
-Initial zoom = fit size
-*/
-
 mapScale =
 baseScale;
 
-
-/*
-Calculate displayed size
-*/
 
 const displayedWidth =
 imageWidth * mapScale;
@@ -2775,15 +2685,18 @@ const displayedHeight =
 imageHeight * mapScale;
 
 
-/*
-CENTER MAP
-*/
-
 mapX =
-(boxWidth - displayedWidth) / 2;
+(
+boxWidth -
+displayedWidth
+) / 2;
+
 
 mapY =
-(boxHeight - displayedHeight) / 2;
+(
+boxHeight -
+displayedHeight
+) / 2;
 
 
 applyMapTransform();
@@ -2791,15 +2704,18 @@ applyMapTransform();
 }
 
 
-/* =========================================
-APPLY MAP TRANSFORM
-========================================= */
+/* =====================================================
+MAP TRANSFORM
+===================================================== */
 
 function applyMapTransform(){
 
 if(!mapImage){
+
 return;
+
 }
+
 
 mapImage.style.transform =
 "translate3d(" +
@@ -2813,14 +2729,16 @@ mapScale +
 }
 
 
-/* =========================================
+/* =====================================================
 BUTTON ZOOM
-========================================= */
+===================================================== */
 
 function zoomMap(amount){
 
 if(!mapImage){
+
 return;
+
 }
 
 
@@ -2828,11 +2746,10 @@ let newScale =
 mapScale * amount;
 
 
-/*
-Minimum = complete map fit
-*/
-
-if(newScale < baseScale){
+if(
+newScale <
+baseScale
+){
 
 newScale =
 baseScale;
@@ -2840,22 +2757,16 @@ baseScale;
 }
 
 
-/*
-Maximum = 8x fit size
-*/
-
-if(newScale >
-baseScale * 8){
+if(
+newScale >
+baseScale * 8
+){
 
 newScale =
 baseScale * 8;
 
 }
 
-
-/*
-Zoom from center of box
-*/
 
 const centerX =
 mapContainer.clientWidth / 2;
@@ -2865,21 +2776,26 @@ mapContainer.clientHeight / 2;
 
 
 const ratio =
-newScale / mapScale;
+newScale /
+mapScale;
 
 
 mapX =
 centerX -
 (
-centerX - mapX
-) * ratio;
+centerX -
+mapX
+) *
+ratio;
 
 
 mapY =
 centerY -
 (
-centerY - mapY
-) * ratio;
+centerY -
+mapY
+) *
+ratio;
 
 
 mapScale =
@@ -2891,9 +2807,9 @@ applyMapTransform();
 }
 
 
-/* =========================================
+/* =====================================================
 RESET MAP
-========================================= */
+===================================================== */
 
 function resetMap(){
 
@@ -2902,25 +2818,32 @@ fitMap();
 }
 
 
-/* =========================================
+/* =====================================================
 TOUCH DISTANCE
-========================================= */
+===================================================== */
 
-function getTouchDistance(touches){
+function getTouchDistance(
+touches
+){
 
-if(touches.length < 2){
+if(
+touches.length < 2
+){
 
 return 0;
 
 }
 
+
 const dx =
 touches[0].clientX -
 touches[1].clientX;
 
+
 const dy =
 touches[0].clientY -
 touches[1].clientY;
+
 
 return Math.sqrt(
 dx * dx +
@@ -2930,11 +2853,13 @@ dy * dy
 }
 
 
-/* =========================================
+/* =====================================================
 TOUCH CENTER
-========================================= */
+===================================================== */
 
-function getTouchCenter(touches){
+function getTouchCenter(
+touches
+){
 
 return {
 
@@ -2955,9 +2880,9 @@ touches[1].clientY
 }
 
 
-/* =========================================
-TOUCH START
-========================================= */
+/* =====================================================
+TOUCH EVENTS
+===================================================== */
 
 if(mapContainer){
 
@@ -2965,11 +2890,9 @@ mapContainer.addEventListener(
 "touchstart",
 function(event){
 
-/*
-2 FINGER
-*/
-
-if(event.touches.length === 2){
+if(
+event.touches.length === 2
+){
 
 pinchStartDistance =
 getTouchDistance(
@@ -2979,21 +2902,18 @@ event.touches
 pinchStartScale =
 mapScale;
 
-isDragging = false;
+isDragging =
+false;
 
 }
-
-
-/*
-1 FINGER
-*/
 
 else if(
 event.touches.length === 1 &&
 mapScale > baseScale
 ){
 
-isDragging = true;
+isDragging =
+true;
 
 startX =
 event.touches[0].clientX;
@@ -3015,10 +2935,6 @@ passive:false
 });
 
 
-/* =========================================
-TOUCH MOVE
-========================================= */
-
 mapContainer.addEventListener(
 "touchmove",
 function(event){
@@ -3026,13 +2942,9 @@ function(event){
 event.preventDefault();
 
 
-/*
-=========================================
-2 FINGER PINCH ZOOM
-=========================================
-*/
-
-if(event.touches.length === 2){
+if(
+event.touches.length === 2
+){
 
 const currentDistance =
 getTouchDistance(
@@ -3040,7 +2952,9 @@ event.touches
 );
 
 
-if(pinchStartDistance > 0){
+if(
+pinchStartDistance > 0
+){
 
 let newScale =
 pinchStartScale *
@@ -3050,11 +2964,10 @@ pinchStartDistance
 );
 
 
-/*
-MINIMUM
-*/
-
-if(newScale < baseScale){
+if(
+newScale <
+baseScale
+){
 
 newScale =
 baseScale;
@@ -3062,12 +2975,10 @@ baseScale;
 }
 
 
-/*
-MAXIMUM
-*/
-
-if(newScale >
-baseScale * 8){
+if(
+newScale >
+baseScale * 8
+){
 
 newScale =
 baseScale * 8;
@@ -3075,18 +2986,14 @@ baseScale * 8;
 }
 
 
-/*
-PINCH CENTER
-*/
-
 const center =
 getTouchCenter(
 event.touches
 );
 
+
 const rect =
-mapContainer
-.getBoundingClientRect();
+mapContainer.getBoundingClientRect();
 
 
 const centerX =
@@ -3106,15 +3013,19 @@ mapScale;
 mapX =
 centerX -
 (
-centerX - mapX
-) * ratio;
+centerX -
+mapX
+) *
+ratio;
 
 
 mapY =
 centerY -
 (
-centerY - mapY
-) * ratio;
+centerY -
+mapY
+) *
+ratio;
 
 
 mapScale =
@@ -3129,12 +3040,6 @@ return;
 
 }
 
-
-/*
-=========================================
-1 FINGER PAN
-=========================================
-*/
 
 if(
 event.touches.length === 1 &&
@@ -3152,13 +3057,16 @@ event.touches[0].clientY;
 mapX =
 startMapX +
 (
-currentX - startX
+currentX -
+startX
 );
+
 
 mapY =
 startMapY +
 (
-currentY - startY
+currentY -
+startY
 );
 
 
@@ -3172,31 +3080,29 @@ passive:false
 });
 
 
-/* =========================================
-TOUCH END
-========================================= */
-
 mapContainer.addEventListener(
 "touchend",
 function(event){
 
-if(event.touches.length === 0){
+if(
+event.touches.length === 0
+){
 
-isDragging = false;
+isDragging =
+false;
 
-pinchStartDistance = 0;
+pinchStartDistance =
+0;
 
 }
 
 
-/*
-If one finger remains
-after pinch, allow pan.
-*/
+if(
+event.touches.length === 1
+){
 
-if(event.touches.length === 1){
-
-isDragging = true;
+isDragging =
+true;
 
 startX =
 event.touches[0].clientX;
@@ -3218,21 +3124,25 @@ passive:false
 });
 
 
-/* =========================================
+/* =====================================================
 MOUSE DOWN
-========================================= */
+===================================================== */
 
 mapContainer.addEventListener(
 "mousedown",
 function(event){
 
-if(mapScale <= baseScale){
+if(
+mapScale <= baseScale
+){
 
 return;
 
 }
 
-isDragging = true;
+
+isDragging =
+true;
 
 startX =
 event.clientX;
@@ -3257,9 +3167,9 @@ mapImage.style.cursor =
 });
 
 
-/* =========================================
+/* =====================================================
 MOUSE MOVE
-========================================= */
+===================================================== */
 
 document.addEventListener(
 "mousemove",
@@ -3274,12 +3184,14 @@ return;
 
 }
 
+
 mapX =
 startMapX +
 (
 event.clientX -
 startX
 );
+
 
 mapY =
 startMapY +
@@ -3288,20 +3200,22 @@ event.clientY -
 startY
 );
 
+
 applyMapTransform();
 
 });
 
 
-/* =========================================
+/* =====================================================
 MOUSE UP
-========================================= */
+===================================================== */
 
 document.addEventListener(
 "mouseup",
 function(){
 
-isDragging = false;
+isDragging =
+false;
 
 if(mapImage){
 
@@ -3315,9 +3229,9 @@ mapImage.style.cursor =
 }
 
 
-/* =========================================
-MAP IMAGE LOAD
-========================================= */
+/* =====================================================
+MAP LOAD
+===================================================== */
 
 if(mapImage){
 
@@ -3341,27 +3255,22 @@ fitMap();
 }
 
 
-/* =========================================
-WINDOW RESIZE
-========================================= */
+/* =====================================================
+RESIZE
+===================================================== */
 
 window.addEventListener(
 "resize",
 function(){
-
-/*
-Re-fit map when screen
-orientation or size changes.
-*/
 
 fitMap();
 
 });
 
 
-/* =========================================
+/* =====================================================
 FULLSCREEN
-========================================= */
+===================================================== */
 
 function toggleMapFullscreen(){
 
@@ -3370,6 +3279,7 @@ document.getElementById(
 "map-container"
 );
 
+
 if(!container){
 
 return;
@@ -3377,19 +3287,18 @@ return;
 }
 
 
-/*
-ENTER FULLSCREEN
-*/
-
 if(
 !document.fullscreenElement &&
 !document.webkitFullscreenElement
 ){
 
-if(container.requestFullscreen){
+if(
+container.requestFullscreen
+){
 
 container.requestFullscreen()
-.catch(function(error){
+.catch(
+function(error){
 
 console.log(
 "Fullscreen error:",
@@ -3410,14 +3319,11 @@ container.webkitRequestFullscreen();
 
 }
 
-
-/*
-EXIT FULLSCREEN
-*/
-
 else{
 
-if(document.exitFullscreen){
+if(
+document.exitFullscreen
+){
 
 document.exitFullscreen();
 
@@ -3436,9 +3342,9 @@ document.webkitExitFullscreen();
 }
 
 
-/* =========================================
+/* =====================================================
 FULLSCREEN CHANGE
-========================================= */
+===================================================== */
 
 document.addEventListener(
 "fullscreenchange",
@@ -3472,33 +3378,18 @@ fitMap();
 });
 
 
-/* =========================================
-START WEBSITE
-========================================= */
+/* =====================================================
+START
+===================================================== */
 
 document.addEventListener(
 "DOMContentLoaded",
 function(){
 
-const form =
-document.getElementById(
-"property-form"
-);
+loadProperties();
 
-if(form){
+loadTeamMembers();
 
-form.addEventListener(
-"submit",
-submitProperty
-);
-
-}
-
-
-/*
-Map ko DOM load ke baad
-dobara fit karna.
-*/
 
 setTimeout(
 function(){
@@ -3509,13 +3400,7 @@ fitMap();
 100
 );
 
-
-loadProperties();
-
-loadTeamMembers();
-
 });
-
 
 </script>
 
