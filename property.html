@@ -11,14 +11,14 @@ content="width=device-width, initial-scale=1.0">
 <title>Property Details | Zeeshan Estate AWT</title>
 
 <meta name="description"
-content="Property for sale and purchase by Zeeshan Estate AWT in Army Welfare Trust Phase 2 Lahore.">
+content="Property details, price and location by Zeeshan Estate AWT, Authorized Dealer, Army Welfare Trust Phase 2 Lahore.">
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
 
 /* =====================================================
-   GLOBAL
+GLOBAL
 ===================================================== */
 
 *{
@@ -33,10 +33,9 @@ scroll-behavior:smooth;
 
 body{
 font-family:Arial,Helvetica,sans-serif;
-background:#f5f5f5;
+background:#f4f5f7;
 color:#222;
-line-height:1.5;
-padding-bottom:80px;
+padding-bottom:78px;
 }
 
 a{
@@ -44,34 +43,35 @@ text-decoration:none;
 color:inherit;
 }
 
-button,
-input,
-select,
-textarea{
+button{
 font-family:inherit;
 }
 
 
 /* =====================================================
-   TOP HEADER
+TOP HEADER
 ===================================================== */
 
 .header{
 height:66px;
 background:#fff;
 border-bottom:1px solid #ddd;
+
 display:flex;
 align-items:center;
 justify-content:space-between;
+
 padding:0 5%;
+
 position:sticky;
 top:0;
 z-index:1000;
-box-shadow:0 1px 5px rgba(0,0,0,.08);
+
+box-shadow:0 2px 8px rgba(0,0,0,.06);
 }
 
 .logo{
-font-size:24px;
+font-size:23px;
 font-weight:900;
 color:#111;
 }
@@ -80,49 +80,60 @@ color:#111;
 color:#c40000;
 }
 
-.header-right{
+.header-sub{
+font-size:11px;
+font-weight:800;
+letter-spacing:1px;
+color:#777;
+margin-top:2px;
+}
+
+.header-actions{
 display:flex;
-align-items:center;
 gap:9px;
 }
 
 .header-btn{
 width:42px;
 height:42px;
+
 border:1px solid #ddd;
 background:#fff;
 border-radius:5px;
-font-size:21px;
-cursor:pointer;
+
 display:flex;
 align-items:center;
 justify-content:center;
+
+font-size:20px;
+cursor:pointer;
 }
 
 .header-btn:hover{
-background:#f5f5f5;
+border-color:#c40000;
+color:#c40000;
 }
 
 
 /* =====================================================
-   MAIN
+PAGE
 ===================================================== */
 
-.main{
+.page{
 max-width:1200px;
-margin:22px auto;
+margin:25px auto;
 padding:0 15px;
 }
 
 
 /* =====================================================
-   BREADCRUMB
+BREADCRUMB
 ===================================================== */
 
 .breadcrumb{
 font-size:13px;
 color:#777;
-margin-bottom:15px;
+margin-bottom:14px;
 }
 
 .breadcrumb a{
@@ -130,77 +141,33 @@ color:#c40000;
 font-weight:700;
 }
 
-.breadcrumb span{
-margin:0 6px;
-}
-
 
 /* =====================================================
-   GALLERY
+GALLERY
 ===================================================== */
 
-.gallery-box{
+.gallery{
 background:#fff;
 border:1px solid #ddd;
 border-radius:4px;
 overflow:hidden;
 }
 
-.main-image{
-height:500px;
+.gallery-main{
+height:560px;
 background:#111;
 position:relative;
 overflow:hidden;
 }
 
-.main-image img{
+.gallery-main img{
 width:100%;
 height:100%;
 object-fit:cover;
 display:block;
 }
 
-.image-arrow{
-position:absolute;
-top:50%;
-transform:translateY(-50%);
-width:48px;
-height:48px;
-border:0;
-border-radius:50%;
-background:rgba(255,255,255,.94);
-font-size:30px;
-cursor:pointer;
-z-index:5;
-box-shadow:0 2px 8px rgba(0,0,0,.25);
-}
-
-.image-arrow.left{
-left:18px;
-}
-
-.image-arrow.right{
-right:18px;
-}
-
-.image-arrow:hover{
-background:#fff;
-color:#c40000;
-}
-
-.image-counter{
-position:absolute;
-right:18px;
-bottom:18px;
-background:rgba(0,0,0,.75);
-color:#fff;
-padding:7px 13px;
-border-radius:4px;
-font-size:13px;
-font-weight:bold;
-}
-
-.no-image{
+.gallery-empty{
 height:100%;
 display:flex;
 align-items:center;
@@ -209,82 +176,130 @@ color:#aaa;
 font-size:20px;
 }
 
-.thumbnails{
-height:95px;
+.gallery-arrow{
+position:absolute;
+
+top:50%;
+transform:translateY(-50%);
+
+width:48px;
+height:48px;
+
+border:0;
+border-radius:50%;
+
+background:rgba(255,255,255,.94);
+
+font-size:30px;
+cursor:pointer;
+
+z-index:5;
+}
+
+.gallery-arrow:hover{
+background:#c40000;
+color:#fff;
+}
+
+.gallery-arrow.left{
+left:18px;
+}
+
+.gallery-arrow.right{
+right:18px;
+}
+
+.gallery-count{
+position:absolute;
+right:18px;
+bottom:18px;
+
+background:rgba(0,0,0,.75);
+color:#fff;
+
+padding:8px 13px;
+border-radius:4px;
+
+font-size:14px;
+font-weight:700;
+}
+
+.gallery-thumbs{
 display:flex;
-gap:9px;
+gap:8px;
 padding:10px;
+
 overflow-x:auto;
 background:#fff;
 }
 
-.thumbnail{
-width:105px;
-height:73px;
+.gallery-thumb{
+width:95px;
+height:68px;
+
 object-fit:cover;
+
 border:2px solid transparent;
-border-radius:4px;
+border-radius:3px;
+
 cursor:pointer;
 flex-shrink:0;
 }
 
-.thumbnail:hover{
-border-color:#aaa;
-}
-
-.thumbnail.active{
+.gallery-thumb.active{
 border-color:#c40000;
 }
 
 
 /* =====================================================
-   PROPERTY HEADER
+PROPERTY HEADER
 ===================================================== */
 
-.property-main-card{
+.property-main{
 background:#fff;
 border:1px solid #ddd;
 margin-top:15px;
 border-radius:4px;
 }
 
-.property-header{
-padding:24px 28px;
-border-bottom:1px solid #eee;
+.property-head{
+padding:25px 28px;
 }
 
 .property-title{
-font-size:27px;
+font-size:28px;
 font-weight:800;
-margin-bottom:8px;
+line-height:1.3;
+margin-bottom:9px;
 }
 
 .property-location{
-font-size:15px;
 color:#666;
+font-size:15px;
 }
 
 .property-price{
-font-size:34px;
+font-size:35px;
 font-weight:900;
-color:#c40000;
-margin-top:14px;
+margin-top:17px;
+color:#111;
 }
 
 .property-posted{
 font-size:12px;
 color:#999;
-margin-top:5px;
+margin-top:7px;
 }
 
 
 /* =====================================================
-   QUICK DETAILS
+QUICK INFO
 ===================================================== */
 
-.quick-details{
+.quick-info{
 display:grid;
 grid-template-columns:repeat(4,1fr);
+border-top:1px solid #eee;
 }
 
 .quick-item{
@@ -298,20 +313,20 @@ border-right:0;
 
 .quick-label{
 font-size:11px;
-color:#888;
-text-transform:uppercase;
 font-weight:800;
-margin-bottom:5px;
+color:#999;
+text-transform:uppercase;
+margin-bottom:6px;
 }
 
 .quick-value{
 font-size:16px;
-font-weight:700;
+font-weight:800;
 }
 
 
 /* =====================================================
-   CONTENT
+CONTENT
 ===================================================== */
 
 .content{
@@ -321,20 +336,20 @@ gap:18px;
 margin-top:18px;
 }
 
-.left-column{
+.left{
 min-width:0;
 }
 
-.right-column{
+.right{
 min-width:0;
 }
 
 
 /* =====================================================
-   COMMON SECTION
+SECTION
 ===================================================== */
 
-.section{
+.box{
 background:#fff;
 border:1px solid #ddd;
 border-radius:4px;
@@ -342,17 +357,21 @@ padding:27px;
 margin-bottom:18px;
 }
 
-.section-title{
-font-size:21px;
+.box-title{
+font-size:22px;
 font-weight:800;
-margin-bottom:18px;
+padding-bottom:15px;
+border-bottom:1px solid #eee;
+margin-bottom:20px;
 }
 
 .description{
-font-size:15px;
+font-size:16px;
 line-height:1.8;
 color:#444;
+
 white-space:pre-line;
+
 max-height:145px;
 overflow:hidden;
 }
@@ -362,48 +381,57 @@ max-height:none;
 }
 
 .read-more{
+margin-top:12px;
 border:0;
 background:none;
 color:#c40000;
 font-weight:800;
-margin-top:12px;
 cursor:pointer;
+font-size:14px;
 }
 
 
 /* =====================================================
-   FEATURES
+FEATURES
 ===================================================== */
 
 .features{
 display:grid;
 grid-template-columns:repeat(2,1fr);
-gap:16px;
+gap:17px;
 }
 
 .feature{
 display:flex;
 align-items:center;
 gap:10px;
-font-size:14px;
+
+font-size:15px;
+font-weight:600;
 }
 
-.check{
+.feature-icon{
 width:25px;
 height:25px;
+
 border-radius:50%;
-background:#e9f7ee;
-color:#16884a;
+
+background:#eaf7ef;
+color:#168a4a;
+
 display:flex;
 align-items:center;
 justify-content:center;
+
+font-size:13px;
 font-weight:900;
+
 flex-shrink:0;
 }
 
 
 /* =====================================================
-   PROPERTY DETAILS
+DETAILS
 ===================================================== */
 
 .details{
@@ -421,8 +449,8 @@ border-radius:4px;
 
 .detail-label{
 font-size:11px;
-color:#888;
 font-weight:800;
+color:#999;
 margin-bottom:5px;
 }
 
@@ -433,383 +461,194 @@ font-weight:700;
 
 
 /* =====================================================
-   DEALER CARD
+DEALER
 ===================================================== */
 
 .dealer{
 background:#fff;
 border:1px solid #ddd;
 border-radius:4px;
-padding:24px;
+
+padding:25px;
+
 position:sticky;
 top:85px;
 }
 
-.dealer-title{
+.dealer-heading{
 font-size:21px;
-font-weight:800;
-margin-bottom:18px;
+font-weight:900;
+margin-bottom:20px;
 }
 
 .dealer-name{
-font-size:20px;
+font-size:19px;
 font-weight:800;
-margin-bottom:4px;
+margin-bottom:5px;
 }
 
-.dealer-company{
-color:#c40000;
-font-weight:700;
-font-size:14px;
-margin-bottom:8px;
+.dealer-role{
+font-size:13px;
+color:#777;
+margin-bottom:18px;
 }
 
 .dealer-location{
 font-size:13px;
-color:#777;
+color:#666;
+line-height:1.6;
 margin-bottom:18px;
 }
 
-.dealer-number{
+.dealer-phone{
+font-size:16px;
 font-weight:800;
-font-size:15px;
-margin-bottom:16px;
+margin-bottom:15px;
 }
 
 .dealer-btn{
-display:block;
 width:100%;
+display:block;
+
 padding:14px;
+
 border-radius:4px;
+
 text-align:center;
-font-size:16px;
 font-weight:800;
+
 margin-top:9px;
 }
 
-.dealer-call{
+.call-dealer{
 background:#c40000;
 color:#fff;
 }
 
-.dealer-whatsapp{
-background:#20a858;
+.whatsapp-dealer{
+background:#1fa855;
 color:#fff;
 }
 
-.dealer-message{
-background:#fff;
-border:1px solid #c40000;
-color:#c40000;
+.website-dealer{
+background:#111;
+color:#fff;
 }
 
 
 /* =====================================================
-   SHARE / ACTIONS
+CONTACT NOTE
 ===================================================== */
 
-.action-row{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:9px;
-margin-top:15px;
-}
-
-.action-btn{
-border:1px solid #ddd;
-background:#fff;
-padding:11px;
-border-radius:4px;
-font-weight:700;
-cursor:pointer;
-text-align:center;
-}
-
-.action-btn:hover{
-border-color:#c40000;
-color:#c40000;
-}
-
-
-/* =====================================================
-   LIST PROPERTY
-===================================================== */
-
-.list-property-section{
-margin-top:35px;
-}
-
-.list-property-box{
-background:#fff;
-border:1px solid #ddd;
-border-radius:5px;
-overflow:hidden;
-}
-
-.list-property-header{
-background:#b40000;
-color:#fff;
-padding:25px;
-}
-
-.list-property-header h2{
-font-size:28px;
-margin-bottom:5px;
-}
-
-.list-property-header p{
-color:#ffe8e8;
-font-size:14px;
-}
-
-.form-area{
-padding:28px;
-}
-
-.form-grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:18px;
-}
-
-.form-group{
-display:flex;
-flex-direction:column;
-}
-
-.form-group.full{
-grid-column:1/-1;
-}
-
-.form-group label{
-font-weight:800;
-font-size:14px;
-margin-bottom:7px;
-}
-
-.form-group input,
-.form-group select,
-.form-group textarea{
-width:100%;
-padding:13px;
-border:1px solid #ccc;
-border-radius:4px;
-font-size:15px;
-outline:none;
-background:#fff;
-}
-
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus{
-border-color:#c40000;
-box-shadow:0 0 0 2px rgba(196,0,0,.08);
-}
-
-.form-group textarea{
-min-height:120px;
-resize:vertical;
-}
-
-.file-input{
-border:2px dashed #c40000!important;
-background:#fffafa!important;
-cursor:pointer;
-}
-
-.image-help{
+.contact-note{
 font-size:12px;
 color:#777;
-margin-top:6px;
-}
-
-.image-preview{
-display:grid;
-grid-template-columns:repeat(5,1fr);
-gap:10px;
-margin-top:12px;
-}
-
-.image-preview img{
-width:100%;
-height:100px;
-object-fit:cover;
-border-radius:4px;
-border:1px solid #ddd;
-}
-
-.submit-btn{
-width:100%;
-margin-top:20px;
-padding:16px;
-border:0;
-border-radius:4px;
-background:#c40000;
-color:#fff;
-font-size:17px;
-font-weight:900;
-cursor:pointer;
-}
-
-.submit-btn:hover{
-background:#a90000;
-}
-
-.submit-btn:disabled{
-background:#777;
-cursor:not-allowed;
-}
-
-.status{
 text-align:center;
-font-weight:700;
-margin-top:13px;
+margin-top:14px;
+line-height:1.5;
 }
 
 
 /* =====================================================
-   OTHER AVAILABLE PROPERTIES
-===================================================== */
-
-.other-properties{
-margin-top:35px;
-}
-
-.other-title{
-font-size:26px;
-font-weight:900;
-margin-bottom:18px;
-}
-
-.other-grid{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:18px;
-}
-
-.other-card{
-background:#fff;
-border:1px solid #ddd;
-border-radius:5px;
-overflow:hidden;
-cursor:pointer;
-transition:.2s;
-}
-
-.other-card:hover{
-transform:translateY(-3px);
-box-shadow:0 7px 20px rgba(0,0,0,.12);
-}
-
-.other-image{
-height:190px;
-background:#eee;
-}
-
-.other-image img{
-width:100%;
-height:100%;
-object-fit:cover;
-}
-
-.other-body{
-padding:15px;
-}
-
-.other-body h3{
-font-size:17px;
-margin-bottom:6px;
-}
-
-.other-price{
-font-size:20px;
-font-weight:900;
-color:#c40000;
-margin:7px 0;
-}
-
-.other-location{
-font-size:13px;
-color:#777;
-}
-
-
-/* =====================================================
-   BOTTOM MOBILE BAR
+BOTTOM BAR
 ===================================================== */
 
 .bottom-bar{
 position:fixed;
+
 left:0;
 right:0;
 bottom:0;
-height:76px;
+
+height:78px;
+
 background:#fff;
 border-top:1px solid #ddd;
-box-shadow:0 -3px 15px rgba(0,0,0,.12);
+
 display:flex;
+
 z-index:2000;
+
+box-shadow:0 -3px 15px rgba(0,0,0,.12);
 }
 
 .bottom-btn{
 flex:1;
+
 display:flex;
 align-items:center;
 justify-content:center;
-gap:5px;
+gap:7px;
+
 font-weight:800;
-font-size:14px;
+font-size:15px;
+
 border-right:1px solid #ddd;
-background:#fff;
 }
 
 .bottom-btn:last-child{
 border-right:0;
 }
 
-.bottom-btn.call{
+.bottom-call{
 background:#c40000;
 color:#fff;
 }
 
-.bottom-btn.whatsapp{
+.bottom-whatsapp{
 color:#168c48;
 }
 
 
 /* =====================================================
-   LOADING / ERROR
+LOADING
 ===================================================== */
 
 .loading{
+min-height:500px;
+
 background:#fff;
-min-height:400px;
+border:1px solid #ddd;
+
 display:flex;
 align-items:center;
 justify-content:center;
+
 font-size:20px;
 color:#777;
-}
 
-.error{
-background:#fff;
-padding:70px 20px;
-text-align:center;
-color:#c40000;
-font-size:18px;
-border:1px solid #ddd;
+border-radius:4px;
 }
 
 
 /* =====================================================
-   RESPONSIVE
+ERROR
+===================================================== */
+
+.error{
+background:#fff;
+border:1px solid #ddd;
+
+padding:70px 20px;
+
+text-align:center;
+
+border-radius:4px;
+
+color:#c40000;
+font-size:18px;
+}
+
+
+/* =====================================================
+MOBILE
 ===================================================== */
 
 @media(max-width:850px){
 
 body{
+padding-bottom:74px;
 background:#fff;
-padding-bottom:76px;
 }
 
 .header{
@@ -818,7 +657,11 @@ padding:0 14px;
 }
 
 .logo{
-font-size:19px;
+font-size:18px;
+}
+
+.header-sub{
+font-size:9px;
 }
 
 .header-btn{
@@ -827,7 +670,7 @@ height:37px;
 font-size:18px;
 }
 
-.main{
+.page{
 margin:0;
 padding:0;
 }
@@ -835,62 +678,57 @@ padding:0;
 .breadcrumb{
 padding:12px 15px;
 margin:0;
-background:#f5f5f5;
+background:#f4f5f7;
 }
 
-.gallery-box{
-border-left:0;
-border-right:0;
+.gallery{
+border:0;
 border-radius:0;
 }
 
-.main-image{
-height:320px;
+.gallery-main{
+height:330px;
 }
 
-.thumbnails{
-height:82px;
-padding:8px;
+.gallery-thumbs{
+height:80px;
+padding:7px;
 }
 
-.thumbnail{
-width:88px;
+.gallery-thumb{
+width:85px;
 height:64px;
 }
 
-.property-main-card{
-margin-top:0;
+.property-main{
+margin:0;
 border-left:0;
 border-right:0;
 border-radius:0;
 }
 
-.property-header{
-padding:20px;
+.property-head{
+padding:21px 18px;
 }
 
 .property-title{
-font-size:21px;
-line-height:1.35;
+font-size:22px;
 }
 
 .property-price{
-font-size:29px;
+font-size:30px;
 }
 
-.quick-details{
-grid-template-columns:1fr 1fr;
+.quick-info{
+grid-template-columns:repeat(2,1fr);
 }
 
 .quick-item{
-padding:15px;
+padding:16px;
 border-bottom:1px solid #eee;
 }
 
-.quick-item:nth-child(2){
-border-right:0;
-}
-
+.quick-item:nth-child(2),
 .quick-item:nth-child(4){
 border-right:0;
 }
@@ -900,68 +738,41 @@ display:block;
 margin-top:0;
 }
 
-.section{
+.box{
 border-left:0;
 border-right:0;
 border-radius:0;
-padding:22px 20px;
+padding:22px 18px;
 margin-bottom:8px;
 }
 
+.box-title{
+font-size:20px;
+}
+
 .features{
-grid-template-columns:1fr 1fr;
+grid-template-columns:repeat(2,1fr);
 }
 
 .details{
 grid-template-columns:1fr;
 }
 
-.right-column{
-padding:0 15px;
+.right{
+padding:0 18px;
 }
 
 .dealer{
 position:static;
-margin:8px 0 20px;
+margin:10px 0 20px;
 }
 
-.list-property-section{
-margin-top:25px;
-padding:0 10px;
-}
-
-.list-property-box{
-border-radius:5px;
-}
-
-.form-area{
-padding:20px;
-}
-
-.form-grid{
-grid-template-columns:1fr;
-gap:15px;
-}
-
-.form-group.full{
-grid-column:auto;
-}
-
-.image-preview{
-grid-template-columns:repeat(3,1fr);
-}
-
-.other-properties{
-padding:20px 15px;
-margin-top:15px;
-}
-
-.other-grid{
-grid-template-columns:1fr 1fr;
+.bottom-bar{
+height:74px;
 }
 
 .bottom-btn{
-font-size:20px;
+font-size:21px;
 }
 
 .bottom-btn span{
@@ -971,9 +782,13 @@ display:none;
 }
 
 
-@media(max-width:500px){
+/* =====================================================
+SMALL MOBILE
+===================================================== */
 
-.main-image{
+@media(max-width:390px){
+
+.gallery-main{
 height:285px;
 }
 
@@ -981,48 +796,67 @@ height:285px;
 grid-template-columns:1fr;
 }
 
-.property-header{
-padding:18px 16px;
+.property-head{
+padding:19px 15px;
 }
 
-.section{
-padding-left:16px;
-padding-right:16px;
+.box{
+padding-left:15px;
+padding-right:15px;
 }
 
-.right-column{
-padding:0 10px;
+.right{
+padding:0 15px;
 }
 
-.list-property-section{
-padding:0 8px;
-}
-
-.list-property-header{
-padding:20px;
-}
-
-.list-property-header h2{
-font-size:23px;
-}
-
-.form-area{
-padding:17px;
-}
-
-.image-preview{
-grid-template-columns:1fr 1fr;
-}
-
-.other-grid{
-grid-template-columns:1fr;
-}
-
-.other-image{
-height:210px;
+.property-price{
+font-size:27px;
 }
 
 }
+
+
+/* =====================================================
+DESKTOP HOVER
+===================================================== */
+
+@media(min-width:851px){
+
+.gallery,
+.property-main,
+.box,
+.dealer{
+box-shadow:0 2px 8px rgba(0,0,0,.04);
+}
+
+}
+
+
+/* =====================================================
+PRINT
+===================================================== */
+
+@media print{
+
+.header,
+.bottom-bar,
+.dealer-btn,
+.header-actions{
+display:none!important;
+}
+
+body{
+padding:0;
+background:#fff;
+}
+
+.page{
+max-width:none;
+margin:0;
+}
+
+}
+
 </style>
 
 </head>
@@ -1037,31 +871,49 @@ HEADER
 
 <header class="header">
 
+<div>
+
 <div class="logo">
 ZEESHAN <span>ESTATE AWT</span>
 </div>
 
-<div class="header-right">
+<div class="header-sub">
+AUTHORIZED DEALER • AWT PHASE 2 LAHORE
+</div>
+
+</div>
+
+
+<div class="header-actions">
 
 <button
 class="header-btn"
 onclick="goBack()"
 title="Back">
+
 ←
+
 </button>
+
 
 <button
 class="header-btn"
-onclick="favorite()"
+onclick="favoriteProperty()"
+id="favoriteBtn"
 title="Favorite">
+
 ♡
+
 </button>
+
 
 <button
 class="header-btn"
-onclick="sharePage()"
+onclick="shareProperty()"
 title="Share">
+
 ↗
+
 </button>
 
 </div>
@@ -1069,25 +921,21 @@ title="Share">
 </header>
 
 
+
 <!-- =====================================================
 MAIN
 ===================================================== -->
 
-<main class="main">
+<main class="page">
+
 
 <div class="breadcrumb">
 
 <a href="index.html">
-Home
+Zeeshan Estate AWT
 </a>
 
-<span>›</span>
-
-<a href="index.html#properties">
-Properties
-</a>
-
-<span>›</span>
+&nbsp; / &nbsp;
 
 Property Details
 
@@ -1103,277 +951,16 @@ Loading Property...
 </div>
 
 
-<!-- =====================================================
-LIST YOUR PROPERTY
-===================================================== -->
-
-<section
-class="list-property-section"
-id="list-property">
-
-<div class="list-property-box">
-
-<div class="list-property-header">
-
-<h2>
-List Your Property
-</h2>
-
-<p>
-Apni property Zeeshan Estate AWT par list karein.
-Property details aur pictures submit karein.
-</p>
-
-</div>
-
-
-<div class="form-area">
-
-<form id="property-form">
-
-<div class="form-grid">
-
-
-<div class="form-group">
-
-<label>
-Property Purpose *
-</label>
-
-<select
-id="purpose"
-required>
-
-<option value="">
-Select Purpose
-</option>
-
-<option value="For Sale">
-For Sale
-</option>
-
-<option value="For Rent">
-For Rent
-</option>
-
-</select>
-
-</div>
-
-
-<div class="form-group">
-
-<label>
-Property Type *
-</label>
-
-<select
-id="propertyType"
-required>
-
-<option value="">
-Select Property Type
-</option>
-
-<option value="Residential Plot">
-Residential Plot
-</option>
-
-<option value="Commercial Plot">
-Commercial Plot
-</option>
-
-<option value="House">
-House
-</option>
-
-<option value="Shop">
-Shop
-</option>
-
-<option value="Office">
-Office
-</option>
-
-<option value="Other">
-Other
-</option>
-
-</select>
-
-</div>
-
-
-<div class="form-group">
-
-<label>
-Property Size *
-</label>
-
-<input
-type="text"
-id="propertySize"
-placeholder="Example: 5 Marla / 10 Marla / 1 Kanal"
-required>
-
-</div>
-
-
-<div class="form-group">
-
-<label>
-Expected Price *
-</label>
-
-<input
-type="text"
-id="price"
-placeholder="Example: 80 Lac"
-required>
-
-</div>
-
-
-<div class="form-group full">
-
-<label>
-Property Location *
-</label>
-
-<input
-type="text"
-id="location"
-placeholder="Block / Street / Location"
-required>
-
-</div>
-
-
-<div class="form-group full">
-
-<label>
-Property Pictures
-</label>
-
-<input
-class="file-input"
-type="file"
-id="propertyImages"
-accept="image/jpeg,image/png,image/webp"
-multiple>
-
-<div class="image-help">
-📸 Multiple pictures select kar sakte hain. Maximum 8MB per picture.
-</div>
-
-<div
-id="image-preview"
-class="image-preview">
-</div>
-
-</div>
-
-
-<div class="form-group full">
-
-<label>
-Property Details
-</label>
-
-<textarea
-id="details"
-placeholder="Property ki complete details likhein..."></textarea>
-
-</div>
-
-
-<div class="form-group">
-
-<label>
-Owner Name *
-</label>
-
-<input
-type="text"
-id="ownerName"
-placeholder="Your Name"
-required>
-
-</div>
-
-
-<div class="form-group">
-
-<label>
-Owner Phone *
-</label>
-
-<input
-type="tel"
-id="ownerPhone"
-placeholder="03XX-XXXXXXX"
-required>
-
-</div>
-
-</div>
-
-
-<button
-type="submit"
-id="submit-property-btn"
-class="submit-btn">
-
-📲 SUBMIT PROPERTY
-
-</button>
-
-
-<div
-id="form-status"
-class="status">
-</div>
-
-</form>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- =====================================================
-OTHER PROPERTIES
-===================================================== -->
-
-<section
-class="other-properties">
-
-<h2 class="other-title">
-More Available Properties
-</h2>
-
-<div
-id="other-properties-grid"
-class="other-grid">
-
-<p>
-Loading properties...
-</p>
-
-</div>
-
-</section>
-
 </main>
 
 
+
 <!-- =====================================================
-BOTTOM BAR
+BOTTOM CONTACT BAR
 ===================================================== -->
 
 <div class="bottom-bar">
+
 
 <a
 class="bottom-btn"
@@ -1387,28 +974,29 @@ href="sms:+923020941013">
 
 <a
 class="bottom-btn"
-href="#list-property">
-
-＋
-<span>List Property</span>
-
-</a>
-
-
-<a
-class="bottom-btn call"
 href="tel:+923020941013">
 
-☎
+📞
 <span>Call</span>
 
 </a>
 
 
 <a
-class="bottom-btn whatsapp"
+class="bottom-btn bottom-call"
+href="tel:+923020941013">
+
+☎
+<span>Contact Dealer</span>
+
+</a>
+
+
+<a
+class="bottom-btn bottom-whatsapp"
 href="https://wa.me/923020941013"
-target="_blank">
+target="_blank"
+rel="noopener">
 
 ◉
 <span>WhatsApp</span>
@@ -1416,6 +1004,7 @@ target="_blank">
 </a>
 
 </div>
+
 
 
 <script>
@@ -1429,9 +1018,6 @@ const SUPABASE_URL =
 
 const SUPABASE_KEY =
 "sb_publishable_DjOGYqDCgPNMngD7mwMmcw_BM-UUCg8";
-
-const STORAGE_BUCKET =
-"property-images";
 
 const supabaseClient =
 supabase.createClient(
@@ -1454,6 +1040,17 @@ params.get("id");
 
 
 /* =====================================================
+GLOBAL DATA
+===================================================== */
+
+let images = [];
+
+let imageIndex = 0;
+
+let currentProperty = null;
+
+
+/* =====================================================
 ESCAPE HTML
 ===================================================== */
 
@@ -1471,25 +1068,12 @@ return "";
 return String(value)
 
 .replace(/&/g,"&amp;")
-
 .replace(/</g,"&lt;")
-
 .replace(/>/g,"&gt;")
-
 .replace(/"/g,"&quot;")
-
 .replace(/'/g,"&#039;");
 
 }
-
-
-/* =====================================================
-GALLERY
-===================================================== */
-
-let images = [];
-
-let imageIndex = 0;
 
 
 /* =====================================================
@@ -1498,14 +1082,19 @@ PRICE FORMAT
 
 function priceText(value){
 
-if(!value){
+if(
+value === null ||
+value === undefined ||
+String(value).trim() === ""
+){
 
 return "Price on Call";
 
 }
 
-let text =
+const text =
 String(value).trim();
+
 
 if(
 /PKR|lakh|lac|crore|million|arab/i.test(text)
@@ -1515,10 +1104,12 @@ return text;
 
 }
 
-let number =
+
+const number =
 Number(
 text.replace(/,/g,"")
 );
+
 
 if(
 isNaN(number)
@@ -1528,27 +1119,32 @@ return text;
 
 }
 
+
 if(number >= 10000000){
 
 return "PKR " +
 (
 number / 10000000
-).toFixed(2)
+)
+.toFixed(2)
 .replace(".00","") +
 " Crore";
 
 }
+
 
 if(number >= 100000){
 
 return "PKR " +
 (
 number / 100000
-).toFixed(2)
+)
+.toFixed(2)
 .replace(".00","") +
 " Lakh";
 
 }
+
 
 return "PKR " +
 number.toLocaleString();
@@ -1563,15 +1159,15 @@ POSTED DATE
 function postedDate(value){
 
 if(!value){
-
 return "Recently added";
-
 }
 
 const date =
 new Date(value);
 
-if(isNaN(date.getTime())){
+if(
+isNaN(date.getTime())
+){
 
 return "Recently added";
 
@@ -1587,15 +1183,11 @@ date.getTime()
 );
 
 if(days <= 0){
-
 return "Added today";
-
 }
 
 if(days === 1){
-
 return "Added 1 day ago";
-
 }
 
 if(days < 30){
@@ -1607,7 +1199,14 @@ days +
 }
 
 return "Added on " +
-date.toLocaleDateString();
+date.toLocaleDateString(
+"en-GB",
+{
+day:"2-digit",
+month:"short",
+year:"numeric"
+}
+);
 
 }
 
@@ -1623,30 +1222,17 @@ document.getElementById(
 "propertyContainer"
 );
 
+
 if(!propertyId){
 
-container.className =
-"error";
-
-container.innerHTML = `
-
-❌ Property ID missing.
-
-<br><br>
-
-<a
-href="index.html#properties"
-style="color:#c40000;font-weight:bold">
-
-← Back to Properties
-
-</a>
-
-`;
+showError(
+"Property ID missing."
+);
 
 return;
 
 }
+
 
 try{
 
@@ -1668,23 +1254,27 @@ throw response.error;
 
 }
 
+
 const property =
 response.data;
+
 
 if(!property){
 
 throw new Error(
-"Property not found"
+"Property not found."
 );
 
 }
 
 
+currentProperty =
+property;
+
+
 /* =====================================================
 IMAGES
 ===================================================== */
-
-images = [];
 
 if(
 Array.isArray(
@@ -1697,8 +1287,8 @@ property.image_urls.filter(
 function(url){
 
 return (
-url &&
-typeof url === "string"
+typeof url === "string" &&
+url.trim() !== ""
 );
 
 }
@@ -1717,7 +1307,7 @@ property.property_type ||
 
 const purpose =
 property.purpose ||
-"";
+"Sale";
 
 const size =
 property.property_size ||
@@ -1732,14 +1322,18 @@ property.details ||
 "No description available.";
 
 const price =
-priceText(property.price);
+priceText(
+property.price
+);
 
 const posted =
-postedDate(property.created_at);
+postedDate(
+property.created_at
+);
 
 
 /* =====================================================
-GALLERY HTML
+GALLERY
 ===================================================== */
 
 let galleryHTML = "";
@@ -1749,44 +1343,51 @@ if(images.length > 0){
 
 galleryHTML = `
 
-<div class="gallery-box">
+<div class="gallery">
 
-<div class="main-image">
+<div class="gallery-main">
 
 <img
 id="mainImage"
 src="${esc(images[0])}"
-alt="${esc(type)} for sale in AWT Phase 2"
-loading="eager">
+alt="${esc(type)} for ${esc(purpose)}">
 
 ${
 images.length > 1
 ?
+
 `
 
 <button
-class="image-arrow left"
-onclick="prevImage()">
+class="gallery-arrow left"
+onclick="prevImage()"
+aria-label="Previous image">
+
 ‹
+
 </button>
 
 <button
-class="image-arrow right"
-onclick="nextImage()">
+class="gallery-arrow right"
+onclick="nextImage()"
+aria-label="Next image">
+
 ›
+
 </button>
 
 `
+
 :
+
 ""
 }
 
-<div class="image-counter">
+
+<div class="gallery-count">
 
 📷
-<span id="imageNumber">
-1
-</span>
+<span id="imageNumber">1</span>
 /
 ${images.length}
 
@@ -1798,9 +1399,10 @@ ${images.length}
 ${
 images.length > 1
 ?
+
 `
 
-<div class="thumbnails">
+<div class="gallery-thumbs">
 
 ${images.map(
 function(url,index){
@@ -1808,24 +1410,32 @@ function(url,index){
 return `
 
 <img
-class="thumbnail ${
+
+class="gallery-thumb ${
 index === 0
 ? "active"
 : ""
 }"
+
 src="${esc(url)}"
+
 onclick="showImage(${index})"
-alt="Property Image ${index + 1}"
+
+alt="Property image ${index+1}"
+
 loading="lazy">
 
 `;
 
-}).join("")}
+}
+).join("")}
 
 </div>
 
 `
+
 :
+
 ""
 }
 
@@ -1837,11 +1447,11 @@ loading="lazy">
 
 galleryHTML = `
 
-<div class="gallery-box">
+<div class="gallery">
 
-<div class="main-image">
+<div class="gallery-main">
 
-<div class="no-image">
+<div class="gallery-empty">
 
 📷 No Property Image
 
@@ -1862,63 +1472,69 @@ FEATURES
 
 let features = [];
 
-if(property.property_type){
+[
+property.property_type,
+property.property_size,
+property.purpose,
+"Army Welfare Trust Phase 2",
+"Prime Location",
+"Zeeshan Estate Authorized Dealer"
+]
+.forEach(function(item){
+
+if(
+item &&
+String(item).trim()
+){
+
 features.push(
-property.property_type
+String(item).trim()
 );
+
 }
 
-if(property.property_size){
-features.push(
-property.property_size
-);
-}
-
-if(property.purpose){
-features.push(
-property.purpose
-);
-}
-
-features.push(
-"Army Welfare Trust Phase 2"
-);
-
-features.push(
-"Authorized Dealer"
-);
-
-features.push(
-"Prime Location"
-);
+});
 
 features =
 [...new Set(features)];
 
 
 /* =====================================================
-PAGE
+PAGE TITLE
+===================================================== */
+
+document.title =
+type +
+" " +
+purpose +
+" | Zeeshan Estate AWT";
+
+
+/* =====================================================
+PAGE HTML
 ===================================================== */
 
 container.className = "";
 
 container.innerHTML = `
 
+
 ${galleryHTML}
 
 
-<div class="property-main-card">
 
+<!-- PROPERTY HEADER -->
 
-<div class="property-header">
+<div class="property-main">
+
+<div class="property-head">
 
 <div class="property-title">
 
 ${esc(type)}
 
-${
-purpose
-? " — " + esc(purpose)
+${purpose
+? " for " + esc(purpose)
 : ""
 }
 
@@ -1948,7 +1564,10 @@ ${esc(posted)}
 </div>
 
 
-<div class="quick-details">
+
+<!-- QUICK DETAILS -->
+
+<div class="quick-info">
 
 
 <div class="quick-item">
@@ -1971,7 +1590,7 @@ Purpose
 </div>
 
 <div class="quick-value">
-${esc(purpose || "For Sale")}
+${esc(purpose)}
 </div>
 
 </div>
@@ -1980,7 +1599,7 @@ ${esc(purpose || "For Sale")}
 <div class="quick-item">
 
 <div class="quick-label">
-Area
+Property Size
 </div>
 
 <div class="quick-value">
@@ -2007,16 +1626,21 @@ ${esc(location)}
 </div>
 
 
+
+<!-- CONTENT -->
+
 <div class="content">
 
 
-<div class="left-column">
+<div class="left">
 
 
-<section class="section">
+<!-- DESCRIPTION -->
 
-<h2 class="section-title">
-Description
+<section class="box">
+
+<h2 class="box-title">
+Property Description
 </h2>
 
 <div
@@ -2027,10 +1651,11 @@ ${esc(details)}
 
 </div>
 
+
 <button
 class="read-more"
-id="readMore"
-onclick="toggleDescription()">
+onclick="toggleDescription()"
+id="readMore">
 
 View Full Description
 
@@ -2039,11 +1664,17 @@ View Full Description
 </section>
 
 
-<section class="section">
 
-<h2 class="section-title">
-Features & Amenities
+<!-- FEATURES -->
+
+<section class="box">
+
+<h2 class="box-title">
+
+Features &amp; Amenities
+
 </h2>
+
 
 <div class="features">
 
@@ -2054,7 +1685,7 @@ return `
 
 <div class="feature">
 
-<div class="check">
+<div class="feature-icon">
 ✓
 </div>
 
@@ -2066,18 +1697,25 @@ ${esc(item)}
 
 `;
 
-}).join("")}
+}
+).join("")}
 
 </div>
 
 </section>
 
 
-<section class="section">
 
-<h2 class="section-title">
+<!-- PROPERTY DETAILS -->
+
+<section class="box">
+
+<h2 class="box-title">
+
 Property Details
+
 </h2>
+
 
 <div class="details">
 
@@ -2164,45 +1802,58 @@ CONTACT
 
 </section>
 
-
 </div>
 
 
-<div class="right-column">
 
+<!-- RIGHT DEALER -->
+
+<div class="right">
 
 <div class="dealer">
 
-<div class="dealer-title">
+<div class="dealer-heading">
+
 Contact Dealer
+
 </div>
 
 
 <div class="dealer-name">
+
 Eng. Ahsan Ali
+
 </div>
 
 
-<div class="dealer-company">
-Zeeshan Estate AWT
+<div class="dealer-role">
+
+Authorized Dealer
+
 </div>
 
 
 <div class="dealer-location">
+
+🏢 Zeeshan Estate AWT
+
+<br>
 
 📍 Army Welfare Trust Phase 2, Lahore
 
 </div>
 
 
-<div class="dealer-number">
+<div class="dealer-phone">
+
 📞 0302-0941013
+
 </div>
 
 
 <a
-class="dealer-btn dealer-call"
-href="tel:+923020941013">
+href="tel:+923020941013"
+class="dealer-btn call-dealer">
 
 ☎ Call Dealer
 
@@ -2210,66 +1861,103 @@ href="tel:+923020941013">
 
 
 <a
-class="dealer-btn dealer-whatsapp"
 href="https://wa.me/923020941013"
-target="_blank">
+target="_blank"
+rel="noopener"
+class="dealer-btn whatsapp-dealer">
 
-◉ WhatsApp Dealer
+◉ WhatsApp
 
 </a>
 
 
 <a
-class="dealer-btn dealer-message"
-href="sms:+923020941013">
+href="index.html#properties"
+class="dealer-btn website-dealer">
 
-💬 Send Message
+← More Properties
 
 </a>
 
 
-<div class="action-row">
+<div class="contact-note">
 
-<button
-class="action-btn"
-onclick="favorite()">
-
-♡ Save
-
-</button>
-
-
-<button
-class="action-btn"
-onclick="sharePage()">
-
-↗ Share
-
-</button>
+For booking, price confirmation and
+complete property details, contact
+Zeeshan Estate AWT.
 
 </div>
 
 </div>
 
-
 </div>
+
 
 </div>
 
 `;
 
 
-/* Load other properties */
+/* =====================================================
+RECORD VIEW
+===================================================== */
 
-loadOtherProperties(
-property.id
+recordPropertyView(property.id);
+
+}catch(error){
+
+console.error(
+"PROPERTY LOAD ERROR:",
+error
 );
+
+showError(
+"Property load nahi ho saki."
+);
+
+}
 
 }
 
 
 /* =====================================================
-IMAGE SHOW
+ERROR
+===================================================== */
+
+function showError(message){
+
+const container =
+document.getElementById(
+"propertyContainer"
+);
+
+container.className =
+"error";
+
+container.innerHTML = `
+
+❌ ${esc(message)}
+
+<br><br>
+
+<a
+href="index.html#properties"
+style="
+color:#c40000;
+font-weight:800;
+">
+
+← Back to Properties
+
+</a>
+
+`;
+
+}
+
+
+/* =====================================================
+IMAGE
 ===================================================== */
 
 function showImage(index){
@@ -2278,7 +1966,17 @@ if(!images.length){
 return;
 }
 
-imageIndex = index;
+if(index < 0){
+index = 0;
+}
+
+if(index >= images.length){
+index = images.length - 1;
+}
+
+imageIndex =
+index;
+
 
 const image =
 document.getElementById(
@@ -2286,12 +1984,17 @@ document.getElementById(
 );
 
 if(image){
+
 image.src =
 images[index];
+
 }
 
+
 document
-.querySelectorAll(".thumbnail")
+.querySelectorAll(
+".gallery-thumb"
+)
 .forEach(
 function(item,i){
 
@@ -2338,7 +2041,9 @@ imageIndex = 0;
 
 }
 
-showImage(imageIndex);
+showImage(
+imageIndex
+);
 
 }
 
@@ -2364,7 +2069,9 @@ images.length - 1;
 
 }
 
-showImage(imageIndex);
+showImage(
+imageIndex
+);
 
 }
 
@@ -2385,9 +2092,14 @@ document.getElementById(
 "readMore"
 );
 
-if(!description){
+
+if(!description ||
+!button){
+
 return;
+
 }
+
 
 if(
 description.classList.contains(
@@ -2399,10 +2111,8 @@ description.classList.remove(
 "expanded"
 );
 
-if(button){
 button.textContent =
 "View Full Description";
-}
 
 }else{
 
@@ -2410,10 +2120,8 @@ description.classList.add(
 "expanded"
 );
 
-if(button){
 button.textContent =
 "Hide Description";
-}
 
 }
 
@@ -2424,28 +2132,91 @@ button.textContent =
 FAVORITE
 ===================================================== */
 
-function favorite(){
+function favoriteProperty(){
 
 const button =
-document.querySelector(
-".header-btn:nth-child(2)"
+document.getElementById(
+"favoriteBtn"
 );
 
 if(!button){
 return;
 }
 
+
 if(
-button.innerHTML.trim() === "♡"
+button.textContent.trim() === "♡"
 ){
 
-button.innerHTML = "♥";
-button.style.color = "#c40000";
+button.textContent =
+"♥";
+
+button.style.color =
+"#c40000";
+
+if(propertyId){
+
+localStorage.setItem(
+"favorite_property_" +
+propertyId,
+"1"
+);
+
+}
 
 }else{
 
-button.innerHTML = "♡";
-button.style.color = "#222";
+button.textContent =
+"♡";
+
+button.style.color =
+"#222";
+
+if(propertyId){
+
+localStorage.removeItem(
+"favorite_property_" +
+propertyId
+);
+
+}
+
+}
+
+}
+
+
+/* =====================================================
+LOAD FAVORITE
+===================================================== */
+
+function loadFavorite(){
+
+if(!propertyId){
+return;
+}
+
+const saved =
+localStorage.getItem(
+"favorite_property_" +
+propertyId
+);
+
+const button =
+document.getElementById(
+"favoriteBtn"
+);
+
+if(
+saved === "1" &&
+button
+){
+
+button.textContent =
+"♥";
+
+button.style.color =
+"#c40000";
 
 }
 
@@ -2456,15 +2227,9 @@ button.style.color = "#222";
 SHARE
 ===================================================== */
 
-async function sharePage(){
+async function shareProperty(){
 
-try{
-
-if(
-navigator.share
-){
-
-await navigator.share({
+const shareData = {
 
 title:
 document.title,
@@ -2475,7 +2240,18 @@ text:
 url:
 window.location.href
 
-});
+};
+
+
+try{
+
+if(
+navigator.share
+){
+
+await navigator.share(
+shareData
+);
 
 }else{
 
@@ -2492,7 +2268,8 @@ alert(
 }catch(error){
 
 console.log(
-"Share cancelled."
+"Share cancelled:",
+error
 );
 
 }
@@ -2523,40 +2300,24 @@ window.location.href =
 
 
 /* =====================================================
-UPLOAD IMAGE PREVIEW
+PROPERTY VIEW TRACKING
 ===================================================== */
 
-const imageInput =
-document.getElementById(
-"propertyImages"
-);
+async function recordPropertyView(id){
 
-const imagePreview =
-document.getElementById(
-"image-preview"
-);
+try{
 
-if(imageInput){
-
-imageInput.addEventListener(
-"change",
-function(){
-
-if(!imagePreview){
+if(!id){
 return;
 }
 
-imagePreview.innerHTML = "";
-
-Array.from(
-this.files || []
-)
-.forEach(
-function(file){
+const visitorKey =
+"property_view_" +
+id;
 
 if(
-!file.type.startsWith(
-"image/"
+sessionStorage.getItem(
+visitorKey
 )
 ){
 
@@ -2564,328 +2325,63 @@ return;
 
 }
 
-const reader =
-new FileReader();
-
-reader.onload =
-function(event){
-
-const img =
-document.createElement(
-"img"
+sessionStorage.setItem(
+visitorKey,
+"1"
 );
 
-img.src =
-event.target.result;
 
-imagePreview.appendChild(
-img
+let visitorId =
+localStorage.getItem(
+"zeeshan_estate_visitor_id"
 );
 
-};
 
-reader.readAsDataURL(file);
+if(!visitorId){
 
-});
-
-});
-
-}
-
-
-/* =====================================================
-UPLOAD IMAGES
-===================================================== */
-
-async function uploadPropertyImages(files){
-
-const imageUrls = [];
-
-for(
-const file of Array.from(files)
-){
-
-if(
-!file.type.startsWith(
-"image/"
-)
-){
-
-continue;
-
-}
-
-if(
-file.size >
-8 * 1024 * 1024
-){
-
-throw new Error(
-"Image " +
-file.name +
-" is larger than 8MB."
-);
-
-}
-
-const extension =
-file.name
-.split(".")
-.pop()
-.toLowerCase();
-
-const uniqueName =
+visitorId =
+"v-" +
 Date.now() +
 "-" +
 Math.random()
 .toString(36)
-.substring(2,10) +
-"." +
-extension;
+.substring(2,10);
 
-const filePath =
-"properties/" +
-uniqueName;
-
-
-const uploadResult =
-await supabaseClient
-
-.storage
-
-.from(
-STORAGE_BUCKET
-)
-
-.upload(
-filePath,
-file,
-{
-cacheControl:"3600",
-upsert:false,
-contentType:file.type
-}
-);
-
-
-if(uploadResult.error){
-
-throw uploadResult.error;
-
-}
-
-
-const publicResult =
-supabaseClient
-
-.storage
-
-.from(
-STORAGE_BUCKET
-)
-
-.getPublicUrl(
-filePath
-);
-
-
-if(
-publicResult.data &&
-publicResult.data.publicUrl
-){
-
-imageUrls.push(
-publicResult.data.publicUrl
+localStorage.setItem(
+"zeeshan_estate_visitor_id",
+visitorId
 );
 
 }
-
-}
-
-return imageUrls;
-
-}
-
-
-/* =====================================================
-SUBMIT PROPERTY
-===================================================== */
-
-async function submitProperty(event){
-
-event.preventDefault();
-
-
-const button =
-document.getElementById(
-"submit-property-btn"
-);
-
-const status =
-document.getElementById(
-"form-status"
-);
-
-const form =
-document.getElementById(
-"property-form"
-);
-
-const imageFiles =
-document.getElementById(
-"propertyImages"
-).files;
-
-
-button.disabled = true;
-
-button.innerText =
-"Saving Property...";
-
-status.style.color =
-"#333";
-
-status.innerText =
-"Please wait...";
-
-
-try{
-
-
-const property = {
-
-purpose:
-document.getElementById(
-"purpose"
-).value.trim(),
-
-property_type:
-document.getElementById(
-"propertyType"
-).value.trim(),
-
-property_size:
-document.getElementById(
-"propertySize"
-).value.trim(),
-
-price:
-document.getElementById(
-"price"
-).value.trim(),
-
-location:
-document.getElementById(
-"location"
-).value.trim(),
-
-details:
-document.getElementById(
-"details"
-).value.trim(),
-
-owner_name:
-document.getElementById(
-"ownerName"
-).value.trim(),
-
-owner_phone:
-document.getElementById(
-"ownerPhone"
-).value.trim(),
-
-image_urls:[]
-
-};
-
-
-if(imageFiles.length > 0){
-
-button.innerText =
-"Uploading Pictures...";
-
-property.image_urls =
-await uploadPropertyImages(
-imageFiles
-);
-
-}
-
-
-button.innerText =
-"Saving Property...";
 
 
 const result =
 await supabaseClient
+.from("property_views")
+.insert([{
 
-.from("properties")
+property_id:id,
 
-.insert([
-property
-])
+visitor_id:visitorId
 
-.select()
-.single();
+}]);
 
 
 if(result.error){
 
-throw result.error;
-
-}
-
-
-status.style.color =
-"#168c3b";
-
-status.innerText =
-"✅ Property successfully submitted!";
-
-
-form.reset();
-
-if(imagePreview){
-imagePreview.innerHTML = "";
-}
-
-
-button.disabled = false;
-
-button.innerText =
-"📲 SUBMIT PROPERTY";
-
-
-/* Refresh available properties */
-
-loadOtherProperties(
-result.data?.id || null
+console.log(
+"View tracking skipped:",
+result.error.message
 );
 
+}
 
 }catch(error){
 
-console.error(
-"PROPERTY SAVE ERROR:",
-error
+console.log(
+"View tracking error:",
+error.message
 );
-
-
-status.style.color =
-"#c40000";
-
-status.innerText =
-"❌ Property save nahi ho saki: " +
-(
-error.message ||
-"Unknown error"
-);
-
-
-button.disabled = false;
-
-button.innerText =
-"📲 SUBMIT PROPERTY";
 
 }
 
@@ -2893,281 +2389,120 @@ button.innerText =
 
 
 /* =====================================================
-LOAD OTHER PROPERTIES
+KEYBOARD GALLERY
 ===================================================== */
 
-async function loadOtherProperties(
-currentId
-){
+document.addEventListener(
+"keydown",
+function(event){
 
-const container =
-document.getElementById(
-"other-properties-grid"
-);
-
-if(!container){
+if(!images.length){
 return;
 }
 
-try{
+if(event.key === "ArrowRight"){
 
-const result =
-await supabaseClient
+nextImage();
 
-.from("properties")
+}
 
-.select("*")
+if(event.key === "ArrowLeft"){
 
-.order(
-"created_at",
+prevImage();
+
+}
+
+if(event.key === "Escape"){
+
+goBack();
+
+}
+
+});
+
+
+/* =====================================================
+TOUCH SWIPE GALLERY
+===================================================== */
+
+let touchStartX = 0;
+
+let touchEndX = 0;
+
+
+document.addEventListener(
+"touchstart",
+function(event){
+
+if(
+event.touches.length === 1
+){
+
+touchStartX =
+event.touches[0].clientX;
+
+}
+
+},
 {
-ascending:false
-}
-)
-.limit(12);
+passive:true
+});
 
 
-if(result.error){
+document.addEventListener(
+"touchend",
+function(event){
 
-throw result.error;
+if(
+event.changedTouches.length !== 1
+){
 
-}
-
-
-let properties =
-result.data || [];
-
-
-if(currentId){
-
-properties =
-properties.filter(
-function(item){
-
-return String(item.id) !==
-String(currentId);
-
-}
-);
+return;
 
 }
 
+touchEndX =
+event.changedTouches[0].clientX;
 
-properties =
-properties.slice(0,6);
+const distance =
+touchEndX -
+touchStartX;
 
 
 if(
-properties.length === 0
+Math.abs(distance) < 60
 ){
-
-container.innerHTML = `
-
-<p style="
-color:#777;
-grid-column:1/-1;
-">
-
-No other properties available.
-
-</p>
-
-`;
 
 return;
 
 }
 
 
-container.innerHTML = "";
+if(distance < 0){
 
+nextImage();
 
-properties.forEach(
-function(property){
+}else{
 
-const card =
-document.createElement(
-"article"
-);
-
-card.className =
-"other-card";
-
-
-let image = "";
-
-if(
-Array.isArray(
-property.image_urls
-) &&
-property.image_urls.length > 0
-){
-
-image =
-property.image_urls[0];
+prevImage();
 
 }
 
-
-card.innerHTML = `
-
-<div class="other-image">
-
-${
-image
-?
-`
-
-<img
-src="${esc(image)}"
-alt="${esc(property.property_type || "Property")}"
-loading="lazy">
-
-`
-:
-`
-
-<div style="
-height:100%;
-display:flex;
-align-items:center;
-justify-content:center;
-color:#aaa;
-font-size:16px;
-">
-
-📷 No Image
-
-</div>
-
-`
-}
-
-</div>
-
-
-<div class="other-body">
-
-<h3>
-
-${esc(
-property.property_type ||
-"Property"
-)}
-
-${
-property.purpose
-?
-" — " +
-esc(property.purpose)
-:
-""
-}
-
-</h3>
-
-
-<div class="other-price">
-
-${esc(
-priceText(property.price)
-)}
-
-</div>
-
-
-<p>
-
-📐 ${esc(
-property.property_size ||
-""
-)}
-
-</p>
-
-
-<div class="other-location">
-
-📍 ${esc(
-property.location ||
-"AWT Phase 2, Lahore"
-)}
-
-</div>
-
-</div>
-
-`;
-
-
-card.addEventListener(
-"click",
-function(){
-
-window.location.href =
-"property.html?id=" +
-encodeURIComponent(
-property.id
-);
-
+},
+{
+passive:true
 });
-
-
-container.appendChild(
-card
-);
-
-});
-
-}catch(error){
-
-console.error(
-"OTHER PROPERTIES ERROR:",
-error
-);
-
-container.innerHTML = `
-
-<p style="
-color:#777;
-grid-column:1/-1;
-">
-
-Unable to load other properties.
-
-</p>
-
-`;
-
-}
-
-}
 
 
 /* =====================================================
-FORM EVENT
+START
 ===================================================== */
 
 document.addEventListener(
 "DOMContentLoaded",
 function(){
 
-const form =
-document.getElementById(
-"property-form"
-);
-
-if(form){
-
-form.addEventListener(
-"submit",
-submitProperty
-);
-
-}
-
-
-/* Load property */
+loadFavorite();
 
 loadProperty();
 
