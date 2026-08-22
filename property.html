@@ -1214,257 +1214,602 @@ year:"numeric"
 /* =====================================================
 LOAD PROPERTY
 ===================================================== */
-
 async function loadProperty(){
 
-const container =
-document.getElementById(
-"propertyContainer"
-);
+    const container = document.getElementById("propertyContainer");
+
+    if(!propertyId){
+        showError("Property ID missing.");
+        return;
+    }
+
+    try{
+
+        const idNumber = Number(propertyId);
+
+        if(!Number.isInteger(idNumber)){
+            showError("Invalid Property ID: " + propertyId);
+            return;
+        }
+
+        console.log("Loading property ID:", idNumber);
+
+        const { data, error } = await supabaseClient
+            .from("properties")
+            .select("*")
+            .eq("id", idNumber)
+            .limit(1);
+
+        console.log("Supabase data:", data);
+        console.log("Supabase error:", error);
+
+        if(error){
+            throw error;
+        }
+
+        if(!data || data.length === 0){
+            showError(
+                "Property ID " +
+                idNumber +
+                " nahi mili. Supabase properties table mein ye property available nahi hai."
+            );
+            return;
+        }
+
+        const property = data[0];
+
+        currentProperty = property;
+
+        /* =========================
+           IMAGES
+        ========================= */
+
+        images = [];
+
+        if(Array.isArray(property.image_urls)){
+
+            images = property.image_urls.filter(function(url){
+
+                return (
+                    typeof url === "string" &&
+                    url.trim() !== ""
+                );
+
+            });
+
+        }
+
+        /* =========================
+           DATA
+        ========================= */
+
+        const type =
+            property.property_type || "Property";
+
+        const purpose =
+            property.purpose || "Sale";
+
+        const size =
+            property.property_size || "Not specified";
+
+        const location =
+            property.location ||
+            "Army Welfare Trust Phase 2, Lahore";
+
+        const details =
+            property.details ||
+            "No description available.";
+
+        const price =
+            priceText(property.price);
+
+        const posted =
+            postedDate(property.created_at);
 
 
-if(!propertyId){
+        /* =========================
+           GALLERY
+        ========================= */
 
-showError(
-"Property ID missing."
-);
+        let galleryHTML = "";
 
-return;
+        if(images.length > 0){
+
+            galleryHTML = `
+
+            <div class="gallery">
+
+                <div class="gallery-main">
+
+                    <img
+                        id="mainImage"
+                        src="${esc(images[0])}"
+                        alt="${esc(type)} for ${esc(purpose)}"
+                    >
+
+                    ${
+                        images.length > 1
+                        ?
+                        `
+
+                        <button
+                            class="gallery-arrow left"
+                            onclick="prevImage()"
+                            aria-label="Previous image">
+                            ‹
+                        </button>
+
+                        <button
+                            class="gallery-arrow right"
+                            onclick="nextImage()"
+                            aria-label="Next image">
+                            ›
+                        </button>
+
+                        `
+                        :
+                        ""
+                    }
+
+                    <div class="gallery-count">
+                        📷
+                        <span id="imageNumber">1</span>
+                        /
+                        ${images.length}
+                    </div>
+
+                </div>
+
+                ${
+                    images.length > 1
+                    ?
+                    `
+
+                    <div class="gallery-thumbs">
+
+                        ${images.map(function(url,index){
+
+                            return `
+
+                            <img
+                                class="gallery-thumb ${
+                                    index === 0 ? "active" : ""
+                                }"
+                                src="${esc(url)}"
+                                onclick="showImage(${index})"
+                                alt="Property image ${index + 1}"
+                                loading="lazy"
+                            >
+
+                            `;
+
+                        }).join("")}
+
+                    </div>
+
+                    `
+                    :
+                    ""
+                }
+
+            </div>
+
+            `;
+
+        }else{
+
+            galleryHTML = `
+
+            <div class="gallery">
+
+                <div class="gallery-main">
+
+                    <div class="gallery-empty">
+                        📷 No Property Image
+                    </div>
+
+                </div>
+
+            </div>
+
+            `;
+
+        }
+
+
+        /* =========================
+           FEATURES
+        ========================= */
+
+        let features = [];
+
+        [
+            property.property_type,
+            property.property_size,
+            property.purpose,
+            "Army Welfare Trust Phase 2",
+            "Prime Location",
+            "Zeeshan Estate Authorized Dealer"
+        ].forEach(function(item){
+
+            if(
+                item &&
+                String(item).trim()
+            ){
+
+                features.push(
+                    String(item).trim()
+                );
+
+            }
+
+        });
+
+        features = [...new Set(features)];
+
+
+        /* =========================
+           PAGE TITLE
+        ========================= */
+
+        document.title =
+            type +
+            " " +
+            purpose +
+            " | Zeeshan Estate AWT";
+
+
+        /* =========================
+           DISPLAY PROPERTY
+        ========================= */
+
+        container.className = "";
+
+        container.innerHTML = `
+
+        ${galleryHTML}
+
+        <div class="property-main">
+
+            <div class="property-head">
+
+                <div class="property-title">
+
+                    ${esc(type)}
+
+                    ${
+                        purpose
+                        ? " for " + esc(purpose)
+                        : ""
+                    }
+
+                </div>
+
+                <div class="property-location">
+
+                    📍 ${esc(location)}
+
+                </div>
+
+                <div class="property-price">
+
+                    ${esc(price)}
+
+                </div>
+
+                <div class="property-posted">
+
+                    ${esc(posted)}
+
+                </div>
+
+            </div>
+
+
+            <div class="quick-info">
+
+                <div class="quick-item">
+
+                    <div class="quick-label">
+                        Property Type
+                    </div>
+
+                    <div class="quick-value">
+                        ${esc(type)}
+                    </div>
+
+                </div>
+
+
+                <div class="quick-item">
+
+                    <div class="quick-label">
+                        Purpose
+                    </div>
+
+                    <div class="quick-value">
+                        ${esc(purpose)}
+                    </div>
+
+                </div>
+
+
+                <div class="quick-item">
+
+                    <div class="quick-label">
+                        Property Size
+                    </div>
+
+                    <div class="quick-value">
+                        ${esc(size)}
+                    </div>
+
+                </div>
+
+
+                <div class="quick-item">
+
+                    <div class="quick-label">
+                        Location
+                    </div>
+
+                    <div class="quick-value">
+                        ${esc(location)}
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="content">
+
+            <div class="left">
+
+                <section class="box">
+
+                    <h2 class="box-title">
+                        Property Description
+                    </h2>
+
+                    <div
+                        class="description"
+                        id="description"
+                    >
+                        ${esc(details)}
+                    </div>
+
+                    <button
+                        class="read-more"
+                        onclick="toggleDescription()"
+                        id="readMore"
+                    >
+                        View Full Description
+                    </button>
+
+                </section>
+
+
+                <section class="box">
+
+                    <h2 class="box-title">
+                        Features &amp; Amenities
+                    </h2>
+
+                    <div class="features">
+
+                        ${features.map(function(item){
+
+                            return `
+
+                            <div class="feature">
+
+                                <div class="feature-icon">
+                                    ✓
+                                </div>
+
+                                <div>
+                                    ${esc(item)}
+                                </div>
+
+                            </div>
+
+                            `;
+
+                        }).join("")}
+
+                    </div>
+
+                </section>
+
+
+                <section class="box">
+
+                    <h2 class="box-title">
+                        Property Details
+                    </h2>
+
+                    <div class="details">
+
+                        <div class="detail">
+
+                            <div class="detail-label">
+                                PROPERTY TYPE
+                            </div>
+
+                            <div class="detail-value">
+                                ${esc(type)}
+                            </div>
+
+                        </div>
+
+
+                        <div class="detail">
+
+                            <div class="detail-label">
+                                PURPOSE
+                            </div>
+
+                            <div class="detail-value">
+                                ${esc(purpose)}
+                            </div>
+
+                        </div>
+
+
+                        <div class="detail">
+
+                            <div class="detail-label">
+                                PROPERTY SIZE
+                            </div>
+
+                            <div class="detail-value">
+                                ${esc(size)}
+                            </div>
+
+                        </div>
+
+
+                        <div class="detail">
+
+                            <div class="detail-label">
+                                LOCATION
+                            </div>
+
+                            <div class="detail-value">
+                                ${esc(location)}
+                            </div>
+
+                        </div>
+
+
+                        <div class="detail">
+
+                            <div class="detail-label">
+                                AUTHORIZED DEALER
+                            </div>
+
+                            <div class="detail-value">
+                                Zeeshan Estate AWT
+                            </div>
+
+                        </div>
+
+
+                        <div class="detail">
+
+                            <div class="detail-label">
+                                CONTACT
+                            </div>
+
+                            <div class="detail-value">
+                                0302-0941013
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+            </div>
+
+
+            <div class="right">
+
+                <div class="dealer">
+
+                    <div class="dealer-heading">
+                        Contact Dealer
+                    </div>
+
+                    <div class="dealer-name">
+                        Eng. Ahsan Ali
+                    </div>
+
+                    <div class="dealer-role">
+                        Authorized Dealer
+                    </div>
+
+                    <div class="dealer-location">
+
+                        🏢 Zeeshan Estate AWT
+
+                        <br>
+
+                        📍 Army Welfare Trust Phase 2, Lahore
+
+                    </div>
+
+                    <div class="dealer-phone">
+                        📞 0302-0941013
+                    </div>
+
+                    <a
+                        href="tel:+923020941013"
+                        class="dealer-btn call-dealer"
+                    >
+                        ☎ Call Dealer
+                    </a>
+
+                    <a
+                        href="https://wa.me/923020941013"
+                        target="_blank"
+                        rel="noopener"
+                        class="dealer-btn whatsapp-dealer"
+                    >
+                        ◉ WhatsApp
+                    </a>
+
+                    <a
+                        href="index.html#properties"
+                        class="dealer-btn website-dealer"
+                    >
+                        ← More Properties
+                    </a>
+
+                    <div class="contact-note">
+
+                        For booking, price confirmation and
+                        complete property details, contact
+                        Zeeshan Estate AWT.
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        `;
+
+
+        /* =========================
+           RECORD VIEW
+        ========================= */
+
+        recordPropertyView(
+            property.id
+        );
+
+    }catch(error){
+
+        console.error(
+            "PROPERTY LOAD ERROR:",
+            error
+        );
+
+        showError(
+            "Property load nahi ho saki: " +
+            (error.message || "Unknown error")
+        );
+
+    }
 
 }
-
-
-try{
-
-const response =
-await supabaseClient
-
-.from("properties")
-
-.select("*")
-
-.eq("id",propertyId)
-
-.single();
-
-
-if(response.error){
-
-throw response.error;
-
-}
-
-
-const property =
-response.data;
-
-
-if(!property){
-
-throw new Error(
-"Property not found."
-);
-
-}
-
-
-currentProperty =
-property;
-
-
-/* =====================================================
-IMAGES
-===================================================== */
-
-if(
-Array.isArray(
-property.image_urls
-)
-){
-
-images =
-property.image_urls.filter(
-function(url){
-
-return (
-typeof url === "string" &&
-url.trim() !== ""
-);
-
-}
-);
-
-}
-
-
-/* =====================================================
-DATA
-===================================================== */
-
-const type =
-property.property_type ||
-"Property";
-
-const purpose =
-property.purpose ||
-"Sale";
-
-const size =
-property.property_size ||
-"Not specified";
-
-const location =
-property.location ||
-"Army Welfare Trust Phase 2, Lahore";
-
-const details =
-property.details ||
-"No description available.";
-
-const price =
-priceText(
-property.price
-);
-
-const posted =
-postedDate(
-property.created_at
-);
-
-
-/* =====================================================
-GALLERY
-===================================================== */
-
-let galleryHTML = "";
-
-
-if(images.length > 0){
-
-galleryHTML = `
-
-<div class="gallery">
-
-<div class="gallery-main">
-
-<img
-id="mainImage"
-src="${esc(images[0])}"
-alt="${esc(type)} for ${esc(purpose)}">
-
-${
-images.length > 1
-?
-
-`
-
-<button
-class="gallery-arrow left"
-onclick="prevImage()"
-aria-label="Previous image">
-
-‹
-
-</button>
-
-<button
-class="gallery-arrow right"
-onclick="nextImage()"
-aria-label="Next image">
-
-›
-
-</button>
-
-`
-
-:
-
-""
-}
-
-
-<div class="gallery-count">
-
-📷
-<span id="imageNumber">1</span>
-/
-${images.length}
-
-</div>
-
-</div>
-
-
-${
-images.length > 1
-?
-
-`
-
-<div class="gallery-thumbs">
-
-${images.map(
-function(url,index){
-
-return `
-
-<img
-
-class="gallery-thumb ${
-index === 0
-? "active"
-: ""
-}"
-
-src="${esc(url)}"
-
-onclick="showImage(${index})"
-
-alt="Property image ${index+1}"
-
-loading="lazy">
-
-`;
-
-}
-).join("")}
-
-</div>
-
-`
-
-:
-
-""
-}
-
-</div>
-
-`;
-
-}else{
-
-galleryHTML = `
-
-<div class="gallery">
-
-<div class="gallery-main">
-
-<div class="gallery-empty">
-
-📷 No Property Image
-
-</div>
-
-</div>
-
-</div>
-
-`;
-
-}
-
 
 /* =====================================================
 FEATURES
