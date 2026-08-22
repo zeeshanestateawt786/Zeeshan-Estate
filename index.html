@@ -2650,21 +2650,16 @@ container.innerHTML =
 
 }
 
-
 /* =========================================
-MAP
-PINCH ZOOM + PAN
+SOCIETY MAP
+PINCH ZOOM + PAN + FULLSCREEN
 ========================================= */
 
 const mapContainer =
-document.getElementById(
-"map-container"
-);
+document.getElementById("map-container");
 
 const mapImage =
-document.getElementById(
-"society-map-image"
-);
+document.getElementById("society-map-image");
 
 let mapScale = 1;
 
@@ -2702,8 +2697,7 @@ touches[0].clientY -
 touches[1].clientY;
 
 return Math.sqrt(
-dx * dx +
-dy * dy
+(dx * dx) + (dy * dy)
 );
 
 }
@@ -2731,7 +2725,7 @@ touches[1].clientY) / 2
 
 
 /* =========================================
-APPLY MAP
+APPLY MAP TRANSFORM
 ========================================= */
 
 function applyMapTransform(){
@@ -2742,10 +2736,8 @@ return;
 
 mapImage.style.transform =
 "translate3d(" +
-mapX +
-"px," +
-mapY +
-"px,0) scale(" +
+mapX + "px," +
+mapY + "px,0) scale(" +
 mapScale +
 ")";
 
@@ -2753,12 +2745,13 @@ mapScale +
 
 
 /* =========================================
-BUTTON ZOOM
+BUTTON ZOOM IN / OUT
 ========================================= */
 
 function zoomMap(amount){
 
-mapScale *= amount;
+mapScale =
+mapScale * amount;
 
 if(mapScale < 1){
 mapScale = 1;
@@ -2774,7 +2767,7 @@ applyMapTransform();
 
 
 /* =========================================
-RESET MAP
+RESET
 ========================================= */
 
 function resetMap(){
@@ -2799,18 +2792,12 @@ mapContainer.addEventListener(
 "touchstart",
 function(event){
 
-event.preventDefault();
+if(event.touches.length === 2){
 
-const touches =
-event.touches;
-
-
-/* TWO FINGERS */
-
-if(touches.length === 2){
+/* TWO FINGER PINCH */
 
 pinchStartDistance =
-getTouchDistance(touches);
+getTouchDistance(event.touches);
 
 pinchStartScale =
 mapScale;
@@ -2818,19 +2805,17 @@ mapScale;
 isDragging = false;
 
 }
+else if(event.touches.length === 1){
 
-
-/* ONE FINGER */
-
-else if(touches.length === 1){
+/* ONE FINGER PAN */
 
 isDragging = true;
 
 startX =
-touches[0].clientX;
+event.touches[0].clientX;
 
 startY =
-touches[0].clientY;
+event.touches[0].clientY;
 
 startMapX =
 mapX;
@@ -2854,50 +2839,57 @@ mapContainer.addEventListener(
 "touchmove",
 function(event){
 
-event.preventDefault();
+/*
+Prevent browser page scrolling
+while using map.
+*/
 
-const touches =
-event.touches;
+event.preventDefault();
 
 
 /* =========================================
-PINCH ZOOM
+TWO FINGER PINCH
 ========================================= */
 
-if(touches.length === 2){
+if(event.touches.length === 2){
 
 const currentDistance =
-getTouchDistance(touches);
+getTouchDistance(
+event.touches
+);
 
-if(pinchStartDistance > 0){
+if(
+pinchStartDistance > 0
+){
 
 const ratio =
 currentDistance /
 pinchStartDistance;
 
-const oldScale =
-mapScale;
-
-mapScale =
+let newScale =
 pinchStartScale *
 ratio;
 
 
-/* LIMIT */
+/* LIMIT ZOOM */
 
-if(mapScale < 1){
-mapScale = 1;
+if(newScale < 1){
+newScale = 1;
 }
 
-if(mapScale > 8){
-mapScale = 8;
+if(newScale > 8){
+newScale = 8;
 }
 
 
-/* CENTER ZOOM */
+/* =========================================
+KEEP PINCH CENTER
+========================================= */
 
 const center =
-getTouchCenter(touches);
+getTouchCenter(
+event.touches
+);
 
 const rect =
 mapContainer.getBoundingClientRect();
@@ -2910,19 +2902,26 @@ const centerY =
 center.y -
 rect.top;
 
-const scaleChange =
-mapScale /
-oldScale;
+const scaleRatio =
+newScale /
+mapScale;
 
 mapX =
 centerX -
-(centerX - mapX) *
-scaleChange;
+(
+centerX - mapX
+) *
+scaleRatio;
 
 mapY =
 centerY -
-(centerY - mapY) *
-scaleChange;
+(
+centerY - mapY
+) *
+scaleRatio;
+
+mapScale =
+newScale;
 
 applyMapTransform();
 
@@ -2934,28 +2933,32 @@ return;
 
 
 /* =========================================
-ONE FINGER PAN
+ONE FINGER MOVE
 ========================================= */
 
 if(
-touches.length === 1 &&
+event.touches.length === 1 &&
 isDragging &&
 mapScale > 1
 ){
 
 const currentX =
-touches[0].clientX;
+event.touches[0].clientX;
 
 const currentY =
-touches[0].clientY;
+event.touches[0].clientY;
 
 mapX =
 startMapX +
-(currentX - startX);
+(
+currentX - startX
+);
 
 mapY =
 startMapY +
-(currentY - startY);
+(
+currentY - startY
+);
 
 applyMapTransform();
 
@@ -2980,6 +2983,29 @@ if(event.touches.length === 0){
 isDragging = false;
 
 pinchStartDistance = 0;
+
+}
+
+if(event.touches.length === 1){
+
+/*
+After pinch, allow
+one finger to continue moving.
+*/
+
+isDragging = true;
+
+startX =
+event.touches[0].clientX;
+
+startY =
+event.touches[0].clientY;
+
+startMapX =
+mapX;
+
+startMapY =
+mapY;
 
 }
 
@@ -3015,8 +3041,12 @@ mapX;
 startMapY =
 mapY;
 
+if(mapImage){
+
 mapImage.style.cursor =
 "grabbing";
+
+}
 
 });
 
@@ -3034,11 +3064,15 @@ return;
 
 mapX =
 startMapX +
-(event.clientX - startX);
+(
+event.clientX - startX
+);
 
 mapY =
 startMapY +
-(event.clientY - startY);
+(
+event.clientY - startY
+);
 
 applyMapTransform();
 
@@ -3060,6 +3094,8 @@ mapImage.style.cursor =
 
 });
 
+}
+
 
 /* =========================================
 FULLSCREEN
@@ -3067,31 +3103,57 @@ FULLSCREEN
 
 function toggleMapFullscreen(){
 
-if(!mapContainer){
+const container =
+document.getElementById(
+"map-container"
+);
+
+if(!container){
 return;
 }
 
-if(!document.fullscreenElement){
 
-if(mapContainer.requestFullscreen){
+/* ENTER FULLSCREEN */
 
-mapContainer.requestFullscreen();
-
-}else if(
-mapContainer.webkitRequestFullscreen
+if(
+!document.fullscreenElement &&
+!document.webkitFullscreenElement
 ){
 
-mapContainer.webkitRequestFullscreen();
+if(container.requestFullscreen){
+
+container.requestFullscreen()
+.catch(function(error){
+
+console.log(
+"Fullscreen error:",
+error
+);
+
+});
+
+}
+else if(
+container.webkitRequestFullscreen
+){
+
+container.webkitRequestFullscreen();
 
 }
 
-}else{
+}
+
+
+/* EXIT FULLSCREEN */
+
+else{
 
 if(document.exitFullscreen){
 
 document.exitFullscreen();
 
-}else if(
+}
+else if(
 document.webkitExitFullscreen
 ){
 
@@ -3121,6 +3183,17 @@ applyMapTransform();
 });
 
 
+document.addEventListener(
+"webkitfullscreenchange",
+function(){
+
+setTimeout(function(){
+
+applyMapTransform();
+
+},100);
+
+});
 /* =========================================
 START WEBSITE
 ========================================= */
