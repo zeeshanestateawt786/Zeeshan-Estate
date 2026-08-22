@@ -17,223 +17,1052 @@ content="Property details by Zeeshan Estate AWT, Army Welfare Trust Phase 2 Laho
 
 <style>
 
+/* =========================================================
+   RESET
+========================================================= */
+
 *{
 box-sizing:border-box;
 margin:0;
 padding:0;
 }
 
+html{
+scroll-behavior:smooth;
+}
+
 body{
 font-family:Arial,Helvetica,sans-serif;
-background:#f5f5f5;
-color:#171717;
+background:#f5f7f9;
+color:#222;
 line-height:1.5;
+padding-bottom:78px;
 }
 
-.top{
-background:#b40000;
-color:#fff;
-padding:12px 6%;
-display:flex;
-justify-content:space-between;
-gap:15px;
-flex-wrap:wrap;
-font-weight:700;
+button,
+a{
+-webkit-tap-highlight-color:transparent;
 }
 
-.header{
+button{
+font-family:inherit;
+}
+
+
+/* =========================================================
+   TOP HEADER
+========================================================= */
+
+.top-header{
+
+height:58px;
 background:#fff;
-padding:18px 6%;
+
+display:flex;
+align-items:center;
+justify-content:space-between;
+
+padding:0 18px;
+
+border-bottom:1px solid #e5e5e5;
+
+position:sticky;
+top:0;
+z-index:1000;
+
+}
+
+.brand{
+
+font-size:20px;
+font-weight:900;
+color:#171717;
+
+}
+
+.brand span{
+color:#c40000;
+}
+
+.header-actions{
+
+display:flex;
+align-items:center;
+gap:9px;
+
+}
+
+.header-btn{
+
+width:40px;
+height:40px;
+
+border:none;
+border-radius:50%;
+
+background:#f3f3f3;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+font-size:20px;
+
+cursor:pointer;
+
+}
+
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+.page{
+
+max-width:1150px;
+margin:0 auto;
+
+}
+
+
+/* =========================================================
+   GALLERY
+========================================================= */
+
+.gallery-section{
+
+position:relative;
+background:#111;
+
+width:100%;
+
+overflow:hidden;
+
+}
+
+.gallery{
+
+position:relative;
+
+width:100%;
+
+height:430px;
+
+overflow:hidden;
+
+}
+
+.gallery-track{
+
+height:100%;
+
+display:flex;
+
+transition:transform .3s ease;
+
+}
+
+.gallery-slide{
+
+min-width:100%;
+height:100%;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+background:#111;
+
+}
+
+.gallery-slide img{
+
+width:100%;
+height:100%;
+
+object-fit:cover;
+
+display:block;
+
+}
+
+
+.gallery-arrow{
+
+position:absolute;
+
+top:50%;
+transform:translateY(-50%);
+
+width:44px;
+height:44px;
+
+border:none;
+border-radius:50%;
+
+background:rgba(255,255,255,.92);
+
+color:#222;
+
+font-size:25px;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+cursor:pointer;
+
+z-index:5;
+
+box-shadow:0 2px 8px rgba(0,0,0,.2);
+
+}
+
+.gallery-arrow.left{
+left:15px;
+}
+
+.gallery-arrow.right{
+right:15px;
+}
+
+.gallery-arrow:active{
+transform:translateY(-50%) scale(.95);
+}
+
+
+.image-count{
+
+position:absolute;
+
+right:15px;
+bottom:15px;
+
+background:rgba(0,0,0,.72);
+
+color:#fff;
+
+padding:7px 12px;
+
+border-radius:20px;
+
+font-weight:700;
+font-size:14px;
+
+z-index:6;
+
+}
+
+.dots{
+
+position:absolute;
+
+left:50%;
+bottom:16px;
+
+transform:translateX(-50%);
+
+display:flex;
+gap:6px;
+
+z-index:6;
+
+}
+
+.dot{
+
+width:7px;
+height:7px;
+
+border-radius:50%;
+
+background:rgba(255,255,255,.55);
+
+}
+
+.dot.active{
+background:#fff;
+width:18px;
+border-radius:10px;
+}
+
+
+/* =========================================================
+   PROPERTY SUMMARY
+========================================================= */
+
+.summary{
+
+background:#fff;
+
+padding:25px 30px 22px;
+
+border-bottom:1px solid #e3e3e3;
+
+}
+
+.property-type-row{
+
 display:flex;
 justify-content:space-between;
 align-items:center;
-gap:20px;
-box-shadow:0 2px 10px rgba(0,0,0,.1);
+
+gap:15px;
+
+margin-bottom:7px;
+
 }
 
-.logo{
-font-size:28px;
-font-weight:900;
-}
+.property-type{
 
-.logo span{
-color:#c40000;
-}
-
-.back-btn{
-background:#b40000;
-color:#fff;
-padding:11px 18px;
-border-radius:6px;
-font-weight:800;
-text-decoration:none;
-}
-
-.container{
-max-width:1100px;
-margin:40px auto;
-padding:0 20px;
-}
-
-.property-box{
-background:#fff;
-border-radius:12px;
-overflow:hidden;
-box-shadow:0 5px 25px rgba(0,0,0,.12);
-}
-
-.title{
-background:#c40000;
-color:#fff;
-padding:25px;
-text-align:center;
-}
-
-.title h1{
-font-size:34px;
-margin-bottom:5px;
-}
-
-.title p{
 font-size:18px;
+color:#777;
+font-weight:500;
+
 }
 
-.gallery{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:4px;
-background:#111;
-}
+.posted{
 
-.gallery.single{
-grid-template-columns:1fr;
-}
+font-size:14px;
+color:#999;
+white-space:nowrap;
 
-.gallery img{
-width:100%;
-height:350px;
-object-fit:cover;
-display:block;
-cursor:pointer;
-}
-
-.details{
-padding:30px;
 }
 
 .price{
-font-size:32px;
+
+font-size:36px;
 font-weight:900;
-color:#c40000;
-text-align:center;
-margin-bottom:25px;
+
+color:#111;
+
+margin:5px 0 6px;
+
 }
 
-.info-grid{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:15px;
-}
+.location{
 
-.info{
-background:#f7f7f7;
-padding:18px;
-border-left:5px solid #c40000;
-border-radius:6px;
-}
-
-.info b{
-display:block;
-color:#777;
-font-size:14px;
-margin-bottom:4px;
-}
-
-.description{
-margin-top:25px;
-padding:20px;
-background:#fafafa;
-border-radius:8px;
-}
-
-.description h2{
-color:#b40000;
-margin-bottom:10px;
-}
-
-.contact{
-margin-top:30px;
-background:#110606;
-color:#fff;
-padding:25px;
-border-radius:10px;
-text-align:center;
-}
-
-.contact h2{
-margin-bottom:8px;
-}
-
-.call-btn{
-display:inline-block;
-margin-top:15px;
-background:#c40000;
-color:#fff;
-padding:14px 28px;
-border-radius:6px;
-font-weight:900;
-text-decoration:none;
 font-size:18px;
+color:#777;
+
+margin-bottom:20px;
+
 }
 
-.loading,
-.error{
-text-align:center;
-padding:50px;
-font-size:20px;
+.size-row{
+
+display:flex;
+align-items:center;
+gap:10px;
+
+font-size:18px;
+color:#555;
+
 }
 
-.error{
-color:#c40000;
+.size-icon{
+
+width:32px;
+height:32px;
+
+background:#e7f7ee;
+
+border-radius:7px;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+font-size:18px;
+
 }
 
-.footer{
-margin-top:50px;
-background:#b40000;
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+.section{
+
+background:#fff;
+
+padding:25px 30px;
+
+border-bottom:1px solid #e4e4e4;
+
+}
+
+.section-title{
+
+font-size:24px;
+font-weight:800;
+
+margin-bottom:16px;
+
+}
+
+.short-description{
+
+font-size:18px;
+color:#333;
+
+line-height:1.6;
+
+}
+
+.full-description{
+
+display:none;
+
+margin-top:15px;
+
+font-size:17px;
+
+line-height:1.7;
+
+color:#444;
+
+white-space:pre-line;
+
+}
+
+.full-description.show{
+display:block;
+}
+
+.view-description{
+
+display:inline-block;
+
+margin-top:12px;
+
+color:#1688d4;
+
+font-size:17px;
+
+font-weight:700;
+
+cursor:pointer;
+
+}
+
+
+/* =========================================================
+   FEATURES
+========================================================= */
+
+.features-section{
+
+background:#f3fbff;
+
+padding:28px 30px;
+
+border-bottom:1px solid #e4e4e4;
+
+}
+
+.features-title{
+
+font-size:24px;
+font-weight:800;
+
+margin-bottom:22px;
+
+}
+
+.features-grid{
+
+display:grid;
+
+grid-template-columns:repeat(2,1fr);
+
+gap:18px 45px;
+
+}
+
+.feature{
+
+display:flex;
+align-items:center;
+
+gap:11px;
+
+font-size:17px;
+
+color:#222;
+
+}
+
+.feature-check{
+
+width:21px;
+height:21px;
+
+border-radius:50%;
+
+background:#dff3ff;
+
+color:#1688d4;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+font-size:12px;
+font-weight:900;
+
+flex-shrink:0;
+
+}
+
+
+/* =========================================================
+   PROPERTY DETAILS
+========================================================= */
+
+.details-section{
+
+background:#fff;
+
+padding:28px 30px;
+
+}
+
+.details-grid{
+
+display:grid;
+
+grid-template-columns:repeat(2,1fr);
+
+gap:14px;
+
+}
+
+.detail-box{
+
+background:#f7f7f7;
+
+border-radius:8px;
+
+padding:15px 17px;
+
+border:1px solid #ededed;
+
+}
+
+.detail-label{
+
+font-size:13px;
+
+color:#888;
+
+font-weight:700;
+
+margin-bottom:4px;
+
+}
+
+.detail-value{
+
+font-size:17px;
+
+font-weight:600;
+
+}
+
+
+/* =========================================================
+   CONTACT CARD
+========================================================= */
+
+.contact-card{
+
+margin:25px 30px;
+
+background:#111;
+
 color:#fff;
-text-align:center;
+
+border-radius:10px;
+
 padding:25px;
+
+text-align:center;
+
 }
+
+.contact-card h2{
+
+font-size:22px;
+
+margin-bottom:7px;
+
+}
+
+.contact-card p{
+
+color:#ddd;
+
+}
+
+.contact-number{
+
+font-size:20px;
+
+font-weight:800;
+
+margin-top:8px;
+
+}
+
+
+/* =========================================================
+   FIXED CONTACT BAR
+========================================================= */
+
+.bottom-bar{
+
+position:fixed;
+
+bottom:0;
+left:0;
+right:0;
+
+height:76px;
+
+background:#fff;
+
+border-top:1px solid #ddd;
+
+box-shadow:0 -3px 15px rgba(0,0,0,.12);
+
+display:grid;
+
+grid-template-columns:1fr 1fr 2fr 1fr;
+
+gap:10px;
+
+padding:10px 15px;
+
+z-index:2000;
+
+}
+
+.bottom-btn{
+
+border:none;
+
+border-radius:9px;
+
+background:#eaf7f1;
+
+color:#229b4b;
+
+font-size:23px;
+
+font-weight:700;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+text-decoration:none;
+
+cursor:pointer;
+
+}
+
+.bottom-btn span{
+
+display:none;
+
+}
+
+.bottom-btn.call{
+
+background:#05a94f;
+color:#fff;
+
+font-size:18px;
+
+}
+
+.bottom-btn.whatsapp{
+
+font-size:23px;
+
+}
+
+
+/* =========================================================
+   LOADING
+========================================================= */
+
+.loading{
+
+min-height:350px;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+background:#fff;
+
+font-size:19px;
+font-weight:600;
+
+color:#777;
+
+}
+
+.spinner{
+
+width:35px;
+height:35px;
+
+border:4px solid #ddd;
+border-top-color:#c40000;
+
+border-radius:50%;
+
+animation:spin .8s linear infinite;
+
+margin-right:12px;
+
+}
+
+@keyframes spin{
+
+to{
+transform:rotate(360deg);
+}
+
+}
+
+
+/* =========================================================
+   ERROR
+========================================================= */
+
+.error{
+
+background:#fff;
+
+padding:60px 25px;
+
+text-align:center;
+
+font-size:19px;
+
+color:#c40000;
+
+}
+
+.error a{
+
+display:inline-block;
+
+margin-top:15px;
+
+color:#c40000;
+
+font-weight:800;
+
+text-decoration:none;
+
+}
+
+
+/* =========================================================
+   DESKTOP CARD
+========================================================= */
+
+@media(min-width:901px){
+
+body{
+padding-bottom:0;
+}
+
+.page{
+
+margin-top:25px;
+
+background:#fff;
+
+box-shadow:0 3px 20px rgba(0,0,0,.08);
+
+border-radius:10px;
+
+overflow:hidden;
+
+}
+
+.top-header{
+
+position:relative;
+
+}
+
+.bottom-bar{
+
+position:static;
+
+max-width:1150px;
+
+margin:20px auto;
+
+box-shadow:none;
+
+border:1px solid #ddd;
+
+border-radius:10px;
+
+}
+
+.bottom-btn span{
+
+display:inline;
+
+margin-left:7px;
+
+}
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
 
 @media(max-width:700px){
 
-.header{
-flex-direction:column;
-align-items:flex-start;
+body{
+
+background:#fff;
+
+padding-bottom:75px;
+
 }
 
-.title h1{
-font-size:27px;
+.top-header{
+
+height:56px;
+
+padding:0 14px;
+
+}
+
+.brand{
+
+font-size:18px;
+
+}
+
+.header-btn{
+
+width:38px;
+height:38px;
+
+font-size:19px;
+
+}
+
+.page{
+
+width:100%;
+
 }
 
 .gallery{
-grid-template-columns:1fr;
+
+height:320px;
+
 }
 
-.gallery img{
-height:260px;
+.gallery-arrow{
+
+width:40px;
+height:40px;
+
+font-size:22px;
+
 }
 
-.info-grid{
-grid-template-columns:1fr;
+.summary{
+
+padding:23px 32px 20px;
+
 }
 
-.details{
-padding:20px;
+.property-type{
+
+font-size:17px;
+
+}
+
+.posted{
+
+font-size:13px;
+
 }
 
 .price{
-font-size:26px;
+
+font-size:34px;
+
+}
+
+.location{
+
+font-size:18px;
+
+}
+
+.size-row{
+
+font-size:18px;
+
+}
+
+.section{
+
+padding:25px 32px;
+
+}
+
+.section-title{
+
+font-size:23px;
+
+}
+
+.short-description{
+
+font-size:17px;
+
+}
+
+.features-section{
+
+padding:28px 32px;
+
+}
+
+.features-title{
+
+font-size:23px;
+
+}
+
+.features-grid{
+
+grid-template-columns:1fr 1fr;
+
+gap:17px 20px;
+
+}
+
+.feature{
+
+font-size:16px;
+
+}
+
+.details-section{
+
+padding:25px 32px;
+
+}
+
+.details-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.contact-card{
+
+margin:20px 25px;
+
+}
+
+.bottom-bar{
+
+height:75px;
+
+padding:10px 12px;
+
+gap:9px;
+
+}
+
+.bottom-btn{
+
+font-size:21px;
+
+}
+
+.bottom-btn.call{
+
+font-size:17px;
+
+}
+
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
+
+@media(max-width:380px){
+
+.gallery{
+
+height:285px;
+
+}
+
+.summary{
+
+padding-left:22px;
+padding-right:22px;
+
+}
+
+.section{
+
+padding-left:22px;
+padding-right:22px;
+
+}
+
+.features-section{
+
+padding-left:22px;
+padding-right:22px;
+
+}
+
+.features-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.bottom-bar{
+
+gap:6px;
+
+padding-left:8px;
+padding-right:8px;
+
+}
+
+.bottom-btn.call{
+
+font-size:15px;
+
 }
 
 }
@@ -242,79 +1071,141 @@ font-size:26px;
 
 </head>
 
+
 <body>
 
-<div class="top">
 
-<div>
-📍 Army Welfare Trust Phase 2, Lahore
-</div>
+<!-- ======================================================
+     HEADER
+======================================================= -->
 
-<div>
-📞 0302-0941013
-</div>
+<header class="top-header">
 
-</div>
+<div class="brand">
 
-<header class="header">
-
-<div>
-
-<div class="logo">
-ZEESHAN <span>ESTATE AWT</span>
-</div>
-
-<div style="font-size:12px;font-weight:700;color:#555">
-AUTHORIZED DEALER
-</div>
+ZEESHAN <span>ESTATE</span>
 
 </div>
 
-<a
-href="index.html"
-class="back-btn">
 
-← BACK TO WEBSITE
+<div class="header-actions">
 
-</a>
+<button
+class="header-btn"
+onclick="goBack()"
+title="Back">
+
+←
+
+</button>
+
+
+<button
+class="header-btn"
+onclick="toggleFavorite()"
+id="favoriteBtn"
+title="Favorite">
+
+♡
+
+</button>
+
+
+<button
+class="header-btn"
+onclick="shareProperty()"
+title="Share">
+
+↗
+
+</button>
+
+</div>
 
 </header>
 
-<main class="container">
 
-<div
-id="property-container"
-class="property-box">
+
+<!-- ======================================================
+     PAGE
+======================================================= -->
+
+<main
+class="page"
+id="property-container">
 
 <div class="loading">
+
+<div class="spinner"></div>
+
 Loading Property...
-</div>
 
 </div>
 
 </main>
 
-<footer class="footer">
 
-<b>
-Zeeshan Estate AWT
-</b>
 
-<br>
+<!-- ======================================================
+     FIXED CONTACT BAR
+======================================================= -->
 
-Authorized Dealer — Army Welfare Trust Phase 2, Lahore
+<div class="bottom-bar">
 
-<br>
 
-📞 0302-0941013
+<a
+href="sms:+923020941013"
+class="bottom-btn"
+title="Message">
 
-</footer>
+💬
+
+<span>Message</span>
+
+</a>
+
+
+<a
+href="mailto:"
+class="bottom-btn"
+title="Email">
+
+✉
+
+<span>Email</span>
+
+</a>
+
+
+<a
+href="tel:+923020941013"
+class="bottom-btn call">
+
+☎ Call
+
+</a>
+
+
+<a
+href="https://wa.me/923020941013"
+target="_blank"
+class="bottom-btn whatsapp"
+title="WhatsApp">
+
+◉
+
+</a>
+
+
+</div>
+
+
 
 <script>
 
-/* =========================================
-SUPABASE
-========================================= */
+/* =========================================================
+   SUPABASE
+========================================================= */
 
 const SUPABASE_URL =
 "https://rhzsfjolkxqovhonylti.supabase.co";
@@ -329,29 +1220,36 @@ SUPABASE_KEY
 );
 
 
-/* =========================================
-ESCAPE HTML
-========================================= */
+/* =========================================================
+   ESCAPE HTML
+========================================================= */
 
 function escapeHTML(value){
 
 if(value === null || value === undefined){
+
 return "";
+
 }
 
 return String(value)
+
 .replace(/&/g,"&amp;")
+
 .replace(/</g,"&lt;")
+
 .replace(/>/g,"&gt;")
+
 .replace(/"/g,"&quot;")
+
 .replace(/'/g,"&#039;");
 
 }
 
 
-/* =========================================
-GET PROPERTY ID FROM URL
-========================================= */
+/* =========================================================
+   PROPERTY ID
+========================================================= */
 
 const params =
 new URLSearchParams(
@@ -362,9 +1260,894 @@ const propertyId =
 params.get("id");
 
 
-/* =========================================
-LOAD PROPERTY
-========================================= */
+/* =========================================================
+   GALLERY VARIABLES
+========================================================= */
+
+let currentImage = 0;
+
+let propertyImages = [];
+
+
+
+/* =========================================================
+   DATE FORMAT
+========================================================= */
+
+function getPostedTime(dateValue){
+
+if(!dateValue){
+
+return "Recently added";
+
+}
+
+const date =
+new Date(dateValue);
+
+if(isNaN(date.getTime())){
+
+return "Recently added";
+
+}
+
+const now =
+new Date();
+
+const diff =
+now - date;
+
+const minutes =
+Math.floor(
+diff / 60000
+);
+
+const hours =
+Math.floor(
+minutes / 60
+);
+
+const days =
+Math.floor(
+hours / 24
+);
+
+if(minutes < 60){
+
+return minutes <= 1
+? "Just now"
+: minutes + " minutes ago";
+
+}
+
+if(hours < 24){
+
+return hours + (
+hours === 1
+? " hour ago"
+: " hours ago"
+);
+
+}
+
+if(days < 30){
+
+return days + (
+days === 1
+? " day ago"
+: " days ago"
+);
+
+}
+
+return date.toLocaleDateString();
+
+}
+
+
+/* =========================================================
+   FORMAT PRICE
+========================================================= */
+
+function formatPrice(value){
+
+if(value === null || value === undefined){
+
+return "";
+
+}
+
+const text =
+String(value).trim();
+
+if(!text){
+
+return "";
+
+}
+
+/*
+
+If price already contains:
+PKR / Crore / Lakh etc.
+keep it exactly as entered.
+
+*/
+
+if(
+/PKR|crore|lakh|lac|million/i.test(text)
+){
+
+return text;
+
+}
+
+const number =
+Number(
+text.replace(/,/g,"")
+);
+
+if(!isNaN(number)){
+
+if(number >= 10000000){
+
+return "PKR " +
+(number / 10000000)
+.toFixed(2)
+.replace(/\.00$/,"") +
+" Crore";
+
+}
+
+if(number >= 100000){
+
+return "PKR " +
+(number / 100000)
+.toFixed(2)
+.replace(/\.00$/,"") +
+" Lakh";
+
+}
+
+return "PKR " +
+number.toLocaleString();
+
+}
+
+return text;
+
+}
+
+
+/* =========================================================
+   GET AMENITIES
+========================================================= */
+
+function getAmenities(property){
+
+const amenities = [];
+
+
+/*
+
+These fields will work if they exist
+in your Supabase properties table.
+
+*/
+
+const fields = [
+
+["possession","Possession"],
+
+["water_supply","Water Supply"],
+
+["sewerage","Sewerage"],
+
+["sui_gas","Sui Gas"],
+
+["electricity","Electricity"],
+
+["boundary_wall","Boundary Wall"],
+
+["corner","Corner"],
+
+["park_facing","Park Facing"],
+
+["main_boulevard","Main Boulevard"],
+
+["gated_community","Gated Community"],
+
+["security","Security"],
+
+["near_park","Near Park"],
+
+["near_mosque","Near Mosque"],
+
+["near_school","Near School"],
+
+["near_market","Near Market"],
+
+["developed","Developed"]
+
+];
+
+
+fields.forEach(function(item){
+
+const key =
+item[0];
+
+const label =
+item[1];
+
+if(
+property[key] !== undefined &&
+property[key] !== null &&
+String(property[key]).trim() !== ""
+){
+
+let value =
+property[key];
+
+if(
+typeof value === "boolean"
+){
+
+value =
+value ? "Yes" : "No";
+
+}
+
+amenities.push({
+
+label:label,
+
+value:String(value)
+
+});
+
+}
+
+});
+
+
+/*
+
+If an amenities array/object/json field
+already exists, use it too.
+
+*/
+
+if(
+property.amenities
+){
+
+try{
+
+let extra =
+property.amenities;
+
+if(
+typeof extra === "string"
+){
+
+extra =
+JSON.parse(extra);
+
+}
+
+if(
+Array.isArray(extra)
+){
+
+extra.forEach(function(item){
+
+if(
+typeof item === "string"
+){
+
+amenities.push({
+
+label:item,
+value:"Yes"
+
+});
+
+}
+
+else if(
+item &&
+typeof item === "object"
+){
+
+const label =
+item.label ||
+item.name ||
+item.title;
+
+const value =
+item.value !== undefined
+? item.value
+: "Yes";
+
+if(label){
+
+amenities.push({
+
+label:String(label),
+value:String(value)
+
+});
+
+}
+
+}
+
+});
+
+}
+
+else if(
+extra &&
+typeof extra === "object"
+){
+
+Object.keys(extra)
+.forEach(function(key){
+
+amenities.push({
+
+label:key
+.replace(/_/g," ")
+.replace(/\b\w/g,function(c){
+return c.toUpperCase();
+}),
+
+value:String(
+extra[key]
+)
+
+});
+
+});
+
+}
+
+}catch(error){
+
+console.log(
+"Amenities JSON could not be parsed."
+);
+
+}
+
+}
+
+
+/* Remove duplicate amenities */
+
+const unique = [];
+
+amenities.forEach(function(item){
+
+const exists =
+unique.some(function(existing){
+
+return existing.label.toLowerCase()
+=== item.label.toLowerCase();
+
+});
+
+if(!exists){
+
+unique.push(item);
+
+}
+
+});
+
+
+return unique;
+
+}
+
+
+/* =========================================================
+   BUILD GALLERY
+========================================================= */
+
+function buildGallery(images){
+
+if(!images.length){
+
+return `
+
+<div class="gallery-section">
+
+<div class="gallery"
+style="
+display:flex;
+align-items:center;
+justify-content:center;
+color:#aaa;
+font-size:18px;
+">
+
+📷 No Property Pictures Available
+
+</div>
+
+</div>
+
+`;
+
+}
+
+
+return `
+
+<div class="gallery-section">
+
+<div
+class="gallery"
+id="gallery">
+
+<div
+class="gallery-track"
+id="galleryTrack">
+
+${images.map(function(url,index){
+
+return `
+
+<div class="gallery-slide">
+
+<img
+src="${escapeHTML(url)}"
+alt="Property Image ${index + 1}"
+loading="${index === 0 ? "eager" : "lazy"}"
+decoding="async">
+
+</div>
+
+`;
+
+}).join("")}
+
+</div>
+
+
+${
+images.length > 1
+?
+
+`
+
+<button
+class="gallery-arrow left"
+onclick="previousImage()">
+
+‹
+
+</button>
+
+
+<button
+class="gallery-arrow right"
+onclick="nextImage()">
+
+›
+
+</button>
+
+`
+
+:
+
+""
+
+}
+
+
+<div class="image-count">
+
+▧
+<span id="imageNumber">1</span>/${images.length}
+
+</div>
+
+
+${
+images.length > 1
+?
+
+`
+
+<div
+class="dots">
+
+${images.map(function(_,index){
+
+return `
+
+<div
+class="dot ${index === 0 ? "active" : ""}"
+id="dot-${index}">
+</div>
+
+`;
+
+}).join("")}
+
+</div>
+
+`
+
+:
+
+""
+
+}
+
+</div>
+
+</div>
+
+`;
+
+}
+
+
+/* =========================================================
+   UPDATE GALLERY
+========================================================= */
+
+function updateGallery(){
+
+const track =
+document.getElementById(
+"galleryTrack"
+);
+
+if(!track){
+
+return;
+
+}
+
+track.style.transform =
+"translateX(-" +
+(currentImage * 100) +
+"%)";
+
+
+const number =
+document.getElementById(
+"imageNumber"
+);
+
+if(number){
+
+number.textContent =
+currentImage + 1;
+
+}
+
+
+document
+.querySelectorAll(".dot")
+.forEach(function(dot,index){
+
+dot.classList.toggle(
+"active",
+index === currentImage
+);
+
+});
+
+}
+
+
+/* =========================================================
+   NEXT IMAGE
+========================================================= */
+
+function nextImage(){
+
+if(!propertyImages.length){
+
+return;
+
+}
+
+currentImage++;
+
+if(
+currentImage >= propertyImages.length
+){
+
+currentImage = 0;
+
+}
+
+updateGallery();
+
+}
+
+
+/* =========================================================
+   PREVIOUS IMAGE
+========================================================= */
+
+function previousImage(){
+
+if(!propertyImages.length){
+
+return;
+
+}
+
+currentImage--;
+
+if(currentImage < 0){
+
+currentImage =
+propertyImages.length - 1;
+
+}
+
+updateGallery();
+
+}
+
+
+/* =========================================================
+   SWIPE SUPPORT
+========================================================= */
+
+let touchStartX = 0;
+
+let touchEndX = 0;
+
+
+document.addEventListener(
+"touchstart",
+function(event){
+
+if(
+event.touches &&
+event.touches.length
+){
+
+touchStartX =
+event.touches[0].clientX;
+
+}
+
+},
+{passive:true}
+);
+
+
+document.addEventListener(
+"touchend",
+function(event){
+
+if(
+!propertyImages.length
+){
+
+return;
+
+}
+
+if(
+event.changedTouches &&
+event.changedTouches.length
+){
+
+touchEndX =
+event.changedTouches[0].clientX;
+
+}
+
+const difference =
+touchStartX - touchEndX;
+
+
+if(Math.abs(difference) < 50){
+
+return;
+
+}
+
+if(difference > 0){
+
+nextImage();
+
+}else{
+
+previousImage();
+
+}
+
+},
+{passive:true}
+);
+
+
+/* =========================================================
+   DESCRIPTION TOGGLE
+========================================================= */
+
+function toggleDescription(){
+
+const description =
+document.getElementById(
+"fullDescription"
+);
+
+const button =
+document.getElementById(
+"descriptionButton"
+);
+
+if(!description){
+
+return;
+
+}
+
+if(
+description.classList.contains("show")
+){
+
+description.classList.remove("show");
+
+if(button){
+
+button.textContent =
+"View Full Description";
+
+}
+
+}else{
+
+description.classList.add("show");
+
+if(button){
+
+button.textContent =
+"Hide Full Description";
+
+}
+
+}
+
+}
+
+
+/* =========================================================
+   FAVORITE
+========================================================= */
+
+function toggleFavorite(){
+
+const button =
+document.getElementById(
+"favoriteBtn"
+);
+
+if(!button){
+
+return;
+
+}
+
+if(
+button.textContent.trim() === "♡"
+){
+
+button.textContent =
+"♥";
+
+button.style.color =
+"#c40000";
+
+}else{
+
+button.textContent =
+"♡";
+
+button.style.color =
+"#222";
+
+}
+
+}
+
+
+/* =========================================================
+   SHARE
+========================================================= */
+
+async function shareProperty(){
+
+const shareData = {
+
+title:
+document.title,
+
+text:
+"Property by Zeeshan Estate AWT",
+
+url:
+window.location.href
+
+};
+
+
+try{
+
+if(
+navigator.share
+){
+
+await navigator.share(
+shareData
+);
+
+}else{
+
+await navigator.clipboard.writeText(
+window.location.href
+);
+
+alert(
+"Property link copied."
+);
+
+}
+
+}catch(error){
+
+console.log(
+"Share cancelled."
+);
+
+}
+
+}
+
+
+/* =========================================================
+   BACK
+========================================================= */
+
+function goBack(){
+
+if(
+document.referrer &&
+document.referrer.includes(
+window.location.hostname
+)
+){
+
+history.back();
+
+}else{
+
+window.location.href =
+"index.html";
+
+}
+
+}
+
+
+/* =========================================================
+   LOAD PROPERTY
+========================================================= */
 
 async function loadProperty(){
 
@@ -373,31 +2156,45 @@ document.getElementById(
 "property-container"
 );
 
+
 if(!propertyId){
 
 container.innerHTML = `
+
 <div class="error">
+
 ❌ Property ID not found.
+
 <br><br>
-<a href="index.html"
-style="color:#b40000;font-weight:800">
+
+<a href="index.html">
+
 ← Back to Website
+
 </a>
+
 </div>
+
 `;
 
 return;
 
 }
 
+
 try{
 
 const result =
 await supabaseClient
+
 .from("properties")
+
 .select("*")
+
 .eq("id",propertyId)
+
 .single();
+
 
 if(result.error){
 
@@ -405,8 +2202,10 @@ throw result.error;
 
 }
 
+
 const property =
 result.data;
+
 
 if(!property){
 
@@ -417,200 +2216,506 @@ throw new Error(
 }
 
 
-/* =========================================
-IMAGES
-========================================= */
+/* =====================================================
+   IMAGES
+===================================================== */
 
-let images = [];
+propertyImages = [];
 
-if(Array.isArray(property.image_urls)){
 
-images =
+if(
+Array.isArray(
+property.image_urls
+)
+){
+
+propertyImages =
 property.image_urls.filter(
 function(url){
-return url;
+
+return url &&
+typeof url === "string";
+
 }
 );
 
 }
 
 
-/* =========================================
-GALLERY
-========================================= */
+/* =====================================================
+   BASIC VALUES
+===================================================== */
 
-let galleryHTML = "";
+const propertyType =
+property.property_type ||
+"Property for Sale";
 
-if(images.length > 0){
 
-galleryHTML = `
+const purpose =
+property.purpose ||
+"";
 
-<div class="gallery ${
-images.length === 1 ? "single" : ""
-}">
 
-${images
-.map(function(url){
+const price =
+formatPrice(
+property.price
+);
+
+
+const location =
+property.location ||
+"AWT Phase 2, Lahore";
+
+
+const size =
+property.property_size ||
+"";
+
+
+const details =
+property.details ||
+"Property details are not available.";
+
+
+const posted =
+getPostedTime(
+property.created_at ||
+property.updated_at
+);
+
+
+/* =====================================================
+   AMENITIES
+===================================================== */
+
+const amenities =
+getAmenities(property);
+
+
+/* =====================================================
+   AMENITIES HTML
+===================================================== */
+
+let amenitiesHTML = "";
+
+
+if(amenities.length){
+
+amenitiesHTML = `
+
+<section
+class="features-section">
+
+<h2 class="features-title">
+
+Features &amp; Amenities
+
+</h2>
+
+
+<div class="features-grid">
+
+${amenities.map(function(item){
 
 return `
 
-<img
-src="${escapeHTML(url)}"
-alt="Property - Zeeshan Estate AWT"
-loading="lazy"
-onclick="openImage('${escapeHTML(url)}')">
+<div class="feature">
+
+<div class="feature-check">
+
+✓
+
+</div>
+
+<div>
+
+${escapeHTML(item.label)}:
+
+<b>
+${escapeHTML(item.value)}
+</b>
+
+</div>
+
+</div>
 
 `;
 
-})
-.join("")}
+}).join("")}
 
 </div>
+
+</section>
 
 `;
 
 }else{
 
-galleryHTML = `
+/*
 
-<div style="
-height:300px;
-display:flex;
-align-items:center;
-justify-content:center;
-background:#eee;
-color:#777;
-font-size:20px">
+If no amenity columns exist,
+show common basic features.
 
-📷 No property pictures available
+*/
+
+amenitiesHTML = `
+
+<section
+class="features-section">
+
+<h2 class="features-title">
+
+Features &amp; Amenities
+
+</h2>
+
+
+<div class="features-grid">
+
+<div class="feature">
+
+<div class="feature-check">
+✓
+</div>
+
+<div>
+Army Welfare Trust Phase 2
+</div>
 
 </div>
+
+
+<div class="feature">
+
+<div class="feature-check">
+✓
+</div>
+
+<div>
+Prime Location
+</div>
+
+</div>
+
+
+<div class="feature">
+
+<div class="feature-check">
+✓
+</div>
+
+<div>
+Residential Area
+</div>
+
+</div>
+
+
+<div class="feature">
+
+<div class="feature-check">
+✓
+</div>
+
+<div>
+Zeeshan Estate Authorized Dealer
+</div>
+
+</div>
+
+</div>
+
+</section>
 
 `;
 
 }
 
 
-/* =========================================
-PAGE CONTENT
-========================================= */
+/* =====================================================
+   DETAILS HTML
+===================================================== */
+
+const detailsHTML = `
+
+<section class="details-section">
+
+<h2 class="section-title">
+
+Property Details
+
+</h2>
+
+
+<div class="details-grid">
+
+
+<div class="detail-box">
+
+<div class="detail-label">
+PROPERTY TYPE
+</div>
+
+<div class="detail-value">
+
+${escapeHTML(propertyType)}
+
+</div>
+
+</div>
+
+
+<div class="detail-box">
+
+<div class="detail-label">
+PURPOSE
+</div>
+
+<div class="detail-value">
+
+${escapeHTML(purpose)}
+
+</div>
+
+</div>
+
+
+<div class="detail-box">
+
+<div class="detail-label">
+PROPERTY SIZE
+</div>
+
+<div class="detail-value">
+
+${escapeHTML(size)}
+
+</div>
+
+</div>
+
+
+<div class="detail-box">
+
+<div class="detail-label">
+LOCATION
+</div>
+
+<div class="detail-value">
+
+📍 ${escapeHTML(location)}
+
+</div>
+
+</div>
+
+
+<div class="detail-box">
+
+<div class="detail-label">
+DEALER
+</div>
+
+<div class="detail-value">
+
+Zeeshan Estate AWT
+
+</div>
+
+</div>
+
+
+<div class="detail-box">
+
+<div class="detail-label">
+CONTACT
+</div>
+
+<div class="detail-value">
+
+0302-0941013
+
+</div>
+
+</div>
+
+
+</div>
+
+</section>
+
+`;
+
+
+/* =====================================================
+   PAGE
+===================================================== */
 
 container.innerHTML = `
 
-<div class="title">
 
-<h1>
-${escapeHTML(
-property.property_type
-)}
-</h1>
+${buildGallery(propertyImages)}
 
-<p>
-${escapeHTML(
-property.purpose
-)}
-</p>
+
+<section class="summary">
+
+
+<div class="property-type-row">
+
+
+<div class="property-type">
+
+${escapeHTML(propertyType)}
+
+${purpose
+? " " + escapeHTML(purpose)
+: ""}
 
 </div>
 
-${galleryHTML}
 
-<div class="details">
+<div class="posted">
+
+${escapeHTML(posted)}
+
+</div>
+
+
+</div>
+
 
 <div class="price">
 
-${escapeHTML(
-property.price
-)}
+${escapeHTML(price)}
 
 </div>
 
-<div class="info-grid">
 
-<div class="info">
+<div class="location">
 
-<b>PROPERTY TYPE</b>
-
-${escapeHTML(
-property.property_type
-)}
+📍 ${escapeHTML(location)}
 
 </div>
 
-<div class="info">
 
-<b>PURPOSE</b>
+${
+size
+?
 
-${escapeHTML(
-property.purpose
-)}
+`
 
-</div>
+<div class="size-row">
 
-<div class="info">
+<div class="size-icon">
 
-<b>PROPERTY SIZE</b>
-
-${escapeHTML(
-property.property_size
-)}
+▰
 
 </div>
 
-<div class="info">
+<div>
 
-<b>LOCATION</b>
-
-📍 ${escapeHTML(
-property.location
-)}
+${escapeHTML(size)}
 
 </div>
 
 </div>
 
-<div class="description">
+`
 
-<h2>
-Property Details
+:
+
+""
+
+}
+
+
+</section>
+
+
+
+<section class="section">
+
+
+<h2 class="section-title">
+
+Description
+
 </h2>
 
-<p>
-${escapeHTML(
-property.details ||
-"No additional details provided."
-)}
-</p>
+
+<div class="short-description">
+
+${escapeHTML(details)
+.split("\n")[0]}
 
 </div>
 
-<div class="contact">
+
+<div
+class="full-description"
+id="fullDescription">
+
+${escapeHTML(details)}
+
+</div>
+
+
+<button
+type="button"
+class="view-description"
+id="descriptionButton"
+onclick="toggleDescription()"
+style="
+background:none;
+border:none;
+padding:0;
+">
+
+View Full Description
+
+</button>
+
+
+</section>
+
+
+
+${amenitiesHTML}
+
+
+${detailsHTML}
+
+
+
+<div class="contact-card">
 
 <h2>
+
 Interested in this Property?
+
 </h2>
 
 <p>
+
 For Booking &amp; Details
+
 </p>
 
-<p>
-<b>Eng. Ahsan Ali</b>
-</p>
+<div class="contact-number">
 
-<a
-href="tel:+923020941013"
-class="call-btn">
+Eng. Ahsan Ali
 
-📞 CALL 0302-0941013
+<br>
 
-</a>
+0302-0941013
 
 </div>
 
 </div>
+
 
 `;
+
 
 }catch(error){
 
@@ -618,6 +2723,7 @@ console.error(
 "PROPERTY PAGE ERROR:",
 error
 );
+
 
 container.innerHTML = `
 
@@ -628,16 +2734,16 @@ container.innerHTML = `
 <br><br>
 
 <small>
+
 ${escapeHTML(
 error.message
 )}
+
 </small>
 
 <br><br>
 
-<a
-href="index.html"
-style="color:#b40000;font-weight:800">
+<a href="index.html">
 
 ← Back to Website
 
@@ -652,23 +2758,9 @@ style="color:#b40000;font-weight:800">
 }
 
 
-/* =========================================
-IMAGE VIEW
-========================================= */
-
-function openImage(url){
-
-window.open(
-url,
-"_blank"
-);
-
-}
-
-
-/* =========================================
-START
-========================================= */
+/* =========================================================
+   START
+========================================================= */
 
 document.addEventListener(
 "DOMContentLoaded",
