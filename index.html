@@ -22,6 +22,10 @@ href="https://zeeshanestateawt786.github.io/Zeeshan-Estate/">
 
 <style>
 
+/* =========================================
+GLOBAL
+========================================= */
+
 *{
 box-sizing:border-box;
 margin:0;
@@ -44,6 +48,11 @@ text-decoration:none;
 color:inherit;
 }
 
+
+/* =========================================
+TOP BAR
+========================================= */
+
 .top{
 background:#b40000;
 color:#fff;
@@ -54,6 +63,11 @@ gap:15px;
 flex-wrap:wrap;
 font-weight:700;
 }
+
+
+/* =========================================
+NAVIGATION
+========================================= */
 
 .nav{
 padding:18px 5%;
@@ -114,6 +128,7 @@ font-weight:900;
 .map-link:hover{
 background:#c40000;
 }
+
 
 /* =========================================
 HERO
@@ -230,6 +245,7 @@ font-size:25px;
 margin:5px 0;
 }
 
+
 /* =========================================
 SECTIONS
 ========================================= */
@@ -262,6 +278,7 @@ text-align:center;
 display:block;
 margin-bottom:8px;
 }
+
 
 /* =========================================
 TEAM
@@ -314,6 +331,7 @@ color:#fff;
 border-radius:6px;
 font-weight:800;
 }
+
 
 /* =========================================
 PROPERTIES
@@ -403,6 +421,7 @@ font-size:25px;
 color:#c40000;
 font-weight:900;
 }
+
 
 /* =========================================
 PROPERTY FORM
@@ -520,6 +539,7 @@ margin-top:15px;
 font-weight:700;
 }
 
+
 /* =========================================
 ONLINE PROPERTIES
 ========================================= */
@@ -610,6 +630,7 @@ font-weight:800;
 margin-top:8px;
 }
 
+
 /* =========================================
 SOCIETY MAP
 ========================================= */
@@ -617,6 +638,7 @@ SOCIETY MAP
 .society-map-section{
 background:#110606;
 color:#fff;
+padding-bottom:20px!important;
 }
 
 .map-title{
@@ -667,34 +689,106 @@ font-size:18px;
 padding:9px 13px;
 }
 
+
+/* =========================================
+MAP CONTAINER
+========================================= */
+
 .map-container{
+width:100%;
 max-width:1200px;
-height:auto;
-margin:auto;
-background:#fff;
+height:650px;
+margin:0 auto;
+background:#111;
 border-radius:12px;
-overflow:auto;
+overflow:hidden;
 box-shadow:0 10px 35px rgba(0,0,0,.5);
 position:relative;
-touch-action:pan-x pan-y pinch-zoom;
+
+/* IMPORTANT */
+touch-action:none;
+overscroll-behavior:none;
 }
 
+/* MAP IMAGE */
+
 .map-container img{
+position:absolute;
+left:0;
+top:0;
+
 display:block;
-width:100%;
-max-width:none;
+
+width:auto;
 height:auto;
-transform-origin:top left;
-transition:transform .25s ease;
+
+max-width:none;
+max-height:none;
+
+transform-origin:0 0;
+
 cursor:grab;
 user-select:none;
+-webkit-user-select:none;
 -webkit-user-drag:none;
-touch-action:pan-x pan-y pinch-zoom;
+
+touch-action:none;
+
+will-change:transform;
 }
 
 .map-container img:active{
 cursor:grabbing;
 }
+
+
+/* =========================================
+FULLSCREEN MAP
+========================================= */
+
+.map-container:fullscreen{
+width:100vw!important;
+height:100vh!important;
+max-width:none!important;
+
+margin:0!important;
+padding:0!important;
+
+border-radius:0!important;
+
+background:#111!important;
+
+overflow:hidden!important;
+
+touch-action:none!important;
+}
+
+.map-container:-webkit-full-screen{
+width:100vw!important;
+height:100vh!important;
+max-width:none!important;
+
+margin:0!important;
+padding:0!important;
+
+border-radius:0!important;
+
+background:#111!important;
+
+overflow:hidden!important;
+
+touch-action:none!important;
+}
+
+.map-container:fullscreen img,
+.map-container:-webkit-full-screen img{
+touch-action:none!important;
+}
+
+
+/* =========================================
+MAP HELP
+========================================= */
 
 .map-help{
 text-align:center;
@@ -702,6 +796,7 @@ margin-top:15px;
 color:#ccc;
 font-size:14px;
 }
+
 
 /* =========================================
 WHY US
@@ -718,6 +813,7 @@ text-align:center;
 padding:15px;
 font-weight:700;
 }
+
 
 /* =========================================
 FOOTER
@@ -744,25 +840,6 @@ text-align:center;
 padding:14px;
 }
 
-/* =========================================
-FULLSCREEN MAP
-========================================= */
-
-.map-container:fullscreen{
-width:100vw;
-height:100vh;
-max-width:none;
-border-radius:0;
-background:#111;
-}
-
-.map-container:-webkit-full-screen{
-width:100vw;
-height:100vh;
-max-width:none;
-border-radius:0;
-background:#111;
-}
 
 /* =========================================
 RESPONSIVE
@@ -826,6 +903,7 @@ height:550px;
 
 }
 
+
 @media(max-width:520px){
 
 .features,
@@ -864,36 +942,26 @@ font-size:32px;
 
 .map-container{
 height:500px;
-margin-bottom:0 !important;
-padding-bottom:0 !important;
-}
 
-.map-controls{
-gap:6px;
-}
+margin:0!important;
+padding:0!important;
 
-.map-controls button{
-padding:7px 12px;
-min-width:40px;
+border-radius:8px;
 }
 
 .map-help{
-margin-bottom:0 !important;
+margin-bottom:0!important;
 }
 
 .society-map-section{
-padding-bottom:0 !important;
-margin-bottom:0 !important;
-}
-
-#society-map-image{
-display:block;
-width:100%;
+padding-bottom:10px!important;
+margin-bottom:0!important;
 }
 
 }
 
 </style>
+
 
 <script type="application/ld+json">
 {
@@ -914,7 +982,9 @@ width:100%;
 
 </head>
 
+
 <body>
+
 
 <!-- =========================================
 TOP BAR
@@ -931,6 +1001,7 @@ TOP BAR
 </div>
 
 </div>
+
 
 <!-- =========================================
 NAVIGATION
@@ -983,6 +1054,7 @@ CONTACT US
 </nav>
 
 </header>
+
 
 <!-- =========================================
 HERO
@@ -1067,6 +1139,7 @@ Eng. Ahsan Ali
 
 </section>
 
+
 <!-- =========================================
 ABOUT
 ========================================= -->
@@ -1115,6 +1188,7 @@ Clear dealing &amp; support
 
 </div>
 
+
 <h2 class="team-title">
 OUR TEAM
 </h2>
@@ -1128,6 +1202,7 @@ Loading team members...
 </div>
 
 </section>
+
 
 <!-- =========================================
 PROPERTIES
@@ -1169,6 +1244,7 @@ Location/plot position may affect price.
 
 </article>
 
+
 <article class="card">
 
 <div class="pic plot10">
@@ -1196,6 +1272,7 @@ Location/plot position may affect price.
 </div>
 
 </article>
+
 
 <article class="card">
 
@@ -1227,6 +1304,7 @@ Location/plot position may affect price.
 
 </div>
 
+
 <h2 class="online-title">
 AVAILABLE LISTED PROPERTIES
 </h2>
@@ -1238,6 +1316,7 @@ Loading properties...
 </p>
 
 </div>
+
 
 <!-- =========================================
 LIST PROPERTY
@@ -1256,6 +1335,7 @@ Apni property Zeeshan Estate AWT ke through list karein.
 <form id="property-form">
 
 <div class="form-grid">
+
 
 <div class="form-group">
 
@@ -1280,6 +1360,7 @@ For Rent
 </select>
 
 </div>
+
 
 <div class="form-group">
 
@@ -1321,6 +1402,7 @@ Other
 
 </div>
 
+
 <div class="form-group">
 
 <label>
@@ -1334,6 +1416,7 @@ placeholder="e.g. 5 Marla / 10 Marla / 1 Kanal"
 required>
 
 </div>
+
 
 <div class="form-group">
 
@@ -1349,6 +1432,7 @@ required>
 
 </div>
 
+
 <div class="form-group full">
 
 <label>
@@ -1362,6 +1446,7 @@ placeholder="Block / Street / Location"
 required>
 
 </div>
+
 
 <div class="form-group full">
 
@@ -1385,6 +1470,7 @@ multiple>
 
 </div>
 
+
 <div class="form-group full">
 
 <label>
@@ -1397,6 +1483,7 @@ placeholder="Enter property details">
 </textarea>
 
 </div>
+
 
 <div class="form-group">
 
@@ -1411,6 +1498,7 @@ placeholder="Your Name"
 required>
 
 </div>
+
 
 <div class="form-group">
 
@@ -1428,6 +1516,7 @@ required>
 
 </div>
 
+
 <button
 type="submit"
 id="submit-property-btn"
@@ -1436,6 +1525,7 @@ class="submit-btn">
 📲 SUBMIT PROPERTY
 
 </button>
+
 
 <div id="form-status" class="status">
 </div>
@@ -1446,9 +1536,9 @@ class="submit-btn">
 
 </section>
 
+
 <!-- =========================================
 SOCIETY MAP
-REPLACED LATEST PROPERTIES
 ========================================= -->
 
 <section
@@ -1463,11 +1553,12 @@ id="society-map">
 Army Welfare Trust Phase 2, Lahore
 </p>
 
+
 <div class="map-controls">
 
 <button
 type="button"
-onclick="zoomMap(1.2)"
+onclick="zoomMap(1.25)"
 title="Zoom In">
 ＋
 </button>
@@ -1497,6 +1588,7 @@ title="Full Screen">
 
 </div>
 
+
 <div
 class="map-container"
 id="map-container">
@@ -1509,6 +1601,7 @@ draggable="false">
 
 </div>
 
+
 <p class="map-help">
 
 ＋ Zoom In &nbsp; | &nbsp;
@@ -1518,11 +1611,13 @@ draggable="false">
 
 <br>
 
-📱 Mobile par map ko pinch karke bhi zoom kar sakte hain.
+📱 Mobile par 2 fingers se map zoom karein.
+Zoom ke baad 1 finger se map move karein.
 
 </p>
 
 </section>
+
 
 <!-- =========================================
 WHY US
@@ -1571,6 +1666,7 @@ Investment Potential
 
 </section>
 
+
 <!-- =========================================
 FOOTER
 ========================================= -->
@@ -1595,6 +1691,7 @@ Eng. Ahsan Ali
 
 </div>
 
+
 <div>
 
 <h3>
@@ -1610,6 +1707,7 @@ Authorized Dealer
 </p>
 
 </div>
+
 
 <div>
 
@@ -1629,6 +1727,7 @@ Army Welfare Trust Phase 2, Lahore
 
 </footer>
 
+
 <div class="copyright">
 
 © 2026 Zeeshan Estate AWT.
@@ -1641,6 +1740,7 @@ All Rights Reserved.
 </a>
 
 </div>
+
 
 <script>
 
@@ -2552,34 +2652,123 @@ container.innerHTML =
 
 
 /* =========================================
-SOCIETY MAP ZOOM
+MAP
+PINCH ZOOM + PAN
 ========================================= */
 
-let mapZoom = 1;
+const mapContainer =
+document.getElementById(
+"map-container"
+);
 
-function zoomMap(amount){
-
-mapZoom *= amount;
-
-if(mapZoom < 0.5){
-mapZoom = 0.5;
-}
-
-if(mapZoom > 5){
-mapZoom = 5;
-}
-
-const map =
+const mapImage =
 document.getElementById(
 "society-map-image"
 );
 
-if(map){
+let mapScale = 1;
 
-map.style.transform =
-"scale(" + mapZoom + ")";
+let mapX = 0;
+let mapY = 0;
+
+let isDragging = false;
+
+let startX = 0;
+let startY = 0;
+
+let startMapX = 0;
+let startMapY = 0;
+
+let pinchStartDistance = 0;
+let pinchStartScale = 1;
+
+
+/* =========================================
+TOUCH DISTANCE
+========================================= */
+
+function getTouchDistance(touches){
+
+if(touches.length < 2){
+return 0;
+}
+
+const dx =
+touches[0].clientX -
+touches[1].clientX;
+
+const dy =
+touches[0].clientY -
+touches[1].clientY;
+
+return Math.sqrt(
+dx * dx +
+dy * dy
+);
 
 }
+
+
+/* =========================================
+TOUCH CENTER
+========================================= */
+
+function getTouchCenter(touches){
+
+return {
+
+x:
+(touches[0].clientX +
+touches[1].clientX) / 2,
+
+y:
+(touches[0].clientY +
+touches[1].clientY) / 2
+
+};
+
+}
+
+
+/* =========================================
+APPLY MAP
+========================================= */
+
+function applyMapTransform(){
+
+if(!mapImage){
+return;
+}
+
+mapImage.style.transform =
+"translate3d(" +
+mapX +
+"px," +
+mapY +
+"px,0) scale(" +
+mapScale +
+")";
+
+}
+
+
+/* =========================================
+BUTTON ZOOM
+========================================= */
+
+function zoomMap(amount){
+
+mapScale *= amount;
+
+if(mapScale < 1){
+mapScale = 1;
+}
+
+if(mapScale > 8){
+mapScale = 8;
+}
+
+applyMapTransform();
 
 }
 
@@ -2590,45 +2779,297 @@ RESET MAP
 
 function resetMap(){
 
-mapZoom = 1;
+mapScale = 1;
 
-const map =
-document.getElementById(
-"society-map-image"
-);
+mapX = 0;
+mapY = 0;
 
-const container =
-document.getElementById(
-"map-container"
-);
-
-if(map){
-
-map.style.transform =
-"scale(1)";
-
-}
-
-if(container){
-
-container.scrollTop = 0;
-container.scrollLeft = 0;
-
-}
+applyMapTransform();
 
 }
 
 
 /* =========================================
-FULL SCREEN MAP
+TOUCH START
+========================================= */
+
+if(mapContainer){
+
+mapContainer.addEventListener(
+"touchstart",
+function(event){
+
+event.preventDefault();
+
+const touches =
+event.touches;
+
+
+/* TWO FINGERS */
+
+if(touches.length === 2){
+
+pinchStartDistance =
+getTouchDistance(touches);
+
+pinchStartScale =
+mapScale;
+
+isDragging = false;
+
+}
+
+
+/* ONE FINGER */
+
+else if(touches.length === 1){
+
+isDragging = true;
+
+startX =
+touches[0].clientX;
+
+startY =
+touches[0].clientY;
+
+startMapX =
+mapX;
+
+startMapY =
+mapY;
+
+}
+
+},
+{
+passive:false
+});
+
+
+/* =========================================
+TOUCH MOVE
+========================================= */
+
+mapContainer.addEventListener(
+"touchmove",
+function(event){
+
+event.preventDefault();
+
+const touches =
+event.touches;
+
+
+/* =========================================
+PINCH ZOOM
+========================================= */
+
+if(touches.length === 2){
+
+const currentDistance =
+getTouchDistance(touches);
+
+if(pinchStartDistance > 0){
+
+const ratio =
+currentDistance /
+pinchStartDistance;
+
+const oldScale =
+mapScale;
+
+mapScale =
+pinchStartScale *
+ratio;
+
+
+/* LIMIT */
+
+if(mapScale < 1){
+mapScale = 1;
+}
+
+if(mapScale > 8){
+mapScale = 8;
+}
+
+
+/* CENTER ZOOM */
+
+const center =
+getTouchCenter(touches);
+
+const rect =
+mapContainer.getBoundingClientRect();
+
+const centerX =
+center.x -
+rect.left;
+
+const centerY =
+center.y -
+rect.top;
+
+const scaleChange =
+mapScale /
+oldScale;
+
+mapX =
+centerX -
+(centerX - mapX) *
+scaleChange;
+
+mapY =
+centerY -
+(centerY - mapY) *
+scaleChange;
+
+applyMapTransform();
+
+}
+
+return;
+
+}
+
+
+/* =========================================
+ONE FINGER PAN
+========================================= */
+
+if(
+touches.length === 1 &&
+isDragging &&
+mapScale > 1
+){
+
+const currentX =
+touches[0].clientX;
+
+const currentY =
+touches[0].clientY;
+
+mapX =
+startMapX +
+(currentX - startX);
+
+mapY =
+startMapY +
+(currentY - startY);
+
+applyMapTransform();
+
+}
+
+},
+{
+passive:false
+});
+
+
+/* =========================================
+TOUCH END
+========================================= */
+
+mapContainer.addEventListener(
+"touchend",
+function(event){
+
+if(event.touches.length === 0){
+
+isDragging = false;
+
+pinchStartDistance = 0;
+
+}
+
+},
+{
+passive:false
+});
+
+
+/* =========================================
+MOUSE DRAG
+========================================= */
+
+mapContainer.addEventListener(
+"mousedown",
+function(event){
+
+if(mapScale <= 1){
+return;
+}
+
+isDragging = true;
+
+startX =
+event.clientX;
+
+startY =
+event.clientY;
+
+startMapX =
+mapX;
+
+startMapY =
+mapY;
+
+mapImage.style.cursor =
+"grabbing";
+
+});
+
+
+document.addEventListener(
+"mousemove",
+function(event){
+
+if(
+!isDragging ||
+mapScale <= 1
+){
+return;
+}
+
+mapX =
+startMapX +
+(event.clientX - startX);
+
+mapY =
+startMapY +
+(event.clientY - startY);
+
+applyMapTransform();
+
+});
+
+
+document.addEventListener(
+"mouseup",
+function(){
+
+isDragging = false;
+
+if(mapImage){
+
+mapImage.style.cursor =
+"grab";
+
+}
+
+});
+
+
+/* =========================================
+FULLSCREEN
 ========================================= */
 
 function toggleMapFullscreen(){
 
-const mapContainer =
-document.getElementById(
-"map-container"
-);
+if(!mapContainer){
+return;
+}
 
 if(!document.fullscreenElement){
 
@@ -2636,7 +3077,9 @@ if(mapContainer.requestFullscreen){
 
 mapContainer.requestFullscreen();
 
-}else if(mapContainer.webkitRequestFullscreen){
+}else if(
+mapContainer.webkitRequestFullscreen
+){
 
 mapContainer.webkitRequestFullscreen();
 
@@ -2648,7 +3091,9 @@ if(document.exitFullscreen){
 
 document.exitFullscreen();
 
-}else if(document.webkitExitFullscreen){
+}else if(
+document.webkitExitFullscreen
+){
 
 document.webkitExitFullscreen();
 
@@ -2657,6 +3102,23 @@ document.webkitExitFullscreen();
 }
 
 }
+
+
+/* =========================================
+FULLSCREEN CHANGE
+========================================= */
+
+document.addEventListener(
+"fullscreenchange",
+function(){
+
+setTimeout(function(){
+
+applyMapTransform();
+
+},100);
+
+});
 
 
 /* =========================================
@@ -2686,6 +3148,7 @@ loadProperties();
 loadTeamMembers();
 
 });
+
 
 </script>
 
