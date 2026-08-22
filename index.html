@@ -705,15 +705,18 @@ overflow:hidden;
 box-shadow:0 10px 35px rgba(0,0,0,.5);
 position:relative;
 
-/* IMPORTANT */
 touch-action:none;
 overscroll-behavior:none;
 }
 
-/* MAP IMAGE */
+
+/* =========================================
+MAP IMAGE
+========================================= */
 
 .map-container img{
 position:absolute;
+
 left:0;
 top:0;
 
@@ -728,6 +731,7 @@ max-height:none;
 transform-origin:0 0;
 
 cursor:grab;
+
 user-select:none;
 -webkit-user-select:none;
 -webkit-user-drag:none;
@@ -2650,9 +2654,10 @@ container.innerHTML =
 
 }
 
+
 /* =========================================
 SOCIETY MAP
-PINCH ZOOM + PAN + FULLSCREEN
+FIT MAP + PINCH ZOOM + PAN + FULLSCREEN
 ========================================= */
 
 const mapContainer =
@@ -2661,7 +2666,14 @@ document.getElementById("map-container");
 const mapImage =
 document.getElementById("society-map-image");
 
+
+/* =========================================
+MAP VARIABLES
+========================================= */
+
 let mapScale = 1;
+
+let mapBaseScale = 1;
 
 let mapX = 0;
 let mapY = 0;
@@ -2679,7 +2691,7 @@ let pinchStartScale = 1;
 
 
 /* =========================================
-TOUCH DISTANCE
+GET TOUCH DISTANCE
 ========================================= */
 
 function getTouchDistance(touches){
@@ -2704,7 +2716,7 @@ return Math.sqrt(
 
 
 /* =========================================
-TOUCH CENTER
+GET TOUCH CENTER
 ========================================= */
 
 function getTouchCenter(touches){
@@ -2745,21 +2757,128 @@ mapScale +
 
 
 /* =========================================
-BUTTON ZOOM IN / OUT
+FIT MAP INSIDE BOX
 ========================================= */
 
-function zoomMap(amount){
+function fitMap(){
+
+if(!mapContainer || !mapImage){
+return;
+}
+
+
+/* IMAGE NATURAL SIZE */
+
+const imageWidth =
+mapImage.naturalWidth;
+
+const imageHeight =
+mapImage.naturalHeight;
+
+if(
+!imageWidth ||
+!imageHeight
+){
+
+return;
+
+}
+
+
+/* CONTAINER SIZE */
+
+const containerWidth =
+mapContainer.clientWidth;
+
+const containerHeight =
+mapContainer.clientHeight;
+
+if(
+!containerWidth ||
+!containerHeight
+){
+
+return;
+
+}
+
+
+/* =========================================
+CALCULATE CONTAIN SCALE
+========================================= */
+
+const widthScale =
+containerWidth /
+imageWidth;
+
+const heightScale =
+containerHeight /
+imageHeight;
+
+
+/*
+Smaller scale ensures
+the complete map is visible.
+*/
+
+mapBaseScale =
+Math.min(
+widthScale,
+heightScale
+);
+
+
+/* SAFETY */
+
+if(
+!isFinite(mapBaseScale) ||
+mapBaseScale <= 0
+){
+
+mapBaseScale = 1;
+
+}
+
+
+/* =========================================
+CALCULATE DISPLAY SIZE
+========================================= */
+
+const displayedWidth =
+imageWidth *
+mapBaseScale;
+
+const displayedHeight =
+imageHeight *
+mapBaseScale;
+
+
+/* =========================================
+CENTER MAP
+========================================= */
+
+mapX =
+(
+containerWidth -
+displayedWidth
+) / 2;
+
+mapY =
+(
+containerHeight -
+displayedHeight
+) / 2;
+
+
+/* =========================================
+RESET ZOOM TO FIT
+========================================= */
 
 mapScale =
-mapScale * amount;
+mapBaseScale;
 
-if(mapScale < 1){
-mapScale = 1;
-}
 
-if(mapScale > 8){
-mapScale = 8;
-}
+/* APPLY */
 
 applyMapTransform();
 
@@ -2767,17 +2886,180 @@ applyMapTransform();
 
 
 /* =========================================
-RESET
+MAP IMAGE LOAD
+========================================= */
+
+if(mapImage){
+
+if(mapImage.complete){
+
+setTimeout(
+function(){
+
+fitMap();
+
+},
+50
+);
+
+}
+else{
+
+mapImage.addEventListener(
+"load",
+function(){
+
+fitMap();
+
+});
+
+}
+
+}
+
+
+/* =========================================
+WINDOW RESIZE
+========================================= */
+
+window.addEventListener(
+"resize",
+function(){
+
+if(
+Math.abs(
+mapScale -
+mapBaseScale
+) < 0.01
+){
+
+fitMap();
+
+}
+
+});
+
+
+/* =========================================
+ZOOM BUTTON
+========================================= */
+
+function zoomMap(amount){
+
+if(!mapImage){
+return;
+}
+
+
+/*
+Make sure map is fitted.
+*/
+
+if(
+!mapBaseScale ||
+mapBaseScale <= 0
+){
+
+fitMap();
+
+}
+
+
+/* =========================================
+CONTAINER CENTER
+========================================= */
+
+const rect =
+mapContainer.getBoundingClientRect();
+
+const centerX =
+rect.width / 2;
+
+const centerY =
+rect.height / 2;
+
+
+/* =========================================
+NEW SCALE
+========================================= */
+
+let newScale =
+mapScale *
+amount;
+
+
+/* MINIMUM */
+
+if(
+newScale <
+mapBaseScale
+){
+
+newScale =
+mapBaseScale;
+
+}
+
+
+/* MAXIMUM */
+
+const maxScale =
+mapBaseScale *
+8;
+
+if(
+newScale >
+maxScale
+){
+
+newScale =
+maxScale;
+
+}
+
+
+/* =========================================
+KEEP CENTER
+========================================= */
+
+const scaleRatio =
+newScale /
+mapScale;
+
+mapX =
+centerX -
+(
+centerX -
+mapX
+) *
+scaleRatio;
+
+mapY =
+centerY -
+(
+centerY -
+mapY
+) *
+scaleRatio;
+
+mapScale =
+newScale;
+
+
+/* APPLY */
+
+applyMapTransform();
+
+}
+
+
+/* =========================================
+RESET MAP
 ========================================= */
 
 function resetMap(){
 
-mapScale = 1;
-
-mapX = 0;
-mapY = 0;
-
-applyMapTransform();
+fitMap();
 
 }
 
@@ -2792,24 +3074,34 @@ mapContainer.addEventListener(
 "touchstart",
 function(event){
 
-if(event.touches.length === 2){
+/* TWO FINGERS */
 
-/* TWO FINGER PINCH */
+if(
+event.touches.length === 2
+){
 
 pinchStartDistance =
-getTouchDistance(event.touches);
+getTouchDistance(
+event.touches
+);
 
 pinchStartScale =
 mapScale;
 
-isDragging = false;
+isDragging =
+false;
 
 }
-else if(event.touches.length === 1){
 
-/* ONE FINGER PAN */
 
-isDragging = true;
+/* ONE FINGER */
+
+else if(
+event.touches.length === 1
+){
+
+isDragging =
+true;
 
 startX =
 event.touches[0].clientX;
@@ -2839,11 +3131,6 @@ mapContainer.addEventListener(
 "touchmove",
 function(event){
 
-/*
-Prevent browser page scrolling
-while using map.
-*/
-
 event.preventDefault();
 
 
@@ -2851,7 +3138,9 @@ event.preventDefault();
 TWO FINGER PINCH
 ========================================= */
 
-if(event.touches.length === 2){
+if(
+event.touches.length === 2
+){
 
 const currentDistance =
 getTouchDistance(
@@ -2871,19 +3160,38 @@ pinchStartScale *
 ratio;
 
 
-/* LIMIT ZOOM */
+/* MINIMUM */
 
-if(newScale < 1){
-newScale = 1;
+if(
+newScale <
+mapBaseScale
+){
+
+newScale =
+mapBaseScale;
+
 }
 
-if(newScale > 8){
-newScale = 8;
+
+/* MAXIMUM */
+
+const maxScale =
+mapBaseScale *
+8;
+
+if(
+newScale >
+maxScale
+){
+
+newScale =
+maxScale;
+
 }
 
 
 /* =========================================
-KEEP PINCH CENTER
+PINCH CENTER
 ========================================= */
 
 const center =
@@ -2909,14 +3217,16 @@ mapScale;
 mapX =
 centerX -
 (
-centerX - mapX
+centerX -
+mapX
 ) *
 scaleRatio;
 
 mapY =
 centerY -
 (
-centerY - mapY
+centerY -
+mapY
 ) *
 scaleRatio;
 
@@ -2933,13 +3243,14 @@ return;
 
 
 /* =========================================
-ONE FINGER MOVE
+ONE FINGER PAN
 ========================================= */
 
 if(
 event.touches.length === 1 &&
 isDragging &&
-mapScale > 1
+mapScale >
+mapBaseScale + 0.001
 ){
 
 const currentX =
@@ -2951,13 +3262,15 @@ event.touches[0].clientY;
 mapX =
 startMapX +
 (
-currentX - startX
+currentX -
+startX
 );
 
 mapY =
 startMapY +
 (
-currentY - startY
+currentY -
+startY
 );
 
 applyMapTransform();
@@ -2978,22 +3291,27 @@ mapContainer.addEventListener(
 "touchend",
 function(event){
 
-if(event.touches.length === 0){
+if(
+event.touches.length === 0
+){
 
-isDragging = false;
+isDragging =
+false;
 
-pinchStartDistance = 0;
+pinchStartDistance =
+0;
 
 }
 
-if(event.touches.length === 1){
 
-/*
-After pinch, allow
-one finger to continue moving.
-*/
+/* ONE FINGER REMAINS */
 
-isDragging = true;
+if(
+event.touches.length === 1
+){
+
+isDragging =
+true;
 
 startX =
 event.touches[0].clientX;
@@ -3023,11 +3341,17 @@ mapContainer.addEventListener(
 "mousedown",
 function(event){
 
-if(mapScale <= 1){
+if(
+mapScale <=
+mapBaseScale + 0.001
+){
+
 return;
+
 }
 
-isDragging = true;
+isDragging =
+true;
 
 startX =
 event.clientX;
@@ -3057,21 +3381,26 @@ function(event){
 
 if(
 !isDragging ||
-mapScale <= 1
+mapScale <=
+mapBaseScale + 0.001
 ){
+
 return;
+
 }
 
 mapX =
 startMapX +
 (
-event.clientX - startX
+event.clientX -
+startX
 );
 
 mapY =
 startMapY +
 (
-event.clientY - startY
+event.clientY -
+startY
 );
 
 applyMapTransform();
@@ -3083,7 +3412,8 @@ document.addEventListener(
 "mouseup",
 function(){
 
-isDragging = false;
+isDragging =
+false;
 
 if(mapImage){
 
@@ -3120,10 +3450,26 @@ if(
 !document.webkitFullscreenElement
 ){
 
-if(container.requestFullscreen){
+if(
+container.requestFullscreen
+){
 
 container.requestFullscreen()
-.catch(function(error){
+.then(
+function(){
+
+setTimeout(
+function(){
+
+fitMap();
+
+},
+200
+);
+
+})
+.catch(
+function(error){
 
 console.log(
 "Fullscreen error:",
@@ -3133,11 +3479,21 @@ error
 });
 
 }
+
 else if(
 container.webkitRequestFullscreen
 ){
 
 container.webkitRequestFullscreen();
+
+setTimeout(
+function(){
+
+fitMap();
+
+},
+300
+);
 
 }
 
@@ -3148,11 +3504,14 @@ container.webkitRequestFullscreen();
 
 else{
 
-if(document.exitFullscreen){
+if(
+document.exitFullscreen
+){
 
 document.exitFullscreen();
 
 }
+
 else if(
 document.webkitExitFullscreen
 ){
@@ -3174,11 +3533,14 @@ document.addEventListener(
 "fullscreenchange",
 function(){
 
-setTimeout(function(){
+setTimeout(
+function(){
 
-applyMapTransform();
+fitMap();
 
-},100);
+},
+250
+);
 
 });
 
@@ -3187,13 +3549,18 @@ document.addEventListener(
 "webkitfullscreenchange",
 function(){
 
-setTimeout(function(){
+setTimeout(
+function(){
 
-applyMapTransform();
+fitMap();
 
-},100);
+},
+250
+);
 
 });
+
+
 /* =========================================
 START WEBSITE
 ========================================= */
@@ -3220,8 +3587,22 @@ loadProperties();
 
 loadTeamMembers();
 
-});
 
+/*
+Final map fit after
+complete page layout.
+*/
+
+setTimeout(
+function(){
+
+fitMap();
+
+},
+300
+);
+
+});
 
 </script>
 
