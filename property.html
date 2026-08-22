@@ -11,10 +11,7 @@ content="width=device-width, initial-scale=1.0">
 <title>Property Details | Zeeshan Estate AWT</title>
 
 <meta name="description"
-content="Property details, property for sale and purchase, and list your property with Zeeshan Estate AWT, Authorized Dealer, Army Welfare Trust Phase 2 Lahore.">
-
-<meta name="theme-color"
-content="#c40000">
+content="Property details, price and location by Zeeshan Estate AWT, Authorized Dealer, Army Welfare Trust Phase 2 Lahore.">
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
@@ -46,10 +43,7 @@ text-decoration:none;
 color:inherit;
 }
 
-button,
-input,
-select,
-textarea{
+button{
 font-family:inherit;
 }
 
@@ -105,6 +99,7 @@ height:42px;
 
 border:1px solid #ddd;
 background:#fff;
+
 border-radius:5px;
 
 display:flex;
@@ -113,6 +108,8 @@ justify-content:center;
 
 font-size:20px;
 cursor:pointer;
+
+transition:.2s;
 }
 
 .header-btn:hover{
@@ -202,6 +199,8 @@ font-size:30px;
 cursor:pointer;
 
 z-index:5;
+
+transition:.2s;
 }
 
 .gallery-arrow:hover{
@@ -224,9 +223,11 @@ right:18px;
 bottom:18px;
 
 background:rgba(0,0,0,.75);
+
 color:#fff;
 
 padding:8px 13px;
+
 border-radius:4px;
 
 font-size:14px;
@@ -235,11 +236,13 @@ font-weight:700;
 
 .gallery-thumbs{
 display:flex;
+
 gap:8px;
 
 padding:10px;
 
 overflow-x:auto;
+
 background:#fff;
 }
 
@@ -250,9 +253,11 @@ height:68px;
 object-fit:cover;
 
 border:2px solid transparent;
+
 border-radius:3px;
 
 cursor:pointer;
+
 flex-shrink:0;
 }
 
@@ -262,11 +267,12 @@ border-color:#c40000;
 
 
 /* =====================================================
-PROPERTY MAIN
+PROPERTY HEADER
 ===================================================== */
 
 .property-main{
 background:#fff;
+
 border:1px solid #ddd;
 
 margin-top:15px;
@@ -280,18 +286,23 @@ padding:25px 28px;
 
 .property-title{
 font-size:28px;
+
 font-weight:800;
+
 line-height:1.3;
+
 margin-bottom:9px;
 }
 
 .property-location{
 color:#666;
+
 font-size:15px;
 }
 
 .property-price{
 font-size:35px;
+
 font-weight:900;
 
 margin-top:17px;
@@ -301,7 +312,9 @@ color:#111;
 
 .property-posted{
 font-size:12px;
+
 color:#999;
+
 margin-top:7px;
 }
 
@@ -312,6 +325,7 @@ QUICK INFO
 
 .quick-info{
 display:grid;
+
 grid-template-columns:repeat(4,1fr);
 
 border-top:1px solid #eee;
@@ -319,6 +333,7 @@ border-top:1px solid #eee;
 
 .quick-item{
 padding:18px 22px;
+
 border-right:1px solid #eee;
 }
 
@@ -328,7 +343,9 @@ border-right:0;
 
 .quick-label{
 font-size:11px;
+
 font-weight:800;
+
 color:#999;
 
 text-transform:uppercase;
@@ -338,6 +355,7 @@ margin-bottom:6px;
 
 .quick-value{
 font-size:16px;
+
 font-weight:800;
 }
 
@@ -356,7 +374,10 @@ gap:18px;
 margin-top:18px;
 }
 
-.left,
+.left{
+min-width:0;
+}
+
 .right{
 min-width:0;
 }
@@ -370,6 +391,7 @@ BOX
 background:#fff;
 
 border:1px solid #ddd;
+
 border-radius:4px;
 
 padding:27px;
@@ -379,6 +401,7 @@ margin-bottom:18px;
 
 .box-title{
 font-size:22px;
+
 font-weight:800;
 
 padding-bottom:15px;
@@ -390,6 +413,7 @@ margin-bottom:20px;
 
 .description{
 font-size:16px;
+
 line-height:1.8;
 
 color:#444;
@@ -409,6 +433,7 @@ max-height:none;
 margin-top:12px;
 
 border:0;
+
 background:none;
 
 color:#c40000;
@@ -441,6 +466,7 @@ align-items:center;
 gap:10px;
 
 font-size:15px;
+
 font-weight:600;
 }
 
@@ -451,14 +477,17 @@ height:25px;
 border-radius:50%;
 
 background:#eaf7ef;
+
 color:#168a4a;
 
 display:flex;
 
 align-items:center;
+
 justify-content:center;
 
 font-size:13px;
+
 font-weight:900;
 
 flex-shrink:0;
@@ -501,8 +530,6 @@ margin-bottom:5px;
 font-size:15px;
 
 font-weight:700;
-
-word-break:break-word;
 }
 
 
@@ -584,240 +611,21 @@ margin-top:9px;
 
 .call-dealer{
 background:#c40000;
+
 color:#fff;
 }
 
 .whatsapp-dealer{
 background:#1fa855;
+
 color:#fff;
 }
 
 .website-dealer{
 background:#111;
-color:#fff;
-}
-
-
-/* =====================================================
-LIST YOUR PROPERTY
-===================================================== */
-
-.list-property-box{
-background:#fff;
-
-border:1px solid #ddd;
-
-border-radius:4px;
-
-padding:27px;
-
-margin-top:18px;
-}
-
-.list-property-title{
-font-size:26px;
-
-font-weight:900;
-
-margin-bottom:8px;
-}
-
-.list-property-subtitle{
-font-size:14px;
-
-color:#777;
-
-line-height:1.6;
-
-margin-bottom:22px;
-}
-
-.property-form{
-display:grid;
-
-grid-template-columns:repeat(2,1fr);
-
-gap:16px;
-}
-
-.form-group{
-display:flex;
-
-flex-direction:column;
-}
-
-.form-group.full{
-grid-column:1/-1;
-}
-
-.form-label{
-font-size:13px;
-
-font-weight:800;
-
-margin-bottom:7px;
-
-color:#333;
-}
-
-.form-control{
-width:100%;
-
-padding:13px 14px;
-
-border:1px solid #ccc;
-
-border-radius:4px;
-
-font-size:14px;
-
-background:#fff;
-
-outline:none;
-}
-
-.form-control:focus{
-border-color:#c40000;
-
-box-shadow:0 0 0 2px rgba(196,0,0,.08);
-}
-
-textarea.form-control{
-min-height:130px;
-
-resize:vertical;
-}
-
-.submit-property{
-grid-column:1/-1;
-
-border:0;
-
-background:#c40000;
 
 color:#fff;
-
-padding:15px;
-
-border-radius:4px;
-
-font-size:16px;
-
-font-weight:900;
-
-cursor:pointer;
 }
-
-.submit-property:hover{
-background:#a90000;
-}
-
-.submit-property:disabled{
-opacity:.65;
-
-cursor:not-allowed;
-}
-
-.form-message{
-grid-column:1/-1;
-
-display:none;
-
-padding:13px;
-
-border-radius:4px;
-
-font-size:14px;
-
-font-weight:700;
-}
-
-.form-success{
-display:block;
-
-background:#eaf7ef;
-
-color:#168a4a;
-
-border:1px solid #bce8cd;
-}
-
-.form-error{
-display:block;
-
-background:#fff0f0;
-
-color:#c40000;
-
-border:1px solid #f0b8b8;
-}
-
-.image-preview{
-grid-column:1/-1;
-
-display:flex;
-
-gap:10px;
-
-flex-wrap:wrap;
-}
-
-.preview-item{
-position:relative;
-
-width:110px;
-
-height:85px;
-
-border-radius:4px;
-
-overflow:hidden;
-
-border:1px solid #ddd;
-
-background:#f5f5f5;
-}
-
-.preview-item img{
-width:100%;
-
-height:100%;
-
-object-fit:cover;
-}
-
-.preview-number{
-position:absolute;
-
-left:5px;
-
-top:5px;
-
-background:rgba(0,0,0,.7);
-
-color:#fff;
-
-font-size:11px;
-
-padding:3px 6px;
-
-border-radius:3px;
-}
-
-.form-note{
-font-size:11px;
-
-color:#888;
-
-margin-top:5px;
-
-line-height:1.5;
-}
-
-
-/* =====================================================
-CONTACT NOTE
-===================================================== */
 
 .contact-note{
 font-size:12px;
@@ -944,11 +752,8 @@ DESKTOP
 .gallery,
 .property-main,
 .box,
-.dealer,
-.list-property-box{
-
+.dealer{
 box-shadow:0 2px 8px rgba(0,0,0,.04);
-
 }
 
 }
@@ -1101,42 +906,6 @@ position:static;
 margin:10px 0 20px;
 }
 
-.list-property-box{
-border-left:0;
-
-border-right:0;
-
-border-radius:0;
-
-margin-top:8px;
-
-padding:22px 18px;
-}
-
-.list-property-title{
-font-size:23px;
-}
-
-.property-form{
-grid-template-columns:1fr;
-}
-
-.form-group.full{
-grid-column:auto;
-}
-
-.submit-property{
-grid-column:auto;
-}
-
-.form-message{
-grid-column:auto;
-}
-
-.image-preview{
-grid-column:auto;
-}
-
 .bottom-bar{
 height:74px;
 }
@@ -1180,12 +949,6 @@ padding-right:15px;
 padding:0 15px;
 }
 
-.list-property-box{
-padding-left:15px;
-
-padding-right:15px;
-}
-
 .property-price{
 font-size:27px;
 }
@@ -1202,8 +965,7 @@ PRINT
 .header,
 .bottom-bar,
 .dealer-btn,
-.header-actions,
-.list-property-box{
+.header-actions{
 display:none!important;
 }
 
@@ -1253,7 +1015,8 @@ AUTHORIZED DEALER • AWT PHASE 2 LAHORE
 <button
 class="header-btn"
 onclick="goBack()"
-title="Back">
+title="Back"
+aria-label="Back">
 
 ←
 
@@ -1264,7 +1027,8 @@ title="Back">
 class="header-btn"
 onclick="favoriteProperty()"
 id="favoriteBtn"
-title="Favorite">
+title="Favorite"
+aria-label="Favorite">
 
 ♡
 
@@ -1274,7 +1038,8 @@ title="Favorite">
 <button
 class="header-btn"
 onclick="shareProperty()"
-title="Share">
+title="Share"
+aria-label="Share">
 
 ↗
 
@@ -1283,6 +1048,7 @@ title="Share">
 </div>
 
 </header>
+
 
 
 <!-- =====================================================
@@ -1314,272 +1080,12 @@ Loading Property...
 </div>
 
 
-<!-- =====================================================
-LIST YOUR PROPERTY
-===================================================== -->
-
-<section
-class="list-property-box"
-id="listProperty">
-
-<div class="list-property-title">
-List Your Property
-</div>
-
-<div class="list-property-subtitle">
-
-Apni property Zeeshan Estate AWT par list karwain.
-Property details aur pictures submit karein.
-Hamari team aapse contact karegi.
-
-</div>
-
-
-<form
-id="propertyForm"
-class="property-form">
-
-
-<!-- PURPOSE -->
-
-<div class="form-group">
-
-<label class="form-label">
-Property Purpose
-</label>
-
-<select
-class="form-control"
-id="formPurpose"
-required>
-
-<option value="">
-Select Purpose
-</option>
-
-<option value="Sale">
-Sale
-</option>
-
-<option value="Rent">
-Rent
-</option>
-
-</select>
-
-</div>
-
-
-<!-- TYPE -->
-
-<div class="form-group">
-
-<label class="form-label">
-Property Type
-</label>
-
-<select
-class="form-control"
-id="formType"
-required>
-
-<option value="">
-Select Property Type
-</option>
-
-<option value="Plot">
-Plot
-</option>
-
-<option value="House">
-House
-</option>
-
-<option value="Commercial">
-Commercial
-</option>
-
-<option value="Apartment">
-Apartment
-</option>
-
-<option value="Other">
-Other
-</option>
-
-</select>
-
-</div>
-
-
-<!-- SIZE -->
-
-<div class="form-group">
-
-<label class="form-label">
-Property Size
-</label>
-
-<input
-type="text"
-class="form-control"
-id="formSize"
-placeholder="e.g. 5 Marla, 10 Marla, 1 Kanal"
-required>
-
-</div>
-
-
-<!-- PRICE -->
-
-<div class="form-group">
-
-<label class="form-label">
-Expected Price
-</label>
-
-<input
-type="text"
-class="form-control"
-id="formPrice"
-placeholder="e.g. 75 Lac"
-required>
-
-</div>
-
-
-<!-- LOCATION -->
-
-<div class="form-group full">
-
-<label class="form-label">
-Property Location
-</label>
-
-<input
-type="text"
-class="form-control"
-id="formLocation"
-placeholder="e.g. Army Welfare Trust Phase 2, Lahore"
-required>
-
-</div>
-
-
-<!-- IMAGES -->
-
-<div class="form-group full">
-
-<label class="form-label">
-Property Pictures
-</label>
-
-<input
-type="file"
-class="form-control"
-id="formImages"
-accept="image/jpeg,image/png,image/webp"
-multiple>
-
-<div class="form-note">
-JPG, PNG aur WEBP images select kar sakte hain.
-Multiple pictures allowed hain.
-</div>
-
-</div>
-
-
-<!-- PREVIEW -->
-
-<div
-id="imagePreview"
-class="image-preview">
-</div>
-
-
-<!-- DETAILS -->
-
-<div class="form-group full">
-
-<label class="form-label">
-Property Details
-</label>
-
-<textarea
-class="form-control"
-id="formDetails"
-placeholder="Property ke bare mein complete details likhein..."
-required></textarea>
-
-</div>
-
-
-<!-- OWNER -->
-
-<div class="form-group">
-
-<label class="form-label">
-Owner Name
-</label>
-
-<input
-type="text"
-class="form-control"
-id="formOwner"
-placeholder="Owner Name"
-required>
-
-</div>
-
-
-<!-- PHONE -->
-
-<div class="form-group">
-
-<label class="form-label">
-Owner Phone
-</label>
-
-<input
-type="tel"
-class="form-control"
-id="formPhone"
-placeholder="03XXXXXXXXX"
-required>
-
-</div>
-
-
-<!-- MESSAGE -->
-
-<div
-id="formMessage"
-class="form-message">
-</div>
-
-
-<!-- SUBMIT -->
-
-<button
-type="submit"
-class="submit-property"
-id="submitProperty">
-
-Submit Property
-
-</button>
-
-
-</form>
-
-</section>
-
-
 </main>
 
 
+
 <!-- =====================================================
-BOTTOM BAR
+BOTTOM CONTACT BAR
 ===================================================== -->
 
 <div class="bottom-bar">
@@ -1627,6 +1133,7 @@ rel="noopener">
 </a>
 
 </div>
+
 
 
 <script>
@@ -1743,11 +1250,13 @@ return text;
 if(number >= 10000000){
 
 return "PKR " +
+
 (
 number / 10000000
 )
 .toFixed(2)
 .replace(".00","") +
+
 " Crore";
 
 }
@@ -1756,11 +1265,13 @@ number / 10000000
 if(number >= 100000){
 
 return "PKR " +
+
 (
 number / 100000
 )
 .toFixed(2)
 .replace(".00","") +
+
 " Lakh";
 
 }
@@ -1802,17 +1313,20 @@ date.getTime()
 86400000
 );
 
+
 if(days <= 0){
 
 return "Added today";
 
 }
 
+
 if(days === 1){
 
 return "Added 1 day ago";
 
 }
+
 
 if(days < 30){
 
@@ -1822,7 +1336,9 @@ days +
 
 }
 
+
 return "Added on " +
+
 date.toLocaleDateString(
 "en-GB",
 {
@@ -1846,6 +1362,7 @@ document.getElementById(
 "propertyContainer"
 );
 
+
 if(!propertyId){
 
 showError(
@@ -1856,16 +1373,17 @@ return;
 
 }
 
+
 try{
 
 const idNumber =
 Number(propertyId);
 
+
 if(!Number.isInteger(idNumber)){
 
 showError(
-"Invalid Property ID: " +
-propertyId
+"Invalid Property ID."
 );
 
 return;
@@ -1873,7 +1391,16 @@ return;
 }
 
 
-const result =
+console.log(
+"Loading property:",
+idNumber
+);
+
+
+const {
+data,
+error
+} =
 await supabaseClient
 
 .from("properties")
@@ -1885,17 +1412,14 @@ await supabaseClient
 .limit(1);
 
 
-if(result.error){
+if(error){
 
-throw result.error;
+throw error;
 
 }
 
 
-if(
-!result.data ||
-result.data.length === 0
-){
+if(!data || data.length === 0){
 
 showError(
 "Property ID " +
@@ -1909,7 +1433,7 @@ return;
 
 
 const property =
-result.data[0];
+data[0];
 
 currentProperty =
 property;
@@ -1921,6 +1445,7 @@ IMAGES
 
 images = [];
 
+
 if(
 Array.isArray(
 property.image_urls
@@ -1931,45 +1456,56 @@ images =
 property.image_urls.filter(
 function(url){
 
-return(
+return (
 typeof url === "string" &&
 url.trim() !== ""
 );
 
-});
+}
+);
 
 }
 
 
 /* =====================================================
-DATA
+PROPERTY DATA
 ===================================================== */
 
 const type =
 property.property_type ||
 "Property";
 
+
 const purpose =
 property.purpose ||
 "Sale";
+
 
 const size =
 property.property_size ||
 "Not specified";
 
+
 const location =
 property.location ||
 "Army Welfare Trust Phase 2, Lahore";
+
 
 const details =
 property.details ||
 "No description available.";
 
+
 const price =
-priceText(property.price);
+priceText(
+property.price
+);
+
 
 const posted =
-postedDate(property.created_at);
+postedDate(
+property.created_at
+);
 
 
 /* =====================================================
@@ -1993,6 +1529,7 @@ src="${esc(images[0])}"
 alt="${esc(type)} for ${esc(purpose)}"
 >
 
+
 ${
 images.length > 1
 ?
@@ -2002,20 +1539,26 @@ images.length > 1
 class="gallery-arrow left"
 onclick="prevImage()"
 aria-label="Previous image">
+
 ‹
+
 </button>
+
 
 <button
 class="gallery-arrow right"
 onclick="nextImage()"
 aria-label="Next image">
+
 ›
+
 </button>
 
 `
 :
 ""
 }
+
 
 <div class="gallery-count">
 
@@ -2047,15 +1590,21 @@ function(url,index){
 return `
 
 <img
+
 class="gallery-thumb ${
 index === 0
 ? "active"
 : ""
 }"
+
 src="${esc(url)}"
+
 onclick="showImage(${index})"
-alt="Property image ${index+1}"
+
+alt="Property image ${index + 1}"
+
 loading="lazy"
+
 >
 
 `;
@@ -2101,7 +1650,8 @@ galleryHTML = `
 FEATURES
 ===================================================== */
 
-let propertyFeatures = [];
+let features = [];
+
 
 [
 property.property_type,
@@ -2111,14 +1661,15 @@ property.purpose,
 "Prime Location",
 "Zeeshan Estate Authorized Dealer"
 ]
-.forEach(function(item){
+.forEach(
+function(item){
 
 if(
 item &&
 String(item).trim()
 ){
 
-propertyFeatures.push(
+features.push(
 String(item).trim()
 );
 
@@ -2126,9 +1677,10 @@ String(item).trim()
 
 });
 
-propertyFeatures =
+
+features =
 [
-...new Set(propertyFeatures)
+...new Set(features)
 ];
 
 
@@ -2144,7 +1696,7 @@ purpose +
 
 
 /* =====================================================
-HTML
+DISPLAY
 ===================================================== */
 
 container.className = "";
@@ -2156,7 +1708,9 @@ ${galleryHTML}
 
 <div class="property-main">
 
+
 <div class="property-head">
+
 
 <div class="property-title">
 
@@ -2195,6 +1749,7 @@ ${esc(posted)}
 </div>
 
 </div>
+
 
 
 <div class="quick-info">
@@ -2257,6 +1812,7 @@ ${esc(location)}
 </div>
 
 
+
 <div class="content">
 
 
@@ -2266,7 +1822,9 @@ ${esc(location)}
 <section class="box">
 
 <h2 class="box-title">
+
 Property Description
+
 </h2>
 
 
@@ -2291,16 +1849,19 @@ View Full Description
 </section>
 
 
+
 <section class="box">
 
 <h2 class="box-title">
+
 Features &amp; Amenities
+
 </h2>
 
 
 <div class="features">
 
-${propertyFeatures.map(
+${features.map(
 function(item){
 
 return `
@@ -2327,10 +1888,13 @@ ${esc(item)}
 </section>
 
 
+
 <section class="box">
 
 <h2 class="box-title">
+
 Property Details
+
 </h2>
 
 
@@ -2423,22 +1987,31 @@ CONTACT
 </div>
 
 
+
 <div class="right">
+
 
 <div class="dealer">
 
+
 <div class="dealer-heading">
+
 Contact Dealer
+
 </div>
 
 
 <div class="dealer-name">
+
 Eng. Ahsan Ali
+
 </div>
 
 
 <div class="dealer-role">
+
 Authorized Dealer
+
 </div>
 
 
@@ -2454,7 +2027,9 @@ Authorized Dealer
 
 
 <div class="dealer-phone">
+
 📞 0302-0941013
+
 </div>
 
 
@@ -2479,15 +2054,6 @@ class="dealer-btn whatsapp-dealer">
 
 
 <a
-href="#listProperty"
-class="dealer-btn website-dealer">
-
-＋ List Your Property
-
-</a>
-
-
-<a
 href="index.html#properties"
 class="dealer-btn website-dealer">
 
@@ -2504,6 +2070,7 @@ Zeeshan Estate AWT.
 
 </div>
 
+
 </div>
 
 </div>
@@ -2515,20 +2082,21 @@ Zeeshan Estate AWT.
 
 
 /* =====================================================
-VIEW
+RECORD VIEW
 ===================================================== */
 
 recordPropertyView(
 property.id
 );
 
-}
-catch(error){
+
+}catch(error){
 
 console.error(
 "PROPERTY LOAD ERROR:",
 error
 );
+
 
 showError(
 "Property load nahi ho saki: " +
@@ -2551,8 +2119,10 @@ document.getElementById(
 "propertyContainer"
 );
 
+
 container.className =
 "error";
+
 
 container.innerHTML = `
 
@@ -2577,7 +2147,7 @@ font-weight:800;
 
 
 /* =====================================================
-IMAGE
+SHOW IMAGE
 ===================================================== */
 
 function showImage(index){
@@ -2588,11 +2158,13 @@ return;
 
 }
 
+
 if(index < 0){
 
 index = 0;
 
 }
+
 
 if(index >= images.length){
 
@@ -2600,6 +2172,7 @@ index =
 images.length - 1;
 
 }
+
 
 imageIndex =
 index;
@@ -2609,6 +2182,7 @@ const image =
 document.getElementById(
 "mainImage"
 );
+
 
 if(image){
 
@@ -2638,6 +2212,7 @@ document.getElementById(
 "imageNumber"
 );
 
+
 if(number){
 
 number.textContent =
@@ -2649,7 +2224,7 @@ index + 1;
 
 
 /* =====================================================
-NEXT
+NEXT IMAGE
 ===================================================== */
 
 function nextImage(){
@@ -2660,7 +2235,9 @@ return;
 
 }
 
+
 imageIndex++;
+
 
 if(
 imageIndex >= images.length
@@ -2670,13 +2247,16 @@ imageIndex = 0;
 
 }
 
-showImage(imageIndex);
+
+showImage(
+imageIndex
+);
 
 }
 
 
 /* =====================================================
-PREVIOUS
+PREVIOUS IMAGE
 ===================================================== */
 
 function prevImage(){
@@ -2687,16 +2267,23 @@ return;
 
 }
 
+
 imageIndex--;
 
-if(imageIndex < 0){
+
+if(
+imageIndex < 0
+){
 
 imageIndex =
 images.length - 1;
 
 }
 
-showImage(imageIndex);
+
+showImage(
+imageIndex
+);
 
 }
 
@@ -2712,12 +2299,17 @@ document.getElementById(
 "description"
 );
 
+
 const button =
 document.getElementById(
 "readMore"
 );
 
-if(!description || !button){
+
+if(
+!description ||
+!button
+){
 
 return;
 
@@ -2737,8 +2329,7 @@ description.classList.remove(
 button.textContent =
 "View Full Description";
 
-}
-else{
+}else{
 
 description.classList.add(
 "expanded"
@@ -2763,6 +2354,7 @@ document.getElementById(
 "favoriteBtn"
 );
 
+
 if(!button){
 
 return;
@@ -2770,8 +2362,14 @@ return;
 }
 
 
+const key =
+"favorite_property_" +
+propertyId;
+
+
 if(
-button.textContent.trim() === "♡"
+button.textContent.trim() ===
+"♡"
 ){
 
 button.textContent =
@@ -2784,15 +2382,13 @@ button.style.color =
 if(propertyId){
 
 localStorage.setItem(
-"favorite_property_" +
-propertyId,
+key,
 "1"
 );
 
 }
 
-}
-else{
+}else{
 
 button.textContent =
 "♡";
@@ -2804,8 +2400,7 @@ button.style.color =
 if(propertyId){
 
 localStorage.removeItem(
-"favorite_property_" +
-propertyId
+key
 );
 
 }
@@ -2827,16 +2422,19 @@ return;
 
 }
 
+
 const saved =
 localStorage.getItem(
 "favorite_property_" +
 propertyId
 );
 
+
 const button =
 document.getElementById(
 "favoriteBtn"
 );
+
 
 if(
 saved === "1" &&
@@ -2882,8 +2480,7 @@ await navigator.share(
 shareData
 );
 
-}
-else{
+}else{
 
 await navigator.clipboard.writeText(
 window.location.href
@@ -2895,8 +2492,7 @@ alert(
 
 }
 
-}
-catch(error){
+}catch(error){
 
 console.log(
 "Share cancelled:",
@@ -2918,8 +2514,7 @@ if(history.length > 1){
 
 history.back();
 
-}
-else{
+}else{
 
 window.location.href =
 "index.html#properties";
@@ -2930,7 +2525,7 @@ window.location.href =
 
 
 /* =====================================================
-PROPERTY VIEW
+PROPERTY VIEW TRACKING
 ===================================================== */
 
 async function recordPropertyView(id){
@@ -2942,6 +2537,7 @@ if(!id){
 return;
 
 }
+
 
 const visitorKey =
 "property_view_" +
@@ -2957,6 +2553,7 @@ visitorKey
 return;
 
 }
+
 
 sessionStorage.setItem(
 visitorKey,
@@ -2979,6 +2576,7 @@ Date.now() +
 Math.random()
 .toString(36)
 .substring(2,10);
+
 
 localStorage.setItem(
 "zeeshan_estate_visitor_id",
@@ -3011,8 +2609,7 @@ result.error.message
 
 }
 
-}
-catch(error){
+}catch(error){
 
 console.log(
 "View tracking error:",
@@ -3025,477 +2622,7 @@ error.message
 
 
 /* =====================================================
-IMAGE PREVIEW
-===================================================== */
-
-const formImages =
-document.getElementById(
-"formImages"
-);
-
-const imagePreview =
-document.getElementById(
-"imagePreview"
-);
-
-
-formImages.addEventListener(
-"change",
-function(){
-
-imagePreview.innerHTML = "";
-
-const files =
-Array.from(
-formImages.files || []
-);
-
-
-files.forEach(
-function(file,index){
-
-if(!file.type.startsWith("image/")){
-
-return;
-
-}
-
-
-const reader =
-new FileReader();
-
-
-reader.onload =
-function(event){
-
-const div =
-document.createElement("div");
-
-div.className =
-"preview-item";
-
-
-div.innerHTML = `
-
-<img
-src="${event.target.result}"
-alt="Preview"
->
-
-<div class="preview-number">
-${index + 1}
-</div>
-
-`;
-
-imagePreview.appendChild(div);
-
-};
-
-
-reader.readAsDataURL(file);
-
-});
-
-});
-
-
-/* =====================================================
-FORM MESSAGE
-===================================================== */
-
-function showFormMessage(
-message,
-success
-){
-
-const box =
-document.getElementById(
-"formMessage"
-);
-
-box.textContent =
-message;
-
-box.className =
-"form-message " +
-(
-success
-? "form-success"
-: "form-error"
-);
-
-}
-
-
-/* =====================================================
-UPLOAD PROPERTY IMAGES
-===================================================== */
-
-async function uploadPropertyImages(
-files,
-propertyId
-){
-
-const uploadedUrls = [];
-
-for(
-let i = 0;
-i < files.length;
-i++
-){
-
-const file =
-files[i];
-
-
-if(
-!file.type.startsWith("image/")
-){
-
-continue;
-
-}
-
-
-const extension =
-file.name
-.split(".")
-.pop()
-.toLowerCase();
-
-
-const fileName =
-"property-" +
-propertyId +
-"-" +
-Date.now() +
-"-" +
-i +
-"." +
-extension;
-
-
-const filePath =
-"properties/" +
-fileName;
-
-
-const uploadResult =
-await supabaseClient
-.storage
-.from("property-images")
-.upload(
-filePath,
-file,
-{
-cacheControl:"3600",
-upsert:false
-}
-);
-
-
-if(uploadResult.error){
-
-throw uploadResult.error;
-
-}
-
-
-const publicResult =
-supabaseClient
-.storage
-.from("property-images")
-.getPublicUrl(
-filePath
-);
-
-
-if(
-!publicResult ||
-!publicResult.data ||
-!publicResult.data.publicUrl
-){
-
-throw new Error(
-"Image public URL create nahi ho saki."
-);
-
-}
-
-
-uploadedUrls.push(
-publicResult.data.publicUrl
-);
-
-}
-
-return uploadedUrls;
-
-}
-
-
-/* =====================================================
-LIST PROPERTY FORM
-===================================================== */
-
-document
-.getElementById("propertyForm")
-.addEventListener(
-"submit",
-async function(event){
-
-event.preventDefault();
-
-
-const submitButton =
-document.getElementById(
-"submitProperty"
-);
-
-
-const purpose =
-document.getElementById(
-"formPurpose"
-).value.trim();
-
-
-const type =
-document.getElementById(
-"formType"
-).value.trim();
-
-
-const size =
-document.getElementById(
-"formSize"
-).value.trim();
-
-
-const price =
-document.getElementById(
-"formPrice"
-).value.trim();
-
-
-const location =
-document.getElementById(
-"formLocation"
-).value.trim();
-
-
-const details =
-document.getElementById(
-"formDetails"
-).value.trim();
-
-
-const owner =
-document.getElementById(
-"formOwner"
-).value.trim();
-
-
-const phone =
-document.getElementById(
-"formPhone"
-).value.trim();
-
-
-const files =
-Array.from(
-document.getElementById(
-"formImages"
-).files || []
-);
-
-
-if(
-!purpose ||
-!type ||
-!size ||
-!price ||
-!location ||
-!details ||
-!owner ||
-!phone
-){
-
-showFormMessage(
-"Please tamam required fields fill karein.",
-false
-);
-
-return;
-
-}
-
-
-submitButton.disabled =
-true;
-
-submitButton.textContent =
-"Submitting...";
-
-
-showFormMessage(
-"Property submit ho rahi hai, please wait...",
-true
-);
-
-
-try{
-
-/* ==========================================
-INSERT PROPERTY FIRST
-========================================== */
-
-const insertResult =
-await supabaseClient
-
-.from("properties")
-
-.insert([{
-
-purpose:purpose,
-
-property_type:type,
-
-property_size:size,
-
-price:price,
-
-location:location,
-
-details:details,
-
-owner_name:owner,
-
-owner_phone:phone
-
-}])
-
-.select()
-.single();
-
-
-if(insertResult.error){
-
-throw insertResult.error;
-
-}
-
-
-const newProperty =
-insertResult.data;
-
-
-let imageUrls = [];
-
-
-/* ==========================================
-UPLOAD IMAGES
-========================================== */
-
-if(files.length > 0){
-
-imageUrls =
-await uploadPropertyImages(
-files,
-newProperty.id
-);
-
-}
-
-
-/* ==========================================
-UPDATE IMAGE URLS
-========================================== */
-
-if(imageUrls.length > 0){
-
-const updateResult =
-await supabaseClient
-
-.from("properties")
-
-.update({
-
-image_urls:imageUrls
-
-})
-
-.eq(
-"id",
-newProperty.id
-);
-
-
-if(updateResult.error){
-
-throw updateResult.error;
-
-}
-
-}
-
-
-/* ==========================================
-SUCCESS
-========================================== */
-
-showFormMessage(
-"Property successfully submit ho gayi hai. Zeeshan Estate AWT team aapse contact karegi.",
-true
-);
-
-
-document
-.getElementById(
-"propertyForm"
-)
-.reset();
-
-
-imagePreview.innerHTML = "";
-
-
-submitButton.disabled =
-false;
-
-submitButton.textContent =
-"Submit Property";
-
-
-}
-catch(error){
-
-console.error(
-"LIST PROPERTY ERROR:",
-error
-);
-
-
-showFormMessage(
-"Property submit nahi ho saki: " +
-(error.message || "Unknown error"),
-false
-);
-
-
-submitButton.disabled =
-false;
-
-submitButton.textContent =
-"Submit Property";
-
-}
-
-});
-
-
-/* =====================================================
-KEYBOARD GALLERY
+KEYBOARD
 ===================================================== */
 
 document.addEventListener(
@@ -3508,19 +2635,31 @@ return;
 
 }
 
-if(event.key === "ArrowRight"){
+
+if(
+event.key ===
+"ArrowRight"
+){
 
 nextImage();
 
 }
 
-if(event.key === "ArrowLeft"){
+
+if(
+event.key ===
+"ArrowLeft"
+){
 
 prevImage();
 
 }
 
-if(event.key === "Escape"){
+
+if(
+event.key ===
+"Escape"
+){
 
 goBack();
 
@@ -3569,6 +2708,7 @@ return;
 
 }
 
+
 touchEndX =
 event.changedTouches[0].clientX;
 
@@ -3591,8 +2731,7 @@ if(distance < 0){
 
 nextImage();
 
-}
-else{
+}else{
 
 prevImage();
 
