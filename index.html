@@ -22,9 +22,9 @@ href="https://zeeshanestateawt786.github.io/Zeeshan-Estate/">
 
 <style>
 
-/* =========================================
+/* =========================
 GLOBAL
-========================================= */
+========================= */
 
 *{
 box-sizing:border-box;
@@ -49,9 +49,9 @@ color:inherit;
 }
 
 
-/* =========================================
+/* =========================
 TOP BAR
-========================================= */
+========================= */
 
 .top{
 background:#b40000;
@@ -65,9 +65,9 @@ font-weight:700;
 }
 
 
-/* =========================================
+/* =========================
 NAVIGATION
-========================================= */
+========================= */
 
 .nav{
 padding:18px 5%;
@@ -130,9 +130,9 @@ background:#c40000;
 }
 
 
-/* =========================================
+/* =========================
 HERO
-========================================= */
+========================= */
 
 .hero{
 min-height:570px;
@@ -246,9 +246,9 @@ margin:5px 0;
 }
 
 
-/* =========================================
+/* =========================
 SECTIONS
-========================================= */
+========================= */
 
 .section{
 padding:55px 6%;
@@ -280,9 +280,9 @@ margin-bottom:8px;
 }
 
 
-/* =========================================
+/* =========================
 TEAM
-========================================= */
+========================= */
 
 .team-title{
 text-align:center;
@@ -333,9 +333,9 @@ font-weight:800;
 }
 
 
-/* =========================================
+/* =========================
 PROPERTIES
-========================================= */
+========================= */
 
 .properties{
 background:#110606;
@@ -423,9 +423,9 @@ font-weight:900;
 }
 
 
-/* =========================================
+/* =========================
 PROPERTY FORM
-========================================= */
+========================= */
 
 .list-box{
 max-width:950px;
@@ -540,9 +540,9 @@ font-weight:700;
 }
 
 
-/* =========================================
+/* =========================
 ONLINE PROPERTIES
-========================================= */
+========================= */
 
 .online-title{
 text-align:center;
@@ -631,9 +631,9 @@ margin-top:8px;
 }
 
 
-/* =========================================
+/* =========================
 SOCIETY MAP
-========================================= */
+========================= */
 
 .society-map-section{
 background:#110606;
@@ -690,9 +690,9 @@ padding:9px 13px;
 }
 
 
-/* =========================================
+/* =========================
 MAP CONTAINER
-========================================= */
+========================= */
 
 .map-container{
 width:100%;
@@ -704,19 +704,19 @@ border-radius:12px;
 overflow:hidden;
 box-shadow:0 10px 35px rgba(0,0,0,.5);
 position:relative;
-
 touch-action:none;
 overscroll-behavior:none;
 }
 
-
-/* =========================================
-MAP IMAGE
-========================================= */
+/*
+IMPORTANT:
+Image is NOT stretched by CSS.
+JavaScript calculates the correct
+fit scale so complete map is visible.
+*/
 
 .map-container img{
 position:absolute;
-
 left:0;
 top:0;
 
@@ -746,24 +746,19 @@ cursor:grabbing;
 }
 
 
-/* =========================================
-FULLSCREEN MAP
-========================================= */
+/* =========================
+FULLSCREEN
+========================= */
 
 .map-container:fullscreen{
 width:100vw!important;
 height:100vh!important;
 max-width:none!important;
-
 margin:0!important;
 padding:0!important;
-
 border-radius:0!important;
-
 background:#111!important;
-
 overflow:hidden!important;
-
 touch-action:none!important;
 }
 
@@ -771,28 +766,18 @@ touch-action:none!important;
 width:100vw!important;
 height:100vh!important;
 max-width:none!important;
-
 margin:0!important;
 padding:0!important;
-
 border-radius:0!important;
-
 background:#111!important;
-
 overflow:hidden!important;
-
-touch-action:none!important;
-}
-
-.map-container:fullscreen img,
-.map-container:-webkit-full-screen img{
 touch-action:none!important;
 }
 
 
-/* =========================================
+/* =========================
 MAP HELP
-========================================= */
+========================= */
 
 .map-help{
 text-align:center;
@@ -802,9 +787,9 @@ font-size:14px;
 }
 
 
-/* =========================================
+/* =========================
 WHY US
-========================================= */
+========================= */
 
 .why{
 display:grid;
@@ -819,9 +804,9 @@ font-weight:700;
 }
 
 
-/* =========================================
+/* =========================
 FOOTER
-========================================= */
+========================= */
 
 .footer{
 background:#b40000;
@@ -845,9 +830,9 @@ padding:14px;
 }
 
 
-/* =========================================
+/* =========================
 RESPONSIVE
-========================================= */
+========================= */
 
 @media(max-width:850px){
 
@@ -946,10 +931,8 @@ font-size:32px;
 
 .map-container{
 height:500px;
-
 margin:0!important;
 padding:0!important;
-
 border-radius:8px;
 }
 
@@ -986,13 +969,12 @@ margin-bottom:0!important;
 
 </head>
 
-
 <body>
 
 
-<!-- =========================================
+<!-- =========================
 TOP BAR
-========================================= -->
+========================= -->
 
 <div class="top">
 
@@ -1007,9 +989,9 @@ TOP BAR
 </div>
 
 
-<!-- =========================================
+<!-- =========================
 NAVIGATION
-========================================= -->
+========================= -->
 
 <header class="nav">
 
@@ -1027,29 +1009,19 @@ AUTHORIZED DEALER
 
 <nav>
 
-<a href="#home">
-HOME
-</a>
+<a href="#home">HOME</a>
 
 <a href="#society-map" class="map-link">
 📍 SOCIETY MAP
 </a>
 
-<a href="#about">
-ABOUT US
-</a>
+<a href="#about">ABOUT US</a>
 
-<a href="#properties">
-PROPERTIES
-</a>
+<a href="#properties">PROPERTIES</a>
 
-<a href="#why">
-WHY US
-</a>
+<a href="#why">WHY US</a>
 
-<a href="#contact">
-CONTACT US
-</a>
+<a href="#contact">CONTACT US</a>
 
 <a href="admin.html" class="admin-link">
 🔐 ADMIN
@@ -1060,9 +1032,9 @@ CONTACT US
 </header>
 
 
-<!-- =========================================
+<!-- =========================
 HERO
-========================================= -->
+========================= -->
 
 <section class="hero" id="home">
 
@@ -1144,9 +1116,9 @@ Eng. Ahsan Ali
 </section>
 
 
-<!-- =========================================
+<!-- =========================
 ABOUT
-========================================= -->
+========================= -->
 
 <section class="section" id="about">
 
@@ -1208,9 +1180,9 @@ Loading team members...
 </section>
 
 
-<!-- =========================================
+<!-- =========================
 PROPERTIES
-========================================= -->
+========================= -->
 
 <section class="section properties" id="properties">
 
@@ -1226,15 +1198,11 @@ PLOTS FOR SALE
 <span>5 MARLA</span>
 </div>
 
-<h3>
-5 MARLA
-</h3>
+<h3>5 MARLA</h3>
 
 <div class="body">
 
-<div>
-Demand
-</div>
+<div>Demand</div>
 
 <div class="price">
 55 Lac – 90 Lac
@@ -1255,15 +1223,11 @@ Location/plot position may affect price.
 <span>10 MARLA</span>
 </div>
 
-<h3>
-10 MARLA
-</h3>
+<h3>10 MARLA</h3>
 
 <div class="body">
 
-<div>
-Demand
-</div>
+<div>Demand</div>
 
 <div class="price">
 1 Crore – 1.60 Crore
@@ -1284,15 +1248,11 @@ Location/plot position may affect price.
 <span>1 KANAL</span>
 </div>
 
-<h3>
-1 KANAL
-</h3>
+<h3>1 KANAL</h3>
 
 <div class="body">
 
-<div>
-Demand
-</div>
+<div>Demand</div>
 
 <div class="price">
 1.50 Crore – 3 Crore
@@ -1322,9 +1282,9 @@ Loading properties...
 </div>
 
 
-<!-- =========================================
+<!-- =========================
 LIST PROPERTY
-========================================= -->
+========================= -->
 
 <div class="list-box">
 
@@ -1340,12 +1300,9 @@ Apni property Zeeshan Estate AWT ke through list karein.
 
 <div class="form-grid">
 
-
 <div class="form-group">
 
-<label>
-Property Purpose
-</label>
+<label>Property Purpose</label>
 
 <select id="purpose" required>
 
@@ -1368,9 +1325,7 @@ For Rent
 
 <div class="form-group">
 
-<label>
-Property Type
-</label>
+<label>Property Type</label>
 
 <select id="propertyType" required>
 
@@ -1409,9 +1364,7 @@ Other
 
 <div class="form-group">
 
-<label>
-Property Size
-</label>
+<label>Property Size</label>
 
 <input
 type="text"
@@ -1424,9 +1377,7 @@ required>
 
 <div class="form-group">
 
-<label>
-Expected Price
-</label>
+<label>Expected Price</label>
 
 <input
 type="text"
@@ -1439,9 +1390,7 @@ required>
 
 <div class="form-group full">
 
-<label>
-Property Location
-</label>
+<label>Property Location</label>
 
 <input
 type="text"
@@ -1454,9 +1403,7 @@ required>
 
 <div class="form-group full">
 
-<label>
-Property Pictures
-</label>
+<label>Property Pictures</label>
 
 <input
 class="file-input"
@@ -1477,23 +1424,18 @@ multiple>
 
 <div class="form-group full">
 
-<label>
-Property Details
-</label>
+<label>Property Details</label>
 
 <textarea
 id="details"
-placeholder="Enter property details">
-</textarea>
+placeholder="Enter property details"></textarea>
 
 </div>
 
 
 <div class="form-group">
 
-<label>
-Owner Name
-</label>
+<label>Owner Name</label>
 
 <input
 type="text"
@@ -1506,9 +1448,7 @@ required>
 
 <div class="form-group">
 
-<label>
-Owner Phone
-</label>
+<label>Owner Phone</label>
 
 <input
 type="tel"
@@ -1530,9 +1470,7 @@ class="submit-btn">
 
 </button>
 
-
-<div id="form-status" class="status">
-</div>
+<div id="form-status" class="status"></div>
 
 </form>
 
@@ -1541,9 +1479,9 @@ class="submit-btn">
 </section>
 
 
-<!-- =========================================
+<!-- =========================
 SOCIETY MAP
-========================================= -->
+========================= -->
 
 <section
 class="section society-map-section"
@@ -1599,7 +1537,7 @@ id="map-container">
 
 <img
 id="society-map-image"
-src="map.webp"
+src="map.jpg"
 alt="Army Welfare Trust Phase 2 Lahore Society Map"
 draggable="false">
 
@@ -1623,9 +1561,9 @@ Zoom ke baad 1 finger se map move karein.
 </section>
 
 
-<!-- =========================================
+<!-- =========================
 WHY US
-========================================= -->
+========================= -->
 
 <section class="section" id="why">
 
@@ -1671,9 +1609,9 @@ Investment Potential
 </section>
 
 
-<!-- =========================================
+<!-- =========================
 FOOTER
-========================================= -->
+========================= -->
 
 <footer class="footer" id="contact">
 
@@ -1748,9 +1686,9 @@ All Rights Reserved.
 
 <script>
 
-/* =========================================
+/* =========================
 SUPABASE
-========================================= */
+========================= */
 
 const SUPABASE_URL =
 "https://rhzsfjolkxqovhonylti.supabase.co";
@@ -1768,9 +1706,9 @@ SUPABASE_KEY
 );
 
 
-/* =========================================
+/* =========================
 ESCAPE HTML
-========================================= */
+========================= */
 
 function escapeHTML(value){
 
@@ -1788,9 +1726,9 @@ return String(value)
 }
 
 
-/* =========================================
+/* =========================
 VISITOR ID
-========================================= */
+========================= */
 
 function getVisitorId(){
 
@@ -1821,9 +1759,9 @@ return id;
 }
 
 
-/* =========================================
+/* =========================
 HERO SLIDER
-========================================= */
+========================= */
 
 let heroIndex = 0;
 
@@ -1851,9 +1789,9 @@ heroSlides[heroIndex]
 },5000);
 
 
-/* =========================================
+/* =========================
 IMAGE PREVIEW
-========================================= */
+========================= */
 
 const imageInput =
 document.getElementById(
@@ -1905,9 +1843,9 @@ reader.readAsDataURL(file);
 }
 
 
-/* =========================================
+/* =========================
 UPLOAD IMAGES
-========================================= */
+========================= */
 
 async function uploadPropertyImages(files){
 
@@ -1971,8 +1909,10 @@ supabaseClient
 .from(STORAGE_BUCKET)
 .getPublicUrl(filePath);
 
-if(publicResult.data &&
-publicResult.data.publicUrl){
+if(
+publicResult.data &&
+publicResult.data.publicUrl
+){
 
 imageUrls.push(
 publicResult.data.publicUrl
@@ -1987,9 +1927,9 @@ return imageUrls;
 }
 
 
-/* =========================================
+/* =========================
 PROPERTY VIEW
-========================================= */
+========================= */
 
 async function recordPropertyView(propertyId){
 
@@ -2014,7 +1954,6 @@ await supabaseClient
 .insert([{
 
 property_id:propertyId,
-
 visitor_id:visitorId
 
 }]);
@@ -2040,9 +1979,9 @@ error.message
 }
 
 
-/* =========================================
+/* =========================
 PROPERTY CALL
-========================================= */
+========================= */
 
 async function recordPropertyCall(propertyId){
 
@@ -2057,7 +1996,6 @@ await supabaseClient
 .insert([{
 
 property_id:propertyId,
-
 visitor_id:visitorId
 
 }]);
@@ -2083,9 +2021,9 @@ error.message
 }
 
 
-/* =========================================
+/* =========================
 GET PROPERTIES
-========================================= */
+========================= */
 
 async function getProperties(){
 
@@ -2129,9 +2067,9 @@ return [];
 }
 
 
-/* =========================================
+/* =========================
 CREATE PROPERTY CARD
-========================================= */
+========================= */
 
 function createPropertyCard(property){
 
@@ -2302,9 +2240,9 @@ return card;
 }
 
 
-/* =========================================
+/* =========================
 RENDER PROPERTIES
-========================================= */
+========================= */
 
 function renderProperties(properties){
 
@@ -2317,14 +2255,16 @@ if(online){
 online.innerHTML = "";
 }
 
-if(!properties ||
-properties.length === 0){
-
-const message =
-"<p style='text-align:center;grid-column:1/-1'>No properties listed yet.</p>";
+if(
+!properties ||
+properties.length === 0
+){
 
 if(online){
-online.innerHTML = message;
+
+online.innerHTML =
+"<p style='text-align:center;grid-column:1/-1'>No properties listed yet.</p>";
+
 }
 
 return;
@@ -2346,9 +2286,9 @@ createPropertyCard(property)
 }
 
 
-/* =========================================
+/* =========================
 LOAD PROPERTIES
-========================================= */
+========================= */
 
 async function loadProperties(){
 
@@ -2362,9 +2302,9 @@ properties
 }
 
 
-/* =========================================
+/* =========================
 SUBMIT PROPERTY
-========================================= */
+========================= */
 
 async function submitProperty(event){
 
@@ -2522,9 +2462,9 @@ button.innerText =
 }
 
 
-/* =========================================
+/* =========================
 TEAM MEMBERS
-========================================= */
+========================= */
 
 async function loadTeamMembers(){
 
@@ -2583,8 +2523,10 @@ return;
 
 }
 
-if(!result.data ||
-result.data.length === 0){
+if(
+!result.data ||
+result.data.length === 0
+){
 
 container.innerHTML =
 "<p style='text-align:center;grid-column:1/-1'>Our team information will be available soon.</p>";
@@ -2621,12 +2563,16 @@ ${escapeHTML(member.name)}
 </h3>
 
 <p>
-📞 ${escapeHTML(member.phone || "")}
+📞 ${escapeHTML(
+member.phone || ""
+)}
 </p>
 
 <a
 class="call-team"
-href="tel:${escapeHTML(member.phone || "")}">
+href="tel:${escapeHTML(
+member.phone || ""
+)}">
 
 📞 CALL US
 
@@ -2655,25 +2601,22 @@ container.innerHTML =
 }
 
 
-/* =========================================
+/* =====================================================
 SOCIETY MAP
-FIT MAP + PINCH ZOOM + PAN + FULLSCREEN
-========================================= */
+COMPLETE FIT + PINCH ZOOM + PAN + FULLSCREEN
+===================================================== */
 
 const mapContainer =
-document.getElementById("map-container");
+document.getElementById(
+"map-container"
+);
 
 const mapImage =
-document.getElementById("society-map-image");
-
-
-/* =========================================
-MAP VARIABLES
-========================================= */
+document.getElementById(
+"society-map-image"
+);
 
 let mapScale = 1;
-
-let mapBaseScale = 1;
 
 let mapX = 0;
 let mapY = 0;
@@ -2690,11 +2633,203 @@ let pinchStartDistance = 0;
 let pinchStartScale = 1;
 
 
-/* =========================================
-GET TOUCH DISTANCE
-========================================= */
+/* =========================
+APPLY TRANSFORM
+========================= */
 
-function getTouchDistance(touches){
+function applyMapTransform(){
+
+if(!mapImage){
+return;
+}
+
+mapImage.style.transform =
+"translate3d(" +
+mapX +
+"px," +
+mapY +
+"px,0) scale(" +
+mapScale +
+")";
+
+}
+
+
+/* =========================
+FIT COMPLETE MAP
+========================= */
+
+function fitMapToContainer(){
+
+if(
+!mapContainer ||
+!mapImage
+){
+return;
+}
+
+const boxWidth =
+mapContainer.clientWidth;
+
+const boxHeight =
+mapContainer.clientHeight;
+
+const imageWidth =
+mapImage.naturalWidth;
+
+const imageHeight =
+mapImage.naturalHeight;
+
+if(
+!imageWidth ||
+!imageHeight ||
+!boxWidth ||
+!boxHeight
+){
+return;
+}
+
+
+/*
+Calculate the exact scale required
+to show the COMPLETE image.
+*/
+
+const scaleX =
+boxWidth / imageWidth;
+
+const scaleY =
+boxHeight / imageHeight;
+
+
+/*
+Use the smaller scale so no part
+of the map is cut off.
+*/
+
+mapScale =
+Math.min(
+scaleX,
+scaleY
+);
+
+
+/*
+Do not enlarge a small image.
+*/
+
+if(mapScale > 1){
+mapScale = 1;
+}
+
+
+/*
+Calculate displayed dimensions.
+*/
+
+const displayedWidth =
+imageWidth * mapScale;
+
+const displayedHeight =
+imageHeight * mapScale;
+
+
+/*
+Center the map in the box.
+*/
+
+mapX =
+(boxWidth - displayedWidth) / 2;
+
+mapY =
+(boxHeight - displayedHeight) / 2;
+
+applyMapTransform();
+
+}
+
+
+/* =========================
+ZOOM BUTTON
+========================= */
+
+function zoomMap(amount){
+
+if(
+!mapContainer ||
+!mapImage
+){
+return;
+}
+
+const oldScale =
+mapScale;
+
+let newScale =
+mapScale * amount;
+
+if(newScale < 1){
+newScale = 1;
+}
+
+if(newScale > 8){
+newScale = 8;
+}
+
+
+/*
+Zoom from center of box.
+*/
+
+const centerX =
+mapContainer.clientWidth / 2;
+
+const centerY =
+mapContainer.clientHeight / 2;
+
+const ratio =
+newScale / oldScale;
+
+mapX =
+centerX -
+(
+centerX - mapX
+) *
+ratio;
+
+mapY =
+centerY -
+(
+centerY - mapY
+) *
+ratio;
+
+mapScale =
+newScale;
+
+applyMapTransform();
+
+}
+
+
+/* =========================
+RESET
+========================= */
+
+function resetMap(){
+
+fitMapToContainer();
+
+}
+
+
+/* =========================
+TOUCH DISTANCE
+========================= */
+
+function getTouchDistance(
+touches
+){
 
 if(touches.length < 2){
 return 0;
@@ -2709,364 +2844,43 @@ touches[0].clientY -
 touches[1].clientY;
 
 return Math.sqrt(
-(dx * dx) + (dy * dy)
+dx * dx +
+dy * dy
 );
 
 }
 
 
-/* =========================================
-GET TOUCH CENTER
-========================================= */
+/* =========================
+TOUCH CENTER
+========================= */
 
-function getTouchCenter(touches){
+function getTouchCenter(
+touches
+){
 
 return {
 
 x:
-(touches[0].clientX +
-touches[1].clientX) / 2,
+(
+touches[0].clientX +
+touches[1].clientX
+) / 2,
 
 y:
-(touches[0].clientY +
-touches[1].clientY) / 2
+(
+touches[0].clientY +
+touches[1].clientY
+) / 2
 
 };
 
 }
 
 
-/* =========================================
-APPLY MAP TRANSFORM
-========================================= */
-
-function applyMapTransform(){
-
-if(!mapImage){
-return;
-}
-
-mapImage.style.transform =
-"translate3d(" +
-mapX + "px," +
-mapY + "px,0) scale(" +
-mapScale +
-")";
-
-}
-
-
-/* =========================================
-FIT MAP INSIDE BOX
-========================================= */
-
-function fitMap(){
-
-if(!mapContainer || !mapImage){
-return;
-}
-
-
-/* IMAGE NATURAL SIZE */
-
-const imageWidth =
-mapImage.naturalWidth;
-
-const imageHeight =
-mapImage.naturalHeight;
-
-if(
-!imageWidth ||
-!imageHeight
-){
-
-return;
-
-}
-
-
-/* CONTAINER SIZE */
-
-const containerWidth =
-mapContainer.clientWidth;
-
-const containerHeight =
-mapContainer.clientHeight;
-
-if(
-!containerWidth ||
-!containerHeight
-){
-
-return;
-
-}
-
-
-/* =========================================
-CALCULATE CONTAIN SCALE
-========================================= */
-
-const widthScale =
-containerWidth /
-imageWidth;
-
-const heightScale =
-containerHeight /
-imageHeight;
-
-
-/*
-Smaller scale ensures
-the complete map is visible.
-*/
-
-mapBaseScale =
-Math.min(
-widthScale,
-heightScale
-);
-
-
-/* SAFETY */
-
-if(
-!isFinite(mapBaseScale) ||
-mapBaseScale <= 0
-){
-
-mapBaseScale = 1;
-
-}
-
-
-/* =========================================
-CALCULATE DISPLAY SIZE
-========================================= */
-
-const displayedWidth =
-imageWidth *
-mapBaseScale;
-
-const displayedHeight =
-imageHeight *
-mapBaseScale;
-
-
-/* =========================================
-CENTER MAP
-========================================= */
-
-mapX =
-(
-containerWidth -
-displayedWidth
-) / 2;
-
-mapY =
-(
-containerHeight -
-displayedHeight
-) / 2;
-
-
-/* =========================================
-RESET ZOOM TO FIT
-========================================= */
-
-mapScale =
-mapBaseScale;
-
-
-/* APPLY */
-
-applyMapTransform();
-
-}
-
-
-/* =========================================
-MAP IMAGE LOAD
-========================================= */
-
-if(mapImage){
-
-if(mapImage.complete){
-
-setTimeout(
-function(){
-
-fitMap();
-
-},
-50
-);
-
-}
-else{
-
-mapImage.addEventListener(
-"load",
-function(){
-
-fitMap();
-
-});
-
-}
-
-}
-
-
-/* =========================================
-WINDOW RESIZE
-========================================= */
-
-window.addEventListener(
-"resize",
-function(){
-
-if(
-Math.abs(
-mapScale -
-mapBaseScale
-) < 0.01
-){
-
-fitMap();
-
-}
-
-});
-
-
-/* =========================================
-ZOOM BUTTON
-========================================= */
-
-function zoomMap(amount){
-
-if(!mapImage){
-return;
-}
-
-
-/*
-Make sure map is fitted.
-*/
-
-if(
-!mapBaseScale ||
-mapBaseScale <= 0
-){
-
-fitMap();
-
-}
-
-
-/* =========================================
-CONTAINER CENTER
-========================================= */
-
-const rect =
-mapContainer.getBoundingClientRect();
-
-const centerX =
-rect.width / 2;
-
-const centerY =
-rect.height / 2;
-
-
-/* =========================================
-NEW SCALE
-========================================= */
-
-let newScale =
-mapScale *
-amount;
-
-
-/* MINIMUM */
-
-if(
-newScale <
-mapBaseScale
-){
-
-newScale =
-mapBaseScale;
-
-}
-
-
-/* MAXIMUM */
-
-const maxScale =
-mapBaseScale *
-8;
-
-if(
-newScale >
-maxScale
-){
-
-newScale =
-maxScale;
-
-}
-
-
-/* =========================================
-KEEP CENTER
-========================================= */
-
-const scaleRatio =
-newScale /
-mapScale;
-
-mapX =
-centerX -
-(
-centerX -
-mapX
-) *
-scaleRatio;
-
-mapY =
-centerY -
-(
-centerY -
-mapY
-) *
-scaleRatio;
-
-mapScale =
-newScale;
-
-
-/* APPLY */
-
-applyMapTransform();
-
-}
-
-
-/* =========================================
-RESET MAP
-========================================= */
-
-function resetMap(){
-
-fitMap();
-
-}
-
-
-/* =========================================
+/* =========================
 TOUCH START
-========================================= */
+========================= */
 
 if(mapContainer){
 
@@ -3074,7 +2888,7 @@ mapContainer.addEventListener(
 "touchstart",
 function(event){
 
-/* TWO FINGERS */
+event.preventDefault();
 
 if(
 event.touches.length === 2
@@ -3088,20 +2902,15 @@ event.touches
 pinchStartScale =
 mapScale;
 
-isDragging =
-false;
+isDragging = false;
 
 }
-
-
-/* ONE FINGER */
-
 else if(
-event.touches.length === 1
+event.touches.length === 1 &&
+mapScale > 1
 ){
 
-isDragging =
-true;
+isDragging = true;
 
 startX =
 event.touches[0].clientX;
@@ -3123,9 +2932,9 @@ passive:false
 });
 
 
-/* =========================================
+/* =========================
 TOUCH MOVE
-========================================= */
+========================= */
 
 mapContainer.addEventListener(
 "touchmove",
@@ -3134,9 +2943,9 @@ function(event){
 event.preventDefault();
 
 
-/* =========================================
+/*
 TWO FINGER PINCH
-========================================= */
+*/
 
 if(
 event.touches.length === 2
@@ -3151,48 +2960,25 @@ if(
 pinchStartDistance > 0
 ){
 
-const ratio =
-currentDistance /
-pinchStartDistance;
-
 let newScale =
 pinchStartScale *
-ratio;
+(
+currentDistance /
+pinchStartDistance
+);
 
+if(newScale < 1){
+newScale = 1;
+}
 
-/* MINIMUM */
-
-if(
-newScale <
-mapBaseScale
-){
-
-newScale =
-mapBaseScale;
-
+if(newScale > 8){
+newScale = 8;
 }
 
 
-/* MAXIMUM */
-
-const maxScale =
-mapBaseScale *
-8;
-
-if(
-newScale >
-maxScale
-){
-
-newScale =
-maxScale;
-
-}
-
-
-/* =========================================
-PINCH CENTER
-========================================= */
+/*
+Keep pinch center fixed.
+*/
 
 const center =
 getTouchCenter(
@@ -3210,25 +2996,23 @@ const centerY =
 center.y -
 rect.top;
 
-const scaleRatio =
+const ratio =
 newScale /
 mapScale;
 
 mapX =
 centerX -
 (
-centerX -
-mapX
+centerX - mapX
 ) *
-scaleRatio;
+ratio;
 
 mapY =
 centerY -
 (
-centerY -
-mapY
+centerY - mapY
 ) *
-scaleRatio;
+ratio;
 
 mapScale =
 newScale;
@@ -3242,15 +3026,14 @@ return;
 }
 
 
-/* =========================================
+/*
 ONE FINGER PAN
-========================================= */
+*/
 
 if(
 event.touches.length === 1 &&
 isDragging &&
-mapScale >
-mapBaseScale + 0.001
+mapScale > 1
 ){
 
 const currentX =
@@ -3262,15 +3045,13 @@ event.touches[0].clientY;
 mapX =
 startMapX +
 (
-currentX -
-startX
+currentX - startX
 );
 
 mapY =
 startMapY +
 (
-currentY -
-startY
+currentY - startY
 );
 
 applyMapTransform();
@@ -3283,9 +3064,9 @@ passive:false
 });
 
 
-/* =========================================
+/* =========================
 TOUCH END
-========================================= */
+========================= */
 
 mapContainer.addEventListener(
 "touchend",
@@ -3295,23 +3076,17 @@ if(
 event.touches.length === 0
 ){
 
-isDragging =
-false;
+isDragging = false;
 
-pinchStartDistance =
-0;
+pinchStartDistance = 0;
 
 }
-
-
-/* ONE FINGER REMAINS */
 
 if(
 event.touches.length === 1
 ){
 
-isDragging =
-true;
+isDragging = true;
 
 startX =
 event.touches[0].clientX;
@@ -3333,25 +3108,19 @@ passive:false
 });
 
 
-/* =========================================
-MOUSE DRAG
-========================================= */
+/* =========================
+MOUSE DOWN
+========================= */
 
 mapContainer.addEventListener(
 "mousedown",
 function(event){
 
-if(
-mapScale <=
-mapBaseScale + 0.001
-){
-
+if(mapScale <= 1){
 return;
-
 }
 
-isDragging =
-true;
+isDragging = true;
 
 startX =
 event.clientX;
@@ -3365,15 +3134,15 @@ mapX;
 startMapY =
 mapY;
 
-if(mapImage){
-
 mapImage.style.cursor =
 "grabbing";
 
-}
-
 });
 
+
+/* =========================
+MOUSE MOVE
+========================= */
 
 document.addEventListener(
 "mousemove",
@@ -3381,12 +3150,9 @@ function(event){
 
 if(
 !isDragging ||
-mapScale <=
-mapBaseScale + 0.001
+mapScale <= 1
 ){
-
 return;
-
 }
 
 mapX =
@@ -3408,12 +3174,15 @@ applyMapTransform();
 });
 
 
+/* =========================
+MOUSE UP
+========================= */
+
 document.addEventListener(
 "mouseup",
 function(){
 
-isDragging =
-false;
+isDragging = false;
 
 if(mapImage){
 
@@ -3424,26 +3193,61 @@ mapImage.style.cursor =
 
 });
 
+
+/* =========================
+MAP IMAGE LOAD
+========================= */
+
+if(mapImage){
+
+if(mapImage.complete){
+
+fitMapToContainer();
+
+}
+else{
+
+mapImage.addEventListener(
+"load",
+function(){
+
+fitMapToContainer();
+
+});
+
+}
+
 }
 
 
-/* =========================================
+/* =========================
+RESIZE
+========================= */
+
+window.addEventListener(
+"resize",
+function(){
+
+/*
+When screen size changes,
+fit complete map again.
+*/
+
+fitMapToContainer();
+
+});
+
+
+/* =========================
 FULLSCREEN
-========================================= */
+========================= */
 
 function toggleMapFullscreen(){
 
-const container =
-document.getElementById(
-"map-container"
-);
-
-if(!container){
+if(!mapContainer){
 return;
 }
 
-
-/* ENTER FULLSCREEN */
 
 if(
 !document.fullscreenElement &&
@@ -3451,25 +3255,12 @@ if(
 ){
 
 if(
-container.requestFullscreen
+mapContainer.requestFullscreen
 ){
 
-container.requestFullscreen()
-.then(
-function(){
-
-setTimeout(
-function(){
-
-fitMap();
-
-},
-200
-);
-
-})
-.catch(
-function(error){
+mapContainer
+.requestFullscreen()
+.catch(function(error){
 
 console.log(
 "Fullscreen error:",
@@ -3479,29 +3270,15 @@ error
 });
 
 }
-
 else if(
-container.webkitRequestFullscreen
+mapContainer.webkitRequestFullscreen
 ){
 
-container.webkitRequestFullscreen();
-
-setTimeout(
-function(){
-
-fitMap();
-
-},
-300
-);
+mapContainer.webkitRequestFullscreen();
 
 }
 
 }
-
-
-/* EXIT FULLSCREEN */
-
 else{
 
 if(
@@ -3511,7 +3288,6 @@ document.exitFullscreen
 document.exitFullscreen();
 
 }
-
 else if(
 document.webkitExitFullscreen
 ){
@@ -3525,9 +3301,9 @@ document.webkitExitFullscreen();
 }
 
 
-/* =========================================
+/* =========================
 FULLSCREEN CHANGE
-========================================= */
+========================= */
 
 document.addEventListener(
 "fullscreenchange",
@@ -3536,10 +3312,10 @@ function(){
 setTimeout(
 function(){
 
-fitMap();
+fitMapToContainer();
 
 },
-250
+150
 );
 
 });
@@ -3552,18 +3328,18 @@ function(){
 setTimeout(
 function(){
 
-fitMap();
+fitMapToContainer();
 
 },
-250
+150
 );
 
 });
 
 
-/* =========================================
+/* =========================
 START WEBSITE
-========================================= */
+========================= */
 
 document.addEventListener(
 "DOMContentLoaded",
@@ -3589,14 +3365,14 @@ loadTeamMembers();
 
 
 /*
-Final map fit after
-complete page layout.
+Make sure map fits after
+all page layout is ready.
 */
 
 setTimeout(
 function(){
 
-fitMap();
+fitMapToContainer();
 
 },
 300
