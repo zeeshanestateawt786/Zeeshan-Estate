@@ -1,22 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
 <title>Property Details | Zeeshan Estate AWT</title>
 
 <meta name="description"
-content="Property for sale in Army Welfare Trust Phase 2 Lahore by Zeeshan Estate AWT.">
+content="Property for sale and purchase by Zeeshan Estate AWT in Army Welfare Trust Phase 2 Lahore.">
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
 
-/* =========================================================
-RESET
-========================================================= */
+/* =====================================================
+   GLOBAL
+===================================================== */
 
 *{
 box-sizing:border-box;
@@ -30,9 +33,10 @@ scroll-behavior:smooth;
 
 body{
 font-family:Arial,Helvetica,sans-serif;
-background:#f5f6f7;
+background:#f5f5f5;
 color:#222;
-padding-bottom:90px;
+line-height:1.5;
+padding-bottom:80px;
 }
 
 a{
@@ -40,17 +44,20 @@ text-decoration:none;
 color:inherit;
 }
 
-button{
+button,
+input,
+select,
+textarea{
 font-family:inherit;
 }
 
 
-/* =========================================================
-HEADER
-========================================================= */
+/* =====================================================
+   TOP HEADER
+===================================================== */
 
 .header{
-height:68px;
+height:66px;
 background:#fff;
 border-bottom:1px solid #ddd;
 display:flex;
@@ -60,11 +67,13 @@ padding:0 5%;
 position:sticky;
 top:0;
 z-index:1000;
+box-shadow:0 1px 5px rgba(0,0,0,.08);
 }
 
 .logo{
-font-size:23px;
+font-size:24px;
 font-weight:900;
+color:#111;
 }
 
 .logo span{
@@ -73,6 +82,7 @@ color:#c40000;
 
 .header-right{
 display:flex;
+align-items:center;
 gap:9px;
 }
 
@@ -80,13 +90,13 @@ gap:9px;
 width:42px;
 height:42px;
 border:1px solid #ddd;
-border-radius:50%;
 background:#fff;
+border-radius:5px;
+font-size:21px;
+cursor:pointer;
 display:flex;
 align-items:center;
 justify-content:center;
-font-size:20px;
-cursor:pointer;
 }
 
 .header-btn:hover{
@@ -94,63 +104,63 @@ background:#f5f5f5;
 }
 
 
-/* =========================================================
-MAIN
-========================================================= */
+/* =====================================================
+   MAIN
+===================================================== */
 
 .main{
 max-width:1200px;
-margin:25px auto;
-padding:0 18px;
+margin:22px auto;
+padding:0 15px;
 }
 
 
-/* =========================================================
-BREADCRUMB
-========================================================= */
+/* =====================================================
+   BREADCRUMB
+===================================================== */
 
 .breadcrumb{
 font-size:13px;
 color:#777;
-margin-bottom:18px;
+margin-bottom:15px;
 }
 
 .breadcrumb a{
-color:#b40000;
-font-weight:bold;
+color:#c40000;
+font-weight:700;
 }
 
 .breadcrumb span{
-margin:0 7px;
+margin:0 6px;
 }
 
 
-/* =========================================================
-GALLERY
-========================================================= */
+/* =====================================================
+   GALLERY
+===================================================== */
 
-.gallery{
+.gallery-box{
 background:#fff;
 border:1px solid #ddd;
-border-radius:8px;
+border-radius:4px;
 overflow:hidden;
 }
 
-.gallery-main{
-height:550px;
+.main-image{
+height:500px;
 background:#111;
 position:relative;
 overflow:hidden;
 }
 
-.gallery-main img{
+.main-image img{
 width:100%;
 height:100%;
 object-fit:cover;
 display:block;
 }
 
-.gallery-arrow{
+.image-arrow{
 position:absolute;
 top:50%;
 transform:translateY(-50%);
@@ -162,30 +172,31 @@ background:rgba(255,255,255,.94);
 font-size:30px;
 cursor:pointer;
 z-index:5;
-box-shadow:0 2px 10px #0005;
+box-shadow:0 2px 8px rgba(0,0,0,.25);
 }
 
-.gallery-arrow.left{
+.image-arrow.left{
 left:18px;
 }
 
-.gallery-arrow.right{
+.image-arrow.right{
 right:18px;
 }
 
-.gallery-arrow:hover{
+.image-arrow:hover{
 background:#fff;
+color:#c40000;
 }
 
-.gallery-counter{
+.image-counter{
 position:absolute;
 right:18px;
 bottom:18px;
 background:rgba(0,0,0,.75);
 color:#fff;
-padding:8px 13px;
-border-radius:5px;
-font-size:14px;
+padding:7px 13px;
+border-radius:4px;
+font-size:13px;
 font-weight:bold;
 }
 
@@ -199,7 +210,7 @@ font-size:20px;
 }
 
 .thumbnails{
-height:96px;
+height:95px;
 display:flex;
 gap:9px;
 padding:10px;
@@ -209,12 +220,16 @@ background:#fff;
 
 .thumbnail{
 width:105px;
-height:74px;
+height:73px;
 object-fit:cover;
-border-radius:5px;
 border:2px solid transparent;
+border-radius:4px;
 cursor:pointer;
 flex-shrink:0;
+}
+
+.thumbnail:hover{
+border-color:#aaa;
 }
 
 .thumbnail.active{
@@ -222,86 +237,58 @@ border-color:#c40000;
 }
 
 
-/* =========================================================
-TITLE / PRICE AREA
-========================================================= */
+/* =====================================================
+   PROPERTY HEADER
+===================================================== */
 
-.property-head{
+.property-main-card{
 background:#fff;
 border:1px solid #ddd;
-border-radius:8px;
-margin-top:18px;
-padding:26px 30px;
+margin-top:15px;
+border-radius:4px;
 }
 
-.title-row{
-display:flex;
-justify-content:space-between;
-gap:20px;
-align-items:flex-start;
+.property-header{
+padding:24px 28px;
+border-bottom:1px solid #eee;
 }
 
 .property-title{
-font-size:29px;
+font-size:27px;
 font-weight:800;
-line-height:1.3;
+margin-bottom:8px;
 }
 
-.location{
+.property-location{
 font-size:15px;
-color:#777;
-margin-top:10px;
+color:#666;
 }
 
-.price{
+.property-price{
 font-size:34px;
 font-weight:900;
 color:#c40000;
-margin-top:18px;
+margin-top:14px;
 }
 
-.posted{
-font-size:13px;
+.property-posted{
+font-size:12px;
 color:#999;
-margin-top:7px;
-}
-
-.head-actions{
-display:flex;
-gap:9px;
-}
-
-.action-btn{
-border:1px solid #ddd;
-background:#fff;
-padding:10px 14px;
-border-radius:5px;
-font-weight:bold;
-cursor:pointer;
-}
-
-.action-btn:hover{
-border-color:#c40000;
-color:#c40000;
+margin-top:5px;
 }
 
 
-/* =========================================================
-QUICK DETAILS
-========================================================= */
+/* =====================================================
+   QUICK DETAILS
+===================================================== */
 
 .quick-details{
 display:grid;
 grid-template-columns:repeat(4,1fr);
-background:#fff;
-border:1px solid #ddd;
-border-radius:8px;
-margin-top:18px;
-overflow:hidden;
 }
 
 .quick-item{
-padding:20px;
+padding:18px 22px;
 border-right:1px solid #eee;
 }
 
@@ -312,26 +299,26 @@ border-right:0;
 .quick-label{
 font-size:11px;
 color:#888;
-font-weight:bold;
 text-transform:uppercase;
-margin-bottom:7px;
+font-weight:800;
+margin-bottom:5px;
 }
 
 .quick-value{
-font-size:17px;
-font-weight:800;
+font-size:16px;
+font-weight:700;
 }
 
 
-/* =========================================================
-MAIN CONTENT
-========================================================= */
+/* =====================================================
+   CONTENT
+===================================================== */
 
 .content{
 display:grid;
-grid-template-columns:minmax(0,1fr) 340px;
-gap:20px;
-margin-top:20px;
+grid-template-columns:minmax(0,1fr) 330px;
+gap:18px;
+margin-top:18px;
 }
 
 .left-column{
@@ -343,34 +330,31 @@ min-width:0;
 }
 
 
-/* =========================================================
-SECTION CARD
-========================================================= */
+/* =====================================================
+   COMMON SECTION
+===================================================== */
 
 .section{
 background:#fff;
 border:1px solid #ddd;
-border-radius:8px;
+border-radius:4px;
 padding:27px;
-margin-bottom:20px;
+margin-bottom:18px;
 }
 
 .section-title{
-font-size:22px;
+font-size:21px;
 font-weight:800;
-padding-bottom:15px;
 margin-bottom:18px;
-border-bottom:1px solid #eee;
 }
 
 .description{
-font-size:16px;
+font-size:15px;
 line-height:1.8;
 color:#444;
 white-space:pre-line;
-max-height:125px;
+max-height:145px;
 overflow:hidden;
-transition:max-height .3s ease;
 }
 
 .description.expanded{
@@ -378,50 +362,49 @@ max-height:none;
 }
 
 .read-more{
-margin-top:13px;
 border:0;
 background:none;
-color:#b40000;
-font-weight:bold;
+color:#c40000;
+font-weight:800;
+margin-top:12px;
 cursor:pointer;
-font-size:15px;
 }
 
 
-/* =========================================================
-FEATURES
-========================================================= */
+/* =====================================================
+   FEATURES
+===================================================== */
 
 .features{
 display:grid;
 grid-template-columns:repeat(2,1fr);
-gap:18px;
+gap:16px;
 }
 
 .feature{
 display:flex;
 align-items:center;
-gap:11px;
-font-size:15px;
+gap:10px;
+font-size:14px;
 }
 
 .check{
 width:25px;
 height:25px;
 border-radius:50%;
-background:#e8f7ee;
+background:#e9f7ee;
 color:#16884a;
 display:flex;
 align-items:center;
 justify-content:center;
-font-weight:bold;
+font-weight:900;
 flex-shrink:0;
 }
 
 
-/* =========================================================
-DETAILS
-========================================================= */
+/* =====================================================
+   PROPERTY DETAILS
+===================================================== */
 
 .details{
 display:grid;
@@ -432,15 +415,15 @@ gap:12px;
 .detail{
 background:#fafafa;
 border:1px solid #eee;
-border-radius:5px;
-padding:15px;
+padding:14px;
+border-radius:4px;
 }
 
 .detail-label{
 font-size:11px;
 color:#888;
-font-weight:bold;
-margin-bottom:6px;
+font-weight:800;
+margin-bottom:5px;
 }
 
 .detail-value{
@@ -449,66 +432,59 @@ font-weight:700;
 }
 
 
-/* =========================================================
-DEALER CARD
-========================================================= */
+/* =====================================================
+   DEALER CARD
+===================================================== */
 
 .dealer{
 background:#fff;
 border:1px solid #ddd;
-border-radius:8px;
-padding:25px;
-position:sticky;
-top:88px;
-box-shadow:0 4px 18px rgba(0,0,0,.06);
-}
-
-.dealer-badge{
-display:inline-block;
-background:#fff0f0;
-color:#c40000;
-padding:6px 10px;
 border-radius:4px;
-font-size:12px;
-font-weight:bold;
-margin-bottom:15px;
+padding:24px;
+position:sticky;
+top:85px;
 }
 
 .dealer-title{
 font-size:21px;
 font-weight:800;
-margin-bottom:17px;
+margin-bottom:18px;
 }
 
 .dealer-name{
 font-size:20px;
 font-weight:800;
-margin-bottom:5px;
+margin-bottom:4px;
+}
+
+.dealer-company{
+color:#c40000;
+font-weight:700;
+font-size:14px;
+margin-bottom:8px;
 }
 
 .dealer-location{
-font-size:14px;
+font-size:13px;
 color:#777;
-line-height:1.6;
-margin-bottom:17px;
-}
-
-.dealer-number{
-font-weight:bold;
-font-size:16px;
 margin-bottom:18px;
 }
 
-.dealer-call,
-.dealer-whatsapp{
+.dealer-number{
+font-weight:800;
+font-size:15px;
+margin-bottom:16px;
+}
+
+.dealer-btn{
 display:block;
 width:100%;
-text-align:center;
 padding:14px;
-border-radius:5px;
-font-weight:800;
+border-radius:4px;
+text-align:center;
 font-size:16px;
-margin-bottom:10px;
+font-weight:800;
+margin-top:9px;
 }
 
 .dealer-call{
@@ -517,102 +493,257 @@ color:#fff;
 }
 
 .dealer-whatsapp{
-background:#1fa855;
+background:#20a858;
 color:#fff;
 }
 
-.dealer-call:hover{
-background:#a80000;
-}
-
-.dealer-whatsapp:hover{
-background:#168d45;
-}
-
-.dealer-note{
-font-size:12px;
-color:#888;
-text-align:center;
-margin-top:12px;
-line-height:1.5;
-}
-
-
-/* =========================================================
-CONTACT STRIP
-========================================================= */
-
-.contact-strip{
-background:#110606;
-color:#fff;
-border-radius:8px;
-padding:22px;
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:15px;
-margin-bottom:20px;
-}
-
-.contact-strip strong{
-font-size:19px;
-}
-
-.contact-strip p{
-font-size:13px;
-color:#ccc;
-margin-top:4px;
-}
-
-.contact-strip a{
-background:#c40000;
-padding:12px 20px;
-border-radius:5px;
-font-weight:bold;
-white-space:nowrap;
-}
-
-
-/* =========================================================
-LOADING
-========================================================= */
-
-.loading{
+.dealer-message{
 background:#fff;
-min-height:450px;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:20px;
-color:#777;
-border-radius:8px;
-}
-
-
-/* =========================================================
-ERROR
-========================================================= */
-
-.error{
-background:#fff;
-padding:70px 20px;
-text-align:center;
+border:1px solid #c40000;
 color:#c40000;
-font-size:18px;
-border-radius:8px;
 }
 
 
-/* =========================================================
-BOTTOM BAR
-========================================================= */
+/* =====================================================
+   SHARE / ACTIONS
+===================================================== */
+
+.action-row{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:9px;
+margin-top:15px;
+}
+
+.action-btn{
+border:1px solid #ddd;
+background:#fff;
+padding:11px;
+border-radius:4px;
+font-weight:700;
+cursor:pointer;
+text-align:center;
+}
+
+.action-btn:hover{
+border-color:#c40000;
+color:#c40000;
+}
+
+
+/* =====================================================
+   LIST PROPERTY
+===================================================== */
+
+.list-property-section{
+margin-top:35px;
+}
+
+.list-property-box{
+background:#fff;
+border:1px solid #ddd;
+border-radius:5px;
+overflow:hidden;
+}
+
+.list-property-header{
+background:#b40000;
+color:#fff;
+padding:25px;
+}
+
+.list-property-header h2{
+font-size:28px;
+margin-bottom:5px;
+}
+
+.list-property-header p{
+color:#ffe8e8;
+font-size:14px;
+}
+
+.form-area{
+padding:28px;
+}
+
+.form-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:18px;
+}
+
+.form-group{
+display:flex;
+flex-direction:column;
+}
+
+.form-group.full{
+grid-column:1/-1;
+}
+
+.form-group label{
+font-weight:800;
+font-size:14px;
+margin-bottom:7px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea{
+width:100%;
+padding:13px;
+border:1px solid #ccc;
+border-radius:4px;
+font-size:15px;
+outline:none;
+background:#fff;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus{
+border-color:#c40000;
+box-shadow:0 0 0 2px rgba(196,0,0,.08);
+}
+
+.form-group textarea{
+min-height:120px;
+resize:vertical;
+}
+
+.file-input{
+border:2px dashed #c40000!important;
+background:#fffafa!important;
+cursor:pointer;
+}
+
+.image-help{
+font-size:12px;
+color:#777;
+margin-top:6px;
+}
+
+.image-preview{
+display:grid;
+grid-template-columns:repeat(5,1fr);
+gap:10px;
+margin-top:12px;
+}
+
+.image-preview img{
+width:100%;
+height:100px;
+object-fit:cover;
+border-radius:4px;
+border:1px solid #ddd;
+}
+
+.submit-btn{
+width:100%;
+margin-top:20px;
+padding:16px;
+border:0;
+border-radius:4px;
+background:#c40000;
+color:#fff;
+font-size:17px;
+font-weight:900;
+cursor:pointer;
+}
+
+.submit-btn:hover{
+background:#a90000;
+}
+
+.submit-btn:disabled{
+background:#777;
+cursor:not-allowed;
+}
+
+.status{
+text-align:center;
+font-weight:700;
+margin-top:13px;
+}
+
+
+/* =====================================================
+   OTHER AVAILABLE PROPERTIES
+===================================================== */
+
+.other-properties{
+margin-top:35px;
+}
+
+.other-title{
+font-size:26px;
+font-weight:900;
+margin-bottom:18px;
+}
+
+.other-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:18px;
+}
+
+.other-card{
+background:#fff;
+border:1px solid #ddd;
+border-radius:5px;
+overflow:hidden;
+cursor:pointer;
+transition:.2s;
+}
+
+.other-card:hover{
+transform:translateY(-3px);
+box-shadow:0 7px 20px rgba(0,0,0,.12);
+}
+
+.other-image{
+height:190px;
+background:#eee;
+}
+
+.other-image img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+.other-body{
+padding:15px;
+}
+
+.other-body h3{
+font-size:17px;
+margin-bottom:6px;
+}
+
+.other-price{
+font-size:20px;
+font-weight:900;
+color:#c40000;
+margin:7px 0;
+}
+
+.other-location{
+font-size:13px;
+color:#777;
+}
+
+
+/* =====================================================
+   BOTTOM MOBILE BAR
+===================================================== */
 
 .bottom-bar{
 position:fixed;
 left:0;
 right:0;
 bottom:0;
-height:78px;
+height:76px;
 background:#fff;
 border-top:1px solid #ddd;
 box-shadow:0 -3px 15px rgba(0,0,0,.12);
@@ -625,11 +756,11 @@ flex:1;
 display:flex;
 align-items:center;
 justify-content:center;
-gap:7px;
-font-weight:bold;
-color:#222;
+gap:5px;
+font-weight:800;
+font-size:14px;
 border-right:1px solid #ddd;
-font-size:15px;
+background:#fff;
 }
 
 .bottom-btn:last-child{
@@ -646,13 +777,38 @@ color:#168c48;
 }
 
 
-/* =========================================================
-MOBILE
-========================================================= */
+/* =====================================================
+   LOADING / ERROR
+===================================================== */
+
+.loading{
+background:#fff;
+min-height:400px;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:20px;
+color:#777;
+}
+
+.error{
+background:#fff;
+padding:70px 20px;
+text-align:center;
+color:#c40000;
+font-size:18px;
+border:1px solid #ddd;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
 
 @media(max-width:850px){
 
 body{
+background:#fff;
 padding-bottom:76px;
 }
 
@@ -662,7 +818,7 @@ padding:0 14px;
 }
 
 .logo{
-font-size:18px;
+font-size:19px;
 }
 
 .header-btn{
@@ -677,112 +833,83 @@ padding:0;
 }
 
 .breadcrumb{
-padding:14px 16px;
+padding:12px 15px;
 margin:0;
-background:#f5f6f7;
+background:#f5f5f5;
 }
 
-.gallery{
-border:0;
+.gallery-box{
+border-left:0;
+border-right:0;
 border-radius:0;
 }
 
-.gallery-main{
-height:330px;
+.main-image{
+height:320px;
 }
 
 .thumbnails{
 height:82px;
-padding:7px;
+padding:8px;
 }
 
 .thumbnail{
 width:88px;
-height:66px;
+height:64px;
 }
 
-.property-head{
-margin-top:8px;
+.property-main-card{
+margin-top:0;
 border-left:0;
 border-right:0;
 border-radius:0;
-padding:22px 18px;
 }
 
-.title-row{
-display:block;
+.property-header{
+padding:20px;
 }
 
 .property-title{
-font-size:22px;
+font-size:21px;
+line-height:1.35;
 }
 
-.location{
-font-size:14px;
-}
-
-.price{
+.property-price{
 font-size:29px;
-margin-top:14px;
-}
-
-.head-actions{
-margin-top:16px;
-}
-
-.action-btn{
-flex:1;
 }
 
 .quick-details{
-grid-template-columns:repeat(2,1fr);
-border-left:0;
-border-right:0;
-border-radius:0;
-margin-top:8px;
+grid-template-columns:1fr 1fr;
 }
 
 .quick-item{
-padding:16px;
+padding:15px;
 border-bottom:1px solid #eee;
 }
 
-.quick-item:nth-child(2),
+.quick-item:nth-child(2){
+border-right:0;
+}
+
 .quick-item:nth-child(4){
 border-right:0;
 }
 
 .content{
 display:block;
-margin-top:8px;
+margin-top:0;
 }
 
 .section{
 border-left:0;
 border-right:0;
 border-radius:0;
-padding:22px 18px;
+padding:22px 20px;
 margin-bottom:8px;
 }
 
-.section-title{
-font-size:20px;
-}
-
 .features{
-grid-template-columns:repeat(2,1fr);
-gap:18px 10px;
-}
-
-.feature{
-font-size:14px;
-align-items:flex-start;
-}
-
-.check{
-width:22px;
-height:22px;
-font-size:12px;
+grid-template-columns:1fr 1fr;
 }
 
 .details{
@@ -790,22 +917,47 @@ grid-template-columns:1fr;
 }
 
 .right-column{
-padding:0 8px;
+padding:0 15px;
 }
 
 .dealer{
 position:static;
-margin-bottom:15px;
+margin:8px 0 20px;
 }
 
-.contact-strip{
-border-radius:0;
-margin-bottom:8px;
-padding:18px;
+.list-property-section{
+margin-top:25px;
+padding:0 10px;
 }
 
-.bottom-bar{
-height:76px;
+.list-property-box{
+border-radius:5px;
+}
+
+.form-area{
+padding:20px;
+}
+
+.form-grid{
+grid-template-columns:1fr;
+gap:15px;
+}
+
+.form-group.full{
+grid-column:auto;
+}
+
+.image-preview{
+grid-template-columns:repeat(3,1fr);
+}
+
+.other-properties{
+padding:20px 15px;
+margin-top:15px;
+}
+
+.other-grid{
+grid-template-columns:1fr 1fr;
 }
 
 .bottom-btn{
@@ -819,83 +971,58 @@ display:none;
 }
 
 
-/* =========================================================
-SMALL MOBILE
-========================================================= */
+@media(max-width:500px){
 
-@media(max-width:430px){
-
-.gallery-main{
+.main-image{
 height:285px;
-}
-
-.property-title{
-font-size:20px;
-}
-
-.price{
-font-size:27px;
 }
 
 .features{
 grid-template-columns:1fr;
 }
 
-.details{
+.property-header{
+padding:18px 16px;
+}
+
+.section{
+padding-left:16px;
+padding-right:16px;
+}
+
+.right-column{
+padding:0 10px;
+}
+
+.list-property-section{
+padding:0 8px;
+}
+
+.list-property-header{
+padding:20px;
+}
+
+.list-property-header h2{
+font-size:23px;
+}
+
+.form-area{
+padding:17px;
+}
+
+.image-preview{
+grid-template-columns:1fr 1fr;
+}
+
+.other-grid{
 grid-template-columns:1fr;
 }
 
-.head-actions{
-gap:6px;
-}
-
-.action-btn{
-font-size:13px;
-padding:9px;
-}
-
-.contact-strip{
-display:block;
-}
-
-.contact-strip a{
-display:block;
-text-align:center;
-margin-top:13px;
+.other-image{
+height:210px;
 }
 
 }
-
-
-/* =========================================================
-VERY SMALL
-========================================================= */
-
-@media(max-width:360px){
-
-.gallery-main{
-height:260px;
-}
-
-.logo{
-font-size:16px;
-}
-
-.header-right{
-gap:5px;
-}
-
-.header-btn{
-width:34px;
-height:34px;
-}
-
-.quick-value{
-font-size:15px;
-}
-
-}
-
 </style>
 
 </head>
@@ -904,9 +1031,9 @@ font-size:15px;
 <body>
 
 
-<!-- =========================================================
+<!-- =====================================================
 HEADER
-========================================================= -->
+===================================================== -->
 
 <header class="header">
 
@@ -942,22 +1069,309 @@ title="Share">
 </header>
 
 
-<!-- =========================================================
+<!-- =====================================================
 MAIN
-========================================================= -->
+===================================================== -->
 
 <main class="main">
 
-<div id="propertyContainer" class="loading">
-Loading Property...
+<div class="breadcrumb">
+
+<a href="index.html">
+Home
+</a>
+
+<span>›</span>
+
+<a href="index.html#properties">
+Properties
+</a>
+
+<span>›</span>
+
+Property Details
+
 </div>
+
+
+<div
+id="propertyContainer"
+class="loading">
+
+Loading Property...
+
+</div>
+
+
+<!-- =====================================================
+LIST YOUR PROPERTY
+===================================================== -->
+
+<section
+class="list-property-section"
+id="list-property">
+
+<div class="list-property-box">
+
+<div class="list-property-header">
+
+<h2>
+List Your Property
+</h2>
+
+<p>
+Apni property Zeeshan Estate AWT par list karein.
+Property details aur pictures submit karein.
+</p>
+
+</div>
+
+
+<div class="form-area">
+
+<form id="property-form">
+
+<div class="form-grid">
+
+
+<div class="form-group">
+
+<label>
+Property Purpose *
+</label>
+
+<select
+id="purpose"
+required>
+
+<option value="">
+Select Purpose
+</option>
+
+<option value="For Sale">
+For Sale
+</option>
+
+<option value="For Rent">
+For Rent
+</option>
+
+</select>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+Property Type *
+</label>
+
+<select
+id="propertyType"
+required>
+
+<option value="">
+Select Property Type
+</option>
+
+<option value="Residential Plot">
+Residential Plot
+</option>
+
+<option value="Commercial Plot">
+Commercial Plot
+</option>
+
+<option value="House">
+House
+</option>
+
+<option value="Shop">
+Shop
+</option>
+
+<option value="Office">
+Office
+</option>
+
+<option value="Other">
+Other
+</option>
+
+</select>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+Property Size *
+</label>
+
+<input
+type="text"
+id="propertySize"
+placeholder="Example: 5 Marla / 10 Marla / 1 Kanal"
+required>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+Expected Price *
+</label>
+
+<input
+type="text"
+id="price"
+placeholder="Example: 80 Lac"
+required>
+
+</div>
+
+
+<div class="form-group full">
+
+<label>
+Property Location *
+</label>
+
+<input
+type="text"
+id="location"
+placeholder="Block / Street / Location"
+required>
+
+</div>
+
+
+<div class="form-group full">
+
+<label>
+Property Pictures
+</label>
+
+<input
+class="file-input"
+type="file"
+id="propertyImages"
+accept="image/jpeg,image/png,image/webp"
+multiple>
+
+<div class="image-help">
+📸 Multiple pictures select kar sakte hain. Maximum 8MB per picture.
+</div>
+
+<div
+id="image-preview"
+class="image-preview">
+</div>
+
+</div>
+
+
+<div class="form-group full">
+
+<label>
+Property Details
+</label>
+
+<textarea
+id="details"
+placeholder="Property ki complete details likhein..."></textarea>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+Owner Name *
+</label>
+
+<input
+type="text"
+id="ownerName"
+placeholder="Your Name"
+required>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+Owner Phone *
+</label>
+
+<input
+type="tel"
+id="ownerPhone"
+placeholder="03XX-XXXXXXX"
+required>
+
+</div>
+
+</div>
+
+
+<button
+type="submit"
+id="submit-property-btn"
+class="submit-btn">
+
+📲 SUBMIT PROPERTY
+
+</button>
+
+
+<div
+id="form-status"
+class="status">
+</div>
+
+</form>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+OTHER PROPERTIES
+===================================================== -->
+
+<section
+class="other-properties">
+
+<h2 class="other-title">
+More Available Properties
+</h2>
+
+<div
+id="other-properties-grid"
+class="other-grid">
+
+<p>
+Loading properties...
+</p>
+
+</div>
+
+</section>
 
 </main>
 
 
-<!-- =========================================================
-BOTTOM CONTACT BAR
-========================================================= -->
+<!-- =====================================================
+BOTTOM BAR
+===================================================== -->
 
 <div class="bottom-bar">
 
@@ -970,8 +1384,19 @@ href="sms:+923020941013">
 
 </a>
 
+
 <a
 class="bottom-btn"
+href="#list-property">
+
+＋
+<span>List Property</span>
+
+</a>
+
+
+<a
+class="bottom-btn call"
 href="tel:+923020941013">
 
 ☎
@@ -979,20 +1404,11 @@ href="tel:+923020941013">
 
 </a>
 
-<a
-class="bottom-btn call"
-href="tel:+923020941013">
-
-📞
-<span>Contact</span>
-
-</a>
 
 <a
 class="bottom-btn whatsapp"
 href="https://wa.me/923020941013"
-target="_blank"
-rel="noopener">
+target="_blank">
 
 ◉
 <span>WhatsApp</span>
@@ -1004,15 +1420,18 @@ rel="noopener">
 
 <script>
 
-/* =========================================================
+/* =====================================================
 SUPABASE
-========================================================= */
+===================================================== */
 
 const SUPABASE_URL =
 "https://rhzsfjolkxqovhonylti.supabase.co";
 
 const SUPABASE_KEY =
 "sb_publishable_DjOGYqDCgPNMngD7mwMmcw_BM-UUCg8";
+
+const STORAGE_BUCKET =
+"property-images";
 
 const supabaseClient =
 supabase.createClient(
@@ -1021,9 +1440,9 @@ SUPABASE_KEY
 );
 
 
-/* =========================================================
+/* =====================================================
 PROPERTY ID
-========================================================= */
+===================================================== */
 
 const params =
 new URLSearchParams(
@@ -1034,9 +1453,9 @@ const propertyId =
 params.get("id");
 
 
-/* =========================================================
+/* =====================================================
 ESCAPE HTML
-========================================================= */
+===================================================== */
 
 function esc(value){
 
@@ -1044,35 +1463,45 @@ if(
 value === null ||
 value === undefined
 ){
+
 return "";
+
 }
 
 return String(value)
+
 .replace(/&/g,"&amp;")
+
 .replace(/</g,"&lt;")
+
 .replace(/>/g,"&gt;")
+
 .replace(/"/g,"&quot;")
+
 .replace(/'/g,"&#039;");
 
 }
 
 
-/* =========================================================
+/* =====================================================
 GALLERY
-========================================================= */
+===================================================== */
 
 let images = [];
+
 let imageIndex = 0;
 
 
-/* =========================================================
+/* =====================================================
 PRICE FORMAT
-========================================================= */
+===================================================== */
 
 function priceText(value){
 
 if(!value){
+
 return "Price on Call";
+
 }
 
 let text =
@@ -1081,7 +1510,9 @@ String(value).trim();
 if(
 /PKR|lakh|lac|crore|million|arab/i.test(text)
 ){
+
 return text;
+
 }
 
 let number =
@@ -1089,8 +1520,12 @@ Number(
 text.replace(/,/g,"")
 );
 
-if(isNaN(number)){
+if(
+isNaN(number)
+){
+
 return text;
+
 }
 
 if(number >= 10000000){
@@ -1121,21 +1556,25 @@ number.toLocaleString();
 }
 
 
-/* =========================================================
+/* =====================================================
 POSTED DATE
-========================================================= */
+===================================================== */
 
 function postedDate(value){
 
 if(!value){
+
 return "Recently added";
+
 }
 
 const date =
 new Date(value);
 
 if(isNaN(date.getTime())){
+
 return "Recently added";
+
 }
 
 const days =
@@ -1143,21 +1582,28 @@ Math.floor(
 (
 Date.now() -
 date.getTime()
-) / 86400000
+) /
+86400000
 );
 
 if(days <= 0){
+
 return "Added today";
+
 }
 
 if(days === 1){
+
 return "Added 1 day ago";
+
 }
 
 if(days < 30){
+
 return "Added " +
 days +
 " days ago";
+
 }
 
 return "Added on " +
@@ -1166,9 +1612,9 @@ date.toLocaleDateString();
 }
 
 
-/* =========================================================
+/* =====================================================
 LOAD PROPERTY
-========================================================= */
+===================================================== */
 
 async function loadProperty(){
 
@@ -1190,10 +1636,7 @@ container.innerHTML = `
 
 <a
 href="index.html#properties"
-style="
-color:#c40000;
-font-weight:bold;
-">
+style="color:#c40000;font-weight:bold">
 
 ← Back to Properties
 
@@ -1205,33 +1648,43 @@ return;
 
 }
 
-
 try{
 
 const response =
 await supabaseClient
+
 .from("properties")
+
 .select("*")
+
 .eq("id",propertyId)
+
 .single();
 
+
 if(response.error){
+
 throw response.error;
+
 }
 
 const property =
 response.data;
 
 if(!property){
+
 throw new Error(
 "Property not found"
 );
+
 }
 
 
-/* =========================================================
+/* =====================================================
 IMAGES
-========================================================= */
+===================================================== */
+
+images = [];
 
 if(
 Array.isArray(
@@ -1254,9 +1707,9 @@ typeof url === "string"
 }
 
 
-/* =========================================================
+/* =====================================================
 DATA
-========================================================= */
+===================================================== */
 
 const type =
 property.property_type ||
@@ -1264,7 +1717,7 @@ property.property_type ||
 
 const purpose =
 property.purpose ||
-"For Sale";
+"";
 
 const size =
 property.property_size ||
@@ -1279,19 +1732,15 @@ property.details ||
 "No description available.";
 
 const price =
-priceText(
-property.price
-);
+priceText(property.price);
 
 const posted =
-postedDate(
-property.created_at
-);
+postedDate(property.created_at);
 
 
-/* =========================================================
+/* =====================================================
 GALLERY HTML
-========================================================= */
+===================================================== */
 
 let galleryHTML = "";
 
@@ -1300,14 +1749,14 @@ if(images.length > 0){
 
 galleryHTML = `
 
-<div class="gallery">
+<div class="gallery-box">
 
-<div class="gallery-main">
+<div class="main-image">
 
 <img
 id="mainImage"
 src="${esc(images[0])}"
-alt="${esc(type)} property in AWT Phase 2"
+alt="${esc(type)} for sale in AWT Phase 2"
 loading="eager">
 
 ${
@@ -1316,16 +1765,14 @@ images.length > 1
 `
 
 <button
-class="gallery-arrow left"
-onclick="prevImage()"
-aria-label="Previous image">
+class="image-arrow left"
+onclick="prevImage()">
 ‹
 </button>
 
 <button
-class="gallery-arrow right"
-onclick="nextImage()"
-aria-label="Next image">
+class="image-arrow right"
+onclick="nextImage()">
 ›
 </button>
 
@@ -1334,10 +1781,12 @@ aria-label="Next image">
 ""
 }
 
-<div class="gallery-counter">
+<div class="image-counter">
 
 📷
-<span id="imageNumber">1</span>
+<span id="imageNumber">
+1
+</span>
 /
 ${images.length}
 
@@ -1366,13 +1815,12 @@ index === 0
 }"
 src="${esc(url)}"
 onclick="showImage(${index})"
-alt="Property image ${index + 1}"
+alt="Property Image ${index + 1}"
 loading="lazy">
 
 `;
 
-}
-).join("")}
+}).join("")}
 
 </div>
 
@@ -1389,9 +1837,9 @@ loading="lazy">
 
 galleryHTML = `
 
-<div class="gallery">
+<div class="gallery-box">
 
-<div class="gallery-main">
+<div class="main-image">
 
 <div class="no-image">
 
@@ -1408,9 +1856,9 @@ galleryHTML = `
 }
 
 
-/* =========================================================
+/* =====================================================
 FEATURES
-========================================================= */
+===================================================== */
 
 let features = [];
 
@@ -1437,78 +1885,61 @@ features.push(
 );
 
 features.push(
-"Prime Location"
+"Authorized Dealer"
 );
 
 features.push(
-"Authorized Dealer"
+"Prime Location"
 );
 
 features =
 [...new Set(features)];
 
 
-/* =========================================================
+/* =====================================================
 PAGE
-========================================================= */
+===================================================== */
 
 container.className = "";
 
 container.innerHTML = `
 
-<div class="breadcrumb">
-
-<a href="index.html">
-Home
-</a>
-
-<span>›</span>
-
-<a href="index.html#properties">
-Properties
-</a>
-
-<span>›</span>
-
-Property Details
-
-</div>
-
-
 ${galleryHTML}
 
 
-<!-- PROPERTY HEADER -->
+<div class="property-main-card">
 
-<div class="property-head">
 
-<div class="title-row">
-
-<div>
+<div class="property-header">
 
 <div class="property-title">
 
 ${esc(type)}
 
-${purpose
+${
+purpose
 ? " — " + esc(purpose)
-: ""}
+: ""
+}
 
 </div>
 
-<div class="location">
+
+<div class="property-location">
 
 📍 ${esc(location)}
 
 </div>
 
-<div class="price">
+
+<div class="property-price">
 
 ${esc(price)}
 
 </div>
 
-<div class="posted">
+
+<div class="property-posted">
 
 ${esc(posted)}
 
@@ -1517,34 +1948,8 @@ ${esc(posted)}
 </div>
 
 
-<div class="head-actions">
-
-<button
-class="action-btn"
-onclick="favorite()">
-
-♡ Save
-
-</button>
-
-<button
-class="action-btn"
-onclick="sharePage()">
-
-↗ Share
-
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-
-<!-- QUICK DETAILS -->
-
 <div class="quick-details">
+
 
 <div class="quick-item">
 
@@ -1566,7 +1971,7 @@ Purpose
 </div>
 
 <div class="quick-value">
-${esc(purpose)}
+${esc(purpose || "For Sale")}
 </div>
 
 </div>
@@ -1592,23 +1997,21 @@ Location
 </div>
 
 <div class="quick-value">
-AWT Phase 2
+${esc(location)}
 </div>
 
 </div>
 
 </div>
 
+</div>
 
-<!-- CONTENT -->
 
 <div class="content">
 
 
 <div class="left-column">
 
-
-<!-- DESCRIPTION -->
 
 <section class="section">
 
@@ -1626,8 +2029,8 @@ ${esc(details)}
 
 <button
 class="read-more"
-onclick="toggleDescription()"
-id="readMore">
+id="readMore"
+onclick="toggleDescription()">
 
 View Full Description
 
@@ -1636,12 +2039,10 @@ View Full Description
 </section>
 
 
-<!-- FEATURES -->
-
 <section class="section">
 
 <h2 class="section-title">
-Features &amp; Amenities
+Features & Amenities
 </h2>
 
 <div class="features">
@@ -1671,8 +2072,6 @@ ${esc(item)}
 
 </section>
 
-
-<!-- DETAILS -->
 
 <section class="section">
 
@@ -1725,19 +2124,6 @@ ${esc(size)}
 <div class="detail">
 
 <div class="detail-label">
-PRICE
-</div>
-
-<div class="detail-value">
-${esc(price)}
-</div>
-
-</div>
-
-
-<div class="detail">
-
-<div class="detail-label">
 LOCATION
 </div>
 
@@ -1764,19 +2150,6 @@ Zeeshan Estate AWT
 <div class="detail">
 
 <div class="detail-label">
-DEALER
-</div>
-
-<div class="detail-value">
-Eng. Ahsan Ali
-</div>
-
-</div>
-
-
-<div class="detail">
-
-<div class="detail-label">
 CONTACT
 </div>
 
@@ -1786,159 +2159,118 @@ CONTACT
 
 </div>
 
+
 </div>
 
 </section>
 
 
-<!-- CONTACT STRIP -->
-
-<div class="contact-strip">
-
-<div>
-
-<strong>
-Interested in this property?
-</strong>
-
-<p>
-Contact Zeeshan Estate AWT for booking and details.
-</p>
-
 </div>
 
-<a href="tel:+923020941013">
-
-📞 Contact Now
-
-</a>
-
-</div>
-
-
-</div>
-
-
-<!-- RIGHT DEALER -->
 
 <div class="right-column">
 
-<div class="dealer">
 
-<div class="dealer-badge">
-AUTHORIZED DEALER
-</div>
+<div class="dealer">
 
 <div class="dealer-title">
 Contact Dealer
 </div>
 
+
 <div class="dealer-name">
 Eng. Ahsan Ali
 </div>
 
+
+<div class="dealer-company">
+Zeeshan Estate AWT
+</div>
+
+
 <div class="dealer-location">
 
-Zeeshan Estate AWT
-
-<br>
-
-Army Welfare Trust Phase 2, Lahore
+📍 Army Welfare Trust Phase 2, Lahore
 
 </div>
+
 
 <div class="dealer-number">
-
 📞 0302-0941013
-
 </div>
 
+
 <a
-href="tel:+923020941013"
-class="dealer-call">
+class="dealer-btn dealer-call"
+href="tel:+923020941013">
 
 ☎ Call Dealer
 
 </a>
 
-<a
-href="https://wa.me/923020941013"
-target="_blank"
-rel="noopener"
-class="dealer-whatsapp">
 
-◉ WhatsApp
+<a
+class="dealer-btn dealer-whatsapp"
+href="https://wa.me/923020941013"
+target="_blank">
+
+◉ WhatsApp Dealer
 
 </a>
 
-<div class="dealer-note">
 
-For booking, price confirmation
-and property visit, contact our dealer.
+<a
+class="dealer-btn dealer-message"
+href="sms:+923020941013">
+
+💬 Send Message
+
+</a>
+
+
+<div class="action-row">
+
+<button
+class="action-btn"
+onclick="favorite()">
+
+♡ Save
+
+</button>
+
+
+<button
+class="action-btn"
+onclick="sharePage()">
+
+↗ Share
+
+</button>
 
 </div>
 
 </div>
 
-</div>
 
+</div>
 
 </div>
 
 `;
 
-}catch(error){
 
-console.error(
-"PROPERTY LOAD ERROR:",
-error
+/* Load other properties */
+
+loadOtherProperties(
+property.id
 );
 
-container.className =
-"error";
-
-container.innerHTML = `
-
-❌ Unable to load property.
-
-<br>
-
-<small style="
-display:block;
-margin-top:10px;
-color:#777;
-">
-
-${esc(
-error.message ||
-"Property not found"
-)}
-
-</small>
-
-<br>
-
-<a
-href="index.html#properties"
-style="
-color:#c40000;
-font-weight:bold;
-">
-
-← Back to Properties
-
-</a>
-
-`;
-
-}
-
 }
 
 
-/* =========================================================
-SHOW IMAGE
-========================================================= */
+/* =====================================================
+IMAGE SHOW
+===================================================== */
 
 function showImage(index){
 
@@ -1946,8 +2278,7 @@ if(!images.length){
 return;
 }
 
-imageIndex =
-index;
+imageIndex = index;
 
 const image =
 document.getElementById(
@@ -1955,16 +2286,12 @@ document.getElementById(
 );
 
 if(image){
-
 image.src =
 images[index];
-
 }
 
 document
-.querySelectorAll(
-".thumbnail"
-)
+.querySelectorAll(".thumbnail")
 .forEach(
 function(item,i){
 
@@ -1982,16 +2309,18 @@ document.getElementById(
 );
 
 if(number){
+
 number.textContent =
 index + 1;
-}
 
 }
 
+}
 
-/* =========================================================
+
+/* =====================================================
 NEXT IMAGE
-========================================================= */
+===================================================== */
 
 function nextImage(){
 
@@ -2009,16 +2338,14 @@ imageIndex = 0;
 
 }
 
-showImage(
-imageIndex
-);
+showImage(imageIndex);
 
 }
 
 
-/* =========================================================
+/* =====================================================
 PREVIOUS IMAGE
-========================================================= */
+===================================================== */
 
 function prevImage(){
 
@@ -2028,23 +2355,23 @@ return;
 
 imageIndex--;
 
-if(imageIndex < 0){
+if(
+imageIndex < 0
+){
 
 imageIndex =
 images.length - 1;
 
 }
 
-showImage(
-imageIndex
-);
+showImage(imageIndex);
 
 }
 
 
-/* =========================================================
+/* =====================================================
 DESCRIPTION
-========================================================= */
+===================================================== */
 
 function toggleDescription(){
 
@@ -2072,8 +2399,10 @@ description.classList.remove(
 "expanded"
 );
 
+if(button){
 button.textContent =
 "View Full Description";
+}
 
 }else{
 
@@ -2081,70 +2410,59 @@ description.classList.add(
 "expanded"
 );
 
+if(button){
 button.textContent =
 "Hide Description";
-
 }
 
 }
 
+}
 
-/* =========================================================
+
+/* =====================================================
 FAVORITE
-========================================================= */
+===================================================== */
 
 function favorite(){
 
-const buttons =
-document.querySelectorAll(
-".header-btn"
+const button =
+document.querySelector(
+".header-btn:nth-child(2)"
 );
 
-const favoriteButton =
-buttons[1];
-
-if(!favoriteButton){
+if(!button){
 return;
 }
 
 if(
-favoriteButton.dataset.saved !== "true"
+button.innerHTML.trim() === "♡"
 ){
 
-favoriteButton.dataset.saved =
-"true";
-
-favoriteButton.innerHTML =
-"♥";
-
-favoriteButton.style.color =
-"#c40000";
+button.innerHTML = "♥";
+button.style.color = "#c40000";
 
 }else{
 
-favoriteButton.dataset.saved =
-"false";
-
-favoriteButton.innerHTML =
-"♡";
-
-favoriteButton.style.color =
-"#222";
+button.innerHTML = "♡";
+button.style.color = "#222";
 
 }
 
 }
 
 
-/* =========================================================
+/* =====================================================
 SHARE
-========================================================= */
+===================================================== */
 
 async function sharePage(){
 
 try{
 
-if(navigator.share){
+if(
+navigator.share
+){
 
 await navigator.share({
 
@@ -2174,8 +2492,7 @@ alert(
 }catch(error){
 
 console.log(
-"Share cancelled:",
-error
+"Share cancelled."
 );
 
 }
@@ -2183,9 +2500,9 @@ error
 }
 
 
-/* =========================================================
+/* =====================================================
 BACK
-========================================================= */
+===================================================== */
 
 function goBack(){
 
@@ -2205,36 +2522,652 @@ window.location.href =
 }
 
 
-/* =========================================================
-KEYBOARD GALLERY
-========================================================= */
+/* =====================================================
+UPLOAD IMAGE PREVIEW
+===================================================== */
 
-document.addEventListener(
-"keydown",
+const imageInput =
+document.getElementById(
+"propertyImages"
+);
+
+const imagePreview =
+document.getElementById(
+"image-preview"
+);
+
+if(imageInput){
+
+imageInput.addEventListener(
+"change",
+function(){
+
+if(!imagePreview){
+return;
+}
+
+imagePreview.innerHTML = "";
+
+Array.from(
+this.files || []
+)
+.forEach(
+function(file){
+
+if(
+!file.type.startsWith(
+"image/"
+)
+){
+
+return;
+
+}
+
+const reader =
+new FileReader();
+
+reader.onload =
 function(event){
 
-if(event.key === "ArrowRight"){
-nextImage();
+const img =
+document.createElement(
+"img"
+);
+
+img.src =
+event.target.result;
+
+imagePreview.appendChild(
+img
+);
+
+};
+
+reader.readAsDataURL(file);
+
+});
+
+});
+
 }
 
-if(event.key === "ArrowLeft"){
-prevImage();
+
+/* =====================================================
+UPLOAD IMAGES
+===================================================== */
+
+async function uploadPropertyImages(files){
+
+const imageUrls = [];
+
+for(
+const file of Array.from(files)
+){
+
+if(
+!file.type.startsWith(
+"image/"
+)
+){
+
+continue;
+
 }
 
-if(event.key === "Escape"){
-goBack();
+if(
+file.size >
+8 * 1024 * 1024
+){
+
+throw new Error(
+"Image " +
+file.name +
+" is larger than 8MB."
+);
+
 }
+
+const extension =
+file.name
+.split(".")
+.pop()
+.toLowerCase();
+
+const uniqueName =
+Date.now() +
+"-" +
+Math.random()
+.toString(36)
+.substring(2,10) +
+"." +
+extension;
+
+const filePath =
+"properties/" +
+uniqueName;
+
+
+const uploadResult =
+await supabaseClient
+
+.storage
+
+.from(
+STORAGE_BUCKET
+)
+
+.upload(
+filePath,
+file,
+{
+cacheControl:"3600",
+upsert:false,
+contentType:file.type
+}
+);
+
+
+if(uploadResult.error){
+
+throw uploadResult.error;
+
+}
+
+
+const publicResult =
+supabaseClient
+
+.storage
+
+.from(
+STORAGE_BUCKET
+)
+
+.getPublicUrl(
+filePath
+);
+
+
+if(
+publicResult.data &&
+publicResult.data.publicUrl
+){
+
+imageUrls.push(
+publicResult.data.publicUrl
+);
+
+}
+
+}
+
+return imageUrls;
+
+}
+
+
+/* =====================================================
+SUBMIT PROPERTY
+===================================================== */
+
+async function submitProperty(event){
+
+event.preventDefault();
+
+
+const button =
+document.getElementById(
+"submit-property-btn"
+);
+
+const status =
+document.getElementById(
+"form-status"
+);
+
+const form =
+document.getElementById(
+"property-form"
+);
+
+const imageFiles =
+document.getElementById(
+"propertyImages"
+).files;
+
+
+button.disabled = true;
+
+button.innerText =
+"Saving Property...";
+
+status.style.color =
+"#333";
+
+status.innerText =
+"Please wait...";
+
+
+try{
+
+
+const property = {
+
+purpose:
+document.getElementById(
+"purpose"
+).value.trim(),
+
+property_type:
+document.getElementById(
+"propertyType"
+).value.trim(),
+
+property_size:
+document.getElementById(
+"propertySize"
+).value.trim(),
+
+price:
+document.getElementById(
+"price"
+).value.trim(),
+
+location:
+document.getElementById(
+"location"
+).value.trim(),
+
+details:
+document.getElementById(
+"details"
+).value.trim(),
+
+owner_name:
+document.getElementById(
+"ownerName"
+).value.trim(),
+
+owner_phone:
+document.getElementById(
+"ownerPhone"
+).value.trim(),
+
+image_urls:[]
+
+};
+
+
+if(imageFiles.length > 0){
+
+button.innerText =
+"Uploading Pictures...";
+
+property.image_urls =
+await uploadPropertyImages(
+imageFiles
+);
+
+}
+
+
+button.innerText =
+"Saving Property...";
+
+
+const result =
+await supabaseClient
+
+.from("properties")
+
+.insert([
+property
+])
+
+.select()
+.single();
+
+
+if(result.error){
+
+throw result.error;
+
+}
+
+
+status.style.color =
+"#168c3b";
+
+status.innerText =
+"✅ Property successfully submitted!";
+
+
+form.reset();
+
+if(imagePreview){
+imagePreview.innerHTML = "";
+}
+
+
+button.disabled = false;
+
+button.innerText =
+"📲 SUBMIT PROPERTY";
+
+
+/* Refresh available properties */
+
+loadOtherProperties(
+result.data?.id || null
+);
+
+
+}catch(error){
+
+console.error(
+"PROPERTY SAVE ERROR:",
+error
+);
+
+
+status.style.color =
+"#c40000";
+
+status.innerText =
+"❌ Property save nahi ho saki: " +
+(
+error.message ||
+"Unknown error"
+);
+
+
+button.disabled = false;
+
+button.innerText =
+"📲 SUBMIT PROPERTY";
+
+}
+
+}
+
+
+/* =====================================================
+LOAD OTHER PROPERTIES
+===================================================== */
+
+async function loadOtherProperties(
+currentId
+){
+
+const container =
+document.getElementById(
+"other-properties-grid"
+);
+
+if(!container){
+return;
+}
+
+try{
+
+const result =
+await supabaseClient
+
+.from("properties")
+
+.select("*")
+
+.order(
+"created_at",
+{
+ascending:false
+}
+)
+.limit(12);
+
+
+if(result.error){
+
+throw result.error;
+
+}
+
+
+let properties =
+result.data || [];
+
+
+if(currentId){
+
+properties =
+properties.filter(
+function(item){
+
+return String(item.id) !==
+String(currentId);
+
+}
+);
+
+}
+
+
+properties =
+properties.slice(0,6);
+
+
+if(
+properties.length === 0
+){
+
+container.innerHTML = `
+
+<p style="
+color:#777;
+grid-column:1/-1;
+">
+
+No other properties available.
+
+</p>
+
+`;
+
+return;
+
+}
+
+
+container.innerHTML = "";
+
+
+properties.forEach(
+function(property){
+
+const card =
+document.createElement(
+"article"
+);
+
+card.className =
+"other-card";
+
+
+let image = "";
+
+if(
+Array.isArray(
+property.image_urls
+) &&
+property.image_urls.length > 0
+){
+
+image =
+property.image_urls[0];
+
+}
+
+
+card.innerHTML = `
+
+<div class="other-image">
+
+${
+image
+?
+`
+
+<img
+src="${esc(image)}"
+alt="${esc(property.property_type || "Property")}"
+loading="lazy">
+
+`
+:
+`
+
+<div style="
+height:100%;
+display:flex;
+align-items:center;
+justify-content:center;
+color:#aaa;
+font-size:16px;
+">
+
+📷 No Image
+
+</div>
+
+`
+}
+
+</div>
+
+
+<div class="other-body">
+
+<h3>
+
+${esc(
+property.property_type ||
+"Property"
+)}
+
+${
+property.purpose
+?
+" — " +
+esc(property.purpose)
+:
+""
+}
+
+</h3>
+
+
+<div class="other-price">
+
+${esc(
+priceText(property.price)
+)}
+
+</div>
+
+
+<p>
+
+📐 ${esc(
+property.property_size ||
+""
+)}
+
+</p>
+
+
+<div class="other-location">
+
+📍 ${esc(
+property.location ||
+"AWT Phase 2, Lahore"
+)}
+
+</div>
+
+</div>
+
+`;
+
+
+card.addEventListener(
+"click",
+function(){
+
+window.location.href =
+"property.html?id=" +
+encodeURIComponent(
+property.id
+);
 
 });
 
 
-/* =========================================================
-START
-========================================================= */
+container.appendChild(
+card
+);
+
+});
+
+}catch(error){
+
+console.error(
+"OTHER PROPERTIES ERROR:",
+error
+);
+
+container.innerHTML = `
+
+<p style="
+color:#777;
+grid-column:1/-1;
+">
+
+Unable to load other properties.
+
+</p>
+
+`;
+
+}
+
+}
+
+
+/* =====================================================
+FORM EVENT
+===================================================== */
 
 document.addEventListener(
 "DOMContentLoaded",
 function(){
+
+const form =
+document.getElementById(
+"property-form"
+);
+
+if(form){
+
+form.addEventListener(
+"submit",
+submitProperty
+);
+
+}
+
+
+/* Load property */
 
 loadProperty();
 
@@ -2243,4 +3176,5 @@ loadProperty();
 </script>
 
 </body>
+
 </html>
