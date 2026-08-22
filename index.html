@@ -18,19 +18,15 @@ content="property for sale Lahore, AWT Phase 2 property, plots for sale Lahore, 
 <link rel="canonical"
 href="https://zeeshanestateawt786.github.io/Zeeshan-Estate/">
 
-<link rel="preload"
-href="map.jpg"
-as="image"
-fetchpriority="high">
+<link rel="preload" href="map.jpg" as="image" fetchpriority="high">
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-
 <style>
 
-/* =====================================================
+/* =========================================
 GLOBAL
-===================================================== */
+========================================= */
 
 *{
 box-sizing:border-box;
@@ -54,17 +50,10 @@ text-decoration:none;
 color:inherit;
 }
 
-button,
-input,
-select,
-textarea{
-font-family:inherit;
-}
 
-
-/* =====================================================
+/* =========================================
 TOP BAR
-===================================================== */
+========================================= */
 
 .top{
 background:#b40000;
@@ -78,12 +67,12 @@ font-weight:700;
 }
 
 
-/* =====================================================
+/* =========================================
 NAVIGATION
-===================================================== */
+========================================= */
 
 .nav{
-padding:17px 5%;
+padding:18px 5%;
 display:flex;
 align-items:center;
 justify-content:space-between;
@@ -112,14 +101,10 @@ font-weight:700;
 
 nav{
 display:flex;
-gap:12px;
+gap:18px;
 flex-wrap:wrap;
 align-items:center;
 font-weight:700;
-}
-
-nav a{
-padding:9px 8px;
 }
 
 nav a:hover{
@@ -147,9 +132,9 @@ background:#c40000;
 }
 
 
-/* =====================================================
+/* =========================================
 HERO
-===================================================== */
+========================================= */
 
 .hero{
 min-height:570px;
@@ -263,9 +248,9 @@ margin:5px 0;
 }
 
 
-/* =====================================================
+/* =========================================
 SECTIONS
-===================================================== */
+========================================= */
 
 .section{
 padding:55px 6%;
@@ -297,9 +282,9 @@ margin-bottom:8px;
 }
 
 
-/* =====================================================
+/* =========================================
 TEAM
-===================================================== */
+========================================= */
 
 .team-title{
 text-align:center;
@@ -350,9 +335,9 @@ font-weight:800;
 }
 
 
-/* =====================================================
-PLOTS SECTION
-===================================================== */
+/* =========================================
+PROPERTIES
+========================================= */
 
 .properties{
 background:#110606;
@@ -440,250 +425,219 @@ font-weight:900;
 }
 
 
-/* =====================================================
-AVAILABLE PROPERTIES
+/* =========================================
+LIST PROPERTY BUTTON
+========================================= */
+
+.list-property-box{
+max-width:950px;
+margin:45px auto 0;
+background:#fff;
+color:#111;
+padding:30px;
+border-radius:12px;
+border-top:6px solid #c40000;
+box-shadow:0 8px 30px rgba(0,0,0,.2);
+text-align:center;
+}
+
+.list-property-box h2{
+color:#b40000;
+font-size:32px;
+margin-bottom:8px;
+}
+
+.list-property-box p{
+color:#666;
+margin-bottom:20px;
+}
+
+.list-property-btn{
+display:inline-block;
+background:#c40000;
+color:#fff;
+padding:15px 32px;
+border-radius:6px;
+font-size:18px;
+font-weight:900;
+box-shadow:0 5px 15px rgba(196,0,0,.3);
+transition:.2s;
+}
+
+.list-property-btn:hover{
+background:#a90000;
+transform:translateY(-2px);
+}
+
+
+/* =========================================
+ONLINE PROPERTIES
 ZAMEEN STYLE
-===================================================== */
+========================================= */
 
 .online-title{
 text-align:center;
-font-size:34px;
-margin:65px 0 10px;
+font-size:32px;
+margin:50px 0 25px;
 color:#fff;
 }
 
 .online-subtitle{
 text-align:center;
 color:#ccc;
-margin-bottom:30px;
+margin:-15px 0 28px;
+font-size:15px;
 }
 
-
-/* Main property grid */
-
-#online-properties{
+.online-properties-grid{
 display:grid;
-grid-template-columns:repeat(3,minmax(0,1fr));
-gap:24px;
+grid-template-columns:repeat(3,1fr);
+gap:22px;
 }
 
-
-/* Property card */
-
-.property-card{
+.z-property-card{
 background:#fff;
 color:#222;
-border-radius:7px;
+border-radius:8px;
 overflow:hidden;
-box-shadow:0 3px 14px rgba(0,0,0,.28);
+box-shadow:0 4px 16px rgba(0,0,0,.25);
+transition:.2s;
 cursor:pointer;
-transition:transform .2s ease,box-shadow .2s ease;
-position:relative;
+border:1px solid #e1e1e1;
 }
 
-.property-card:hover{
+.z-property-card:hover{
 transform:translateY(-4px);
-box-shadow:0 9px 25px rgba(0,0,0,.38);
+box-shadow:0 10px 28px rgba(0,0,0,.35);
 }
 
-
-/* Gallery */
-
-.property-gallery{
-height:225px;
+.z-property-image{
+height:220px;
+background:#eee;
 position:relative;
-background:#ddd;
 overflow:hidden;
 }
 
-.property-gallery img{
+.z-property-image img{
 width:100%;
 height:100%;
 object-fit:cover;
 display:block;
+transition:.3s;
 }
 
-.property-gallery.multi{
-display:grid;
-grid-template-columns:2fr 1fr;
-gap:3px;
+.z-property-card:hover
+.z-property-image img{
+transform:scale(1.04);
 }
 
-.property-gallery.multi .gallery-main{
-height:225px;
-}
-
-.property-gallery.multi .gallery-side{
-display:grid;
-grid-template-rows:1fr 1fr;
-gap:3px;
-}
-
-.property-gallery.multi .gallery-side img{
-height:111px;
-}
-
-
-/* More pictures badge */
-
-.more-images{
+.z-image-count{
 position:absolute;
 right:10px;
 bottom:10px;
 background:rgba(0,0,0,.75);
 color:#fff;
+padding:5px 9px;
+border-radius:4px;
+font-size:12px;
+font-weight:bold;
+}
+
+.z-purpose{
+position:absolute;
+left:10px;
+top:10px;
+background:#c40000;
+color:#fff;
 padding:6px 10px;
 border-radius:4px;
 font-size:12px;
-font-weight:700;
-z-index:5;
-}
-
-
-/* Purpose badge */
-
-.property-purpose{
-position:absolute;
-left:12px;
-top:12px;
-z-index:5;
-background:#c40000;
-color:#fff;
-padding:6px 11px;
-border-radius:4px;
-font-size:12px;
-font-weight:800;
-text-transform:uppercase;
-}
-
-
-/* Favorite */
-
-.property-favorite{
-position:absolute;
-right:12px;
-top:12px;
-z-index:6;
-width:38px;
-height:38px;
-border-radius:50%;
-border:0;
-background:#fff;
-box-shadow:0 2px 8px rgba(0,0,0,.25);
-font-size:21px;
-cursor:pointer;
-}
-
-
-/* Card content */
-
-.property-body{
-padding:17px 18px 18px;
-}
-
-.property-type{
-font-size:19px;
-font-weight:800;
-color:#222;
-margin-bottom:6px;
-}
-
-.property-location{
-font-size:14px;
-color:#777;
-white-space:nowrap;
-overflow:hidden;
-text-overflow:ellipsis;
-margin-bottom:10px;
-}
-
-.property-price{
-font-size:23px;
 font-weight:900;
-color:#c40000;
-margin-bottom:9px;
 }
 
-.property-meta{
-display:flex;
-gap:8px;
-flex-wrap:wrap;
-font-size:13px;
-color:#555;
+.z-property-body{
+padding:17px;
+}
+
+.z-price{
+font-size:22px;
+font-weight:900;
+color:#111;
+margin-bottom:7px;
+}
+
+.z-property-title{
+font-size:17px;
+font-weight:800;
+margin-bottom:8px;
+line-height:1.35;
+}
+
+.z-location{
+font-size:14px;
+color:#666;
 margin-bottom:13px;
 }
 
-.property-meta span{
-background:#f3f3f3;
-padding:5px 8px;
-border-radius:3px;
-}
-
-.property-description{
-font-size:13px;
-color:#666;
-line-height:1.5;
-display:-webkit-box;
--webkit-line-clamp:2;
--webkit-box-orient:vertical;
-overflow:hidden;
-min-height:39px;
-}
-
-.property-footer{
+.z-meta{
+display:flex;
+align-items:center;
+gap:16px;
+padding:12px 0;
 border-top:1px solid #eee;
-padding:12px 18px;
+border-bottom:1px solid #eee;
+font-size:13px;
+color:#555;
+}
+
+.z-meta span{
+white-space:nowrap;
+}
+
+.z-footer{
 display:flex;
 align-items:center;
 justify-content:space-between;
-gap:8px;
+gap:10px;
+margin-top:13px;
 }
 
-.property-view{
+.z-dealer{
 font-size:12px;
-color:#888;
+color:#777;
 }
 
-.property-call{
+.z-view-btn{
 background:#c40000;
 color:#fff;
 padding:9px 14px;
-border-radius:4px;
+border-radius:5px;
 font-size:13px;
-font-weight:800;
+font-weight:900;
 }
 
-.property-call:hover{
-background:#a80000;
+.z-call-btn{
+background:#fff;
+color:#c40000;
+border:1px solid #c40000;
+padding:8px 11px;
+border-radius:5px;
+font-size:13px;
+font-weight:900;
 }
 
-
-/* Loading */
-
-.property-loading{
+.properties-loading{
 grid-column:1/-1;
 text-align:center;
-padding:45px 15px;
+padding:40px;
 color:#ccc;
 font-size:17px;
 }
 
 
-/* No property */
-
-.property-empty{
-grid-column:1/-1;
-text-align:center;
-padding:55px 20px;
-background:#fff;
-color:#555;
-border-radius:8px;
-}
-
-
-/* =====================================================
+/* =========================================
 SOCIETY MAP
-===================================================== */
+========================================= */
 
 .society-map-section{
 background:#110606;
@@ -740,9 +694,9 @@ padding:9px 13px;
 }
 
 
-/* =====================================================
+/* =========================================
 MAP CONTAINER
-===================================================== */
+========================================= */
 
 .map-container{
 width:100%;
@@ -781,9 +735,9 @@ cursor:grabbing;
 }
 
 
-/* =====================================================
-FULLSCREEN
-===================================================== */
+/* =========================================
+FULLSCREEN MAP
+========================================= */
 
 .map-container:fullscreen{
 width:100vw!important;
@@ -815,9 +769,9 @@ touch-action:none!important;
 }
 
 
-/* =====================================================
+/* =========================================
 MAP HELP
-===================================================== */
+========================================= */
 
 .map-help{
 text-align:center;
@@ -827,9 +781,9 @@ font-size:14px;
 }
 
 
-/* =====================================================
+/* =========================================
 WHY US
-===================================================== */
+========================================= */
 
 .why{
 display:grid;
@@ -844,9 +798,9 @@ font-weight:700;
 }
 
 
-/* =====================================================
+/* =========================================
 FOOTER
-===================================================== */
+========================================= */
 
 .footer{
 background:#b40000;
@@ -870,37 +824,9 @@ padding:14px;
 }
 
 
-/* =====================================================
+/* =========================================
 RESPONSIVE
-===================================================== */
-
-@media(max-width:1000px){
-
-#online-properties{
-grid-template-columns:repeat(2,minmax(0,1fr));
-}
-
-.about,
-.cards,
-.footer,
-.team-grid{
-grid-template-columns:1fr;
-}
-
-.features{
-grid-template-columns:1fr 1fr;
-}
-
-.why{
-grid-template-columns:1fr 1fr;
-}
-
-}
-
-
-/* =====================================================
-TABLET / MOBILE
-===================================================== */
+========================================= */
 
 @media(max-width:850px){
 
@@ -922,86 +848,56 @@ align-items:flex-start;
 margin:30px 0 0;
 }
 
+.about,
+.cards,
+.footer,
+.team-grid,
+.online-properties-grid{
+grid-template-columns:1fr;
+}
+
+.features{
+grid-template-columns:1fr 1fr;
+}
+
+.why{
+grid-template-columns:1fr 1fr;
+}
+
 nav{
 width:100%;
-gap:8px;
+gap:12px;
 }
 
 .map-container{
 height:550px;
 }
 
+.z-property-image{
+height:230px;
+}
+
 }
 
 
-/* =====================================================
-MOBILE
-===================================================== */
-
-@media(max-width:600px){
-
-.top{
-font-size:13px;
-padding:9px 4%;
-}
-
-.logo{
-font-size:24px;
-}
-
-nav{
-font-size:12px;
-}
-
-nav a{
-padding:7px 5px;
-}
-
-.hero{
-min-height:560px;
-}
-
-.hero h1{
-font-size:48px;
-}
-
-.hero p{
-font-size:18px;
-}
+@media(max-width:520px){
 
 .features,
 .why{
 grid-template-columns:1fr;
 }
 
-.list-box{
-padding:20px;
+.logo{
+font-size:25px;
 }
 
-#online-properties{
-grid-template-columns:1fr;
-gap:18px;
+nav{
+gap:10px;
+font-size:12px;
 }
 
-.online-title{
-font-size:29px;
-margin-top:50px;
-}
-
-.property-gallery{
-height:220px;
-}
-
-.property-gallery.multi{
-grid-template-columns:2fr 1fr;
-}
-
-.property-gallery.multi .gallery-main{
-height:220px;
-}
-
-.property-gallery.multi .gallery-side img{
-height:108px;
+.hero h1{
+font-size:48px;
 }
 
 .map-title{
@@ -1024,45 +920,64 @@ padding-bottom:10px!important;
 margin-bottom:0!important;
 }
 
+.list-property-box{
+padding:22px 18px;
 }
 
-
-/* =====================================================
-SMALL MOBILE
-===================================================== */
-
-@media(max-width:390px){
-
-.logo{
-font-size:22px;
+.list-property-box h2{
+font-size:27px;
 }
 
-.property-body{
+.list-property-btn{
+width:100%;
+}
+
+.z-property-image{
+height:210px;
+}
+
+.z-property-body{
 padding:15px;
 }
 
-.property-type{
-font-size:18px;
-}
-
-.property-price{
+.z-price{
 font-size:21px;
 }
 
-.property-gallery{
-height:200px;
+.z-property-title{
+font-size:16px;
 }
 
-.property-gallery.multi .gallery-main{
-height:200px;
+.z-footer{
+flex-wrap:wrap;
 }
 
-.property-gallery.multi .gallery-side img{
-height:98px;
+.z-view-btn,
+.z-call-btn{
+padding:9px 11px;
 }
 
-.map-container{
-height:470px;
+}
+
+
+/* =========================================
+VERY SMALL
+========================================= */
+
+@media(max-width:380px){
+
+.z-meta{
+gap:8px;
+font-size:12px;
+}
+
+.z-footer{
+display:grid;
+grid-template-columns:1fr 1fr;
+}
+
+.z-dealer{
+grid-column:1/-1;
 }
 
 }
@@ -1093,9 +1008,9 @@ height:470px;
 <body>
 
 
-<!-- =====================================================
+<!-- =========================================
 TOP BAR
-===================================================== -->
+========================================= -->
 
 <div class="top">
 
@@ -1110,9 +1025,9 @@ TOP BAR
 </div>
 
 
-<!-- =====================================================
+<!-- =========================================
 NAVIGATION
-===================================================== -->
+========================================= -->
 
 <header class="nav">
 
@@ -1127,7 +1042,6 @@ AUTHORIZED DEALER
 </div>
 
 </div>
-
 
 <nav>
 
@@ -1164,9 +1078,9 @@ CONTACT US
 </header>
 
 
-<!-- =====================================================
+<!-- =========================================
 HERO
-===================================================== -->
+========================================= -->
 
 <section class="hero" id="home">
 
@@ -1192,7 +1106,6 @@ style="background-image:url('https://images.unsplash.com/photo-1600607688969-a5b
 
 <div class="hero-overlay"></div>
 
-
 <div class="hero-content">
 
 <div>
@@ -1214,7 +1127,6 @@ Aapka Apna, Pura Bharosa
 Army Welfare Trust Phase 2, Lahore
 </p>
 
-
 <div class="btns">
 
 <a class="btn red" href="#properties">
@@ -1228,7 +1140,6 @@ VIEW PROPERTIES
 </div>
 
 </div>
-
 
 <div class="contact-card">
 
@@ -1251,9 +1162,9 @@ Eng. Ahsan Ali
 </section>
 
 
-<!-- =====================================================
+<!-- =========================================
 ABOUT
-===================================================== -->
+========================================= -->
 
 <section class="section" id="about">
 
@@ -1272,7 +1183,6 @@ Welfare Trust Phase 2, Lahore.
 </p>
 
 </div>
-
 
 <div class="features">
 
@@ -1305,7 +1215,6 @@ Clear dealing &amp; support
 OUR TEAM
 </h2>
 
-
 <div id="public-team" class="team-grid">
 
 <p>
@@ -1317,21 +1226,15 @@ Loading team members...
 </section>
 
 
-<!-- =====================================================
+<!-- =========================================
 PROPERTIES
-===================================================== -->
+========================================= -->
 
 <section class="section properties" id="properties">
 
-<h2 style="
-font-size:42px;
-text-align:center;
-margin-bottom:30px">
-
+<h2 style="font-size:42px;text-align:center;margin-bottom:30px">
 PLOTS FOR SALE
-
 </h2>
-
 
 <div class="cards">
 
@@ -1424,38 +1327,62 @@ Location/plot position may affect price.
 </div>
 
 
-<!-- =====================================================
+<!-- =========================================
 AVAILABLE LISTED PROPERTIES
-===================================================== -->
+========================================= -->
 
 <h2 class="online-title">
 AVAILABLE LISTED PROPERTIES
 </h2>
 
 <p class="online-subtitle">
-Latest properties available through Zeeshan Estate AWT
+Latest properties listed through Zeeshan Estate AWT
 </p>
 
+<div id="online-properties"
+class="online-properties-grid">
 
-<div id="online-properties">
-
-<div class="property-loading">
-Loading available properties...
+<div class="properties-loading">
+Loading properties...
 </div>
+
+</div>
+
+
+<!-- =========================================
+LIST PROPERTY BUTTON
+========================================= -->
+
+<div class="list-property-box">
+
+<h2>
+Want to Sell or Rent Your Property?
+</h2>
+
+<p>
+Apni property Zeeshan Estate AWT ke through list karein.
+</p>
+
+<a
+href="property.html"
+class="list-property-btn">
+
+📲 LIST YOUR PROPERTY
+
+</a>
 
 </div>
 
 </section>
 
 
-<!-- =====================================================
+<!-- =========================================
 SOCIETY MAP
-===================================================== -->
+========================================= -->
 
 <section
 class="section society-map-section"
 id="society-map">
-
 
 <h2 class="map-title">
 📍 SOCIETY MAP
@@ -1534,9 +1461,9 @@ Zoom ke baad 1 finger se map move karein.
 </section>
 
 
-<!-- =====================================================
+<!-- =========================================
 WHY US
-===================================================== -->
+========================================= -->
 
 <section class="section" id="why">
 
@@ -1549,7 +1476,6 @@ margin-bottom:25px">
 WHY CHOOSE ZEESHAN ESTATE AWT?
 
 </h2>
-
 
 <div class="why">
 
@@ -1583,9 +1509,9 @@ Investment Potential
 </section>
 
 
-<!-- =====================================================
+<!-- =========================================
 FOOTER
-===================================================== -->
+========================================= -->
 
 <footer class="footer" id="contact">
 
@@ -1660,15 +1586,18 @@ All Rights Reserved.
 
 <script>
 
-/* =====================================================
+/* =========================================
 SUPABASE
-===================================================== */
+========================================= */
 
 const SUPABASE_URL =
 "https://rhzsfjolkxqovhonylti.supabase.co";
 
 const SUPABASE_KEY =
 "sb_publishable_DjOGYqDCgPNMngD7mwMmcw_BM-UUCg8";
+
+const STORAGE_BUCKET =
+"property-images";
 
 const supabaseClient =
 supabase.createClient(
@@ -1677,23 +1606,17 @@ SUPABASE_KEY
 );
 
 
-/* =====================================================
+/* =========================================
 ESCAPE HTML
-===================================================== */
+========================================= */
 
 function escapeHTML(value){
 
-if(
-value === null ||
-value === undefined
-){
-
+if(value === null || value === undefined){
 return "";
-
 }
 
 return String(value)
-
 .replace(/&/g,"&amp;")
 .replace(/</g,"&lt;")
 .replace(/>/g,"&gt;")
@@ -1703,9 +1626,9 @@ return String(value)
 }
 
 
-/* =====================================================
+/* =========================================
 VISITOR ID
-===================================================== */
+========================================= */
 
 function getVisitorId(){
 
@@ -1736,9 +1659,9 @@ return id;
 }
 
 
-/* =====================================================
+/* =========================================
 HERO SLIDER
-===================================================== */
+========================================= */
 
 let heroIndex = 0;
 
@@ -1766,9 +1689,9 @@ heroSlides[heroIndex]
 },5000);
 
 
-/* =====================================================
+/* =========================================
 PROPERTY VIEW
-===================================================== */
+========================================= */
 
 async function recordPropertyView(propertyId){
 
@@ -1818,9 +1741,9 @@ error.message
 }
 
 
-/* =====================================================
+/* =========================================
 PROPERTY CALL
-===================================================== */
+========================================= */
 
 async function recordPropertyCall(propertyId){
 
@@ -1860,9 +1783,9 @@ error.message
 }
 
 
-/* =====================================================
+/* =========================================
 GET PROPERTIES
-===================================================== */
+========================================= */
 
 async function getProperties(){
 
@@ -1906,9 +1829,9 @@ return [];
 }
 
 
-/* =====================================================
-CREATE PROPERTY CARD
-===================================================== */
+/* =========================================
+CREATE ZAMEEN STYLE PROPERTY CARD
+========================================= */
 
 function createPropertyCard(property){
 
@@ -1916,7 +1839,7 @@ const card =
 document.createElement("article");
 
 card.className =
-"property-card";
+"z-property-card";
 
 
 const propertyId =
@@ -1925,20 +1848,14 @@ Number(property.id) || 0;
 
 let images = [];
 
-if(
-Array.isArray(
-property.image_urls
-)
-){
+if(Array.isArray(property.image_urls)){
 
 images =
 property.image_urls.filter(
 function(url){
 
-return (
-typeof url === "string" &&
-url.trim() !== ""
-);
+return url &&
+typeof url === "string";
 
 }
 );
@@ -1946,159 +1863,12 @@ url.trim() !== ""
 }
 
 
-/* =====================================================
-GALLERY
-===================================================== */
-
-let galleryHTML = "";
-
-
-if(images.length === 1){
-
-galleryHTML = `
-
-<div class="property-gallery">
-
-<div class="property-purpose">
-
-${escapeHTML(
-property.purpose || "For Sale"
-)}
-
-</div>
-
-<img
-src="${escapeHTML(images[0])}"
-alt="Property in AWT Phase 2 Lahore"
-loading="lazy">
-
-</div>
-
-`;
-
-}
-
-
-else if(images.length >= 2){
-
-galleryHTML = `
-
-<div class="property-gallery multi">
-
-<div class="property-purpose">
-
-${escapeHTML(
-property.purpose || "For Sale"
-)}
-
-</div>
-
-<div class="gallery-main">
-
-<img
-src="${escapeHTML(images[0])}"
-alt="Property in AWT Phase 2 Lahore"
-loading="lazy">
-
-</div>
-
-<div class="gallery-side">
-
-<img
-src="${escapeHTML(images[1])}"
-alt="Property image"
-loading="lazy">
-
-${
-images.length >= 3
+const image =
+images.length
 ?
-
-`<img
-src="${escapeHTML(images[2])}"
-alt="Property image"
-loading="lazy">`
-
+images[0]
 :
-
-`<div style="
-background:#222;
-color:#fff;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:13px;
-">
-Property
-</div>`
-
-}
-
-</div>
-
-${
-images.length > 3
-?
-
-`<div class="more-images">
-+${images.length - 3} Photos
-</div>`
-
-:
-
-""
-
-}
-
-</div>
-
-`;
-
-}
-
-
-else{
-
-galleryHTML = `
-
-<div class="property-gallery">
-
-<div class="property-purpose">
-
-${escapeHTML(
-property.purpose || "For Sale"
-)}
-
-</div>
-
-<div style="
-width:100%;
-height:100%;
-display:flex;
-align-items:center;
-justify-content:center;
-background:#e9e9e9;
-color:#777;
-font-size:16px;
-">
-
-📷 No Image Available
-
-</div>
-
-</div>
-
-`;
-
-}
-
-
-/* =====================================================
-CARD HTML
-===================================================== */
-
-const type =
-property.property_type ||
-"Property";
+"";
 
 
 const purpose =
@@ -2106,14 +1876,14 @@ property.purpose ||
 "For Sale";
 
 
+const type =
+property.property_type ||
+"Property";
+
+
 const size =
 property.property_size ||
 "";
-
-
-const price =
-property.price ||
-"Price on Call";
 
 
 const location =
@@ -2121,111 +1891,176 @@ property.location ||
 "Army Welfare Trust Phase 2, Lahore";
 
 
-const details =
-property.details ||
-"";
+const price =
+property.price ||
+"Price on Call";
 
 
 card.innerHTML = `
 
-${galleryHTML}
+<div class="z-property-image">
+
+${
+image
+
+?
+
+`
+
+<img
+src="${escapeHTML(image)}"
+alt="${escapeHTML(type)} for sale in AWT Phase 2 Lahore"
+loading="lazy">
+
+`
+
+:
+
+`
+
+<div style="
+height:100%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:45px;
+color:#aaa;
+">
+
+🏠
+
+</div>
+
+`
+
+}
 
 
-<div class="property-body">
+<div class="z-purpose">
 
-
-<div class="property-type">
-
-${escapeHTML(type)}
+${escapeHTML(purpose)}
 
 </div>
 
 
-<div class="property-location">
+${
+images.length > 0
 
-📍 ${escapeHTML(location)}
+?
+
+`
+
+<div class="z-image-count">
+
+📷 ${images.length}
+
+</div>
+
+`
+
+:
+
+""
+
+}
 
 </div>
 
 
-<div class="property-price">
+<div class="z-property-body">
+
+
+<div class="z-price">
 
 ${escapeHTML(price)}
 
 </div>
 
 
-<div class="property-meta">
+<div class="z-property-title">
 
-${
-size
-?
+${escapeHTML(type)}
 
-`<span>
-📐 ${escapeHTML(size)}
-</span>`
-
-:
-
-""
+${size
+? " • " + escapeHTML(size)
+: ""
 }
 
+</div>
+
+
+<div class="z-location">
+
+📍 ${escapeHTML(location)}
+
+</div>
+
+
+<div class="z-meta">
 
 <span>
-✓ ${escapeHTML(purpose)}
+📐 ${escapeHTML(size || "N/A")}
 </span>
-
 
 <span>
-🏠 AWT Phase 2
+🏠 ${escapeHTML(type)}
 </span>
 
 </div>
 
 
-<div class="property-description">
+<div class="z-footer">
 
-${escapeHTML(details)}
-
-</div>
-
-
-</div>
-
-
-<div class="property-footer">
-
-<div class="property-view">
+<div class="z-dealer">
 
 Zeeshan Estate AWT
 
 </div>
 
 
+<div style="
+display:flex;
+gap:6px;
+">
+
 <a
-class="property-call"
+class="z-call-btn"
 href="tel:+923020941013"
 data-property-id="${propertyId}">
 
-📞 Call
+☎ Call
 
 </a>
+
+
+<a
+class="z-view-btn"
+href="property.html?id=${encodeURIComponent(propertyId)}">
+
+View Details
+
+</a>
+
+</div>
+
+</div>
+
 
 </div>
 
 `;
 
 
-/* =====================================================
+/* =========================================
 CARD CLICK
-===================================================== */
+========================================= */
 
 card.addEventListener(
 "click",
 function(event){
 
 if(
-event.target.closest(".property-call")
+event.target.closest("a")
 ){
 
 return;
@@ -2240,21 +2075,17 @@ return;
 
 window.location.href =
 "property.html?id=" +
-encodeURIComponent(
-propertyId
-);
+encodeURIComponent(propertyId);
 
 });
 
 
-/* =====================================================
+/* =========================================
 CALL TRACKING
-===================================================== */
+========================================= */
 
 const callButton =
-card.querySelector(
-".property-call"
-);
+card.querySelector(".z-call-btn");
 
 if(callButton){
 
@@ -2273,10 +2104,6 @@ propertyId
 }
 
 
-/* =====================================================
-VIEW TRACKING
-===================================================== */
-
 if(propertyId){
 
 recordPropertyView(
@@ -2291,26 +2118,20 @@ return card;
 }
 
 
-/* =====================================================
+/* =========================================
 RENDER PROPERTIES
-===================================================== */
+========================================= */
 
-function renderProperties(
-properties
-){
+function renderProperties(properties){
 
 const online =
 document.getElementById(
 "online-properties"
 );
 
-
 if(!online){
-
 return;
-
 }
-
 
 online.innerHTML = "";
 
@@ -2322,29 +2143,21 @@ properties.length === 0
 
 online.innerHTML = `
 
-<div class="property-empty">
-
-<div style="
-font-size:40px;
-margin-bottom:10px;
-">
+<div class="properties-loading">
 
 🏠
 
-</div>
+<br>
 
-<h3 style="
-color:#b40000;
-margin-bottom:8px;
-">
+No properties listed yet.
 
-No Properties Listed Yet
+<br>
 
-</h3>
+<small style="color:#aaa">
 
-<p>
-New properties will appear here soon.
-</p>
+New properties will appear here.
+
+</small>
 
 </div>
 
@@ -2359,9 +2172,7 @@ properties.forEach(
 function(property){
 
 online.appendChild(
-createPropertyCard(
-property
-)
+createPropertyCard(property)
 );
 
 });
@@ -2369,36 +2180,14 @@ property
 }
 
 
-/* =====================================================
+/* =========================================
 LOAD PROPERTIES
-===================================================== */
+========================================= */
 
 async function loadProperties(){
 
-const online =
-document.getElementById(
-"online-properties"
-);
-
-
-if(online){
-
-online.innerHTML = `
-
-<div class="property-loading">
-
-Loading available properties...
-
-</div>
-
-`;
-
-}
-
-
 const properties =
 await getProperties();
-
 
 renderProperties(
 properties
@@ -2407,9 +2196,9 @@ properties
 }
 
 
-/* =====================================================
+/* =========================================
 TEAM MEMBERS
-===================================================== */
+========================================= */
 
 async function loadTeamMembers(){
 
@@ -2418,39 +2207,26 @@ document.getElementById(
 "public-team"
 );
 
-
 if(!container){
-
 return;
-
 }
-
 
 try{
 
 container.innerHTML =
 "<p>Loading team members...</p>";
 
-
 const result =
 await supabaseClient
-
 .from("team_members")
-
 .select("*")
-
-.eq(
-"is_active",
-true
-)
-
+.eq("is_active",true)
 .order(
 "created_at",
 {
 ascending:true
 }
 );
-
 
 if(result.error){
 
@@ -2463,10 +2239,17 @@ container.innerHTML = `
 
 <p style="
 text-align:center;
-grid-column:1/-1;
-">
+grid-column:1/-1">
 
 Team information unavailable.
+
+<br>
+
+<small>
+${escapeHTML(
+result.error.message
+)}
+</small>
 
 </p>
 
@@ -2482,18 +2265,8 @@ if(
 result.data.length === 0
 ){
 
-container.innerHTML = `
-
-<p style="
-text-align:center;
-grid-column:1/-1;
-">
-
-Our team information will be available soon.
-
-</p>
-
-`;
+container.innerHTML =
+"<p style='text-align:center;grid-column:1/-1'>Our team information will be available soon.</p>";
 
 return;
 
@@ -2507,9 +2280,7 @@ result.data.forEach(
 function(member){
 
 const card =
-document.createElement(
-"div"
-);
+document.createElement("div");
 
 card.className =
 "team-card";
@@ -2527,27 +2298,19 @@ src="${escapeHTML(image)}"
 alt="${escapeHTML(member.name)}"
 loading="lazy">
 
-
 <div class="team-body">
 
 <h3>
-${escapeHTML(
-member.name
-)}
+${escapeHTML(member.name)}
 </h3>
 
 <p>
-📞 ${escapeHTML(
-member.phone || ""
-)}
+📞 ${escapeHTML(member.phone || "")}
 </p>
-
 
 <a
 class="call-team"
-href="tel:${escapeHTML(
-member.phone || ""
-)}">
+href="tel:${escapeHTML(member.phone || "")}">
 
 📞 CALL US
 
@@ -2557,10 +2320,7 @@ member.phone || ""
 
 `;
 
-
-container.appendChild(
-card
-);
+container.appendChild(card);
 
 });
 
@@ -2571,27 +2331,17 @@ console.error(
 error
 );
 
-container.innerHTML = `
-
-<p style="
-text-align:center;
-grid-column:1/-1;
-">
-
-Unable to load team members.
-
-</p>
-
-`;
+container.innerHTML =
+"<p style='text-align:center;grid-column:1/-1'>Unable to load team members.</p>";
 
 }
 
 }
 
 
-/* =====================================================
-MAP VARIABLES
-===================================================== */
+/* =========================================
+SOCIETY MAP
+========================================= */
 
 const mapContainer =
 document.getElementById(
@@ -2627,9 +2377,9 @@ let pinchStartDistance = 0;
 let pinchStartScale = 1;
 
 
-/* =====================================================
+/* =========================================
 FIT MAP
-===================================================== */
+========================================= */
 
 function fitMap(){
 
@@ -2641,7 +2391,6 @@ if(
 return;
 
 }
-
 
 if(
 !mapImage.naturalWidth ||
@@ -2686,17 +2435,10 @@ imageHeight * mapScale;
 
 
 mapX =
-(
-boxWidth -
-displayedWidth
-) / 2;
-
+(boxWidth - displayedWidth) / 2;
 
 mapY =
-(
-boxHeight -
-displayedHeight
-) / 2;
+(boxHeight - displayedHeight) / 2;
 
 
 applyMapTransform();
@@ -2704,18 +2446,15 @@ applyMapTransform();
 }
 
 
-/* =====================================================
-MAP TRANSFORM
-===================================================== */
+/* =========================================
+APPLY MAP
+========================================= */
 
 function applyMapTransform(){
 
 if(!mapImage){
-
 return;
-
 }
-
 
 mapImage.style.transform =
 "translate3d(" +
@@ -2729,16 +2468,14 @@ mapScale +
 }
 
 
-/* =====================================================
-BUTTON ZOOM
-===================================================== */
+/* =========================================
+ZOOM BUTTON
+========================================= */
 
 function zoomMap(amount){
 
 if(!mapImage){
-
 return;
-
 }
 
 
@@ -2746,10 +2483,7 @@ let newScale =
 mapScale * amount;
 
 
-if(
-newScale <
-baseScale
-){
+if(newScale < baseScale){
 
 newScale =
 baseScale;
@@ -2757,8 +2491,7 @@ baseScale;
 }
 
 
-if(
-newScale >
+if(newScale >
 baseScale * 8
 ){
 
@@ -2776,26 +2509,21 @@ mapContainer.clientHeight / 2;
 
 
 const ratio =
-newScale /
-mapScale;
+newScale / mapScale;
 
 
 mapX =
 centerX -
 (
-centerX -
-mapX
-) *
-ratio;
+centerX - mapX
+) * ratio;
 
 
 mapY =
 centerY -
 (
-centerY -
-mapY
-) *
-ratio;
+centerY - mapY
+) * ratio;
 
 
 mapScale =
@@ -2807,9 +2535,9 @@ applyMapTransform();
 }
 
 
-/* =====================================================
+/* =========================================
 RESET MAP
-===================================================== */
+========================================= */
 
 function resetMap(){
 
@@ -2818,32 +2546,23 @@ fitMap();
 }
 
 
-/* =====================================================
+/* =========================================
 TOUCH DISTANCE
-===================================================== */
+========================================= */
 
-function getTouchDistance(
-touches
-){
+function getTouchDistance(touches){
 
-if(
-touches.length < 2
-){
-
+if(touches.length < 2){
 return 0;
-
 }
-
 
 const dx =
 touches[0].clientX -
 touches[1].clientX;
 
-
 const dy =
 touches[0].clientY -
 touches[1].clientY;
-
 
 return Math.sqrt(
 dx * dx +
@@ -2853,13 +2572,11 @@ dy * dy
 }
 
 
-/* =====================================================
+/* =========================================
 TOUCH CENTER
-===================================================== */
+========================================= */
 
-function getTouchCenter(
-touches
-){
+function getTouchCenter(touches){
 
 return {
 
@@ -2880,9 +2597,9 @@ touches[1].clientY
 }
 
 
-/* =====================================================
-TOUCH EVENTS
-===================================================== */
+/* =========================================
+TOUCH START
+========================================= */
 
 if(mapContainer){
 
@@ -2890,9 +2607,7 @@ mapContainer.addEventListener(
 "touchstart",
 function(event){
 
-if(
-event.touches.length === 2
-){
+if(event.touches.length === 2){
 
 pinchStartDistance =
 getTouchDistance(
@@ -2902,8 +2617,7 @@ event.touches
 pinchStartScale =
 mapScale;
 
-isDragging =
-false;
+isDragging = false;
 
 }
 
@@ -2912,8 +2626,7 @@ event.touches.length === 1 &&
 mapScale > baseScale
 ){
 
-isDragging =
-true;
+isDragging = true;
 
 startX =
 event.touches[0].clientX;
@@ -2935,6 +2648,10 @@ passive:false
 });
 
 
+/* =========================================
+TOUCH MOVE
+========================================= */
+
 mapContainer.addEventListener(
 "touchmove",
 function(event){
@@ -2942,9 +2659,7 @@ function(event){
 event.preventDefault();
 
 
-if(
-event.touches.length === 2
-){
+if(event.touches.length === 2){
 
 const currentDistance =
 getTouchDistance(
@@ -2952,9 +2667,7 @@ event.touches
 );
 
 
-if(
-pinchStartDistance > 0
-){
+if(pinchStartDistance > 0){
 
 let newScale =
 pinchStartScale *
@@ -2964,10 +2677,7 @@ pinchStartDistance
 );
 
 
-if(
-newScale <
-baseScale
-){
+if(newScale < baseScale){
 
 newScale =
 baseScale;
@@ -2975,8 +2685,7 @@ baseScale;
 }
 
 
-if(
-newScale >
+if(newScale >
 baseScale * 8
 ){
 
@@ -2991,9 +2700,9 @@ getTouchCenter(
 event.touches
 );
 
-
 const rect =
-mapContainer.getBoundingClientRect();
+mapContainer
+.getBoundingClientRect();
 
 
 const centerX =
@@ -3013,19 +2722,15 @@ mapScale;
 mapX =
 centerX -
 (
-centerX -
-mapX
-) *
-ratio;
+centerX - mapX
+) * ratio;
 
 
 mapY =
 centerY -
 (
-centerY -
-mapY
-) *
-ratio;
+centerY - mapY
+) * ratio;
 
 
 mapScale =
@@ -3057,16 +2762,13 @@ event.touches[0].clientY;
 mapX =
 startMapX +
 (
-currentX -
-startX
+currentX - startX
 );
-
 
 mapY =
 startMapY +
 (
-currentY -
-startY
+currentY - startY
 );
 
 
@@ -3080,29 +2782,26 @@ passive:false
 });
 
 
+/* =========================================
+TOUCH END
+========================================= */
+
 mapContainer.addEventListener(
 "touchend",
 function(event){
 
-if(
-event.touches.length === 0
-){
+if(event.touches.length === 0){
 
-isDragging =
-false;
+isDragging = false;
 
-pinchStartDistance =
-0;
+pinchStartDistance = 0;
 
 }
 
 
-if(
-event.touches.length === 1
-){
+if(event.touches.length === 1){
 
-isDragging =
-true;
+isDragging = true;
 
 startX =
 event.touches[0].clientX;
@@ -3124,25 +2823,19 @@ passive:false
 });
 
 
-/* =====================================================
+/* =========================================
 MOUSE DOWN
-===================================================== */
+========================================= */
 
 mapContainer.addEventListener(
 "mousedown",
 function(event){
 
-if(
-mapScale <= baseScale
-){
-
+if(mapScale <= baseScale){
 return;
-
 }
 
-
-isDragging =
-true;
+isDragging = true;
 
 startX =
 event.clientX;
@@ -3156,7 +2849,6 @@ mapX;
 startMapY =
 mapY;
 
-
 if(mapImage){
 
 mapImage.style.cursor =
@@ -3167,9 +2859,9 @@ mapImage.style.cursor =
 });
 
 
-/* =====================================================
+/* =========================================
 MOUSE MOVE
-===================================================== */
+========================================= */
 
 document.addEventListener(
 "mousemove",
@@ -3184,14 +2876,12 @@ return;
 
 }
 
-
 mapX =
 startMapX +
 (
 event.clientX -
 startX
 );
-
 
 mapY =
 startMapY +
@@ -3200,22 +2890,20 @@ event.clientY -
 startY
 );
 
-
 applyMapTransform();
 
 });
 
 
-/* =====================================================
+/* =========================================
 MOUSE UP
-===================================================== */
+========================================= */
 
 document.addEventListener(
 "mouseup",
 function(){
 
-isDragging =
-false;
+isDragging = false;
 
 if(mapImage){
 
@@ -3229,9 +2917,9 @@ mapImage.style.cursor =
 }
 
 
-/* =====================================================
+/* =========================================
 MAP LOAD
-===================================================== */
+========================================= */
 
 if(mapImage){
 
@@ -3255,9 +2943,9 @@ fitMap();
 }
 
 
-/* =====================================================
-RESIZE
-===================================================== */
+/* =========================================
+WINDOW RESIZE
+========================================= */
 
 window.addEventListener(
 "resize",
@@ -3268,9 +2956,9 @@ fitMap();
 });
 
 
-/* =====================================================
+/* =========================================
 FULLSCREEN
-===================================================== */
+========================================= */
 
 function toggleMapFullscreen(){
 
@@ -3279,11 +2967,8 @@ document.getElementById(
 "map-container"
 );
 
-
 if(!container){
-
 return;
-
 }
 
 
@@ -3292,13 +2977,10 @@ if(
 !document.webkitFullscreenElement
 ){
 
-if(
-container.requestFullscreen
-){
+if(container.requestFullscreen){
 
 container.requestFullscreen()
-.catch(
-function(error){
+.catch(function(error){
 
 console.log(
 "Fullscreen error:",
@@ -3308,7 +2990,6 @@ error
 });
 
 }
-
 else if(
 container.webkitRequestFullscreen
 ){
@@ -3318,17 +2999,13 @@ container.webkitRequestFullscreen();
 }
 
 }
-
 else{
 
-if(
-document.exitFullscreen
-){
+if(document.exitFullscreen){
 
 document.exitFullscreen();
 
 }
-
 else if(
 document.webkitExitFullscreen
 ){
@@ -3342,9 +3019,9 @@ document.webkitExitFullscreen();
 }
 
 
-/* =====================================================
+/* =========================================
 FULLSCREEN CHANGE
-===================================================== */
+========================================= */
 
 document.addEventListener(
 "fullscreenchange",
@@ -3378,9 +3055,9 @@ fitMap();
 });
 
 
-/* =====================================================
+/* =========================================
 START
-===================================================== */
+========================================= */
 
 document.addEventListener(
 "DOMContentLoaded",
