@@ -115,6 +115,10 @@ font-weight:900;
 background:#c40000;
 }
 
+/* =========================================
+HERO
+========================================= */
+
 .hero{
 min-height:570px;
 position:relative;
@@ -226,6 +230,10 @@ font-size:25px;
 margin:5px 0;
 }
 
+/* =========================================
+SECTIONS
+========================================= */
+
 .section{
 padding:55px 6%;
 }
@@ -254,6 +262,10 @@ text-align:center;
 display:block;
 margin-bottom:8px;
 }
+
+/* =========================================
+TEAM
+========================================= */
 
 .team-title{
 text-align:center;
@@ -302,6 +314,10 @@ color:#fff;
 border-radius:6px;
 font-weight:800;
 }
+
+/* =========================================
+PROPERTIES
+========================================= */
 
 .properties{
 background:#110606;
@@ -387,6 +403,10 @@ font-size:25px;
 color:#c40000;
 font-weight:900;
 }
+
+/* =========================================
+PROPERTY FORM
+========================================= */
 
 .list-box{
 max-width:950px;
@@ -500,6 +520,10 @@ margin-top:15px;
 font-weight:700;
 }
 
+/* =========================================
+ONLINE PROPERTIES
+========================================= */
+
 .online-title{
 text-align:center;
 font-size:32px;
@@ -586,6 +610,102 @@ font-weight:800;
 margin-top:8px;
 }
 
+/* =========================================
+SOCIETY MAP
+========================================= */
+
+.society-map-section{
+background:#110606;
+color:#fff;
+}
+
+.map-title{
+font-size:42px;
+text-align:center;
+margin-bottom:8px;
+}
+
+.map-subtitle{
+text-align:center;
+font-size:18px;
+margin-bottom:20px;
+color:#ddd;
+}
+
+.map-controls{
+display:flex;
+justify-content:center;
+align-items:center;
+gap:8px;
+margin-bottom:15px;
+flex-wrap:wrap;
+}
+
+.map-controls button{
+background:#c40000;
+color:#fff;
+border:0;
+padding:8px 14px;
+min-width:45px;
+border-radius:6px;
+font-size:20px;
+font-weight:900;
+cursor:pointer;
+box-shadow:0 3px 8px rgba(0,0,0,.3);
+}
+
+.map-controls button:hover{
+background:#e00000;
+}
+
+.map-controls .reset-btn{
+font-size:16px;
+}
+
+.map-controls .fullscreen-btn{
+font-size:18px;
+padding:9px 13px;
+}
+
+.map-container{
+max-width:1200px;
+height:650px;
+margin:auto;
+background:#fff;
+border-radius:12px;
+overflow:auto;
+box-shadow:0 10px 35px rgba(0,0,0,.5);
+position:relative;
+touch-action:pan-x pan-y pinch-zoom;
+}
+
+.map-container img{
+display:block;
+width:100%;
+max-width:none;
+height:auto;
+transform-origin:top left;
+transition:transform .25s ease;
+cursor:grab;
+user-select:none;
+-webkit-user-drag:none;
+}
+
+.map-container img:active{
+cursor:grabbing;
+}
+
+.map-help{
+text-align:center;
+margin-top:15px;
+color:#ccc;
+font-size:14px;
+}
+
+/* =========================================
+WHY US
+========================================= */
+
 .why{
 display:grid;
 grid-template-columns:repeat(5,1fr);
@@ -597,6 +717,10 @@ text-align:center;
 padding:15px;
 font-weight:700;
 }
+
+/* =========================================
+FOOTER
+========================================= */
 
 .footer{
 background:#b40000;
@@ -618,6 +742,30 @@ color:#fff;
 text-align:center;
 padding:14px;
 }
+
+/* =========================================
+FULLSCREEN MAP
+========================================= */
+
+.map-container:fullscreen{
+width:100vw;
+height:100vh;
+max-width:none;
+border-radius:0;
+background:#111;
+}
+
+.map-container:-webkit-full-screen{
+width:100vw;
+height:100vh;
+max-width:none;
+border-radius:0;
+background:#111;
+}
+
+/* =========================================
+RESPONSIVE
+========================================= */
 
 @media(max-width:850px){
 
@@ -671,6 +819,10 @@ width:100%;
 gap:12px;
 }
 
+.map-container{
+height:550px;
+}
+
 }
 
 @media(max-width:520px){
@@ -705,6 +857,23 @@ grid-template-columns:1fr 1fr;
 height:130px;
 }
 
+.map-title{
+font-size:32px;
+}
+
+.map-container{
+height:500px;
+}
+
+.map-controls{
+gap:6px;
+}
+
+.map-controls button{
+padding:7px 12px;
+min-width:40px;
+}
+
 }
 
 </style>
@@ -730,6 +899,10 @@ height:130px;
 
 <body>
 
+<!-- =========================================
+TOP BAR
+========================================= -->
+
 <div class="top">
 
 <div>
@@ -741,6 +914,10 @@ height:130px;
 </div>
 
 </div>
+
+<!-- =========================================
+NAVIGATION
+========================================= -->
 
 <header class="nav">
 
@@ -758,19 +935,29 @@ AUTHORIZED DEALER
 
 <nav>
 
-<a href="#home">HOME</a>
+<a href="#home">
+HOME
+</a>
 
-<a href="map.JPG" target="_blank" class="map-link">
+<a href="#society-map" class="map-link">
 📍 SOCIETY MAP
 </a>
 
-<a href="#about">ABOUT US</a>
+<a href="#about">
+ABOUT US
+</a>
 
-<a href="#properties">PROPERTIES</a>
+<a href="#properties">
+PROPERTIES
+</a>
 
-<a href="#why">WHY US</a>
+<a href="#why">
+WHY US
+</a>
 
-<a href="#contact">CONTACT US</a>
+<a href="#contact">
+CONTACT US
+</a>
 
 <a href="admin.html" class="admin-link">
 🔐 ADMIN
@@ -779,6 +966,10 @@ AUTHORIZED DEALER
 </nav>
 
 </header>
+
+<!-- =========================================
+HERO
+========================================= -->
 
 <section class="hero" id="home">
 
@@ -859,6 +1050,10 @@ Eng. Ahsan Ali
 
 </section>
 
+<!-- =========================================
+ABOUT
+========================================= -->
+
 <section class="section" id="about">
 
 <div class="about">
@@ -917,6 +1112,10 @@ Loading team members...
 
 </section>
 
+<!-- =========================================
+PROPERTIES
+========================================= -->
+
 <section class="section properties" id="properties">
 
 <h2 style="font-size:42px;text-align:center;margin-bottom:30px">
@@ -931,11 +1130,15 @@ PLOTS FOR SALE
 <span>5 MARLA</span>
 </div>
 
-<h3>5 MARLA</h3>
+<h3>
+5 MARLA
+</h3>
 
 <div class="body">
 
-<div>Demand</div>
+<div>
+Demand
+</div>
 
 <div class="price">
 55 Lac – 90 Lac
@@ -955,11 +1158,15 @@ Location/plot position may affect price.
 <span>10 MARLA</span>
 </div>
 
-<h3>10 MARLA</h3>
+<h3>
+10 MARLA
+</h3>
 
 <div class="body">
 
-<div>Demand</div>
+<div>
+Demand
+</div>
 
 <div class="price">
 1 Crore – 1.60 Crore
@@ -979,11 +1186,15 @@ Location/plot position may affect price.
 <span>1 KANAL</span>
 </div>
 
-<h3>1 KANAL</h3>
+<h3>
+1 KANAL
+</h3>
 
 <div class="body">
 
-<div>Demand</div>
+<div>
+Demand
+</div>
 
 <div class="price">
 1.50 Crore – 3 Crore
@@ -1010,6 +1221,10 @@ Loading properties...
 </p>
 
 </div>
+
+<!-- =========================================
+LIST PROPERTY
+========================================= -->
 
 <div class="list-box">
 
@@ -1205,7 +1420,8 @@ class="submit-btn">
 
 </button>
 
-<div id="form-status" class="status"></div>
+<div id="form-status" class="status">
+</div>
 
 </form>
 
@@ -1213,23 +1429,87 @@ class="submit-btn">
 
 </section>
 
-<section
-class="section"
-style="background:#110606;color:#fff">
+<!-- =========================================
+SOCIETY MAP
+REPLACED LATEST PROPERTIES
+========================================= -->
 
-<h2 style="font-size:36px;text-align:center;margin-bottom:25px">
-LATEST PROPERTIES
+<section
+class="section society-map-section"
+id="society-map">
+
+<h2 class="map-title">
+📍 SOCIETY MAP
 </h2>
 
-<div id="home-properties" class="cards">
-
-<p style="text-align:center">
-Loading properties...
+<p class="map-subtitle">
+Army Welfare Trust Phase 2, Lahore
 </p>
+
+<div class="map-controls">
+
+<button
+type="button"
+onclick="zoomMap(1.2)"
+title="Zoom In">
+＋
+</button>
+
+<button
+type="button"
+onclick="zoomMap(0.8)"
+title="Zoom Out">
+−
+</button>
+
+<button
+type="button"
+class="reset-btn"
+onclick="resetMap()"
+title="Reset Map">
+↺ Reset
+</button>
+
+<button
+type="button"
+class="fullscreen-btn"
+onclick="toggleMapFullscreen()"
+title="Full Screen">
+⛶
+</button>
 
 </div>
 
+<div
+class="map-container"
+id="map-container">
+
+<img
+id="society-map-image"
+src="map.JPG"
+alt="Army Welfare Trust Phase 2 Lahore Society Map"
+draggable="false">
+
+</div>
+
+<p class="map-help">
+
+＋ Zoom In &nbsp; | &nbsp;
+− Zoom Out &nbsp; | &nbsp;
+↺ Reset &nbsp; | &nbsp;
+⛶ Full Screen
+
+<br>
+
+📱 Mobile par map ko pinch karke bhi zoom kar sakte hain.
+
+</p>
+
 </section>
+
+<!-- =========================================
+WHY US
+========================================= -->
 
 <section class="section" id="why">
 
@@ -1273,6 +1553,10 @@ Investment Potential
 </div>
 
 </section>
+
+<!-- =========================================
+FOOTER
+========================================= -->
 
 <footer class="footer" id="contact">
 
@@ -1739,11 +2023,6 @@ card.className =
 const propertyId =
 Number(property.id) || 0;
 
-
-/* =========================================
-OPEN PROPERTY PAGE
-========================================= */
-
 card.addEventListener(
 "click",
 function(event){
@@ -1764,10 +2043,6 @@ encodeURIComponent(propertyId),
 
 });
 
-
-/* =========================================
-PROPERTY IMAGES
-========================================= */
 
 let images = [];
 
@@ -1807,10 +2082,6 @@ loading="lazy">
 
 }
 
-
-/* =========================================
-PROPERTY CARD HTML
-========================================= */
 
 card.innerHTML = `
 
@@ -1882,10 +2153,6 @@ data-property-id="${propertyId}">
 `;
 
 
-/* =========================================
-CALL BUTTON
-========================================= */
-
 const callButton =
 card.querySelector(".call-btn");
 
@@ -1905,11 +2172,6 @@ propertyId
 
 }
 
-
-/* =========================================
-VIEW TRACKING
-========================================= */
-
 if(propertyId){
 recordPropertyView(propertyId);
 }
@@ -1925,19 +2187,10 @@ RENDER PROPERTIES
 
 function renderProperties(properties){
 
-const home =
-document.getElementById(
-"home-properties"
-);
-
 const online =
 document.getElementById(
 "online-properties"
 );
-
-if(home){
-home.innerHTML = "";
-}
 
 if(online){
 online.innerHTML = "";
@@ -1949,10 +2202,6 @@ properties.length === 0){
 const message =
 "<p style='text-align:center;grid-column:1/-1'>No properties listed yet.</p>";
 
-if(home){
-home.innerHTML = message;
-}
-
 if(online){
 online.innerHTML = message;
 }
@@ -1962,14 +2211,6 @@ return;
 }
 
 properties.forEach(function(property){
-
-if(home){
-
-home.appendChild(
-createPropertyCard(property)
-);
-
-}
 
 if(online){
 
@@ -2083,8 +2324,6 @@ image_urls:[]
 };
 
 
-/* UPLOAD IMAGES */
-
 if(imageFiles.length > 0){
 
 button.innerText =
@@ -2097,8 +2336,6 @@ imageFiles
 
 }
 
-
-/* SAVE DATABASE */
 
 button.innerText =
 "Saving Property...";
@@ -2116,8 +2353,6 @@ throw result.error;
 
 }
 
-
-/* SUCCESS */
 
 status.style.color =
 "#168c3b";
@@ -2206,11 +2441,21 @@ result.error
 );
 
 container.innerHTML = `
+
 <p style="text-align:center;grid-column:1/-1">
+
 Team information unavailable.
+
 <br>
-<small>${escapeHTML(result.error.message)}</small>
+
+<small>
+${escapeHTML(
+result.error.message
+)}
+</small>
+
 </p>
+
 `;
 
 return;
@@ -2283,6 +2528,114 @@ error
 
 container.innerHTML =
 "<p style='text-align:center;grid-column:1/-1'>Unable to load team members.</p>";
+
+}
+
+}
+
+
+/* =========================================
+SOCIETY MAP ZOOM
+========================================= */
+
+let mapZoom = 1;
+
+function zoomMap(amount){
+
+mapZoom *= amount;
+
+if(mapZoom < 0.5){
+mapZoom = 0.5;
+}
+
+if(mapZoom > 5){
+mapZoom = 5;
+}
+
+const map =
+document.getElementById(
+"society-map-image"
+);
+
+if(map){
+
+map.style.transform =
+"scale(" + mapZoom + ")";
+
+}
+
+}
+
+
+/* =========================================
+RESET MAP
+========================================= */
+
+function resetMap(){
+
+mapZoom = 1;
+
+const map =
+document.getElementById(
+"society-map-image"
+);
+
+const container =
+document.getElementById(
+"map-container"
+);
+
+if(map){
+
+map.style.transform =
+"scale(1)";
+
+}
+
+if(container){
+
+container.scrollTop = 0;
+container.scrollLeft = 0;
+
+}
+
+}
+
+
+/* =========================================
+FULL SCREEN MAP
+========================================= */
+
+function toggleMapFullscreen(){
+
+const mapContainer =
+document.getElementById(
+"map-container"
+);
+
+if(!document.fullscreenElement){
+
+if(mapContainer.requestFullscreen){
+
+mapContainer.requestFullscreen();
+
+}else if(mapContainer.webkitRequestFullscreen){
+
+mapContainer.webkitRequestFullscreen();
+
+}
+
+}else{
+
+if(document.exitFullscreen){
+
+document.exitFullscreen();
+
+}else if(document.webkitExitFullscreen){
+
+document.webkitExitFullscreen();
+
+}
 
 }
 
