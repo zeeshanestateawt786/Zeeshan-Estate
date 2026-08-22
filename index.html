@@ -103,6 +103,18 @@ border-radius:6px;
 font-weight:900;
 }
 
+.map-link{
+background:#111;
+color:#fff!important;
+padding:10px 17px;
+border-radius:6px;
+font-weight:900;
+}
+
+.map-link:hover{
+background:#c40000;
+}
+
 .hero{
 min-height:570px;
 position:relative;
@@ -501,6 +513,13 @@ color:#111;
 border-radius:10px;
 overflow:hidden;
 box-shadow:0 5px 18px rgba(0,0,0,.25);
+cursor:pointer;
+transition:.2s;
+}
+
+.property-card:hover{
+transform:translateY(-4px);
+box-shadow:0 10px 25px rgba(0,0,0,.35);
 }
 
 .property-gallery{
@@ -558,6 +577,13 @@ font-weight:800;
 font-size:13px;
 color:#777;
 margin-top:12px;
+}
+
+.click-hint{
+font-size:13px;
+color:#b40000;
+font-weight:800;
+margin-top:8px;
 }
 
 .why{
@@ -733,6 +759,10 @@ AUTHORIZED DEALER
 <nav>
 
 <a href="#home">HOME</a>
+
+<a href="map.pdf" target="_blank" class="map-link">
+📍 SOCIETY MAP
+</a>
 
 <a href="#about">ABOUT US</a>
 
@@ -1104,7 +1134,8 @@ required>
 <div class="form-group full">
 
 <label>
-Property Pictures</label>
+Property Pictures
+</label>
 
 <input
 class="file-input"
@@ -1705,6 +1736,39 @@ document.createElement("article");
 card.className =
 "property-card";
 
+const propertyId =
+Number(property.id) || 0;
+
+
+/* =========================================
+OPEN PROPERTY PAGE
+========================================= */
+
+card.addEventListener(
+"click",
+function(event){
+
+if(event.target.closest(".call-btn")){
+return;
+}
+
+if(!propertyId){
+return;
+}
+
+window.open(
+"property.html?id=" +
+encodeURIComponent(propertyId),
+"_blank"
+);
+
+});
+
+
+/* =========================================
+PROPERTY IMAGES
+========================================= */
+
 let images = [];
 
 if(Array.isArray(property.image_urls)){
@@ -1743,8 +1807,10 @@ loading="lazy">
 
 }
 
-const propertyId =
-Number(property.id) || 0;
+
+/* =========================================
+PROPERTY CARD HTML
+========================================= */
 
 card.innerHTML = `
 
@@ -1794,6 +1860,10 @@ property.details || ""
 )}
 </p>
 
+<div class="click-hint">
+👆 Click property to view complete details
+</div>
+
 <a
 class="call-btn"
 href="tel:+923020941013"
@@ -1811,6 +1881,11 @@ data-property-id="${propertyId}">
 
 `;
 
+
+/* =========================================
+CALL BUTTON
+========================================= */
+
 const callButton =
 card.querySelector(".call-btn");
 
@@ -1818,7 +1893,9 @@ if(callButton){
 
 callButton.addEventListener(
 "click",
-function(){
+function(event){
+
+event.stopPropagation();
 
 recordPropertyCall(
 propertyId
@@ -1827,6 +1904,11 @@ propertyId
 });
 
 }
+
+
+/* =========================================
+VIEW TRACKING
+========================================= */
 
 if(propertyId){
 recordPropertyView(propertyId);
