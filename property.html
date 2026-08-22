@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Property Details | Zeeshan Estate AWT</title>
+
+<meta name="description"
+content="Property details by Zeeshan Estate AWT, Army Welfare Trust Phase 2 Lahore.">
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<style>
+
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+}
+
+body{
+font-family:Arial,Helvetica,sans-serif;
+background:#f5f5f5;
+color:#171717;
+line-height:1.5;
+}
+
+.top{
+background:#b40000;
+color:#fff;
+padding:12px 6%;
+display:flex;
+justify-content:space-between;
+gap:15px;
+flex-wrap:wrap;
+font-weight:700;
+}
+
+.header{
+background:#fff;
+padding:18px 6%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:20px;
+box-shadow:0 2px 10px rgba(0,0,0,.1);
+}
+
+.logo{
+font-size:28px;
+font-weight:900;
+}
+
+.logo span{
+color:#c40000;
+}
+
+.back-btn{
+background:#b40000;
+color:#fff;
+padding:11px 18px;
+border-radius:6px;
+font-weight:800;
+text-decoration:none;
+}
+
+.container{
+max-width:1100px;
+margin:40px auto;
+padding:0 20px;
+}
+
+.property-box{
+background:#fff;
+border-radius:12px;
+overflow:hidden;
+box-shadow:0 5px 25px rgba(0,0,0,.12);
+}
+
+.title{
+background:#c40000;
+color:#fff;
+padding:25px;
+text-align:center;
+}
+
+.title h1{
+font-size:34px;
+margin-bottom:5px;
+}
+
+.title p{
+font-size:18px;
+}
+
+.gallery{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:4px;
+background:#111;
+}
+
+.gallery.single{
+grid-template-columns:1fr;
+}
+
+.gallery img{
+width:100%;
+height:350px;
+object-fit:cover;
+display:block;
+cursor:pointer;
+}
+
+.details{
+padding:30px;
+}
+
+.price{
+font-size:32px;
+font-weight:900;
+color:#c40000;
+text-align:center;
+margin-bottom:25px;
+}
+
+.info-grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:15px;
+}
+
+.info{
+background:#f7f7f7;
+padding:18px;
+border-left:5px solid #c40000;
+border-radius:6px;
+}
+
+.info b{
+display:block;
+color:#777;
+font-size:14px;
+margin-bottom:4px;
+}
+
+.description{
+margin-top:25px;
+padding:20px;
+background:#fafafa;
+border-radius:8px;
+}
+
+.description h2{
+color:#b40000;
+margin-bottom:10px;
+}
+
+.contact{
+margin-top:30px;
+background:#110606;
+color:#fff;
+padding:25px;
+border-radius:10px;
+text-align:center;
+}
+
+.contact h2{
+margin-bottom:8px;
+}
+
+.call-btn{
+display:inline-block;
+margin-top:15px;
+background:#c40000;
+color:#fff;
+padding:14px 28px;
+border-radius:6px;
+font-weight:900;
+text-decoration:none;
+font-size:18px;
+}
+
+.loading,
+.error{
+text-align:center;
+padding:50px;
+font-size:20px;
+}
+
+.error{
+color:#c40000;
+}
+
+.footer{
+margin-top:50px;
+background:#b40000;
+color:#fff;
+text-align:center;
+padding:25px;
+}
+
+@media(max-width:700px){
+
+.header{
+flex-direction:column;
+align-items:flex-start;
+}
+
+.title h1{
+font-size:27px;
+}
+
+.gallery{
+grid-template-columns:1fr;
+}
+
+.gallery img{
+height:260px;
+}
+
+.info-grid{
+grid-template-columns:1fr;
+}
+
+.details{
+padding:20px;
+}
+
+.price{
+font-size:26px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="top">
+
+<div>
+📍 Army Welfare Trust Phase 2, Lahore
+</div>
+
+<div>
+📞 0302-0941013
+</div>
+
+</div>
+
+<header class="header">
+
+<div>
+
+<div class="logo">
+ZEESHAN <span>ESTATE AWT</span>
+</div>
+
+<div style="font-size:12px;font-weight:700;color:#555">
+AUTHORIZED DEALER
+</div>
+
+</div>
+
+<a
+href="index.html"
+class="back-btn">
+
+← BACK TO WEBSITE
+
+</a>
+
+</header>
+
+<main class="container">
+
+<div
+id="property-container"
+class="property-box">
+
+<div class="loading">
+Loading Property...
+</div>
+
+</div>
+
+</main>
+
+<footer class="footer">
+
+<b>
+Zeeshan Estate AWT
+</b>
+
+<br>
+
+Authorized Dealer — Army Welfare Trust Phase 2, Lahore
+
+<br>
+
+📞 0302-0941013
+
+</footer>
+
+<script>
+
+/* =========================================
+SUPABASE
+========================================= */
+
+const SUPABASE_URL =
+"https://rhzsfjolkxqovhonylti.supabase.co";
+
+const SUPABASE_KEY =
+"sb_publishable_DjOGYqDCgPNMngD7mwMmcw_BM-UUCg8";
+
+const supabaseClient =
+supabase.createClient(
+SUPABASE_URL,
+SUPABASE_KEY
+);
+
+
+/* =========================================
+ESCAPE HTML
+========================================= */
+
+function escapeHTML(value){
+
+if(value === null || value === undefined){
+return "";
+}
+
+return String(value)
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
+
+}
+
+
+/* =========================================
+GET PROPERTY ID FROM URL
+========================================= */
+
+const params =
+new URLSearchParams(
+window.location.search
+);
+
+const propertyId =
+params.get("id");
+
+
+/* =========================================
+LOAD PROPERTY
+========================================= */
+
+async function loadProperty(){
+
+const container =
+document.getElementById(
+"property-container"
+);
+
+if(!propertyId){
+
+container.innerHTML = `
+<div class="error">
+❌ Property ID not found.
+<br><br>
+<a href="index.html"
+style="color:#b40000;font-weight:800">
+← Back to Website
+</a>
+</div>
+`;
+
+return;
+
+}
+
+try{
+
+const result =
+await supabaseClient
+.from("properties")
+.select("*")
+.eq("id",propertyId)
+.single();
+
+if(result.error){
+
+throw result.error;
+
+}
+
+const property =
+result.data;
+
+if(!property){
+
+throw new Error(
+"Property not found."
+);
+
+}
+
+
+/* =========================================
+IMAGES
+========================================= */
+
+let images = [];
+
+if(Array.isArray(property.image_urls)){
+
+images =
+property.image_urls.filter(
+function(url){
+return url;
+}
+);
+
+}
+
+
+/* =========================================
+GALLERY
+========================================= */
+
+let galleryHTML = "";
+
+if(images.length > 0){
+
+galleryHTML = `
+
+<div class="gallery ${
+images.length === 1 ? "single" : ""
+}">
+
+${images
+.map(function(url){
+
+return `
+
+<img
+src="${escapeHTML(url)}"
+alt="Property - Zeeshan Estate AWT"
+loading="lazy"
+onclick="openImage('${escapeHTML(url)}')">
+
+`;
+
+})
+.join("")}
+
+</div>
+
+`;
+
+}else{
+
+galleryHTML = `
+
+<div style="
+height:300px;
+display:flex;
+align-items:center;
+justify-content:center;
+background:#eee;
+color:#777;
+font-size:20px">
+
+📷 No property pictures available
+
+</div>
+
+`;
+
+}
+
+
+/* =========================================
+PAGE CONTENT
+========================================= */
+
+container.innerHTML = `
+
+<div class="title">
+
+<h1>
+${escapeHTML(
+property.property_type
+)}
+</h1>
+
+<p>
+${escapeHTML(
+property.purpose
+)}
+</p>
+
+</div>
+
+${galleryHTML}
+
+<div class="details">
+
+<div class="price">
+
+${escapeHTML(
+property.price
+)}
+
+</div>
+
+<div class="info-grid">
+
+<div class="info">
+
+<b>PROPERTY TYPE</b>
+
+${escapeHTML(
+property.property_type
+)}
+
+</div>
+
+<div class="info">
+
+<b>PURPOSE</b>
+
+${escapeHTML(
+property.purpose
+)}
+
+</div>
+
+<div class="info">
+
+<b>PROPERTY SIZE</b>
+
+${escapeHTML(
+property.property_size
+)}
+
+</div>
+
+<div class="info">
+
+<b>LOCATION</b>
+
+📍 ${escapeHTML(
+property.location
+)}
+
+</div>
+
+</div>
+
+<div class="description">
+
+<h2>
+Property Details
+</h2>
+
+<p>
+${escapeHTML(
+property.details ||
+"No additional details provided."
+)}
+</p>
+
+</div>
+
+<div class="contact">
+
+<h2>
+Interested in this Property?
+</h2>
+
+<p>
+For Booking &amp; Details
+</p>
+
+<p>
+<b>Eng. Ahsan Ali</b>
+</p>
+
+<a
+href="tel:+923020941013"
+class="call-btn">
+
+📞 CALL 0302-0941013
+
+</a>
+
+</div>
+
+</div>
+
+`;
+
+}catch(error){
+
+console.error(
+"PROPERTY PAGE ERROR:",
+error
+);
+
+container.innerHTML = `
+
+<div class="error">
+
+❌ Property load nahi ho saki.
+
+<br><br>
+
+<small>
+${escapeHTML(
+error.message
+)}
+</small>
+
+<br><br>
+
+<a
+href="index.html"
+style="color:#b40000;font-weight:800">
+
+← Back to Website
+
+</a>
+
+</div>
+
+`;
+
+}
+
+}
+
+
+/* =========================================
+IMAGE VIEW
+========================================= */
+
+function openImage(url){
+
+window.open(
+url,
+"_blank"
+);
+
+}
+
+
+/* =========================================
+START
+========================================= */
+
+document.addEventListener(
+"DOMContentLoaded",
+function(){
+
+loadProperty();
+
+});
+
+</script>
+
+</body>
+
+</html>
