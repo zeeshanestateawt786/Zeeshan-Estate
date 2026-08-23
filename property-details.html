@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Property Details | Zeeshan Estate AWT</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#f5f5f5;color:#222}.top{background:#b40000;color:#fff;padding:10px 5%;display:flex;justify-content:space-between;flex-wrap:wrap;font-weight:bold}.nav{background:#fff;padding:16px 5%;display:flex;justify-content:space-between;align-items:center;gap:15px;box-shadow:0 2px 10px #0001}.logo{font-size:27px;font-weight:900}.logo span{color:#c40000}.badge{font-size:11px;letter-spacing:2px;color:#666}nav{display:flex;gap:8px;flex-wrap:wrap}nav a{padding:10px 12px;text-decoration:none;font-weight:bold}.red{background:#c40000;color:#fff;border-radius:5px}.wrap{max-width:1200px;margin:auto;padding:25px 18px}.back{display:inline-block;margin-bottom:18px;color:#b40000;font-weight:bold}.gallery{background:#111;border-radius:12px;overflow:hidden}.main-img{height:520px;display:flex;align-items:center;justify-content:center}.main-img img{width:100%;height:100%;object-fit:contain}.thumbs{display:flex;gap:8px;padding:10px;overflow:auto}.thumbs img{width:90px;height:70px;object-fit:cover;border:2px solid transparent;border-radius:5px;cursor:pointer}.thumbs img.active{border-color:#e00000}.layout{display:grid;grid-template-columns:1.5fr 1fr;gap:25px;margin-top:25px}.info{background:#fff;border-radius:10px;padding:25px;box-shadow:0 4px 15px #0001}.purpose{display:inline-block;background:#c40000;color:#fff;padding:7px 11px;border-radius:4px;font-weight:bold}.price{font-size:32px;font-weight:900;margin:15px 0}.title{font-size:24px;font-weight:900}.location{color:#666;margin:12px 0 20px}.meta{display:grid;grid-template-columns:1fr 1fr;gap:10px}.meta div{background:#f7f7f7;padding:13px;border-radius:6px}.desc{white-space:pre-line;color:#555;margin-top:20px}.contact{margin-top:20px;background:#110606;color:#fff;padding:20px;border-radius:10px}.call,.wa{display:inline-block;padding:12px 16px;border-radius:5px;text-decoration:none;font-weight:900;margin:8px 5px 0 0}.call{background:#fff;color:#b40000}.wa{background:#198754;color:#fff}.loading{text-align:center;padding:80px}.error{text-align:center;padding:60px;background:#fff;border-radius:10px}@media(max-width:800px){.layout{grid-template-columns:1fr}.main-img{height:360px}.nav{flex-direction:column;align-items:flex-start}}@media(max-width:500px){.main-img{height:280px}.meta{grid-template-columns:1fr}.price{font-size:26px}}
+</style>
+</head>
+<body>
+<div class="top"><span>📍 Army Welfare Trust Phase 2, Lahore</span><span>📞 0302-0941013</span></div>
+<header class="nav"><div><div class="logo">ZEESHAN <span>ESTATE AWT</span></div><div class="badge">AUTHORIZED DEALER</div></div><nav><a href="index.html">HOME</a><a href="properties.html">PROPERTIES</a><a class="red" href="property.html">LIST YOUR PROPERTY</a></nav></header>
+<main class="wrap"><a class="back" href="properties.html">← Back to Available Properties</a><div id="app" class="loading">Loading property details...</div></main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+const SUPABASE_URL="https://rhzsfjolkxqovhonylti.supabase.co",SUPABASE_KEY="sb_publishable_DjOGYqDCgPNMngD7mwMmcw_BM-UUCg8",sb=supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
+const esc=v=>v==null?"":String(v).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]));
+const id=new URLSearchParams(location.search).get("id");
+let imgs=[],current=0;
+function show(i){current=i;const main=document.getElementById("main");if(main&&imgs[i])main.src=imgs[i];document.querySelectorAll(".thumbs img").forEach((x,n)=>x.classList.toggle("active",n===i))}
+async function load(){
+ if(!id){app.innerHTML='<div class="error">Property ID is missing.</div>';return}
+ const r=await sb.from("properties").select("*").eq("id",id).single();
+ if(r.error||!r.data){app.innerHTML='<div class="error">Property not found.<br><a href="properties.html" style="color:#b40000">View Available Properties</a></div>';return}
+ const p=r.data;imgs=Array.isArray(p.image_urls)?p.image_urls.filter(Boolean):[];
+ const wa=`https://wa.me/923020941013?text=${encodeURIComponent("I am interested in property ID "+p.id+" at "+(p.location||""))}`;
+ app.className="";app.innerHTML=`<div class="gallery"><div class="main-img">${imgs[0]?`<img id="main" src="${esc(imgs[0])}" alt="${esc(p.property_type||"Property")}">`:"<div style='font-size:70px;color:#aaa'>🏠</div>"}</div><div class="thumbs">${imgs.map((x,i)=>`<img src="${esc(x)}" class="${i===0?"active":""}" onclick="show(${i})" alt="Property image ${i+1}">`).join("")}</div></div>
+ <div class="layout"><section class="info"><span class="purpose">${esc(p.purpose||"For Sale")}</span><div class="price">${esc(p.price||"Price on Call")}</div><div class="title">${esc(p.property_type||"Property")}${p.property_size?" • "+esc(p.property_size):""}</div><div class="location">📍 ${esc(p.location||"Army Welfare Trust Phase 2, Lahore")}</div><div class="meta"><div>📐 <b>Size</b><br>${esc(p.property_size||"N/A")}</div><div>🏠 <b>Type</b><br>${esc(p.property_type||"Property")}</div><div>🏷️ <b>Purpose</b><br>${esc(p.purpose||"For Sale")}</div><div>🖼️ <b>Pictures</b><br>${imgs.length}</div></div><div class="desc">${esc(p.details||"No additional details provided.")}</div></section>
+ <aside class="info"><h2>Contact Zeeshan Estate AWT</h2><p style="margin-top:8px">For booking, viewing and further details:</p><div class="contact"><b>Eng. Ahsan Ali</b><br>📞 0302-0941013<br><a class="call" href="tel:+923020941013">☎ CALL NOW</a><a class="wa" target="_blank" href="${wa}">💬 WHATSAPP</a></div></aside></div>`;
+}
+load();
+</script>
+</body></html>
