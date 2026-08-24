@@ -206,7 +206,63 @@ body{
   border-color:#13a56b;
 }
 
-/* SEARCH */
+/* =========================
+   FILTER POPUP
+========================= */
+
+.filter-box{
+  display:none;
+  max-width:1350px;
+  margin:-5px auto 15px;
+  padding:0 20px;
+}
+
+.filter-inner{
+  background:#fff;
+  border:1px solid #ddd;
+  border-radius:10px;
+  padding:15px;
+  box-shadow:0 5px 20px rgba(0,0,0,.10);
+}
+
+.filter-inner-title{
+  font-size:15px;
+  font-weight:900;
+  margin-bottom:12px;
+  color:#222;
+}
+
+.size-options{
+  display:flex;
+  flex-wrap:wrap;
+  gap:9px;
+}
+
+.size-option{
+  border:1px solid #ddd;
+  background:#fff;
+  color:#333;
+  padding:11px 17px;
+  border-radius:7px;
+  font-size:13px;
+  font-weight:800;
+  cursor:pointer;
+}
+
+.size-option:hover{
+  border-color:#b40000;
+  color:#b40000;
+}
+
+.size-option.active{
+  background:#b40000;
+  color:#fff;
+  border-color:#b40000;
+}
+
+/* =========================
+   SEARCH
+========================= */
 
 .search-row{
   max-width:1350px;
@@ -248,6 +304,7 @@ body{
   display:flex;
   align-items:center;
   gap:12px;
+  flex-wrap:wrap;
 }
 
 .tag{
@@ -294,7 +351,7 @@ body{
 .property-list{
   max-width:1350px;
   margin:auto;
-  padding:0 20px 60px;
+  padding:0 20px 30px;
 }
 
 /* =========================
@@ -329,6 +386,7 @@ body{
   border-radius:8px;
   background:#eee;
   cursor:pointer;
+  display:block;
 }
 
 .property-photo img{
@@ -371,6 +429,25 @@ body{
   font-weight:900;
 
   box-shadow:0 2px 8px rgba(0,0,0,.2);
+}
+
+/* =========================
+   VERIFIED
+========================= */
+
+.verified{
+  display:inline-flex;
+  align-items:center;
+  gap:5px;
+
+  background:#eaf8f1;
+  color:#0b9959;
+
+  padding:6px 9px;
+  border-radius:5px;
+
+  font-size:11px;
+  font-weight:900;
 }
 
 /* =========================
@@ -443,17 +520,6 @@ body{
 .time{
   color:#999;
   font-size:13px;
-}
-
-.featured{
-  background:#f0f0f0;
-  color:#555;
-
-  padding:7px 10px;
-  border-radius:5px;
-
-  font-size:11px;
-  font-weight:900;
 }
 
 /* =========================
@@ -550,10 +616,6 @@ body{
   margin-bottom:13px;
 }
 
-.size-icon{
-  font-size:21px;
-}
-
 /* =========================
    HEART
 ========================= */
@@ -636,6 +698,53 @@ body{
 
 .whatsapp:hover{
   background:#078c50;
+}
+
+/* =========================
+   PAGINATION
+========================= */
+
+.pagination{
+  max-width:1350px;
+  margin:0 auto;
+  padding:10px 20px 55px;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
+.page-btn{
+  min-width:45px;
+  height:45px;
+
+  border:1px solid #ddd;
+  background:#fff;
+
+  border-radius:6px;
+
+  font-size:14px;
+  font-weight:800;
+
+  cursor:pointer;
+}
+
+.page-btn:hover{
+  border-color:#b40000;
+  color:#b40000;
+}
+
+.page-btn.active{
+  background:#b40000;
+  border-color:#b40000;
+  color:#fff;
+}
+
+.page-btn:disabled{
+  opacity:.45;
+  cursor:not-allowed;
 }
 
 /* =========================
@@ -807,6 +916,23 @@ body{
     font-size:13px;
   }
 
+  .filter-box{
+    padding:0 12px;
+  }
+
+  .filter-inner{
+    padding:13px;
+  }
+
+  .size-options{
+    gap:7px;
+  }
+
+  .size-option{
+    padding:10px 12px;
+    font-size:12px;
+  }
+
   .search-row{
     padding:0 12px 12px;
   }
@@ -820,10 +946,8 @@ body{
   }
 
   .property-list{
-    padding:0 12px 45px;
+    padding:0 12px 20px;
   }
-
-  /* LIST CARD */
 
   .property-card{
     grid-template-columns:135px 1fr;
@@ -866,7 +990,7 @@ body{
     font-size:11px;
   }
 
-  .featured{
+  .verified{
     padding:5px 6px;
     font-size:9px;
   }
@@ -879,10 +1003,6 @@ body{
   .location{
     font-size:14px;
     max-width:100%;
-
-    white-space:nowrap;
-    overflow:hidden;
-    text-overflow:ellipsis;
   }
 
   .location-highlight{
@@ -929,6 +1049,17 @@ body{
   }
 
   .sms{
+    font-size:12px;
+  }
+
+  .pagination{
+    padding:5px 12px 40px;
+    gap:5px;
+  }
+
+  .page-btn{
+    min-width:40px;
+    height:40px;
     font-size:12px;
   }
 
@@ -1087,9 +1218,19 @@ body{
 
   <div class="filters">
 
-    <button class="filter-btn" onclick="focusSearch()">
+    <!-- FILTER BUTTON -->
+
+    <button
+      id="filterButton"
+      class="filter-btn"
+      type="button"
+      onclick="toggleFilterBox()"
+    >
       ⚙ Filters
     </button>
+
+
+    <!-- SORT -->
 
     <select id="sort" class="filter-select">
 
@@ -1116,6 +1257,8 @@ body{
     </select>
 
 
+    <!-- LOCATION / PURPOSE -->
+
     <select id="purpose" class="filter-select">
 
       <option value="">
@@ -1132,30 +1275,65 @@ body{
 
     </select>
 
+  </div>
 
-    <select id="sizeFilter" class="filter-select">
+</div>
 
-      <option value="">
-        Property Size
-      </option>
 
-      <option value="5 Marla">
+<!-- =========================
+     FILTER POPUP
+========================= -->
+
+<div
+  id="filterBox"
+  class="filter-box"
+>
+
+  <div class="filter-inner">
+
+    <div class="filter-inner-title">
+      Select Property Size
+    </div>
+
+    <div class="size-options">
+
+      <button
+        type="button"
+        class="size-option"
+        data-size="3 Marla"
+        onclick="selectSize('3 Marla')"
+      >
+        3 Marla
+      </button>
+
+      <button
+        type="button"
+        class="size-option"
+        data-size="5 Marla"
+        onclick="selectSize('5 Marla')"
+      >
         5 Marla
-      </option>
+      </button>
 
-      <option value="10 Marla">
+      <button
+        type="button"
+        class="size-option"
+        data-size="10 Marla"
+        onclick="selectSize('10 Marla')"
+      >
         10 Marla
-      </option>
+      </button>
 
-      <option value="1 Kanal">
+      <button
+        type="button"
+        class="size-option"
+        data-size="1 Kanal"
+        onclick="selectSize('1 Kanal')"
+      >
         1 Kanal
-      </option>
+      </button>
 
-      <option value="20 Marla">
-        20 Marla
-      </option>
-
-    </select>
+    </div>
 
   </div>
 
@@ -1187,13 +1365,16 @@ body{
 
 
 <!-- =========================
-     SELECTED LOCATION
+     SELECTED FILTER
 ========================= -->
 
 <div class="selected">
 
-  <div class="tag">
-    AWT Phase 2 ×
+  <div
+    id="selectedTag"
+    class="tag"
+  >
+    AWT Phase 2
   </div>
 
   <a
@@ -1228,7 +1409,10 @@ body{
      PROPERTY LIST
 ========================= -->
 
-<main id="propertyList" class="property-list">
+<main
+  id="propertyList"
+  class="property-list"
+>
 
   <div class="loading">
 
@@ -1242,12 +1426,23 @@ body{
 
 
 <!-- =========================
+     PAGINATION
+========================= -->
+
+<div
+  id="pagination"
+  class="pagination"
+></div>
+
+
+<!-- =========================
      FOOTER
 ========================= -->
 
 <footer class="footer">
 
   © 2026
+
   <strong>
     Zeeshan <span>Estate AWT</span>
   </strong>
@@ -1299,14 +1494,20 @@ document.getElementById("purpose");
 const sortSelect =
 document.getElementById("sort");
 
-const sizeFilter =
-document.getElementById("sizeFilter");
-
 const resultText =
 document.getElementById("resultText");
 
 const locationCount =
 document.getElementById("locationCount");
+
+const filterBox =
+document.getElementById("filterBox");
+
+const selectedTag =
+document.getElementById("selectedTag");
+
+const pagination =
+document.getElementById("pagination");
 
 
 /* =========================
@@ -1315,6 +1516,14 @@ document.getElementById("locationCount");
 
 let allProperties = [];
 
+let filteredProperties = [];
+
+let selectedSize = "";
+
+let currentPage = 1;
+
+const propertiesPerPage = 20;
+
 
 /* =========================
    HTML ESCAPE
@@ -1322,7 +1531,10 @@ let allProperties = [];
 
 function esc(value){
 
-  if(value === null || value === undefined){
+  if(
+    value === null ||
+    value === undefined
+  ){
     return "";
   }
 
@@ -1363,17 +1575,13 @@ function formatPrice(value){
     .trim()
     .replace(/,/g,"");
 
-  /*
-    If already contains Crore or Lac,
-    clean it and return same format.
-  */
-
   let cleaned =
     original
     .replace(/^PKR\s*/i,"")
     .trim();
 
-  /* Crore */
+
+  /* CRORE */
 
   let croreMatch =
     cleaned.match(
@@ -1385,14 +1593,16 @@ function formatPrice(value){
     let num =
       parseFloat(croreMatch[1]);
 
-    return "PKR " + num.toFixed(
-      num % 1 === 0 ? 0 : 2
-    ) + " Crore";
+    return "PKR " +
+      num.toFixed(
+        num % 1 === 0 ? 0 : 2
+      ) +
+      " Crore";
 
   }
 
 
-  /* Lac */
+  /* LAC */
 
   let lacMatch =
     cleaned.match(
@@ -1404,18 +1614,16 @@ function formatPrice(value){
     let num =
       parseFloat(lacMatch[1]);
 
-    return "PKR " + num.toFixed(
-      num % 1 === 0 ? 0 : 2
-    ) + " Lac";
+    return "PKR " +
+      num.toFixed(
+        num % 1 === 0 ? 0 : 2
+      ) +
+      " Lac";
 
   }
 
 
-  /*
-    Numeric value:
-    21500000 = 2.15 Crore
-    7500000 = 75 Lac
-  */
+  /* NUMERIC */
 
   let numeric =
     parseFloat(
@@ -1453,21 +1661,15 @@ function formatPrice(value){
   }
 
 
-  /*
-    If the value is text such as
-    "PKR 75 Lac - 90 Lac",
-    keep it readable.
-  */
-
   return original
     .replace(/\s+/g," ")
     .replace(/^PKR\s*/i,"PKR ");
+
 }
 
 
 /* =========================
    PRICE NUMBER
-   Used for sorting
 ========================= */
 
 function priceNumber(value){
@@ -1482,6 +1684,7 @@ function priceNumber(value){
     .replace(/,/g,"")
     .trim();
 
+
   let crore =
     text.match(
       /([0-9]+(?:\.[0-9]+)?)\s*crore/
@@ -1489,9 +1692,12 @@ function priceNumber(value){
 
   if(crore){
 
-    return parseFloat(crore[1]) * 10000000;
+    return parseFloat(
+      crore[1]
+    ) * 10000000;
 
   }
+
 
   let lac =
     text.match(
@@ -1500,16 +1706,21 @@ function priceNumber(value){
 
   if(lac){
 
-    return parseFloat(lac[1]) * 100000;
+    return parseFloat(
+      lac[1]
+    ) * 100000;
 
   }
+
 
   let num =
     parseFloat(
       text.replace(/[^\d.]/g,"")
     );
 
-  return isNaN(num) ? 0 : num;
+  return isNaN(num)
+    ? 0
+    : num;
 
 }
 
@@ -1539,39 +1750,132 @@ function timeAgo(date){
       (now - d) / 1000
     );
 
+
   if(diff < 60){
     return "Just now";
   }
+
 
   const minutes =
     Math.floor(diff / 60);
 
   if(minutes < 60){
+
     return minutes +
-      (minutes === 1 ? " minute ago" : " minutes ago");
+      (
+        minutes === 1
+        ? " minute ago"
+        : " minutes ago"
+      );
+
   }
+
 
   const hours =
     Math.floor(minutes / 60);
 
   if(hours < 24){
+
     return hours +
-      (hours === 1 ? " hour ago" : " hours ago");
+      (
+        hours === 1
+        ? " hour ago"
+        : " hours ago"
+      );
+
   }
+
 
   const days =
     Math.floor(hours / 24);
 
   if(days < 30){
+
     return days +
-      (days === 1 ? " day ago" : " days ago");
+      (
+        days === 1
+        ? " day ago"
+        : " days ago"
+      );
+
   }
+
 
   const months =
     Math.floor(days / 30);
 
   return months +
-    (months === 1 ? " month ago" : " months ago");
+    (
+      months === 1
+      ? " month ago"
+      : " months ago"
+    );
+
+}
+
+
+/* =========================
+   FILTER BOX
+========================= */
+
+function toggleFilterBox(){
+
+  if(
+    filterBox.style.display === "block"
+  ){
+
+    filterBox.style.display = "none";
+
+  }else{
+
+    filterBox.style.display = "block";
+
+  }
+
+}
+
+
+/* =========================
+   SELECT SIZE
+========================= */
+
+function selectSize(size){
+
+  selectedSize =
+    size;
+
+
+  document
+    .querySelectorAll(".size-option")
+    .forEach(function(button){
+
+      button.classList.toggle(
+        "active",
+        button.dataset.size === size
+      );
+
+    });
+
+
+  selectedTag.textContent =
+    size;
+
+
+  currentPage = 1;
+
+  renderProperties();
+
+
+  /*
+    Mobile par option select
+    hone ke baad filter box close
+  */
+
+  if(window.innerWidth <= 650){
+
+    filterBox.style.display = "none";
+
+  }
 
 }
 
@@ -1583,6 +1887,7 @@ function timeAgo(date){
 async function loadProperties(){
 
   propertyList.innerHTML = `
+
     <div class="loading">
 
       <div class="loader"></div>
@@ -1590,7 +1895,9 @@ async function loadProperties(){
       Loading available properties...
 
     </div>
+
   `;
+
 
   try{
 
@@ -1600,13 +1907,16 @@ async function loadProperties(){
       .select("*")
       .order(
         "created_at",
-        {ascending:false}
+        {
+          ascending:false
+        }
       );
 
 
     if(result.error){
 
       propertyList.innerHTML = `
+
         <div class="error">
 
           <h3>
@@ -1618,15 +1928,19 @@ async function loadProperties(){
           </p>
 
         </div>
+
       `;
 
       return;
+
     }
 
 
     allProperties =
       result.data || [];
 
+
+    currentPage = 1;
 
     renderProperties();
 
@@ -1636,6 +1950,7 @@ async function loadProperties(){
     console.error(error);
 
     propertyList.innerHTML = `
+
       <div class="error">
 
         <h3>
@@ -1647,6 +1962,7 @@ async function loadProperties(){
         </p>
 
       </div>
+
     `;
 
   }
@@ -1655,7 +1971,7 @@ async function loadProperties(){
 
 
 /* =========================
-   RENDER
+   RENDER PROPERTIES
 ========================= */
 
 function renderProperties(){
@@ -1665,61 +1981,67 @@ function renderProperties(){
     .toLowerCase()
     .trim();
 
+
   const purpose =
     purposeSelect.value;
 
-  const size =
-    sizeFilter.value;
 
   const sort =
     sortSelect.value;
 
 
+  /*
+    FILTER
+  */
+
   let list =
-    allProperties.filter(function(x){
+    allProperties.filter(
+      function(x){
 
-      const searchable = [
+        const searchable = [
 
-        x.location,
-        x.property_type,
-        x.property_size,
-        x.price,
-        x.details,
-        x.owner_name
+          x.location,
+          x.property_type,
+          x.property_size,
+          x.price,
+          x.details,
+          x.owner_name,
+          x.purpose
 
-      ]
-      .join(" ")
-      .toLowerCase();
-
-
-      const purposeMatch =
-        !purpose ||
-        x.purpose === purpose;
+        ]
+        .join(" ")
+        .toLowerCase();
 
 
-      const sizeMatch =
-        !size ||
-        String(
-          x.property_size || ""
-        )
-        .toLowerCase()
-        .includes(
-          size.toLowerCase()
+        const purposeMatch =
+          !purpose ||
+          x.purpose === purpose;
+
+
+        const sizeMatch =
+          !selectedSize ||
+          String(
+            x.property_size || ""
+          )
+          .toLowerCase()
+          .includes(
+            selectedSize.toLowerCase()
+          );
+
+
+        const searchMatch =
+          !query ||
+          searchable.includes(query);
+
+
+        return (
+          purposeMatch &&
+          sizeMatch &&
+          searchMatch
         );
 
-
-      const searchMatch =
-        !query ||
-        searchable.includes(query);
-
-
-      return (
-        purposeMatch &&
-        sizeMatch &&
-        searchMatch
-      );
-
-    });
+      }
+    );
 
 
   /* =========================
@@ -1742,9 +2064,14 @@ function renderProperties(){
       list
       .slice()
       .sort(
-        (a,b) =>
-          priceNumber(a.price) -
-          priceNumber(b.price)
+        function(a,b){
+
+          return (
+            priceNumber(a.price) -
+            priceNumber(b.price)
+          );
+
+        }
       );
 
   }
@@ -1756,12 +2083,21 @@ function renderProperties(){
       list
       .slice()
       .sort(
-        (a,b) =>
-          priceNumber(b.price) -
-          priceNumber(a.price)
+        function(a,b){
+
+          return (
+            priceNumber(b.price) -
+            priceNumber(a.price)
+          );
+
+        }
       );
 
   }
+
+
+  filteredProperties =
+    list;
 
 
   /* =========================
@@ -1812,9 +2148,50 @@ function renderProperties(){
 
     `;
 
+
+    pagination.innerHTML = "";
+
     return;
 
   }
+
+
+  /* =========================
+     PAGE CHECK
+  ========================= */
+
+  const totalPages =
+    Math.ceil(
+      list.length /
+      propertiesPerPage
+    );
+
+
+  if(currentPage > totalPages){
+
+    currentPage =
+      totalPages;
+
+  }
+
+
+  const start =
+    (
+      currentPage - 1
+    ) *
+    propertiesPerPage;
+
+
+  const end =
+    start +
+    propertiesPerPage;
+
+
+  const pageItems =
+    list.slice(
+      start,
+      end
+    );
 
 
   propertyList.innerHTML = "";
@@ -1824,297 +2201,569 @@ function renderProperties(){
      CARDS
   ========================= */
 
-  list.forEach(function(x){
+  pageItems.forEach(
+    function(x){
 
-    const id =
-      x.id;
-
-
-    const images =
-      Array.isArray(x.image_urls)
-      ? x.image_urls.filter(Boolean)
-      : [];
+      const id =
+        x.id;
 
 
-    const firstImage =
-      images[0] || "";
+      const images =
+        Array.isArray(
+          x.image_urls
+        )
+        ? x.image_urls.filter(Boolean)
+        : [];
 
 
-    const propertyType =
-      x.property_type ||
-      "Residential Plot";
+      const firstImage =
+        images[0] || "";
 
 
-    const propertySize =
-      x.property_size ||
-      "N/A";
+      const propertyType =
+        x.property_type ||
+        "Residential Plot";
 
 
-    const location =
-      x.location ||
-      "AWT Phase 2, Army Welfare Trust Lahore";
+      const propertySize =
+        x.property_size ||
+        "N/A";
 
 
-    const price =
-      formatPrice(x.price);
+      const location =
+        x.location ||
+        "AWT Phase 2, Army Welfare Trust Lahore";
 
 
-    const purpose =
-      x.purpose ||
-      "For Sale";
+      const price =
+        formatPrice(
+          x.price
+        );
 
 
-    const detailsUrl =
-      "property-details.html?id=" +
-      encodeURIComponent(id);
+      const purposeValue =
+        x.purpose ||
+        "For Sale";
 
 
-    const whatsappText =
-      "Assalam o Alaikum, I am interested in this property. Property ID: " +
-      id;
+      const detailsUrl =
+        "property-details.html?id=" +
+        encodeURIComponent(id);
 
 
-    /* =========================
-       IMAGE HTML
-    ========================= */
-
-    let imageHTML = "";
-
-    if(firstImage){
-
-      imageHTML = `
-
-        <img
-          src="${esc(firstImage)}"
-          loading="lazy"
-          alt="${esc(propertyType)}"
-        >
-
-        <div class="play">
-          ▶
-        </div>
-
-      `;
-
-    }else{
-
-      imageHTML = `
-
-        <div class="no-image">
-          🏠
-        </div>
-
-      `;
-
-    }
+      const whatsappText =
+        "Assalam o Alaikum, I am interested in this property. Property ID: " +
+        id;
 
 
-    /* =========================
-       CARD
-    ========================= */
+      /*
+        ADMIN BADGES
 
-    const card = `
+        Ye multiple possible column
+        names support karta hai.
+      */
 
-      <article class="property-card">
-
-
-        <!-- IMAGE -->
-
-        <a
-          href="${detailsUrl}"
-          class="property-photo"
-        >
-
-          ${imageHTML}
+      const isVerified =
+        x.verified === true ||
+        x.is_verified === true ||
+        x.verified === "true";
 
 
-          <div class="hot">
-            ${esc(
-              purpose === "For Rent"
-              ? "FOR RENT"
-              : "SUPER HOT"
-            )}
+      const isSuperHot =
+        x.super_hot === true ||
+        x.is_super_hot === true ||
+        x.super_hot === "true";
+
+
+      const isHot =
+        x.hot === true ||
+        x.is_hot === true ||
+        x.hot === "true";
+
+
+      /*
+        BADGE PRIORITY
+
+        SUPER HOT
+        HOT
+        RENT
+        otherwise normal
+      */
+
+      let badgeText =
+        "FOR SALE";
+
+
+      if(purposeValue === "For Rent"){
+
+        badgeText =
+          "FOR RENT";
+
+      }
+
+
+      if(isHot){
+
+        badgeText =
+          "HOT";
+
+      }
+
+
+      if(isSuperHot){
+
+        badgeText =
+          "SUPER HOT";
+
+      }
+
+
+      /* =========================
+         IMAGE HTML
+      ========================= */
+
+      let imageHTML = "";
+
+
+      if(firstImage){
+
+        imageHTML = `
+
+          <img
+            src="${esc(firstImage)}"
+            loading="lazy"
+            alt="${esc(propertyType)}"
+          >
+
+          <div class="play">
+            ▶
           </div>
 
+        `;
 
-          ${
-            images.length
-            ? `
-              <div class="photo-count">
-                🖼 ${images.length}
-              </div>
-            `
-            : ""
-          }
+      }else{
 
-        </a>
+        imageHTML = `
 
-
-        <!-- CONTENT -->
-
-        <div class="property-content">
-
-
-          <!-- TOP -->
-
-          <div class="top-line">
-
-            <span class="time">
-              ${esc(
-                timeAgo(x.created_at)
-              )}
-            </span>
-
-            <span class="featured">
-              ★ TITANIUM
-            </span>
-
+          <div class="no-image">
+            🏠
           </div>
 
+        `;
 
-          <!-- PRICE -->
+      }
+
+
+      /* =========================
+         CARD
+      ========================= */
+
+      const card = `
+
+        <article class="property-card">
+
+
+          <!-- IMAGE -->
 
           <a
             href="${detailsUrl}"
-            class="price-link"
+            class="property-photo"
           >
 
-            <div class="price">
-              ${esc(price)}
+            ${imageHTML}
+
+
+            <div class="hot">
+
+              ${esc(badgeText)}
+
             </div>
+
+
+            ${
+              images.length
+              ? `
+
+                <div class="photo-count">
+
+                  🖼 ${images.length}
+
+                </div>
+
+              `
+              : ""
+            }
 
           </a>
 
 
-          <!-- LOCATION -->
+          <!-- CONTENT -->
 
-          <a
-            href="${detailsUrl}"
-            class="location-link"
-          >
-
-            <div class="location">
-
-              ${esc(location)}
-
-            </div>
-
-            <span class="location-highlight">
-              AWT Phase 2
-            </span>
-
-          </a>
+          <div class="property-content">
 
 
-          <!-- PROPERTY TYPE -->
+            <!-- TOP -->
 
-          <a
-            href="${detailsUrl}"
-            class="location-link"
-          >
+            <div class="top-line">
 
-            <div class="property-type">
+              <span class="time">
 
-              ${esc(propertyType)}
-              ${purpose === "For Sale"
-                ? " for Sale"
+                ${esc(
+                  timeAgo(
+                    x.created_at
+                  )
+                )}
+
+              </span>
+
+
+              ${
+                isVerified
+                ? `
+
+                  <span class="verified">
+
+                    ✓ VERIFIED
+
+                  </span>
+
+                `
                 : ""
+
               }
 
             </div>
 
-          </a>
+
+            <!-- PRICE -->
+
+            <a
+              href="${detailsUrl}"
+              class="price-link"
+            >
+
+              <div class="price">
+
+                ${esc(price)}
+
+              </div>
+
+            </a>
 
 
-          <!-- SIZE -->
+            <!-- LOCATION -->
 
-          <a
-            href="${detailsUrl}"
-            class="location-link"
-          >
+            <a
+              href="${detailsUrl}"
+              class="location-link"
+            >
 
-            <div class="size-row">
+              <div class="location">
 
-              <span class="size-icon">
-                ◈
+                ${esc(location)}
+
+              </div>
+
+
+              <span class="location-highlight">
+
+                AWT Phase 2
+
               </span>
 
-              <span>
-                ${esc(propertySize)}
-              </span>
+            </a>
+
+
+            <!-- PROPERTY TYPE -->
+
+            <a
+              href="${detailsUrl}"
+              class="location-link"
+            >
+
+              <div class="property-type">
+
+                ${esc(propertyType)}
+
+                ${
+                  purposeValue === "For Sale"
+                  ? " for Sale"
+                  : ""
+                }
+
+              </div>
+
+            </a>
+
+
+            <!-- SIZE -->
+
+            <a
+              href="${detailsUrl}"
+              class="location-link"
+            >
+
+              <div class="size-row">
+
+                <span>
+                  ◈
+                </span>
+
+                <span>
+
+                  ${esc(propertySize)}
+
+                </span>
+
+              </div>
+
+            </a>
+
+
+            <!-- HEART -->
+
+            <button
+              class="heart"
+              type="button"
+              onclick="toggleHeart(this)"
+              aria-label="Save property"
+            >
+              ♡
+            </button>
+
+
+            <!-- ACTION BUTTONS -->
+
+            <div class="action-row">
+
+
+              <!-- SMS -->
+
+              <a
+                class="action sms"
+                href="sms:+923020941013?body=${encodeURIComponent(
+                  "I am interested in this property. Property ID: " +
+                  id
+                )}"
+              >
+                SMS
+              </a>
+
+
+              <!-- CALL -->
+
+              <a
+                class="action call"
+                href="tel:+923020941013"
+              >
+                ☎ Call
+              </a>
+
+
+              <!-- WHATSAPP -->
+
+              <a
+                class="action whatsapp"
+                target="_blank"
+                rel="noopener"
+                href="https://wa.me/923020941013?text=${encodeURIComponent(
+                  whatsappText
+                )}"
+              >
+                ◉
+              </a>
+
 
             </div>
-
-          </a>
-
-
-          <!-- HEART -->
-
-          <button
-            class="heart"
-            type="button"
-            onclick="toggleHeart(this)"
-            aria-label="Save property"
-          >
-            ♡
-          </button>
-
-
-          <!-- ACTION BUTTONS -->
-
-          <div class="action-row">
-
-
-            <!-- SMS -->
-
-            <a
-              class="action sms"
-              href="sms:+923020941013?body=${encodeURIComponent(
-                "I am interested in this property. Property ID: " + id
-              )}"
-            >
-              SMS
-            </a>
-
-
-            <!-- CALL -->
-
-            <a
-              class="action call"
-              href="tel:+923020941013"
-            >
-              ☎ Call
-            </a>
-
-
-            <!-- WHATSAPP -->
-
-            <a
-              class="action whatsapp"
-              target="_blank"
-              rel="noopener"
-              href="https://wa.me/923020941013?text=${encodeURIComponent(
-                whatsappText
-              )}"
-            >
-              ◉
-            </a>
 
 
           </div>
 
 
-        </div>
+        </article>
 
-      </article>
-
-    `;
+      `;
 
 
-    propertyList.insertAdjacentHTML(
-      "beforeend",
-      card
+      propertyList.insertAdjacentHTML(
+        "beforeend",
+        card
+      );
+
+    }
+  );
+
+
+  renderPagination(
+    totalPages
+  );
+
+}
+
+
+/* =========================
+   PAGINATION
+========================= */
+
+function renderPagination(totalPages){
+
+  pagination.innerHTML = "";
+
+
+  if(totalPages <= 1){
+
+    return;
+
+  }
+
+
+  /* PREVIOUS */
+
+  const previous =
+    document.createElement(
+      "button"
     );
+
+  previous.className =
+    "page-btn";
+
+  previous.textContent =
+    "‹";
+
+  previous.disabled =
+    currentPage === 1;
+
+  previous.onclick =
+    function(){
+
+      if(currentPage > 1){
+
+        currentPage--;
+
+        renderProperties();
+
+        scrollToProperties();
+
+      }
+
+    };
+
+
+  pagination.appendChild(
+    previous
+  );
+
+
+  /*
+    Page numbers
+  */
+
+  for(
+    let i = 1;
+    i <= totalPages;
+    i++
+  ){
+
+    const button =
+      document.createElement(
+        "button"
+      );
+
+
+    button.className =
+      "page-btn" +
+      (
+        i === currentPage
+        ? " active"
+        : ""
+      );
+
+
+    button.textContent =
+      i;
+
+
+    button.onclick =
+      function(){
+
+        currentPage =
+          i;
+
+        renderProperties();
+
+        scrollToProperties();
+
+      };
+
+
+    pagination.appendChild(
+      button
+    );
+
+  }
+
+
+  /* NEXT */
+
+  const next =
+    document.createElement(
+      "button"
+    );
+
+
+  next.className =
+    "page-btn";
+
+  next.textContent =
+    "›";
+
+  next.disabled =
+    currentPage === totalPages;
+
+
+  next.onclick =
+    function(){
+
+      if(
+        currentPage <
+        totalPages
+      ){
+
+        currentPage++;
+
+        renderProperties();
+
+        scrollToProperties();
+
+      }
+
+    };
+
+
+  pagination.appendChild(
+    next
+  );
+
+}
+
+
+/* =========================
+   SCROLL
+========================= */
+
+function scrollToProperties(){
+
+  const top =
+    propertyList.getBoundingClientRect().top +
+    window.scrollY -
+    100;
+
+
+  window.scrollTo({
+
+    top:top,
+
+    behavior:"smooth"
 
   });
 
@@ -2127,15 +2776,24 @@ function renderProperties(){
 
 function toggleHeart(button){
 
-  if(button.textContent.trim() === "♡"){
+  if(
+    button.textContent.trim()
+    === "♡"
+  ){
 
-    button.textContent = "♥";
-    button.style.color = "#b40000";
+    button.textContent =
+      "♥";
+
+    button.style.color =
+      "#b40000";
 
   }else{
 
-    button.textContent = "♡";
-    button.style.color = "#333";
+    button.textContent =
+      "♡";
+
+    button.style.color =
+      "#333";
 
   }
 
@@ -2148,10 +2806,45 @@ function toggleHeart(button){
 
 function clearFilters(){
 
-  searchInput.value = "";
-  purposeSelect.value = "";
-  sizeFilter.value = "";
-  sortSelect.value = "new";
+  searchInput.value =
+    "";
+
+  purposeSelect.value =
+    "";
+
+  selectedSize =
+    "";
+
+  currentPage =
+    1;
+
+
+  selectedTag.textContent =
+    "AWT Phase 2";
+
+
+  document
+    .querySelectorAll(
+      ".size-option"
+    )
+    .forEach(
+      function(button){
+
+        button.classList.remove(
+          "active"
+        );
+
+      }
+    );
+
+
+  sortSelect.value =
+    "new";
+
+
+  filterBox.style.display =
+    "none";
+
 
   renderProperties();
 
@@ -2159,47 +2852,53 @@ function clearFilters(){
 
 
 /* =========================
-   FOCUS SEARCH
-========================= */
-
-function focusSearch(){
-
-  searchInput.focus();
-
-  window.scrollTo({
-    top:
-      searchInput.getBoundingClientRect().top +
-      window.scrollY -
-      100,
-
-    behavior:"smooth"
-  });
-
-}
-
-
-/* =========================
-   EVENTS
+   SEARCH
 ========================= */
 
 searchInput.addEventListener(
   "input",
-  renderProperties
+  function(){
+
+    currentPage =
+      1;
+
+    renderProperties();
+
+  }
 );
+
+
+/* =========================
+   PURPOSE
+========================= */
 
 purposeSelect.addEventListener(
   "change",
-  renderProperties
+  function(){
+
+    currentPage =
+      1;
+
+    renderProperties();
+
+  }
 );
 
-sizeFilter.addEventListener(
-  "change",
-  renderProperties
-);
+
+/* =========================
+   SORT
+========================= */
 
 sortSelect.addEventListener(
   "change",
-  renderProperties
+  function(){
+
+    currentPage =
+      1;
+
+    renderProperties();
+
+  }
 );
 
 
