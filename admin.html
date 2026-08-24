@@ -211,7 +211,7 @@ overflow-x:auto;
 table{
 width:100%;
 border-collapse:collapse;
-min-width:1250px;
+min-width:1450px;
 }
 
 th,
@@ -234,6 +234,8 @@ border-radius:5px;
 font-weight:700;
 cursor:pointer;
 margin:3px;
+text-decoration:none;
+display:inline-block;
 }
 
 .edit-btn{
@@ -254,6 +256,72 @@ color:#fff;
 .follow-btn{
 background:#f0a000;
 color:#111;
+}
+
+/* PROPERTY STATUS BUTTONS */
+
+.verified-btn{
+background:#168c3b;
+color:#fff;
+}
+
+.verified-active{
+background:#075c28;
+color:#fff;
+box-shadow:0 0 0 2px #168c3b;
+}
+
+.hot-btn{
+background:#ff8c00;
+color:#111;
+}
+
+.hot-active{
+background:#e66f00;
+color:#fff;
+box-shadow:0 0 0 2px #ff8c00;
+}
+
+.super-hot-btn{
+background:#8b0000;
+color:#fff;
+}
+
+.super-hot-active{
+background:#ff0000;
+color:#fff;
+box-shadow:0 0 0 2px #ff0000;
+}
+
+.property-status{
+display:flex;
+flex-wrap:wrap;
+gap:5px;
+margin-bottom:6px;
+}
+
+.property-badge{
+display:inline-block;
+padding:5px 8px;
+border-radius:14px;
+font-size:11px;
+font-weight:900;
+margin:2px;
+}
+
+.verified-badge{
+background:#d8f3dc;
+color:#126b2c;
+}
+
+.hot-badge{
+background:#ffe0a3;
+color:#9a5700;
+}
+
+.super-hot-badge{
+background:#ffd0d0;
+color:#9b0000;
 }
 
 .filter-box{
@@ -466,14 +534,11 @@ align-items:flex-start;
 
 <body>
 
-
 <header class="header">
 
 <div class="logo">
-
 ZEESHAN
 <span>ESTATE AWT</span>
-
 </div>
 
 <a
@@ -665,6 +730,7 @@ id="client-requirement">
 <option>Buy</option>
 <option>Sell</option>
 <option>Rent</option>
+
 </select>
 
 </div>
@@ -701,6 +767,7 @@ id="client-purpose">
 <option>Sale</option>
 <option>Purchase</option>
 <option>Rent</option>
+
 </select>
 
 </div>
@@ -920,6 +987,7 @@ id="clients-table">
 <th>Property</th>
 <th>Purpose</th>
 <th>Size</th>
+<th>Status</th>
 <th>Views</th>
 <th>Calls</th>
 <th>Actions</th>
@@ -1702,52 +1770,38 @@ ${escapeHTML(client.lead_source || "")}
 
 
 <td>
-
 ${escapeHTML(client.phone)}
-
 </td>
 
 
 <td>
-
 ${escapeHTML(client.requirement)}
-
 </td>
 
 
 <td>
-
 ${escapeHTML(client.property_type)}
-
 <br>
-
 <small>
 ${escapeHTML(client.purpose)}
 </small>
-
 </td>
 
 
 <td>
-
 ${escapeHTML(client.location)}
-
 </td>
 
 
 <td>
-
 ${escapeHTML(client.budget)}
-
 </td>
 
 
 <td>
 
 <span class="badge ${statusClass}">
-
 ${escapeHTML(client.lead_status)}
-
 </span>
 
 </td>
@@ -1899,31 +1953,18 @@ result.data;
 
 
 document.getElementById("edit-client-id").value=c.id;
-
 document.getElementById("edit-client-name").value=c.name || "";
-
 document.getElementById("edit-client-phone").value=c.phone || "";
-
 document.getElementById("edit-client-alt-phone").value=c.alternate_phone || "";
-
 document.getElementById("edit-client-requirement").value=c.requirement || "Buy";
-
 document.getElementById("edit-client-property-type").value=c.property_type || "Plot";
-
 document.getElementById("edit-client-purpose").value=c.purpose || "Sale";
-
 document.getElementById("edit-client-location").value=c.location || "";
-
 document.getElementById("edit-client-budget").value=c.budget || "";
-
 document.getElementById("edit-client-source").value=c.lead_source || "Website";
-
 document.getElementById("edit-client-status").value=c.lead_status || "New";
-
 document.getElementById("edit-client-follow-date").value=c.follow_up_date || "";
-
 document.getElementById("edit-client-follow-time").value=c.follow_up_time || "";
-
 document.getElementById("edit-client-notes").value=c.notes || "";
 
 document.getElementById("edit-client-status").innerText="";
@@ -2095,16 +2136,12 @@ new Date().toISOString().slice(0,10)
 
 
 if(!date){
-
 return;
-
 }
 
 
 const note =
-prompt(
-"Follow-up note:"
-);
+prompt("Follow-up note:");
 
 
 const result =
@@ -2146,7 +2183,6 @@ follow_up_date:date
 if(updateClient.error){
 
 alert(updateClient.error.message);
-
 return;
 
 }
@@ -2312,6 +2348,10 @@ return result.data || [];
 }
 
 
+/* =========================================
+PROPERTY ANALYTICS
+========================================= */
+
 async function loadAnalytics(){
 
 const properties =
@@ -2359,7 +2399,7 @@ table.innerHTML=`
 
 <tr>
 
-<td colspan="6" class="no-data">
+<td colspan="7" class="no-data">
 
 No properties found.
 
@@ -2398,27 +2438,145 @@ const row =
 document.createElement("tr");
 
 
+/* STATUS BADGES */
+
+let badges="";
+
+if(property.is_verified){
+
+badges += `
+<span class="property-badge verified-badge">
+✓ VERIFIED
+</span>`;
+
+}
+
+if(property.is_hot){
+
+badges += `
+<span class="property-badge hot-badge">
+🔥 HOT
+</span>`;
+
+}
+
+if(property.is_super_hot){
+
+badges += `
+<span class="property-badge super-hot-badge">
+⭐ SUPER HOT
+</span>`;
+
+}
+
+if(!badges){
+
+badges=`
+<span style="color:#777;font-size:12px;">
+No status
+</span>`;
+
+}
+
+
+/* BUTTON CLASSES */
+
+const verifiedClass =
+property.is_verified
+? "verified-active"
+: "verified-btn";
+
+const hotClass =
+property.is_hot
+? "hot-active"
+: "hot-btn";
+
+const superHotClass =
+property.is_super_hot
+? "super-hot-active"
+: "super-hot-btn";
+
+
 row.innerHTML=`
 
 <td>
+
+<b>
 ${escapeHTML(property.property_type)}
+</b>
+
 </td>
+
 
 <td>
 ${escapeHTML(property.purpose)}
 </td>
 
+
 <td>
 ${escapeHTML(property.property_size)}
 </td>
+
+
+<td>
+
+<div class="property-status">
+
+${badges}
+
+</div>
+
+
+<button
+class="action-btn ${verifiedClass}"
+onclick="togglePropertyStatus(
+'${escapeHTML(property.id)}',
+'is_verified',
+${property.is_verified ? "true" : "false"}
+)">
+
+✓ Verified
+
+</button>
+
+
+<button
+class="action-btn ${hotClass}"
+onclick="togglePropertyStatus(
+'${escapeHTML(property.id)}',
+'is_hot',
+${property.is_hot ? "true" : "false"}
+)">
+
+🔥 Hot
+
+</button>
+
+
+<button
+class="action-btn ${superHotClass}"
+onclick="togglePropertyStatus(
+'${escapeHTML(property.id)}',
+'is_super_hot',
+${property.is_super_hot ? "true" : "false"}
+)">
+
+⭐ Super Hot
+
+</button>
+
+</td>
+
 
 <td>
 👁️ ${viewCount}
 </td>
 
+
 <td>
 📞 ${callCount}
 </td>
+
 
 <td>
 
@@ -2429,6 +2587,7 @@ onclick="editProperty('${escapeHTML(property.id)}')">
 ✏️ Edit
 
 </button>
+
 
 <button
 class="action-btn delete-btn"
@@ -2442,9 +2601,57 @@ onclick="deleteProperty('${escapeHTML(property.id)}')">
 
 `;
 
+
 table.appendChild(row);
 
 });
+
+}
+
+
+/* =========================================
+TOGGLE PROPERTY STATUS
+========================================= */
+
+async function togglePropertyStatus(
+id,
+field,
+currentValue
+){
+
+const newValue =
+!currentValue;
+
+
+const updateData={};
+
+updateData[field]=newValue;
+
+
+const result =
+await supabaseClient
+.from("properties")
+.update(updateData)
+.eq("id",id);
+
+
+if(result.error){
+
+console.error(result.error);
+
+alert(
+"❌ Status update nahi ho saka:\n"+
+result.error.message
+);
+
+return;
+
+}
+
+
+/* REFRESH */
+
+await loadAnalytics();
 
 }
 
@@ -2475,23 +2682,35 @@ return;
 }
 
 
-const property=result.data;
+const property =
+result.data;
 
 
-document.getElementById("edit-property-id").value=property.id;
+document.getElementById("edit-property-id")
+.value=property.id;
 
-document.getElementById("edit-property-type").value=
+
+document.getElementById("edit-property-type")
+.value=
 property.property_type || "";
 
-document.getElementById("edit-property-purpose").value=
+
+document.getElementById("edit-property-purpose")
+.value=
 property.purpose || "";
 
-document.getElementById("edit-property-size").value=
+
+document.getElementById("edit-property-size")
+.value=
 property.property_size || "";
 
-document.getElementById("edit-property-status").innerText="";
 
-document.getElementById("edit-property-box").style.display="flex";
+document.getElementById("edit-property-status")
+.innerText="";
+
+
+document.getElementById("edit-property-box")
+.style.display="flex";
 
 }
 
@@ -2503,16 +2722,20 @@ SAVE PROPERTY
 async function saveEditedProperty(){
 
 const id =
-document.getElementById("edit-property-id").value;
+document.getElementById("edit-property-id")
+.value;
 
 const propertyType =
-document.getElementById("edit-property-type").value.trim();
+document.getElementById("edit-property-type")
+.value.trim();
 
 const purpose =
-document.getElementById("edit-property-purpose").value.trim();
+document.getElementById("edit-property-purpose")
+.value.trim();
 
 const propertySize =
-document.getElementById("edit-property-size").value.trim();
+document.getElementById("edit-property-size")
+.value.trim();
 
 const status =
 document.getElementById("edit-property-status");
@@ -2523,7 +2746,9 @@ if(!propertyType ||
 !propertySize){
 
 status.className="status error";
-status.innerText="❌ Sab fields fill karein.";
+status.innerText=
+"❌ Sab fields fill karein.";
+
 return;
 
 }
@@ -2548,6 +2773,7 @@ property_size:propertySize
 if(result.error){
 
 status.className="status error";
+
 status.innerText=
 "❌ Property update nahi ho saki: "+
 result.error.message;
@@ -2558,12 +2784,15 @@ return;
 
 
 status.className="status success";
-status.innerText="✅ Property updated.";
+
+status.innerText=
+"✅ Property updated.";
 
 
 setTimeout(async function(){
 
 closeEditProperty();
+
 await loadAnalytics();
 
 },600);
@@ -2617,7 +2846,9 @@ return;
 }
 
 
-alert("✅ Property successfully delete ho gayi.");
+alert(
+"✅ Property successfully delete ho gayi."
+);
 
 await loadAnalytics();
 
@@ -2649,6 +2880,7 @@ document.getElementById("team-status");
 if(!name || !phone){
 
 status.className="status error";
+
 status.innerText=
 "Name aur mobile number required hain.";
 
@@ -2659,7 +2891,8 @@ return;
 
 try{
 
-status.innerText="Saving team member...";
+status.innerText=
+"Saving team member...";
 
 
 let imageUrl="";
@@ -2677,7 +2910,10 @@ throw new Error(
 
 
 const extension =
-file.name.split(".").pop().toLowerCase();
+file.name
+.split(".")
+.pop()
+.toLowerCase();
 
 
 const path =
@@ -2741,14 +2977,21 @@ throw result.error;
 }
 
 
-status.className="status success";
+status.className=
+"status success";
+
 status.innerText=
 "✅ Team member added successfully.";
 
 
-document.getElementById("team-name").value="";
-document.getElementById("team-phone").value="";
-document.getElementById("team-image").value="";
+document.getElementById("team-name")
+.value="";
+
+document.getElementById("team-phone")
+.value="";
+
+document.getElementById("team-image")
+.value="";
 
 
 await loadAdminTeam();
@@ -2758,7 +3001,9 @@ await loadAdminTeam();
 
 console.error(error);
 
-status.className="status error";
+status.className=
+"status error";
+
 status.innerText=
 "❌ "+(error.message || "Error");
 
@@ -2799,7 +3044,8 @@ result.data || [];
 
 
 document.getElementById("total-team")
-.innerText=members.length;
+.innerText=
+members.length;
 
 
 container.innerHTML="";
@@ -2857,6 +3103,7 @@ ${member.is_active ? "Active" : "Hidden"}
 
 </p>
 
+
 <button
 class="action-btn"
 style="background:#222;color:#fff"
@@ -2868,6 +3115,7 @@ ${member.is_active}
 ${member.is_active ? "Hide" : "Show"}
 
 </button>
+
 
 <button
 class="action-btn delete-btn"
@@ -2894,7 +3142,10 @@ container.appendChild(card);
 TOGGLE TEAM
 ========================================= */
 
-async function toggleTeamMember(id,currentStatus){
+async function toggleTeamMember(
+id,
+currentStatus
+){
 
 const result =
 await supabaseClient
