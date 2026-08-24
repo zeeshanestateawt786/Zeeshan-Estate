@@ -161,12 +161,12 @@ MAIN
 .container{
 max-width:1250px;
 margin:auto;
-padding:8px 18px 70px;
+padding:10px 18px 70px;
 }
 
 
 /* =========================================================
-GALLERY - PICTURE FIRST
+GALLERY FIRST
 ========================================================= */
 
 .gallery-wrap{
@@ -175,7 +175,7 @@ border:1px solid #e1e1e1;
 border-radius:8px;
 overflow:hidden;
 box-shadow:0 2px 10px rgba(0,0,0,.05);
-margin-bottom:16px;
+margin-bottom:14px;
 }
 
 .gallery{
@@ -193,42 +193,30 @@ width:100%;
 height:100%;
 object-fit:contain;
 background:#111;
-cursor:zoom-in;
+cursor:pointer;
 display:block;
-}
-
-.gallery-placeholder{
-width:100%;
-height:100%;
-display:flex;
-align-items:center;
-justify-content:center;
-color:#fff;
-font-size:85px;
-background:#111;
 }
 
 .gallery-arrow{
 position:absolute;
 top:50%;
 transform:translateY(-50%);
-width:44px;
-height:44px;
+width:42px;
+height:42px;
 border:0;
 border-radius:50%;
-background:rgba(0,0,0,.68);
+background:rgba(0,0,0,.65);
 color:#fff;
-font-size:27px;
+font-size:25px;
 cursor:pointer;
 z-index:5;
 display:flex;
 align-items:center;
 justify-content:center;
-transition:.2s;
 }
 
 .gallery-arrow:hover{
-background:#b40000;
+background:rgba(180,0,0,.9);
 }
 
 .gallery-prev{
@@ -261,18 +249,6 @@ padding:8px 12px;
 border-radius:5px;
 font-size:11px;
 font-weight:800;
-}
-
-.zoom-hint{
-position:absolute;
-right:15px;
-top:15px;
-background:rgba(0,0,0,.68);
-color:#fff;
-padding:7px 10px;
-border-radius:5px;
-font-size:11px;
-font-weight:700;
 }
 
 .thumbs{
@@ -313,7 +289,7 @@ background:#fff;
 border:1px solid #e4e4e4;
 border-radius:8px;
 padding:20px 22px;
-margin-bottom:12px;
+margin-bottom:14px;
 box-shadow:0 2px 8px rgba(0,0,0,.04);
 }
 
@@ -344,7 +320,7 @@ font-weight:700;
 
 .head-right{
 text-align:right;
-min-width:200px;
+min-width:190px;
 }
 
 .price{
@@ -410,7 +386,7 @@ display:flex;
 justify-content:space-between;
 align-items:center;
 gap:10px;
-margin:10px 0 15px;
+margin:12px 0;
 }
 
 .action-left,
@@ -443,7 +419,7 @@ border-color:#b40000;
 
 
 /* =========================================================
-CONTENT GRID
+CONTENT LAYOUT
 ========================================================= */
 
 .details-grid{
@@ -578,6 +554,14 @@ LOCATION
 border:1px solid #e3e3e3;
 border-radius:7px;
 overflow:hidden;
+background:#fff;
+}
+
+.location-link{
+display:block;
+color:#222;
+text-decoration:none;
+cursor:pointer;
 }
 
 .map-placeholder{
@@ -590,6 +574,13 @@ align-items:center;
 justify-content:center;
 text-align:center;
 padding:20px;
+transition:.2s;
+}
+
+.location-link:hover .map-placeholder{
+background:
+linear-gradient(rgba(180,0,0,.04),rgba(180,0,0,.04)),
+#e9ecef;
 }
 
 .map-inner{
@@ -597,6 +588,11 @@ background:#fff;
 padding:20px 25px;
 border-radius:8px;
 box-shadow:0 3px 15px rgba(0,0,0,.12);
+transition:.2s;
+}
+
+.location-link:hover .map-inner{
+transform:scale(1.02);
 }
 
 .map-inner strong{
@@ -607,18 +603,28 @@ margin-bottom:5px;
 
 .map-inner span{
 font-size:12px;
-color:#777;
+color:#c40000;
+font-weight:800;
 }
 
 .location-text{
 padding:15px;
 font-size:13px;
 color:#555;
+border-top:1px solid #eee;
+}
+
+.open-map-text{
+display:inline-block;
+margin-top:7px;
+color:#c40000;
+font-size:12px;
+font-weight:800;
 }
 
 
 /* =========================================================
-CONTACT CARD
+AGENT CARD
 ========================================================= */
 
 .contact-card{
@@ -664,6 +670,12 @@ font-size:25px;
 overflow:hidden;
 }
 
+.agent-avatar img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
 .agent-name{
 font-size:16px;
 font-weight:900;
@@ -681,6 +693,11 @@ font-weight:700;
 color:#555;
 margin-top:12px;
 }
+
+
+/* =========================================================
+BUTTONS
+========================================================= */
 
 .contact-btn{
 width:100%;
@@ -718,6 +735,10 @@ background:#116d3b;
 background:#f5f5f5;
 color:#333;
 border:1px solid #ddd;
+}
+
+.share-btn:hover{
+background:#eee;
 }
 
 .back-btn{
@@ -867,7 +888,7 @@ color:#c40000;
 
 
 /* =========================================================
-VIEWS
+VIEW INFO
 ========================================================= */
 
 .views-box{
@@ -881,7 +902,7 @@ font-size:12px;
 
 
 /* =========================================================
-MOBILE CONTACT
+MOBILE BOTTOM BAR
 ========================================================= */
 
 .mobile-contact{
@@ -1009,7 +1030,7 @@ LIGHTBOX
 .lightbox{
 position:fixed;
 inset:0;
-background:rgba(0,0,0,.96);
+background:rgba(0,0,0,.94);
 z-index:10000;
 display:none;
 align-items:center;
@@ -1021,70 +1042,24 @@ padding:20px;
 display:flex;
 }
 
-.lightbox-image{
-max-width:92%;
+.lightbox img{
+max-width:95%;
 max-height:90vh;
 object-fit:contain;
-user-select:none;
 }
 
 .lightbox-close{
 position:absolute;
 top:15px;
 right:20px;
-width:44px;
-height:44px;
+width:42px;
+height:42px;
 border:0;
 border-radius:50%;
 background:#fff;
 color:#111;
-font-size:27px;
+font-size:24px;
 cursor:pointer;
-z-index:10003;
-}
-
-.lightbox-arrow{
-position:absolute;
-top:50%;
-transform:translateY(-50%);
-width:48px;
-height:48px;
-border:0;
-border-radius:50%;
-background:rgba(255,255,255,.9);
-color:#111;
-font-size:30px;
-cursor:pointer;
-z-index:10002;
-display:flex;
-align-items:center;
-justify-content:center;
-}
-
-.lightbox-arrow:hover{
-background:#c40000;
-color:#fff;
-}
-
-.lightbox-prev{
-left:20px;
-}
-
-.lightbox-next{
-right:20px;
-}
-
-.lightbox-counter{
-position:absolute;
-bottom:18px;
-left:50%;
-transform:translateX(-50%);
-background:rgba(0,0,0,.7);
-color:#fff;
-padding:7px 13px;
-border-radius:5px;
-font-size:12px;
-font-weight:800;
 }
 
 
@@ -1164,28 +1139,6 @@ padding:12px 10px 5px;
 padding:7px 10px 85px;
 }
 
-/* PICTURE STILL FIRST */
-
-.gallery{
-height:370px;
-border-radius:7px;
-}
-
-.gallery-arrow{
-width:36px;
-height:36px;
-font-size:20px;
-}
-
-.zoom-hint{
-font-size:10px;
-}
-
-.thumb{
-width:75px;
-height:55px;
-}
-
 .property-head{
 padding:17px;
 }
@@ -1201,6 +1154,21 @@ font-size:25px;
 .action-bar{
 align-items:flex-start;
 flex-direction:column;
+}
+
+.gallery{
+height:370px;
+}
+
+.gallery-arrow{
+width:36px;
+height:36px;
+font-size:20px;
+}
+
+.thumb{
+width:75px;
+height:55px;
 }
 
 .details-card{
@@ -1225,29 +1193,6 @@ height:200px;
 
 .mobile-contact{
 display:flex;
-}
-
-.lightbox{
-padding:5px;
-}
-
-.lightbox-image{
-max-width:96%;
-max-height:82vh;
-}
-
-.lightbox-arrow{
-width:40px;
-height:40px;
-font-size:23px;
-}
-
-.lightbox-prev{
-left:8px;
-}
-
-.lightbox-next{
-right:8px;
 }
 
 }
@@ -1280,9 +1225,8 @@ height:285px;
 }
 
 .gallery-count,
-.gallery-label,
-.zoom-hint{
-font-size:9px;
+.gallery-label{
+font-size:10px;
 padding:6px 8px;
 }
 
@@ -1304,11 +1248,6 @@ font-size:18px;
 
 .contact-card{
 padding:17px;
-}
-
-.lightbox-close{
-top:10px;
-right:10px;
 }
 
 }
@@ -1469,39 +1408,10 @@ onclick="closeLightbox()">
 
 </button>
 
-
-<button
-class="lightbox-arrow lightbox-prev"
-onclick="lightboxPrevious()">
-
-‹
-
-</button>
-
-
 <img
 id="lightbox-image"
-class="lightbox-image"
 src=""
 alt="Property Image">
-
-
-<button
-class="lightbox-arrow lightbox-next"
-onclick="lightboxNext()">
-
-›
-
-</button>
-
-
-<div
-id="lightbox-counter"
-class="lightbox-counter">
-
-1 / 1
-
-</div>
 
 </div>
 
@@ -1525,12 +1435,12 @@ Zeeshan <span>Estate AWT</span>
 
 <!-- =====================================================
 SUPABASE
-===================================================== -->
+========================================================= -->
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-
 <script>
+
 
 /* =========================================================
 SUPABASE
@@ -1550,7 +1460,15 @@ SUPABASE_KEY
 
 
 /* =========================================================
-ESCAPE HTML
+GOOGLE MAPS LOCATION
+========================================================= */
+
+const ZEESHAN_ESTATE_MAP =
+"https://share.google/b3XwJhwfzwLfyqiwQ";
+
+
+/* =========================================================
+ESCAPE
 ========================================================= */
 
 function esc(value){
@@ -1653,9 +1571,11 @@ currentProperty =
 result.data;
 
 
-/* IMAGES */
-
-if(Array.isArray(currentProperty.image_urls)){
+if(
+Array.isArray(
+currentProperty.image_urls
+)
+){
 
 propertyImages =
 currentProperty.image_urls
@@ -1663,22 +1583,20 @@ currentProperty.image_urls
 
 }else{
 
-propertyImages=[];
+propertyImages = [];
 
 }
 
 
-/* RENDER */
-
-renderProperty(currentProperty);
-
-
-/* VIEW */
-
-recordView(currentProperty.id);
+renderProperty(
+currentProperty
+);
 
 
-/* SIMILAR */
+recordView(
+currentProperty.id
+);
+
 
 loadSimilarProperties(
 currentProperty
@@ -1752,7 +1670,9 @@ if(
 /crore|lac|lakh|pkr/i.test(text)
 ){
 
-if(!/pkr/i.test(text)){
+if(
+!/pkr/i.test(text)
+){
 
 return "PKR " + text;
 
@@ -1777,7 +1697,9 @@ if(
 number > 0
 ){
 
-if(number >= 10000000){
+if(
+number >= 10000000
+){
 
 return "PKR " +
 (number / 10000000)
@@ -1788,7 +1710,9 @@ return "PKR " +
 }
 
 
-if(number >= 100000){
+if(
+number >= 100000
+){
 
 return "PKR " +
 (number / 100000)
@@ -1836,32 +1760,40 @@ const purpose =
 p.purpose ||
 "For Sale";
 
+
 const type =
 p.property_type ||
 "Property";
+
 
 const size =
 p.property_size ||
 "N/A";
 
+
 const price =
 formatPrice(p.price);
+
 
 const location =
 p.location ||
 "Army Welfare Trust Phase 2, Lahore";
 
+
 const details =
 p.details ||
 "No additional property details have been provided.";
+
 
 const owner =
 p.owner_name ||
 "Zeeshan Estate AWT";
 
+
 const phone =
 p.owner_phone ||
 "0302-0941013";
+
 
 const phoneHref =
 String(phone)
@@ -1870,29 +1802,30 @@ String(phone)
 ""
 );
 
+
 const whatsappNumber =
 normalizeWhatsApp(phone);
 
 
 const whatsappMessage =
-"I am interested in this property.%0A%0A"+
-"Property ID: "+
-encodeURIComponent(p.id)+
-"%0AProperty: "+
-encodeURIComponent(type)+
-"%0ASize: "+
-encodeURIComponent(size)+
-"%0APrice: "+
-encodeURIComponent(price)+
-"%0ALocation: "+
-encodeURIComponent(location);
+"I am interested in this property.\n\n" +
+"Property ID: " +
+p.id +
+"\nProperty: " +
+type +
+"\nSize: " +
+size +
+"\nPrice: " +
+price +
+"\nLocation: " +
+location;
 
 
 /* =========================================================
 BADGES
 ========================================================= */
 
-let badgesHTML="";
+let badgesHTML = "";
 
 
 if(isTrue(p.verified)){
@@ -1921,7 +1854,9 @@ badgesHTML += `
 
 `;
 
-}else if(isTrue(p.hot)){
+}else if(
+isTrue(p.hot)
+){
 
 badgesHTML += `
 
@@ -1947,7 +1882,7 @@ ${esc(purpose)}
 MAIN IMAGE
 ========================================================= */
 
-let imageHTML="";
+let imageHTML = "";
 
 
 if(propertyImages.length > 0){
@@ -1967,7 +1902,15 @@ onclick="openLightbox()">
 
 imageHTML = `
 
-<div class="gallery-placeholder">
+<div
+class="main-image"
+style="
+display:flex;
+align-items:center;
+justify-content:center;
+color:#fff;
+font-size:85px;
+">
 
 🏠
 
@@ -1982,7 +1925,7 @@ imageHTML = `
 THUMBNAILS
 ========================================================= */
 
-let thumbsHTML="";
+let thumbsHTML = "";
 
 
 propertyImages.forEach(
@@ -1991,7 +1934,9 @@ function(url,index){
 thumbsHTML += `
 
 <img
-class="thumb ${index===0 ? "active" : ""}"
+class="thumb ${
+index === 0 ? "active" : ""
+}"
 src="${esc(url)}"
 alt="Property image ${index+1}"
 data-index="${index}"
@@ -2018,7 +1963,7 @@ const features = [
 ];
 
 
-let featuresHTML="";
+let featuresHTML = "";
 
 
 features.forEach(
@@ -2027,9 +1972,7 @@ function(feature){
 featuresHTML += `
 
 <div class="feature">
-
 ✓ ${feature}
-
 </div>
 
 `;
@@ -2070,7 +2013,6 @@ onclick="previousImage()">
 
 </button>
 
-
 <button
 class="gallery-arrow gallery-next"
 onclick="nextImage()">
@@ -2078,28 +2020,6 @@ onclick="nextImage()">
 ›
 
 </button>
-
-`
-
-:
-
-""
-
-}
-
-
-${
-propertyImages.length > 0
-
-?
-
-`
-
-<div class="zoom-hint">
-
-🔍 Click picture to enlarge
-
-</div>
 
 `
 
@@ -2168,7 +2088,8 @@ ${esc(type)}
 ${
 p.property_size
 ?
-" • " + esc(p.property_size)
+" • " +
+esc(p.property_size)
 :
 ""
 }
@@ -2268,7 +2189,7 @@ CONTENT
 
 
 <!-- =====================================================
-LEFT CONTENT
+LEFT
 ===================================================== -->
 
 <div>
@@ -2390,7 +2311,9 @@ ${featuresHTML}
 </div>
 
 
-<!-- LOCATION -->
+<!-- =====================================================
+LOCATION - CLICKABLE GOOGLE MAPS
+===================================================== -->
 
 <div class="section">
 
@@ -2398,23 +2321,39 @@ ${featuresHTML}
 Location
 </h2>
 
+
 <div class="location-box">
+
+
+<a
+href="${ZEESHAN_ESTATE_MAP}"
+target="_blank"
+rel="noopener"
+class="location-link"
+title="Open Zeeshan Estate location in Google Maps"
+>
+
 
 <div class="map-placeholder">
 
 <div class="map-inner">
 
 <strong>
+
 📍 ${esc(location)}
+
 </strong>
 
 <span>
-Army Welfare Trust Phase 2, Lahore
+
+Open Zeeshan Estate Location in Google Maps →
+
 </span>
 
 </div>
 
 </div>
+
 
 <div class="location-text">
 
@@ -2424,7 +2363,18 @@ Property Location:
 
 ${esc(location)}
 
+<br>
+
+<span class="open-map-text">
+
+📍 Click to Open Zeeshan Estate on Google Maps
+
+</span>
+
 </div>
+
+
+</a>
 
 </div>
 
@@ -2553,9 +2503,7 @@ RIGHT CONTACT
 
 
 <h2 class="contact-title">
-
 Interested in this property?
-
 </h2>
 
 
@@ -2579,15 +2527,11 @@ and further details.
 <div>
 
 <div class="agent-name">
-
 ${esc(owner)}
-
 </div>
 
 <div class="agent-role">
-
 Authorized Dealer
-
 </div>
 
 </div>
@@ -2618,7 +2562,7 @@ onclick="recordCall('${esc(p.id)}')">
 class="contact-btn wa-btn"
 target="_blank"
 rel="noopener"
-href="https://wa.me/${whatsappNumber}?text=${whatsappMessage}">
+href="https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}">
 
 💬 WHATSAPP
 
@@ -2642,6 +2586,8 @@ href="properties.html">
 
 </a>
 
+
+<!-- INQUIRY -->
 
 <div class="inquiry-box">
 
@@ -2701,7 +2647,7 @@ ${esc(p.id)}
 
 
 /* =========================================================
-MOBILE BUTTONS
+MOBILE CONTACT
 ========================================================= */
 
 document.getElementById(
@@ -2716,12 +2662,17 @@ document.getElementById(
 "https://wa.me/"+
 whatsappNumber+
 "?text="+
-whatsappMessage;
+encodeURIComponent(
+whatsappMessage
+);
 
 
 document.getElementById(
 "mobile-contact"
 ).style.display="flex";
+
+
+loadSaveStatus();
 
 }
 
@@ -2745,6 +2696,7 @@ number.substring(1);
 
 }
 
+
 if(!number.startsWith("92")){
 
 number =
@@ -2752,6 +2704,7 @@ number =
 number;
 
 }
+
 
 return number;
 
@@ -2770,7 +2723,9 @@ return;
 
 }
 
-currentImageIndex=index;
+
+currentImageIndex =
+index;
 
 
 const image =
@@ -2803,7 +2758,7 @@ i === index
 
 
 /* =========================================================
-NEXT IMAGE
+NEXT
 ========================================================= */
 
 function nextImage(){
@@ -2814,11 +2769,12 @@ return;
 
 }
 
+
 currentImageIndex =
 (
 currentImageIndex + 1
-)
-% propertyImages.length;
+) %
+propertyImages.length;
 
 
 selectImage(
@@ -2829,7 +2785,7 @@ currentImageIndex
 
 
 /* =========================================================
-PREVIOUS IMAGE
+PREVIOUS
 ========================================================= */
 
 function previousImage(){
@@ -2840,12 +2796,14 @@ return;
 
 }
 
+
 currentImageIndex =
 (
-currentImageIndex - 1 +
+currentImageIndex -
+1 +
 propertyImages.length
-)
-% propertyImages.length;
+) %
+propertyImages.length;
 
 
 selectImage(
@@ -2856,7 +2814,7 @@ currentImageIndex
 
 
 /* =========================================================
-OPEN LIGHTBOX
+LIGHTBOX
 ========================================================= */
 
 function openLightbox(){
@@ -2866,12 +2824,6 @@ if(!propertyImages.length){
 return;
 
 }
-
-
-const lightbox =
-document.getElementById(
-"lightbox"
-);
 
 
 const image =
@@ -2886,144 +2838,24 @@ currentImageIndex
 ];
 
 
-updateLightboxCounter();
-
-
-lightbox.classList.add(
-"show"
-);
-
-
-document.body.style.overflow=
-"hidden";
+document
+.getElementById("lightbox")
+.classList.add("show");
 
 }
 
-
-/* =========================================================
-CLOSE LIGHTBOX
-========================================================= */
 
 function closeLightbox(){
 
 document
 .getElementById("lightbox")
-.classList.remove(
-"show"
-);
-
-
-document.body.style.overflow=
-"";
+.classList.remove("show");
 
 }
 
 
 /* =========================================================
-LIGHTBOX NEXT
-========================================================= */
-
-function lightboxNext(){
-
-if(propertyImages.length < 2){
-
-return;
-
-}
-
-
-currentImageIndex =
-(
-currentImageIndex + 1
-)
-% propertyImages.length;
-
-
-document.getElementById(
-"lightbox-image"
-).src =
-propertyImages[
-currentImageIndex
-];
-
-
-selectImage(
-currentImageIndex
-);
-
-
-updateLightboxCounter();
-
-}
-
-
-/* =========================================================
-LIGHTBOX PREVIOUS
-========================================================= */
-
-function lightboxPrevious(){
-
-if(propertyImages.length < 2){
-
-return;
-
-}
-
-
-currentImageIndex =
-(
-currentImageIndex - 1 +
-propertyImages.length
-)
-% propertyImages.length;
-
-
-document.getElementById(
-"lightbox-image"
-).src =
-propertyImages[
-currentImageIndex
-];
-
-
-selectImage(
-currentImageIndex
-);
-
-
-updateLightboxCounter();
-
-}
-
-
-/* =========================================================
-LIGHTBOX COUNTER
-========================================================= */
-
-function updateLightboxCounter(){
-
-const counter =
-document.getElementById(
-"lightbox-counter"
-);
-
-
-if(counter){
-
-counter.innerText =
-(
-currentImageIndex + 1
-)+
-" / "+
-propertyImages.length;
-
-}
-
-}
-
-
-/* =========================================================
-LIGHTBOX CLICK OUTSIDE
+LIGHTBOX CLICK
 ========================================================= */
 
 document
@@ -3056,26 +2888,12 @@ document.getElementById(
 
 
 if(
-lightbox.classList.contains(
-"show"
-)
+lightbox.classList.contains("show")
 ){
 
 if(e.key === "Escape"){
 
 closeLightbox();
-
-}
-
-if(e.key === "ArrowRight"){
-
-lightboxNext();
-
-}
-
-if(e.key === "ArrowLeft"){
-
-lightboxPrevious();
 
 }
 
@@ -3128,7 +2946,8 @@ try{
 await navigator.share({
 
 title:
-title+" | Zeeshan Estate AWT",
+title +
+" | Zeeshan Estate AWT",
 
 text:
 "I am interested in this property.",
@@ -3150,7 +2969,9 @@ console.log(error);
 
 try{
 
-await navigator.clipboard.writeText(url);
+await navigator.clipboard.writeText(
+url
+);
 
 alert(
 "✅ Property link copied."
@@ -3263,7 +3084,7 @@ button.classList.add(
 
 
 /* =========================================================
-RECORD VIEW
+VIEW
 ========================================================= */
 
 async function recordView(id){
@@ -3291,7 +3112,7 @@ error.message
 
 
 /* =========================================================
-RECORD CALL
+CALL
 ========================================================= */
 
 async function recordCall(id){
@@ -3319,7 +3140,7 @@ error.message
 
 
 /* =========================================================
-SEND INQUIRY
+INQUIRY
 ========================================================= */
 
 async function sendInquiry(){
@@ -3358,39 +3179,25 @@ currentProperty || {};
 
 
 const text =
-"Assalam-o-Alaikum Zeeshan Estate AWT.%0A%0A"+
-"New Property Inquiry%0A%0A"+
-"Name: "+
-encodeURIComponent(name)+
-"%0APhone: "+
-encodeURIComponent(phone)+
-"%0AProperty ID: "+
-encodeURIComponent(property.id || "")+
-"%0AProperty: "+
-encodeURIComponent(
-property.property_type || ""
-)+
-"%0ASize: "+
-encodeURIComponent(
-property.property_size || ""
-)+
-"%0APrice: "+
-encodeURIComponent(
-formatPrice(property.price)
-)+
-"%0ALocation: "+
-encodeURIComponent(
-property.location || ""
-)+
-"%0A%0AMessage: "+
-encodeURIComponent(
+"Assalam-o-Alaikum Zeeshan Estate AWT.\n\n"+
+"New Property Inquiry\n\n"+
+"Name: "+name+
+"\nPhone: "+phone+
+"\nProperty ID: "+(property.id || "")+
+"\nProperty: "+(property.property_type || "")+
+"\nSize: "+(property.property_size || "")+
+"\nPrice: "+formatPrice(property.price)+
+"\nLocation: "+(property.location || "")+
+"\n\nMessage: "+
+(
 message ||
 "I am interested in this property."
 );
 
 
 window.open(
-"https://wa.me/923020941013?text="+text,
+"https://wa.me/923020941013?text="+
+encodeURIComponent(text),
 "_blank"
 );
 
@@ -3398,7 +3205,7 @@ window.open(
 
 
 /* =========================================================
-SIMILAR PROPERTIES
+SIMILAR
 ========================================================= */
 
 async function loadSimilarProperties(current){
@@ -3441,7 +3248,9 @@ await supabaseClient
 .neq("id",current.id)
 .order(
 "created_at",
-{ascending:false}
+{
+ascending:false
+}
 )
 .limit(6);
 
@@ -3494,16 +3303,19 @@ document.getElementById(
 );
 
 
-section.style.display="block";
+section.style.display =
+"block";
 
 
-grid.innerHTML="";
+grid.innerHTML =
+"";
 
 
 properties.forEach(
 function(p){
 
-let image="";
+let image =
+"";
 
 
 if(
@@ -3529,7 +3341,8 @@ p.property_type ||
 (
 p.property_size
 ?
-" • "+p.property_size
+" • "+
+p.property_size
 :
 ""
 );
@@ -3621,7 +3434,9 @@ VIEW PROPERTY →
 `;
 
 
-grid.appendChild(card);
+grid.appendChild(
+card
+);
 
 });
 
@@ -3629,24 +3444,10 @@ grid.appendChild(card);
 
 
 /* =========================================================
-INITIALIZE SAVE
-========================================================= */
-
-setTimeout(
-function(){
-
-loadSaveStatus();
-
-},
-300
-);
-
-
-/* =========================================================
 TOUCH SWIPE
 ========================================================= */
 
-let touchStartX=0;
+let touchStartX = 0;
 
 
 document.addEventListener(
@@ -3663,7 +3464,9 @@ touchStartX =
 e.touches[0].clientX;
 
 },
-{passive:true}
+{
+passive:true
+}
 );
 
 
@@ -3683,45 +3486,14 @@ e.changedTouches[0].clientX;
 
 
 const difference =
-touchStartX-touchEndX;
-
-
-/*
-   Swipe only when lightbox
-   is open
-*/
-
-const lightbox =
-document.getElementById(
-"lightbox"
-);
+touchStartX - touchEndX;
 
 
 if(
-lightbox.classList.contains(
-"show"
-)
+Math.abs(difference) > 50
 ){
 
-if(Math.abs(difference)>50){
-
-if(difference>0){
-
-lightboxNext();
-
-}else{
-
-lightboxPrevious();
-
-}
-
-}
-
-}else{
-
-if(Math.abs(difference)>50){
-
-if(difference>0){
+if(difference > 0){
 
 nextImage();
 
@@ -3733,13 +3505,13 @@ previousImage();
 
 }
 
-}
 
-
-touchStartX=0;
+touchStartX = 0;
 
 },
-{passive:true}
+{
+passive:true
+}
 );
 
 </script>
