@@ -15,7 +15,9 @@ content="Property details by Zeeshan Estate AWT, Army Welfare Trust Phase 2 Laho
 
 <style>
 
-/* ================= RESET ================= */
+/* =========================================================
+RESET
+========================================================= */
 
 *{
 box-sizing:border-box;
@@ -23,65 +25,77 @@ margin:0;
 padding:0;
 }
 
+html{
+scroll-behavior:smooth;
+}
+
 body{
 font-family:Arial,Helvetica,sans-serif;
 background:#f5f6f7;
 color:#222;
+line-height:1.5;
 }
 
 a{
 text-decoration:none;
 }
 
+button,
+input,
+textarea{
+font-family:inherit;
+}
 
-/* ================= TOP BAR ================= */
+
+/* =========================================================
+TOP BAR
+========================================================= */
 
 .topbar{
 background:#b40000;
 color:#fff;
-padding:9px 5%;
-
+padding:8px 5%;
 display:flex;
 justify-content:space-between;
-flex-wrap:wrap;
-
+align-items:center;
 gap:15px;
-
 font-size:13px;
 font-weight:700;
 }
 
 
-/* ================= HEADER ================= */
+/* =========================================================
+HEADER
+========================================================= */
 
 .header{
 background:#fff;
-
 position:sticky;
 top:0;
 z-index:1000;
-
-box-shadow:0 2px 12px rgba(0,0,0,.08);
+box-shadow:0 2px 15px rgba(0,0,0,.08);
 }
 
 .nav{
 max-width:1300px;
 margin:auto;
-
-min-height:75px;
-
-padding:12px 20px;
-
+min-height:74px;
+padding:10px 20px;
 display:flex;
 align-items:center;
 justify-content:space-between;
-
 gap:20px;
+}
+
+.brand{
+display:block;
+color:#111;
 }
 
 .logo{
 font-size:25px;
 font-weight:900;
+line-height:1.1;
 }
 
 .logo span{
@@ -89,26 +103,25 @@ color:#c40000;
 }
 
 .authorized{
-font-size:10px;
+font-size:9px;
 letter-spacing:2px;
 color:#777;
-font-weight:700;
+font-weight:800;
+margin-top:3px;
 }
 
 .menu{
 display:flex;
-gap:5px;
+align-items:center;
+gap:4px;
 flex-wrap:wrap;
 }
 
 .menu a{
 padding:10px 12px;
-
 color:#333;
-
 font-size:12px;
 font-weight:800;
-
 border-radius:5px;
 }
 
@@ -118,101 +131,172 @@ background:#fff3f3;
 }
 
 .list-btn{
-background:#c40000;
+background:#c40000!important;
 color:#fff!important;
 }
 
 
-/* ================= MAIN ================= */
+/* =========================================================
+BREADCRUMB
+========================================================= */
+
+.breadcrumb{
+max-width:1250px;
+margin:auto;
+padding:17px 18px 7px;
+font-size:12px;
+color:#777;
+}
+
+.breadcrumb a{
+color:#b40000;
+font-weight:800;
+}
+
+
+/* =========================================================
+MAIN
+========================================================= */
 
 .container{
 max-width:1250px;
 margin:auto;
-
-padding:15px 18px 60px;
+padding:8px 18px 70px;
 }
 
 
-/* ================= PROPERTY GALLERY ================= */
+/* =========================================================
+GALLERY - PICTURE FIRST
+========================================================= */
+
+.gallery-wrap{
+background:#fff;
+border:1px solid #e1e1e1;
+border-radius:8px;
+overflow:hidden;
+box-shadow:0 2px 10px rgba(0,0,0,.05);
+margin-bottom:16px;
+}
 
 .gallery{
+height:525px;
 background:#111;
-
-border-radius:10px;
-
-overflow:hidden;
-
 position:relative;
-
-height:520px;
-
 display:flex;
 align-items:center;
 justify-content:center;
+overflow:hidden;
 }
 
 .main-image{
 width:100%;
 height:100%;
-
 object-fit:contain;
-
 background:#111;
-
+cursor:zoom-in;
 display:block;
+}
+
+.gallery-placeholder{
+width:100%;
+height:100%;
+display:flex;
+align-items:center;
+justify-content:center;
+color:#fff;
+font-size:85px;
+background:#111;
+}
+
+.gallery-arrow{
+position:absolute;
+top:50%;
+transform:translateY(-50%);
+width:44px;
+height:44px;
+border:0;
+border-radius:50%;
+background:rgba(0,0,0,.68);
+color:#fff;
+font-size:27px;
+cursor:pointer;
+z-index:5;
+display:flex;
+align-items:center;
+justify-content:center;
+transition:.2s;
+}
+
+.gallery-arrow:hover{
+background:#b40000;
+}
+
+.gallery-prev{
+left:15px;
+}
+
+.gallery-next{
+right:15px;
 }
 
 .gallery-count{
 position:absolute;
-
 left:15px;
 bottom:15px;
-
 background:rgba(0,0,0,.78);
-
 color:#fff;
-
 padding:8px 12px;
-
 border-radius:5px;
-
 font-size:12px;
 font-weight:800;
 }
 
+.gallery-label{
+position:absolute;
+right:15px;
+bottom:15px;
+background:rgba(0,0,0,.72);
+color:#fff;
+padding:8px 12px;
+border-radius:5px;
+font-size:11px;
+font-weight:800;
+}
 
-/* ================= THUMBNAILS ================= */
+.zoom-hint{
+position:absolute;
+right:15px;
+top:15px;
+background:rgba(0,0,0,.68);
+color:#fff;
+padding:7px 10px;
+border-radius:5px;
+font-size:11px;
+font-weight:700;
+}
 
 .thumbs{
 display:flex;
-
 gap:8px;
-
 overflow-x:auto;
-
-background:#fff;
-
 padding:10px;
-
-border:1px solid #eee;
-border-top:0;
-
-border-radius:0 0 8px 8px;
+background:#fff;
+border-top:1px solid #eee;
 }
 
 .thumb{
 width:90px;
 height:65px;
-
-flex:0 0 auto;
-
 object-fit:cover;
-
+flex:0 0 auto;
 border-radius:5px;
-
 cursor:pointer;
-
 border:2px solid transparent;
+background:#eee;
+}
+
+.thumb:hover{
+border-color:#888;
 }
 
 .thumb.active{
@@ -220,276 +304,400 @@ border-color:#c40000;
 }
 
 
-/* ================= BREADCRUMB ================= */
+/* =========================================================
+PROPERTY HEADER
+========================================================= */
 
-.breadcrumb{
-padding:15px 3px 5px;
-
-font-size:13px;
-
-color:#777;
+.property-head{
+background:#fff;
+border:1px solid #e4e4e4;
+border-radius:8px;
+padding:20px 22px;
+margin-bottom:12px;
+box-shadow:0 2px 8px rgba(0,0,0,.04);
 }
 
-.breadcrumb a{
-color:#b40000;
+.property-head-top{
+display:flex;
+justify-content:space-between;
+align-items:flex-start;
+gap:20px;
+}
 
+.property-main-title{
+font-size:25px;
+font-weight:800;
+color:#222;
+line-height:1.3;
+}
+
+.property-location{
+font-size:14px;
+color:#777;
+margin-top:7px;
+}
+
+.property-location span{
+color:#b40000;
 font-weight:700;
 }
 
-
-/* ================= MAIN GRID ================= */
-
-.details-grid{
-display:grid;
-
-grid-template-columns:1fr 340px;
-
-gap:22px;
-
-margin-top:15px;
+.head-right{
+text-align:right;
+min-width:200px;
 }
 
+.price{
+font-size:30px;
+font-weight:900;
+color:#111;
+white-space:nowrap;
+}
 
-/* ================= DETAILS CARD ================= */
+.price-label{
+font-size:11px;
+color:#888;
+margin-top:1px;
+}
 
-.details-card{
-background:#fff;
-
-border-radius:10px;
-
-border:1px solid #e5e5e5;
-
-padding:25px;
-
-box-shadow:0 4px 18px rgba(0,0,0,.06);
+.badges{
+display:flex;
+gap:7px;
+flex-wrap:wrap;
+margin-top:11px;
 }
 
 .badge{
-display:inline-block;
-
-background:#c40000;
-
-color:#fff;
-
-padding:7px 12px;
-
+display:inline-flex;
+align-items:center;
+padding:5px 9px;
 border-radius:4px;
-
-font-size:11px;
-
+font-size:10px;
 font-weight:900;
-
 text-transform:uppercase;
-
-margin-bottom:12px;
 }
-
-
-/* ================= VERIFIED ================= */
 
 .verified-badge{
-display:inline-flex;
+background:#e8f8ee;
+color:#168344;
+border:1px solid #bfe8ce;
+}
 
-align-items:center;
+.hot-badge{
+background:#fff0e5;
+color:#e45d00;
+border:1px solid #ffd0ad;
+}
 
-gap:5px;
+.super-hot-badge{
+background:#ffe4e4;
+color:#b40000;
+border:1px solid #ffbaba;
+}
 
-background:#168c3b;
-
+.purpose-badge{
+background:#b40000;
 color:#fff;
-
-padding:7px 11px;
-
-border-radius:4px;
-
-font-size:11px;
-
-font-weight:900;
-
-margin-left:5px;
-
-margin-bottom:12px;
 }
 
 
-/* ================= PRICE ================= */
+/* =========================================================
+ACTION BAR
+========================================================= */
 
-.price{
-font-size:32px;
-
-font-weight:900;
-
-color:#111;
-
-margin-bottom:8px;
+.action-bar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:10px;
+margin:10px 0 15px;
 }
 
+.action-left,
+.action-right{
+display:flex;
+gap:8px;
+flex-wrap:wrap;
+}
 
-/* ================= TITLE ================= */
-
-.title{
-font-size:22px;
-
+.action-btn{
+border:1px solid #ddd;
+background:#fff;
+color:#444;
+padding:9px 13px;
+border-radius:5px;
+font-size:12px;
 font-weight:800;
-
-color:#222;
-
-line-height:1.35;
+cursor:pointer;
 }
 
-.location{
-margin-top:10px;
+.action-btn:hover{
+border-color:#c40000;
+color:#b40000;
+}
 
-color:#666;
-
-font-size:14px;
+.action-btn.active{
+color:#b40000;
+border-color:#b40000;
 }
 
 
-/* ================= INFO GRID ================= */
+/* =========================================================
+CONTENT GRID
+========================================================= */
 
-.info-grid{
+.details-grid{
 display:grid;
-
-grid-template-columns:1fr 1fr;
-
-gap:12px;
-
-margin-top:22px;
-
-border-top:1px solid #eee;
-
-padding-top:20px;
+grid-template-columns:minmax(0,1fr) 340px;
+gap:18px;
+margin-top:18px;
+align-items:start;
 }
 
-.info{
-background:#fafafa;
 
-border:1px solid #eee;
+/* =========================================================
+CARDS
+========================================================= */
 
+.card{
+background:#fff;
+border:1px solid #e2e2e2;
+border-radius:8px;
+box-shadow:0 2px 9px rgba(0,0,0,.04);
+}
+
+.details-card{
+padding:23px;
+}
+
+
+/* =========================================================
+SUMMARY
+========================================================= */
+
+.summary-grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+border:1px solid #e5e5e5;
 border-radius:7px;
-
-padding:13px;
+overflow:hidden;
+margin-bottom:25px;
 }
 
-.info small{
-display:block;
-
-color:#777;
-
-font-size:11px;
-
-margin-bottom:4px;
+.summary-item{
+padding:15px 12px;
+border-right:1px solid #e5e5e5;
+background:#fff;
 }
 
-.info strong{
+.summary-item:last-child{
+border-right:0;
+}
+
+.summary-icon{
+font-size:20px;
+margin-bottom:5px;
+}
+
+.summary-label{
+font-size:10px;
+color:#888;
+text-transform:uppercase;
+font-weight:700;
+}
+
+.summary-value{
 font-size:14px;
+font-weight:800;
+margin-top:2px;
 }
 
 
-/* ================= DESCRIPTION ================= */
+/* =========================================================
+SECTIONS
+========================================================= */
+
+.section{
+border-top:1px solid #eee;
+padding-top:22px;
+margin-top:22px;
+}
+
+.section:first-child{
+border-top:0;
+padding-top:0;
+margin-top:0;
+}
+
+.section-title{
+font-size:21px;
+font-weight:800;
+margin-bottom:13px;
+color:#222;
+}
+
+
+/* =========================================================
+DESCRIPTION
+========================================================= */
 
 .description{
-margin-top:25px;
-
-border-top:1px solid #eee;
-
-padding-top:22px;
-}
-
-.description h2{
-font-size:21px;
-
-margin-bottom:12px;
-}
-
-.description p{
-color:#555;
-
 font-size:14px;
-
-line-height:1.7;
-
+color:#555;
+line-height:1.8;
 white-space:pre-line;
 }
 
 
-/* ================= CONTACT CARD ================= */
+/* =========================================================
+FEATURES
+========================================================= */
 
-.contact-card{
-background:#fff;
-
-border-radius:10px;
-
-border:1px solid #e5e5e5;
-
-padding:22px;
-
-height:max-content;
-
-box-shadow:0 4px 18px rgba(0,0,0,.06);
-
-position:sticky;
-
-top:95px;
+.features-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:10px;
 }
 
-.contact-card h2{
-font-size:20px;
+.feature{
+background:#fafafa;
+border:1px solid #eee;
+border-radius:6px;
+padding:12px;
+font-size:13px;
+font-weight:700;
+color:#444;
+}
 
+
+/* =========================================================
+LOCATION
+========================================================= */
+
+.location-box{
+border:1px solid #e3e3e3;
+border-radius:7px;
+overflow:hidden;
+}
+
+.map-placeholder{
+height:260px;
+background:
+linear-gradient(rgba(0,0,0,.03),rgba(0,0,0,.03)),
+#e9ecef;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:20px;
+}
+
+.map-inner{
+background:#fff;
+padding:20px 25px;
+border-radius:8px;
+box-shadow:0 3px 15px rgba(0,0,0,.12);
+}
+
+.map-inner strong{
+display:block;
+font-size:16px;
 margin-bottom:5px;
 }
 
-.contact-card p{
+.map-inner span{
+font-size:12px;
 color:#777;
-
-font-size:13px;
-
-margin-bottom:18px;
 }
 
-.contact-name{
-font-size:18px;
+.location-text{
+padding:15px;
+font-size:13px;
+color:#555;
+}
 
-font-weight:900;
 
+/* =========================================================
+CONTACT CARD
+========================================================= */
+
+.contact-card{
+position:sticky;
+top:90px;
+padding:20px;
+}
+
+.contact-title{
+font-size:19px;
+font-weight:800;
 margin-bottom:4px;
 }
 
-.contact-phone{
+.contact-subtitle{
+font-size:12px;
 color:#777;
-
-font-size:13px;
-
 margin-bottom:18px;
 }
 
+.agent-box{
+border:1px solid #e4e4e4;
+border-radius:7px;
+padding:15px;
+margin-bottom:15px;
+}
 
-/* ================= BUTTONS ================= */
+.agent-row{
+display:flex;
+align-items:center;
+gap:12px;
+}
+
+.agent-avatar{
+width:54px;
+height:54px;
+border-radius:50%;
+background:#f0f0f0;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:25px;
+overflow:hidden;
+}
+
+.agent-name{
+font-size:16px;
+font-weight:900;
+}
+
+.agent-role{
+font-size:11px;
+color:#777;
+margin-top:2px;
+}
+
+.agent-phone{
+font-size:13px;
+font-weight:700;
+color:#555;
+margin-top:12px;
+}
 
 .contact-btn{
 width:100%;
-
 min-height:48px;
-
 display:flex;
-
 align-items:center;
-
 justify-content:center;
-
 border-radius:6px;
-
 margin-top:9px;
-
-font-size:14px;
-
+font-size:13px;
 font-weight:900;
+border:0;
+cursor:pointer;
 }
 
 .call-btn{
 background:#c40000;
-
 color:#fff;
 }
 
@@ -499,7 +707,6 @@ background:#920000;
 
 .wa-btn{
 background:#168a4b;
-
 color:#fff;
 }
 
@@ -507,81 +714,254 @@ color:#fff;
 background:#116d3b;
 }
 
-.back-btn{
-border:1px solid #ddd;
-
+.share-btn{
+background:#f5f5f5;
 color:#333;
+border:1px solid #ddd;
+}
 
+.back-btn{
 background:#fff;
+color:#444;
+border:1px solid #ddd;
 }
 
 
-/* ================= PROPERTY ID ================= */
+/* =========================================================
+INQUIRY
+========================================================= */
 
-.property-id{
-margin-top:18px;
-
-padding-top:15px;
-
+.inquiry-box{
+margin-top:15px;
+padding-top:17px;
 border-top:1px solid #eee;
+}
 
-color:#888;
+.inquiry-title{
+font-size:14px;
+font-weight:800;
+margin-bottom:10px;
+}
 
-font-size:11px;
+.inquiry-input{
+width:100%;
+border:1px solid #ddd;
+border-radius:5px;
+padding:11px;
+margin-bottom:8px;
+font-size:12px;
+outline:none;
+resize:vertical;
+}
+
+.inquiry-input:focus{
+border-color:#c40000;
+}
+
+.inquiry-btn{
+width:100%;
+padding:11px;
+border:0;
+border-radius:5px;
+background:#111;
+color:#fff;
+font-size:12px;
+font-weight:800;
+cursor:pointer;
 }
 
 
-/* ================= LOADING ================= */
+/* =========================================================
+META
+========================================================= */
+
+.meta-box{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px;
+margin-top:18px;
+}
+
+.meta{
+background:#fafafa;
+border:1px solid #eee;
+padding:11px;
+border-radius:6px;
+}
+
+.meta small{
+display:block;
+font-size:10px;
+color:#888;
+margin-bottom:3px;
+}
+
+.meta strong{
+font-size:12px;
+}
+
+
+/* =========================================================
+SIMILAR PROPERTIES
+========================================================= */
+
+.similar-section{
+margin-top:22px;
+}
+
+.similar-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:15px;
+}
+
+.similar-card{
+background:#fff;
+border:1px solid #e2e2e2;
+border-radius:8px;
+overflow:hidden;
+transition:.2s;
+}
+
+.similar-card:hover{
+transform:translateY(-2px);
+box-shadow:0 5px 18px rgba(0,0,0,.08);
+}
+
+.similar-image{
+width:100%;
+height:180px;
+object-fit:cover;
+background:#eee;
+}
+
+.similar-body{
+padding:14px;
+}
+
+.similar-price{
+font-size:18px;
+font-weight:900;
+color:#111;
+}
+
+.similar-title{
+font-size:13px;
+font-weight:800;
+margin-top:4px;
+}
+
+.similar-location{
+font-size:11px;
+color:#777;
+margin-top:5px;
+}
+
+.similar-link{
+display:inline-block;
+margin-top:10px;
+font-size:11px;
+font-weight:800;
+color:#c40000;
+}
+
+
+/* =========================================================
+VIEWS
+========================================================= */
+
+.views-box{
+display:flex;
+align-items:center;
+gap:15px;
+padding:15px 0;
+color:#777;
+font-size:12px;
+}
+
+
+/* =========================================================
+MOBILE CONTACT
+========================================================= */
+
+.mobile-contact{
+display:none;
+position:fixed;
+left:0;
+right:0;
+bottom:0;
+z-index:5000;
+background:#fff;
+border-top:1px solid #ddd;
+padding:8px;
+gap:7px;
+box-shadow:0 -3px 15px rgba(0,0,0,.12);
+}
+
+.mobile-contact a{
+flex:1;
+height:45px;
+display:flex;
+align-items:center;
+justify-content:center;
+border-radius:5px;
+font-size:12px;
+font-weight:900;
+}
+
+.mobile-call{
+background:#c40000;
+color:#fff;
+}
+
+.mobile-wa{
+background:#168a4b;
+color:#fff;
+}
+
+
+/* =========================================================
+LOADING
+========================================================= */
 
 .loading{
 max-width:700px;
-
 margin:70px auto;
-
 text-align:center;
-
 color:#777;
+background:#fff;
+padding:50px;
+border-radius:8px;
 }
 
 .loader{
 width:45px;
 height:45px;
-
 border:4px solid #eee;
-
 border-top-color:#c40000;
-
 border-radius:50%;
-
 animation:spin .8s linear infinite;
-
 margin:0 auto 15px;
 }
 
 @keyframes spin{
-
 to{
 transform:rotate(360deg);
 }
-
 }
 
 
-/* ================= ERROR ================= */
+/* =========================================================
+ERROR
+========================================================= */
 
 .error{
 max-width:700px;
-
 margin:60px auto;
-
 background:#fff;
-
 padding:50px 25px;
-
 text-align:center;
-
 border-radius:10px;
-
 box-shadow:0 5px 20px rgba(0,0,0,.07);
 }
 
@@ -595,33 +975,26 @@ color:#777;
 
 .error a{
 display:inline-flex;
-
 margin-top:20px;
-
 padding:12px 20px;
-
 background:#c40000;
-
 color:#fff;
-
 border-radius:5px;
-
 font-weight:800;
 }
 
 
-/* ================= FOOTER ================= */
+/* =========================================================
+FOOTER
+========================================================= */
 
 .footer{
 background:#151515;
-
 color:#fff;
-
 text-align:center;
-
-padding:25px 15px;
-
+padding:28px 15px;
 font-size:13px;
+margin-top:30px;
 }
 
 .footer span{
@@ -629,22 +1002,104 @@ color:#d00000;
 }
 
 
-/* ================= TABLET ================= */
+/* =========================================================
+LIGHTBOX
+========================================================= */
 
-@media(max-width:850px){
-
-.nav{
-flex-direction:column;
-
-padding:13px 10px;
+.lightbox{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.96);
+z-index:10000;
+display:none;
+align-items:center;
+justify-content:center;
+padding:20px;
 }
 
-.menu{
+.lightbox.show{
+display:flex;
+}
+
+.lightbox-image{
+max-width:92%;
+max-height:90vh;
+object-fit:contain;
+user-select:none;
+}
+
+.lightbox-close{
+position:absolute;
+top:15px;
+right:20px;
+width:44px;
+height:44px;
+border:0;
+border-radius:50%;
+background:#fff;
+color:#111;
+font-size:27px;
+cursor:pointer;
+z-index:10003;
+}
+
+.lightbox-arrow{
+position:absolute;
+top:50%;
+transform:translateY(-50%);
+width:48px;
+height:48px;
+border:0;
+border-radius:50%;
+background:rgba(255,255,255,.9);
+color:#111;
+font-size:30px;
+cursor:pointer;
+z-index:10002;
+display:flex;
+align-items:center;
 justify-content:center;
 }
 
-.gallery{
-height:400px;
+.lightbox-arrow:hover{
+background:#c40000;
+color:#fff;
+}
+
+.lightbox-prev{
+left:20px;
+}
+
+.lightbox-next{
+right:20px;
+}
+
+.lightbox-counter{
+position:absolute;
+bottom:18px;
+left:50%;
+transform:translateX(-50%);
+background:rgba(0,0,0,.7);
+color:#fff;
+padding:7px 13px;
+border-radius:5px;
+font-size:12px;
+font-weight:800;
+}
+
+
+/* =========================================================
+RESPONSIVE
+========================================================= */
+
+@media(max-width:950px){
+
+.property-head-top{
+flex-direction:column;
+}
+
+.head-right{
+text-align:left;
 }
 
 .details-grid{
@@ -655,96 +1110,205 @@ grid-template-columns:1fr;
 position:static;
 }
 
+.summary-grid{
+grid-template-columns:1fr 1fr;
+}
+
+.summary-item:nth-child(2){
+border-right:0;
+}
+
+.summary-item:nth-child(3),
+.summary-item:nth-child(4){
+border-top:1px solid #e5e5e5;
+}
+
+.features-grid{
+grid-template-columns:1fr 1fr;
+}
+
+.similar-grid{
+grid-template-columns:1fr 1fr;
+}
+
 }
 
 
-/* ================= MOBILE ================= */
-
-@media(max-width:550px){
+@media(max-width:700px){
 
 .topbar{
 justify-content:center;
-
 text-align:center;
-
 font-size:11px;
 }
 
-.logo{
-font-size:21px;
+.nav{
+flex-direction:column;
+padding:12px 10px;
+}
+
+.menu{
+justify-content:center;
 }
 
 .menu a{
 font-size:10px;
-
 padding:8px 7px;
 }
 
-.container{
-padding:8px 10px 40px;
+.breadcrumb{
+padding:12px 10px 5px;
 }
 
-.gallery{
-height:300px;
+.container{
+padding:7px 10px 85px;
+}
 
+/* PICTURE STILL FIRST */
+
+.gallery{
+height:370px;
 border-radius:7px;
+}
+
+.gallery-arrow{
+width:36px;
+height:36px;
+font-size:20px;
+}
+
+.zoom-hint{
+font-size:10px;
 }
 
 .thumb{
 width:75px;
-
 height:55px;
 }
 
-.details-card{
+.property-head{
 padding:17px;
+}
+
+.property-main-title{
+font-size:20px;
 }
 
 .price{
 font-size:25px;
 }
 
-.title{
+.action-bar{
+align-items:flex-start;
+flex-direction:column;
+}
+
+.details-card{
+padding:17px;
+}
+
+.summary-grid{
+grid-template-columns:1fr 1fr;
+}
+
+.features-grid{
+grid-template-columns:1fr 1fr;
+}
+
+.similar-grid{
+grid-template-columns:1fr;
+}
+
+.similar-image{
+height:200px;
+}
+
+.mobile-contact{
+display:flex;
+}
+
+.lightbox{
+padding:5px;
+}
+
+.lightbox-image{
+max-width:96%;
+max-height:82vh;
+}
+
+.lightbox-arrow{
+width:40px;
+height:40px;
+font-size:23px;
+}
+
+.lightbox-prev{
+left:8px;
+}
+
+.lightbox-next{
+right:8px;
+}
+
+}
+
+
+@media(max-width:450px){
+
+.logo{
+font-size:20px;
+}
+
+.authorized{
+font-size:8px;
+}
+
+.property-main-title{
 font-size:18px;
-}
-
-.location{
-font-size:12px;
-}
-
-.info-grid{
-gap:8px;
-}
-
-.info{
-padding:10px;
-}
-
-.contact-card{
-padding:18px;
-}
-
-}
-
-
-/* ================= VERY SMALL MOBILE ================= */
-
-@media(max-width:380px){
-
-.gallery{
-height:260px;
 }
 
 .price{
 font-size:23px;
 }
 
-.title{
-font-size:17px;
+.property-location{
+font-size:12px;
 }
 
-.info-grid{
+.gallery{
+height:285px;
+}
+
+.gallery-count,
+.gallery-label,
+.zoom-hint{
+font-size:9px;
+padding:6px 8px;
+}
+
+.summary-item{
+padding:11px 8px;
+}
+
+.summary-value{
+font-size:12px;
+}
+
+.features-grid{
 grid-template-columns:1fr;
+}
+
+.section-title{
+font-size:18px;
+}
+
+.contact-card{
+padding:17px;
+}
+
+.lightbox-close{
+top:10px;
+right:10px;
 }
 
 }
@@ -757,7 +1321,9 @@ grid-template-columns:1fr;
 <body>
 
 
-<!-- ================= TOP BAR ================= -->
+<!-- =====================================================
+TOP BAR
+===================================================== -->
 
 <div class="topbar">
 
@@ -772,14 +1338,15 @@ grid-template-columns:1fr;
 </div>
 
 
-<!-- ================= HEADER ================= -->
+<!-- =====================================================
+HEADER
+===================================================== -->
 
 <header class="header">
 
 <div class="nav">
 
-
-<a href="index.html">
+<a href="index.html" class="brand">
 
 <div class="logo">
 ZEESHAN <span>ESTATE AWT</span>
@@ -802,12 +1369,9 @@ HOME
 PROPERTIES
 </a>
 
-<a
-href="property.html"
+<a href="property.html"
 class="list-btn">
-
 LIST YOUR PROPERTY
-
 </a>
 
 <a href="index.html#contact">
@@ -816,18 +1380,35 @@ CONTACT
 
 </nav>
 
-
 </div>
 
 </header>
 
 
-<!-- ================= MAIN ================= -->
+<!-- =====================================================
+BREADCRUMB
+===================================================== -->
+
+<div class="breadcrumb">
+
+<a href="properties.html">
+Properties
+</a>
+
+&nbsp;›&nbsp;
+
+Property Details
+
+</div>
+
+
+<!-- =====================================================
+MAIN
+===================================================== -->
 
 <main
 class="container"
 id="main">
-
 
 <div class="loading">
 
@@ -837,11 +1418,97 @@ Loading property details...
 
 </div>
 
-
 </main>
 
 
-<!-- ================= FOOTER ================= -->
+<!-- =====================================================
+MOBILE CONTACT
+===================================================== -->
+
+<div
+class="mobile-contact"
+id="mobile-contact"
+style="display:none;">
+
+<a
+id="mobile-call"
+class="mobile-call"
+href="#">
+
+📞 CALL
+
+</a>
+
+<a
+id="mobile-whatsapp"
+class="mobile-wa"
+href="#"
+target="_blank"
+rel="noopener">
+
+💬 WHATSAPP
+
+</a>
+
+</div>
+
+
+<!-- =====================================================
+LIGHTBOX
+===================================================== -->
+
+<div
+id="lightbox"
+class="lightbox">
+
+<button
+class="lightbox-close"
+onclick="closeLightbox()">
+
+×
+
+</button>
+
+
+<button
+class="lightbox-arrow lightbox-prev"
+onclick="lightboxPrevious()">
+
+‹
+
+</button>
+
+
+<img
+id="lightbox-image"
+class="lightbox-image"
+src=""
+alt="Property Image">
+
+
+<button
+class="lightbox-arrow lightbox-next"
+onclick="lightboxNext()">
+
+›
+
+</button>
+
+
+<div
+id="lightbox-counter"
+class="lightbox-counter">
+
+1 / 1
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
+FOOTER
+===================================================== -->
 
 <footer class="footer">
 
@@ -856,15 +1523,18 @@ Zeeshan <span>Estate AWT</span>
 </footer>
 
 
-<!-- ================= SUPABASE ================= -->
+<!-- =====================================================
+SUPABASE
+===================================================== -->
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 
 <script>
 
-
-/* ================= SUPABASE ================= */
+/* =========================================================
+SUPABASE
+========================================================= */
 
 const SUPABASE_URL =
 "https://rhzsfjolkxqovhonylti.supabase.co";
@@ -879,37 +1549,32 @@ SUPABASE_KEY
 );
 
 
-/* ================= ESCAPE ================= */
+/* =========================================================
+ESCAPE HTML
+========================================================= */
 
 function esc(value){
 
-if(value == null){
+if(value === null ||
+value === undefined){
 
 return "";
 
 }
 
-return String(value).replace(
-/[&<>"']/g,
-
-function(c){
-
-return {
-
-"&":"&amp;",
-"<":"&lt;",
-">":"&gt;",
-'"':"&quot;",
-"'":"&#039;"
-
-}[c];
-
-});
+return String(value)
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
 
 }
 
 
-/* ================= GET PROPERTY ID ================= */
+/* =========================================================
+GET PROPERTY ID
+========================================================= */
 
 const params =
 new URLSearchParams(
@@ -919,34 +1584,31 @@ window.location.search
 const propertyId =
 params.get("id");
 
-
 const main =
 document.getElementById("main");
 
 
-/* ================= CHECK ID ================= */
+/* =========================================================
+GLOBAL
+========================================================= */
+
+let currentProperty = null;
+
+let propertyImages = [];
+
+let currentImageIndex = 0;
+
+
+/* =========================================================
+NO ID
+========================================================= */
 
 if(!propertyId){
 
-main.innerHTML = `
-
-<div class="error">
-
-<h2>
-Property Not Found
-</h2>
-
-<p>
-No property ID was provided.
-</p>
-
-<a href="properties.html">
-← Back to Properties
-</a>
-
-</div>
-
-`;
+showError(
+"Property Not Found",
+"No property ID was provided."
+);
 
 }else{
 
@@ -955,7 +1617,9 @@ loadProperty();
 }
 
 
-/* ================= LOAD PROPERTY ================= */
+/* =========================================================
+LOAD PROPERTY
+========================================================= */
 
 async function loadProperty(){
 
@@ -976,11 +1640,7 @@ throw result.error;
 }
 
 
-const p =
-result.data;
-
-
-if(!p){
+if(!result.data){
 
 throw new Error(
 "Property not found."
@@ -989,24 +1649,72 @@ throw new Error(
 }
 
 
-renderProperty(p);
+currentProperty =
+result.data;
+
+
+/* IMAGES */
+
+if(Array.isArray(currentProperty.image_urls)){
+
+propertyImages =
+currentProperty.image_urls
+.filter(Boolean);
+
+}else{
+
+propertyImages=[];
+
+}
+
+
+/* RENDER */
+
+renderProperty(currentProperty);
+
+
+/* VIEW */
+
+recordView(currentProperty.id);
+
+
+/* SIMILAR */
+
+loadSimilarProperties(
+currentProperty
+);
 
 
 }catch(error){
 
 console.error(error);
 
+showError(
+"Property Not Found",
+"This property may have been removed or is no longer available."
+);
+
+}
+
+}
+
+
+/* =========================================================
+ERROR
+========================================================= */
+
+function showError(title,message){
 
 main.innerHTML = `
 
 <div class="error">
 
 <h2>
-Property Not Found
+${esc(title)}
 </h2>
 
 <p>
-This property may have been removed or is no longer available.
+${esc(message)}
 </p>
 
 <a href="properties.html">
@@ -1019,144 +1727,247 @@ This property may have been removed or is no longer available.
 
 }
 
+
+/* =========================================================
+PRICE FORMAT
+========================================================= */
+
+function formatPrice(value){
+
+if(
+value === null ||
+value === undefined ||
+value === ""
+){
+
+return "Price on Call";
+
+}
+
+let text =
+String(value).trim();
+
+
+if(
+/crore|lac|lakh|pkr/i.test(text)
+){
+
+if(!/pkr/i.test(text)){
+
+return "PKR " + text;
+
+}
+
+return text;
+
 }
 
 
-/* ================= RENDER PROPERTY ================= */
+let number =
+Number(
+text.replace(
+/[^0-9.]/g,
+""
+)
+);
+
+
+if(
+!isNaN(number) &&
+number > 0
+){
+
+if(number >= 10000000){
+
+return "PKR " +
+(number / 10000000)
+.toFixed(2)
+.replace(/\.00$/,"") +
+" Crore";
+
+}
+
+
+if(number >= 100000){
+
+return "PKR " +
+(number / 100000)
+.toFixed(2)
+.replace(/\.00$/,"") +
+" Lac";
+
+}
+
+
+return "PKR " +
+number.toLocaleString();
+
+}
+
+
+return text;
+
+}
+
+
+/* =========================================================
+BOOLEAN
+========================================================= */
+
+function isTrue(value){
+
+return value === true ||
+value === "true" ||
+value === 1 ||
+value === "1" ||
+value === "yes" ||
+value === "Yes";
+
+}
+
+
+/* =========================================================
+RENDER PROPERTY
+========================================================= */
 
 function renderProperty(p){
-
-
-/* ================= IMAGES ================= */
-
-const images =
-Array.isArray(p.image_urls)
-
-? p.image_urls.filter(Boolean)
-
-: [];
-
-
-/* ================= DATA ================= */
 
 const purpose =
 p.purpose ||
 "For Sale";
 
-
 const type =
 p.property_type ||
 "Property";
-
 
 const size =
 p.property_size ||
 "N/A";
 
-
 const price =
-p.price ||
-"Price on Call";
-
+formatPrice(p.price);
 
 const location =
 p.location ||
 "Army Welfare Trust Phase 2, Lahore";
 
-
 const details =
 p.details ||
 "No additional property details have been provided.";
-
 
 const owner =
 p.owner_name ||
 "Zeeshan Estate AWT";
 
-
 const phone =
 p.owner_phone ||
 "0302-0941013";
 
-
 const phoneHref =
-phone.replace(
+String(phone)
+.replace(
 /[^0-9+]/g,
 ""
 );
 
+const whatsappNumber =
+normalizeWhatsApp(phone);
 
-/* ================= WHATSAPP ================= */
 
 const whatsappMessage =
-"I am interested in this property. Property ID: " +
-p.id;
+"I am interested in this property.%0A%0A"+
+"Property ID: "+
+encodeURIComponent(p.id)+
+"%0AProperty: "+
+encodeURIComponent(type)+
+"%0ASize: "+
+encodeURIComponent(size)+
+"%0APrice: "+
+encodeURIComponent(price)+
+"%0ALocation: "+
+encodeURIComponent(location);
 
 
-let whatsappPhone =
-phone.replace(/\D/g,"");
+/* =========================================================
+BADGES
+========================================================= */
+
+let badgesHTML="";
 
 
-if(whatsappPhone.startsWith("0")){
+if(isTrue(p.verified)){
 
-whatsappPhone =
-"92" +
-whatsappPhone.substring(1);
+badgesHTML += `
+
+<span class="badge verified-badge">
+✓ VERIFIED
+</span>
+
+`;
 
 }
 
 
-/* ================= MAIN IMAGE ================= */
+if(
+isTrue(p.super_hot) ||
+isTrue(p.superhot)
+){
 
-const mainImage =
-images[0] || "";
+badgesHTML += `
+
+<span class="badge super-hot-badge">
+🔥 SUPER HOT
+</span>
+
+`;
+
+}else if(isTrue(p.hot)){
+
+badgesHTML += `
+
+<span class="badge hot-badge">
+🔥 HOT
+</span>
+
+`;
+
+}
 
 
-const imageHTML = mainImage
+badgesHTML += `
 
-?
+<span class="badge purpose-badge">
+${esc(purpose)}
+</span>
 
-`
+`;
+
+
+/* =========================================================
+MAIN IMAGE
+========================================================= */
+
+let imageHTML="";
+
+
+if(propertyImages.length > 0){
+
+imageHTML = `
 
 <img
-
 id="mainImage"
-
 class="main-image"
-
-src="${esc(mainImage)}"
-
+src="${esc(propertyImages[0])}"
 alt="${esc(type)}"
+onclick="openLightbox()">
 
-loading="eager"
+`;
 
->
+}else{
 
-`
+imageHTML = `
 
-:
-
-`
-
-<div
-
-class="main-image"
-
-style="
-
-display:flex;
-
-align-items:center;
-
-justify-content:center;
-
-color:#fff;
-
-font-size:80px;
-
-"
-
->
+<div class="gallery-placeholder">
 
 🏠
 
@@ -1164,72 +1975,159 @@ font-size:80px;
 
 `;
 
+}
 
-/* ================= THUMBNAILS ================= */
 
-const thumbsHTML =
-images.length
+/* =========================================================
+THUMBNAILS
+========================================================= */
 
-?
+let thumbsHTML="";
 
-images.map(
 
+propertyImages.forEach(
 function(url,index){
 
-return `
+thumbsHTML += `
 
 <img
-
-class="thumb ${index === 0 ? "active" : ""}"
-
+class="thumb ${index===0 ? "active" : ""}"
 src="${esc(url)}"
-
 alt="Property image ${index+1}"
-
-data-image="${esc(url)}"
-
-loading="lazy"
-
->
+data-index="${index}"
+onclick="selectImage(${index})">
 
 `;
 
-}
-
-).join("")
-
-:
-
-"";
+});
 
 
-/* ================= PAGE ================= */
+/* =========================================================
+FEATURES
+========================================================= */
+
+const features = [
+
+"Prime Location",
+"Good Investment Opportunity",
+"Residential / Commercial Area",
+"Easy Access",
+"Near Main Road",
+"Secure Location"
+
+];
+
+
+let featuresHTML="";
+
+
+features.forEach(
+function(feature){
+
+featuresHTML += `
+
+<div class="feature">
+
+✓ ${feature}
+
+</div>
+
+`;
+
+});
+
+
+/* =========================================================
+MAIN HTML
+========================================================= */
 
 main.innerHTML = `
 
 
-<!-- ================= PROPERTY PICTURE ================= -->
+<!-- =====================================================
+PICTURE FIRST
+===================================================== -->
+
+<div class="gallery-wrap">
 
 <div class="gallery">
 
 ${imageHTML}
 
 
-<div class="gallery-count">
+${
+propertyImages.length > 1
 
-📷 ${images.length || 0} Photos
+?
 
-</div>
+`
+
+<button
+class="gallery-arrow gallery-prev"
+onclick="previousImage()">
+
+‹
+
+</button>
 
 
-</div>
+<button
+class="gallery-arrow gallery-next"
+onclick="nextImage()">
 
+›
 
-<!-- ================= THUMBNAILS ================= -->
+</button>
+
+`
+
+:
+
+""
+
+}
+
 
 ${
+propertyImages.length > 0
 
-images.length > 1
+?
+
+`
+
+<div class="zoom-hint">
+
+🔍 Click picture to enlarge
+
+</div>
+
+`
+
+:
+
+""
+
+}
+
+
+<div class="gallery-count">
+
+📷 ${propertyImages.length} Photos
+
+</div>
+
+
+<div class="gallery-label">
+
+Zeeshan Estate AWT
+
+</div>
+
+</div>
+
+
+${
+propertyImages.length > 1
 
 ?
 
@@ -1249,53 +2147,56 @@ ${thumbsHTML}
 
 }
 
-
-<!-- ================= BREADCRUMB ================= -->
-
-<div class="breadcrumb">
-
-<a href="properties.html">
-Properties
-</a>
-
-&nbsp;›&nbsp;
-
-Property Details
-
 </div>
 
 
-<!-- ================= DETAILS GRID ================= -->
+<!-- =====================================================
+PROPERTY HEADER
+===================================================== -->
 
-<div class="details-grid">
+<section class="property-head">
 
+<div class="property-head-top">
 
-<!-- ================= LEFT ================= -->
-
-<section class="details-card">
-
-
-<!-- BADGES -->
 
 <div>
 
-<span class="badge">
+<h1 class="property-main-title">
 
-${esc(purpose)}
+${esc(type)}
 
-</span>
+${
+p.property_size
+?
+" • " + esc(p.property_size)
+:
+""
+}
+
+</h1>
 
 
-<span class="verified-badge">
+<div class="property-location">
 
-✓ VERIFIED
+📍
 
+<span>
+${esc(location)}
 </span>
 
 </div>
 
 
-<!-- PRICE -->
+<div class="badges">
+
+${badgesHTML}
+
+</div>
+
+</div>
+
+
+<div class="head-right">
 
 <div class="price">
 
@@ -1303,48 +2204,275 @@ ${esc(price)}
 
 </div>
 
+<div class="price-label">
 
-<!-- TITLE -->
+Demand Price
 
-<div class="title">
+</div>
 
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+ACTION BAR
+===================================================== -->
+
+<div class="action-bar">
+
+<div class="action-left">
+
+<button
+class="action-btn"
+onclick="shareProperty()">
+
+↗ SHARE
+
+</button>
+
+
+<button
+id="save-btn"
+class="action-btn"
+onclick="saveProperty()">
+
+♡ SAVE
+
+</button>
+
+</div>
+
+
+<div class="action-right">
+
+<span class="action-btn">
+
+👁️ Property
+
+</span>
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
+CONTENT
+===================================================== -->
+
+<div class="details-grid">
+
+
+<!-- =====================================================
+LEFT CONTENT
+===================================================== -->
+
+<div>
+
+<section class="card details-card">
+
+
+<!-- SUMMARY -->
+
+<div class="section">
+
+<div class="summary-grid">
+
+
+<div class="summary-item">
+
+<div class="summary-icon">
+📐
+</div>
+
+<div class="summary-label">
+Property Size
+</div>
+
+<div class="summary-value">
+${esc(size)}
+</div>
+
+</div>
+
+
+<div class="summary-item">
+
+<div class="summary-icon">
+🏠
+</div>
+
+<div class="summary-label">
+Property Type
+</div>
+
+<div class="summary-value">
 ${esc(type)}
+</div>
 
-${
-p.property_size
+</div>
 
-?
 
-" • " +
-esc(p.property_size)
+<div class="summary-item">
 
-:
+<div class="summary-icon">
+💰
+</div>
 
-""
+<div class="summary-label">
+Purpose
+</div>
 
-}
+<div class="summary-value">
+${esc(purpose)}
+</div>
+
+</div>
+
+
+<div class="summary-item">
+
+<div class="summary-icon">
+📍
+</div>
+
+<div class="summary-label">
+Location
+</div>
+
+<div class="summary-value">
+AWT Phase 2
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<!-- DESCRIPTION -->
+
+<div class="section">
+
+<h2 class="section-title">
+Property Details
+</h2>
+
+<div class="description">
+
+${esc(details)}
+
+</div>
+
+</div>
+
+
+<!-- FEATURES -->
+
+<div class="section">
+
+<h2 class="section-title">
+Key Features
+</h2>
+
+<div class="features-grid">
+
+${featuresHTML}
+
+</div>
 
 </div>
 
 
 <!-- LOCATION -->
 
-<div class="location">
+<div class="section">
 
+<h2 class="section-title">
+Location
+</h2>
+
+<div class="location-box">
+
+<div class="map-placeholder">
+
+<div class="map-inner">
+
+<strong>
 📍 ${esc(location)}
+</strong>
+
+<span>
+Army Welfare Trust Phase 2, Lahore
+</span>
+
+</div>
+
+</div>
+
+<div class="location-text">
+
+<strong>
+Property Location:
+</strong>
+
+${esc(location)}
+
+</div>
+
+</div>
 
 </div>
 
 
-<!-- ================= INFO ================= -->
+<!-- PROPERTY INFORMATION -->
 
-<div class="info-grid">
+<div class="section">
+
+<h2 class="section-title">
+Property Information
+</h2>
 
 
-<div class="info">
+<div class="meta-box">
+
+
+<div class="meta">
 
 <small>
-Property Type
+PROPERTY ID
+</small>
+
+<strong>
+${esc(p.id)}
+</strong>
+
+</div>
+
+
+<div class="meta">
+
+<small>
+LISTING TYPE
+</small>
+
+<strong>
+${esc(purpose)}
+</strong>
+
+</div>
+
+
+<div class="meta">
+
+<small>
+PROPERTY TYPE
 </small>
 
 <strong>
@@ -1354,10 +2482,10 @@ ${esc(type)}
 </div>
 
 
-<div class="info">
+<div class="meta">
 
 <small>
-Property Size
+PROPERTY SIZE
 </small>
 
 <strong>
@@ -1367,72 +2495,20 @@ ${esc(size)}
 </div>
 
 
-<div class="info">
-
-<small>
-Purpose
-</small>
-
-<strong>
-${esc(purpose)}
-</strong>
+</div>
 
 </div>
 
 
-<div class="info">
+<div class="views-box">
 
-<small>
-Location
-</small>
+<span>
+👁️ Property Details
+</span>
 
-<strong>
-${esc(location)}
-</strong>
-
-</div>
-
-
-<div class="info">
-
-<small>
-Property ID
-</small>
-
-<strong>
-${esc(p.id)}
-</strong>
-
-</div>
-
-
-<div class="info">
-
-<small>
-Dealer
-</small>
-
-<strong>
-Zeeshan Estate AWT
-</strong>
-
-</div>
-
-
-</div>
-
-
-<!-- ================= DESCRIPTION ================= -->
-
-<div class="description">
-
-<h2>
-Property Details
-</h2>
-
-<p>
-${esc(details)}
-</p>
+<span>
+• Verified information by Zeeshan Estate AWT
+</span>
 
 </div>
 
@@ -1440,89 +2516,178 @@ ${esc(details)}
 </section>
 
 
-<!-- ================= CONTACT ================= -->
+<!-- =====================================================
+SIMILAR
+===================================================== -->
 
-<aside class="contact-card">
+<section
+class="similar-section"
+id="similar-section"
+style="display:none;">
+
+<div class="card details-card">
+
+<h2 class="section-title">
+Similar Properties
+</h2>
+
+<div
+id="similar-grid"
+class="similar-grid">
+
+</div>
+
+</div>
+
+</section>
 
 
-<h2>
+</div>
+
+
+<!-- =====================================================
+RIGHT CONTACT
+===================================================== -->
+
+<aside class="card contact-card">
+
+
+<h2 class="contact-title">
+
 Interested in this property?
+
 </h2>
 
 
-<p>
-Contact Zeeshan Estate AWT for booking and details.
+<p class="contact-subtitle">
+
+Contact Zeeshan Estate AWT for booking
+and further details.
+
 </p>
 
 
-<div class="contact-name">
+<div class="agent-box">
+
+<div class="agent-row">
+
+<div class="agent-avatar">
+👤
+</div>
+
+
+<div>
+
+<div class="agent-name">
 
 ${esc(owner)}
 
 </div>
 
+<div class="agent-role">
 
-<div class="contact-phone">
+Authorized Dealer
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="agent-phone">
 
 📞 ${esc(phone)}
 
 </div>
 
+</div>
 
-<!-- CALL -->
 
 <a
-
 class="contact-btn call-btn"
-
 href="tel:${esc(phoneHref)}"
-
->
+onclick="recordCall('${esc(p.id)}')">
 
 📞 CALL NOW
 
 </a>
 
 
-<!-- WHATSAPP -->
-
 <a
-
 class="contact-btn wa-btn"
-
 target="_blank"
-
 rel="noopener"
-
-href="https://wa.me/${whatsappPhone}?text=${encodeURIComponent(whatsappMessage)}"
-
->
+href="https://wa.me/${whatsappNumber}?text=${whatsappMessage}">
 
 💬 WHATSAPP
 
 </a>
 
 
-<!-- BACK -->
+<button
+class="contact-btn share-btn"
+onclick="shareProperty()">
+
+↗ SHARE PROPERTY
+
+</button>
+
 
 <a
-
 class="contact-btn back-btn"
-
-href="properties.html"
-
->
+href="properties.html">
 
 ← BACK TO PROPERTIES
 
 </a>
 
 
+<div class="inquiry-box">
+
+<div class="inquiry-title">
+
+Send an Inquiry
+
+</div>
+
+
+<input
+id="inquiry-name"
+class="inquiry-input"
+placeholder="Your Name">
+
+
+<input
+id="inquiry-phone"
+class="inquiry-input"
+placeholder="Mobile Number">
+
+
+<textarea
+id="inquiry-message"
+class="inquiry-input"
+rows="3"
+placeholder="I am interested in this property..."></textarea>
+
+
+<button
+class="inquiry-btn"
+onclick="sendInquiry()">
+
+SEND INQUIRY
+
+</button>
+
+</div>
+
+
 <div class="property-id">
 
 Property ID:
-
+<strong>
 ${esc(p.id)}
+</strong>
 
 </div>
 
@@ -1532,74 +2697,1052 @@ ${esc(p.id)}
 
 </div>
 
-
 `;
 
 
-/* ================= THUMBNAIL CLICK ================= */
+/* =========================================================
+MOBILE BUTTONS
+========================================================= */
 
-document
-.querySelectorAll(".thumb")
-.forEach(
+document.getElementById(
+"mobile-call"
+).href =
+"tel:"+phoneHref;
 
-function(thumb){
 
-thumb.addEventListener(
+document.getElementById(
+"mobile-whatsapp"
+).href =
+"https://wa.me/"+
+whatsappNumber+
+"?text="+
+whatsappMessage;
 
-"click",
 
-function(){
+document.getElementById(
+"mobile-contact"
+).style.display="flex";
 
-const mainImage =
+}
+
+
+/* =========================================================
+WHATSAPP NUMBER
+========================================================= */
+
+function normalizeWhatsApp(phone){
+
+let number =
+String(phone || "")
+.replace(/\D/g,"");
+
+
+if(number.startsWith("0")){
+
+number =
+"92"+
+number.substring(1);
+
+}
+
+if(!number.startsWith("92")){
+
+number =
+"92"+
+number;
+
+}
+
+return number;
+
+}
+
+
+/* =========================================================
+SELECT IMAGE
+========================================================= */
+
+function selectImage(index){
+
+if(!propertyImages[index]){
+
+return;
+
+}
+
+currentImageIndex=index;
+
+
+const image =
 document.getElementById(
 "mainImage"
 );
 
 
-if(!mainImage){
+if(image){
+
+image.src =
+propertyImages[index];
+
+}
+
+
+document
+.querySelectorAll(".thumb")
+.forEach(
+function(thumb,i){
+
+thumb.classList.toggle(
+"active",
+i === index
+);
+
+});
+
+}
+
+
+/* =========================================================
+NEXT IMAGE
+========================================================= */
+
+function nextImage(){
+
+if(propertyImages.length < 2){
+
+return;
+
+}
+
+currentImageIndex =
+(
+currentImageIndex + 1
+)
+% propertyImages.length;
+
+
+selectImage(
+currentImageIndex
+);
+
+}
+
+
+/* =========================================================
+PREVIOUS IMAGE
+========================================================= */
+
+function previousImage(){
+
+if(propertyImages.length < 2){
+
+return;
+
+}
+
+currentImageIndex =
+(
+currentImageIndex - 1 +
+propertyImages.length
+)
+% propertyImages.length;
+
+
+selectImage(
+currentImageIndex
+);
+
+}
+
+
+/* =========================================================
+OPEN LIGHTBOX
+========================================================= */
+
+function openLightbox(){
+
+if(!propertyImages.length){
 
 return;
 
 }
 
 
-mainImage.src =
-this.dataset.image;
+const lightbox =
+document.getElementById(
+"lightbox"
+);
 
+
+const image =
+document.getElementById(
+"lightbox-image"
+);
+
+
+image.src =
+propertyImages[
+currentImageIndex
+];
+
+
+updateLightboxCounter();
+
+
+lightbox.classList.add(
+"show"
+);
+
+
+document.body.style.overflow=
+"hidden";
+
+}
+
+
+/* =========================================================
+CLOSE LIGHTBOX
+========================================================= */
+
+function closeLightbox(){
 
 document
-.querySelectorAll(".thumb")
-.forEach(
+.getElementById("lightbox")
+.classList.remove(
+"show"
+);
 
-function(t){
 
-t.classList.remove(
+document.body.style.overflow=
+"";
+
+}
+
+
+/* =========================================================
+LIGHTBOX NEXT
+========================================================= */
+
+function lightboxNext(){
+
+if(propertyImages.length < 2){
+
+return;
+
+}
+
+
+currentImageIndex =
+(
+currentImageIndex + 1
+)
+% propertyImages.length;
+
+
+document.getElementById(
+"lightbox-image"
+).src =
+propertyImages[
+currentImageIndex
+];
+
+
+selectImage(
+currentImageIndex
+);
+
+
+updateLightboxCounter();
+
+}
+
+
+/* =========================================================
+LIGHTBOX PREVIOUS
+========================================================= */
+
+function lightboxPrevious(){
+
+if(propertyImages.length < 2){
+
+return;
+
+}
+
+
+currentImageIndex =
+(
+currentImageIndex - 1 +
+propertyImages.length
+)
+% propertyImages.length;
+
+
+document.getElementById(
+"lightbox-image"
+).src =
+propertyImages[
+currentImageIndex
+];
+
+
+selectImage(
+currentImageIndex
+);
+
+
+updateLightboxCounter();
+
+}
+
+
+/* =========================================================
+LIGHTBOX COUNTER
+========================================================= */
+
+function updateLightboxCounter(){
+
+const counter =
+document.getElementById(
+"lightbox-counter"
+);
+
+
+if(counter){
+
+counter.innerText =
+(
+currentImageIndex + 1
+)+
+" / "+
+propertyImages.length;
+
+}
+
+}
+
+
+/* =========================================================
+LIGHTBOX CLICK OUTSIDE
+========================================================= */
+
+document
+.getElementById("lightbox")
+.addEventListener(
+"click",
+function(e){
+
+if(e.target === this){
+
+closeLightbox();
+
+}
+
+});
+
+
+/* =========================================================
+KEYBOARD
+========================================================= */
+
+document.addEventListener(
+"keydown",
+function(e){
+
+const lightbox =
+document.getElementById(
+"lightbox"
+);
+
+
+if(
+lightbox.classList.contains(
+"show"
+)
+){
+
+if(e.key === "Escape"){
+
+closeLightbox();
+
+}
+
+if(e.key === "ArrowRight"){
+
+lightboxNext();
+
+}
+
+if(e.key === "ArrowLeft"){
+
+lightboxPrevious();
+
+}
+
+return;
+
+}
+
+
+if(e.key === "ArrowRight"){
+
+nextImage();
+
+}
+
+
+if(e.key === "ArrowLeft"){
+
+previousImage();
+
+}
+
+});
+
+
+/* =========================================================
+SHARE
+========================================================= */
+
+async function shareProperty(){
+
+const url =
+window.location.href;
+
+
+const title =
+currentProperty
+?
+(
+currentProperty.property_type ||
+"Property"
+)
+:
+"Property";
+
+
+if(navigator.share){
+
+try{
+
+await navigator.share({
+
+title:
+title+" | Zeeshan Estate AWT",
+
+text:
+"I am interested in this property.",
+
+url:url
+
+});
+
+return;
+
+}catch(error){
+
+console.log(error);
+
+}
+
+}
+
+
+try{
+
+await navigator.clipboard.writeText(url);
+
+alert(
+"✅ Property link copied."
+);
+
+}catch(error){
+
+prompt(
+"Copy this property link:",
+url
+);
+
+}
+
+}
+
+
+/* =========================================================
+SAVE
+========================================================= */
+
+function saveProperty(){
+
+const button =
+document.getElementById(
+"save-btn"
+);
+
+
+if(!button){
+
+return;
+
+}
+
+
+const key =
+"saved_property_"+propertyId;
+
+
+const saved =
+localStorage.getItem(key);
+
+
+if(saved){
+
+localStorage.removeItem(key);
+
+button.innerText =
+"♡ SAVE";
+
+button.classList.remove(
+"active"
+);
+
+}else{
+
+localStorage.setItem(
+key,
+"true"
+);
+
+button.innerText =
+"♥ SAVED";
+
+button.classList.add(
 "active"
 );
 
 }
 
+}
+
+
+/* =========================================================
+SAVE STATUS
+========================================================= */
+
+function loadSaveStatus(){
+
+const button =
+document.getElementById(
+"save-btn"
 );
 
 
-this.classList.add(
+if(!button){
+
+return;
+
+}
+
+
+if(
+localStorage.getItem(
+"saved_property_"+propertyId
+)
+){
+
+button.innerText =
+"♥ SAVED";
+
+button.classList.add(
 "active"
 );
 
 }
 
+}
+
+
+/* =========================================================
+RECORD VIEW
+========================================================= */
+
+async function recordView(id){
+
+try{
+
+await supabaseClient
+.from("property_views")
+.insert([{
+
+property_id:id
+
+}]);
+
+}catch(error){
+
+console.log(
+"View tracking unavailable:",
+error.message
 );
 
 }
 
+}
+
+
+/* =========================================================
+RECORD CALL
+========================================================= */
+
+async function recordCall(id){
+
+try{
+
+await supabaseClient
+.from("property_calls")
+.insert([{
+
+property_id:id
+
+}]);
+
+}catch(error){
+
+console.log(
+"Call tracking unavailable:",
+error.message
 );
 
 }
 
+}
+
+
+/* =========================================================
+SEND INQUIRY
+========================================================= */
+
+async function sendInquiry(){
+
+const name =
+document.getElementById(
+"inquiry-name"
+).value.trim();
+
+
+const phone =
+document.getElementById(
+"inquiry-phone"
+).value.trim();
+
+
+const message =
+document.getElementById(
+"inquiry-message"
+).value.trim();
+
+
+if(!name || !phone){
+
+alert(
+"Please enter your name and mobile number."
+);
+
+return;
+
+}
+
+
+const property =
+currentProperty || {};
+
+
+const text =
+"Assalam-o-Alaikum Zeeshan Estate AWT.%0A%0A"+
+"New Property Inquiry%0A%0A"+
+"Name: "+
+encodeURIComponent(name)+
+"%0APhone: "+
+encodeURIComponent(phone)+
+"%0AProperty ID: "+
+encodeURIComponent(property.id || "")+
+"%0AProperty: "+
+encodeURIComponent(
+property.property_type || ""
+)+
+"%0ASize: "+
+encodeURIComponent(
+property.property_size || ""
+)+
+"%0APrice: "+
+encodeURIComponent(
+formatPrice(property.price)
+)+
+"%0ALocation: "+
+encodeURIComponent(
+property.location || ""
+)+
+"%0A%0AMessage: "+
+encodeURIComponent(
+message ||
+"I am interested in this property."
+);
+
+
+window.open(
+"https://wa.me/923020941013?text="+text,
+"_blank"
+);
+
+}
+
+
+/* =========================================================
+SIMILAR PROPERTIES
+========================================================= */
+
+async function loadSimilarProperties(current){
+
+try{
+
+let query =
+supabaseClient
+.from("properties")
+.select("*")
+.neq("id",current.id)
+.limit(6);
+
+
+if(current.property_size){
+
+query =
+query.eq(
+"property_size",
+current.property_size
+);
+
+}
+
+
+let result =
+await query;
+
+
+if(
+result.error ||
+!result.data ||
+result.data.length === 0
+){
+
+result =
+await supabaseClient
+.from("properties")
+.select("*")
+.neq("id",current.id)
+.order(
+"created_at",
+{ascending:false}
+)
+.limit(6);
+
+}
+
+
+if(result.error){
+
+return;
+
+}
+
+
+renderSimilar(
+result.data || []
+);
+
+
+}catch(error){
+
+console.log(error);
+
+}
+
+}
+
+
+/* =========================================================
+RENDER SIMILAR
+========================================================= */
+
+function renderSimilar(properties){
+
+if(!properties.length){
+
+return;
+
+}
+
+
+const section =
+document.getElementById(
+"similar-section"
+);
+
+
+const grid =
+document.getElementById(
+"similar-grid"
+);
+
+
+section.style.display="block";
+
+
+grid.innerHTML="";
+
+
+properties.forEach(
+function(p){
+
+let image="";
+
+
+if(
+Array.isArray(p.image_urls) &&
+p.image_urls.length
+){
+
+image =
+p.image_urls[0];
+
+}
+
+
+const price =
+formatPrice(p.price);
+
+
+const title =
+(
+p.property_type ||
+"Property"
+)+
+(
+p.property_size
+?
+" • "+p.property_size
+:
+""
+);
+
+
+const card =
+document.createElement(
+"div"
+);
+
+
+card.className =
+"similar-card";
+
+
+card.innerHTML = `
+
+${
+image
+
+?
+
+`
+
+<img
+class="similar-image"
+src="${esc(image)}"
+alt="${esc(title)}">
+
+`
+
+:
+
+`
+
+<div
+class="similar-image"
+style="
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:55px;
+">
+
+🏠
+
+</div>
+
+`
+}
+
+
+<div class="similar-body">
+
+<div class="similar-price">
+
+${esc(price)}
+
+</div>
+
+
+<div class="similar-title">
+
+${esc(title)}
+
+</div>
+
+
+<div class="similar-location">
+
+📍 ${esc(
+p.location ||
+"Army Welfare Trust Phase 2, Lahore"
+)}
+
+</div>
+
+
+<a
+class="similar-link"
+href="property-detail.html?id=${encodeURIComponent(p.id)}">
+
+VIEW PROPERTY →
+
+</a>
+
+</div>
+
+`;
+
+
+grid.appendChild(card);
+
+});
+
+}
+
+
+/* =========================================================
+INITIALIZE SAVE
+========================================================= */
+
+setTimeout(
+function(){
+
+loadSaveStatus();
+
+},
+300
+);
+
+
+/* =========================================================
+TOUCH SWIPE
+========================================================= */
+
+let touchStartX=0;
+
+
+document.addEventListener(
+"touchstart",
+function(e){
+
+if(e.touches.length !== 1){
+
+return;
+
+}
+
+touchStartX =
+e.touches[0].clientX;
+
+},
+{passive:true}
+);
+
+
+document.addEventListener(
+"touchend",
+function(e){
+
+if(!touchStartX){
+
+return;
+
+}
+
+
+const touchEndX =
+e.changedTouches[0].clientX;
+
+
+const difference =
+touchStartX-touchEndX;
+
+
+/*
+   Swipe only when lightbox
+   is open
+*/
+
+const lightbox =
+document.getElementById(
+"lightbox"
+);
+
+
+if(
+lightbox.classList.contains(
+"show"
+)
+){
+
+if(Math.abs(difference)>50){
+
+if(difference>0){
+
+lightboxNext();
+
+}else{
+
+lightboxPrevious();
+
+}
+
+}
+
+}else{
+
+if(Math.abs(difference)>50){
+
+if(difference>0){
+
+nextImage();
+
+}else{
+
+previousImage();
+
+}
+
+}
+
+}
+
+
+touchStartX=0;
+
+},
+{passive:true}
+);
 
 </script>
 
-
 </body>
-
 </html>
