@@ -1,60 +1,1713 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>List Your Property | Zeeshan Estate AWT</title>
-<meta name="description" content="List your property with Zeeshan Estate AWT.">
+
+<meta name="description"
+content="List your property with Zeeshan Estate AWT in Army Welfare Trust Phase 2 Lahore.">
+
 <style>
-*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#f5f5f5;color:#222}.top{background:#b40000;color:#fff;padding:10px 5%;display:flex;justify-content:space-between;flex-wrap:wrap;font-weight:bold}.nav{background:#fff;padding:16px 5%;display:flex;justify-content:space-between;align-items:center;gap:15px;box-shadow:0 2px 10px #0001}.logo{font-size:27px;font-weight:900}.logo span{color:#c40000}.badge{font-size:11px;letter-spacing:2px;color:#666}nav{display:flex;gap:8px;flex-wrap:wrap}nav a{padding:10px 12px;font-weight:bold;text-decoration:none}.active,.submit{background:#c40000;color:#fff!important;border-radius:5px}.hero{min-height:260px;background:linear-gradient(90deg,#000b,#b40000cc),url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1600&q=85') center/cover;color:#fff;display:grid;place-items:center;text-align:center;padding:30px}.hero h1{font-size:44px;margin:0 0 8px}.hero p{font-size:18px}.wrap{max-width:1000px;margin:-35px auto 50px;padding:0 18px;position:relative}.form{background:#fff;border-radius:12px;padding:30px;box-shadow:0 10px 35px #0002;border-top:6px solid #c40000}.form h2{color:#b40000;margin-top:0}.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.field{display:flex;flex-direction:column;gap:6px}.full{grid-column:1/-1}label{font-weight:800}input,select,textarea{padding:12px;border:1px solid #ddd;border-radius:6px;font:inherit}textarea{min-height:130px;resize:vertical}.hint{font-size:12px;color:#777}.preview{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:10px}.preview img{width:100%;height:100px;object-fit:cover;border-radius:6px}.submit{border:0;padding:14px 25px;font-size:17px;font-weight:900;cursor:pointer;width:100%}.status{text-align:center;margin-top:15px;font-weight:bold}.animation{margin:0 auto 25px;max-width:720px;background:#111;color:#fff;border-radius:12px;overflow:hidden;position:relative;height:190px}.animation img{width:100%;height:100%;object-fit:cover;opacity:.8;animation:zoom 8s ease-in-out infinite alternate}.animation div{position:absolute;inset:0;display:grid;place-items:center;font-size:30px;font-weight:900;text-shadow:0 3px 10px #000}@keyframes zoom{from{transform:scale(1)}to{transform:scale(1.1)}}@media(max-width:650px){.grid{grid-template-columns:1fr}.full{grid-column:auto}.preview{grid-template-columns:1fr 1fr}.hero h1{font-size:32px}.nav{flex-direction:column;align-items:flex-start}}
+
+/* =========================
+   RESET
+========================= */
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:#f5f5f5;
+  color:#222;
+}
+
+
+/* =========================
+   TOP BAR
+========================= */
+
+.top{
+  background:#b40000;
+  color:#fff;
+  padding:10px 5%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+  flex-wrap:wrap;
+  font-weight:bold;
+  font-size:13px;
+}
+
+
+/* =========================
+   NAVIGATION
+========================= */
+
+.nav{
+  background:#fff;
+  padding:15px 5%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+  box-shadow:0 2px 12px rgba(0,0,0,.08);
+  position:relative;
+  z-index:10;
+}
+
+.logo{
+  font-size:27px;
+  font-weight:900;
+  letter-spacing:.3px;
+}
+
+.logo span{
+  color:#c40000;
+}
+
+.badge{
+  margin-top:3px;
+  font-size:11px;
+  letter-spacing:2px;
+  color:#666;
+  font-weight:bold;
+}
+
+nav{
+  display:flex;
+  gap:7px;
+  flex-wrap:wrap;
+  align-items:center;
+}
+
+nav a{
+  padding:10px 12px;
+  font-weight:bold;
+  text-decoration:none;
+  color:#222;
+  border-radius:5px;
+  transition:.2s;
+}
+
+nav a:hover{
+  color:#c40000;
+  background:#fff4f4;
+}
+
+nav .active{
+  background:#c40000;
+  color:#fff;
+}
+
+nav .active:hover{
+  background:#980000;
+  color:#fff;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+  min-height:300px;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0,0,0,.80),
+      rgba(180,0,0,.72)
+    ),
+    url("https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1600&q=85")
+    center/cover;
+
+  color:#fff;
+
+  display:grid;
+  place-items:center;
+
+  text-align:center;
+
+  padding:45px 20px;
+}
+
+.hero-content{
+  max-width:800px;
+}
+
+.hero h1{
+  font-size:45px;
+  margin:0 0 10px;
+  font-weight:900;
+  text-shadow:0 3px 12px rgba(0,0,0,.4);
+}
+
+.hero p{
+  font-size:18px;
+  margin:0;
+  color:#f3f3f3;
+}
+
+
+/* =========================
+   MAIN WRAPPER
+========================= */
+
+.wrap{
+  max-width:1000px;
+  margin:-40px auto 60px;
+  padding:0 18px;
+  position:relative;
+  z-index:2;
+}
+
+
+/* =========================
+   PROPERTY ANIMATION
+========================= */
+
+.animation{
+  max-width:760px;
+  height:220px;
+
+  margin:0 auto 25px;
+
+  border-radius:14px;
+
+  overflow:hidden;
+
+  position:relative;
+
+  background:#111;
+
+  box-shadow:
+    0 12px 35px rgba(0,0,0,.22);
+}
+
+.animation img{
+  width:100%;
+  height:100%;
+
+  display:block;
+
+  object-fit:cover;
+
+  animation:
+    propertyZoom
+    9s
+    ease-in-out
+    infinite
+    alternate;
+}
+
+.animation::after{
+  content:"";
+
+  position:absolute;
+
+  inset:0;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0,0,0,.78),
+      rgba(180,0,0,.30),
+      rgba(0,0,0,.15)
+    );
+
+  pointer-events:none;
+}
+
+.animation-text{
+  position:absolute;
+
+  inset:0;
+
+  z-index:2;
+
+  display:flex;
+
+  flex-direction:column;
+
+  align-items:center;
+
+  justify-content:center;
+
+  text-align:center;
+
+  color:#fff;
+
+  font-size:31px;
+
+  font-weight:900;
+
+  text-shadow:0 3px 12px #000;
+
+  animation:
+    fadeText
+    2.2s
+    ease-in-out
+    infinite
+    alternate;
+}
+
+.animation-text small{
+  display:block;
+
+  margin-top:9px;
+
+  font-size:13px;
+
+  letter-spacing:2px;
+
+  color:#fff;
+}
+
+@keyframes propertyZoom{
+
+  from{
+    transform:scale(1);
+  }
+
+  to{
+    transform:scale(1.12);
+  }
+
+}
+
+@keyframes fadeText{
+
+  from{
+    opacity:.78;
+    transform:translateY(5px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(-5px);
+  }
+
+}
+
+
+/* =========================
+   FORM CARD
+========================= */
+
+.form{
+  background:#fff;
+
+  border-radius:13px;
+
+  padding:30px;
+
+  box-shadow:
+    0 10px 35px rgba(0,0,0,.12);
+
+  border-top:6px solid #c40000;
+}
+
+.form h2{
+  color:#b40000;
+  margin:0 0 8px;
+  font-size:25px;
+}
+
+.form-intro{
+  color:#666;
+  margin:0 0 24px;
+  font-size:14px;
+}
+
+
+/* =========================
+   FORM GRID
+========================= */
+
+.grid{
+  display:grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  gap:17px;
+}
+
+.field{
+  display:flex;
+
+  flex-direction:column;
+
+  gap:7px;
+}
+
+.full{
+  grid-column:1/-1;
+}
+
+label{
+  font-weight:800;
+
+  font-size:14px;
+}
+
+.required{
+  color:#c40000;
+}
+
+input,
+select,
+textarea{
+  width:100%;
+
+  padding:13px;
+
+  border:
+    1px solid #ddd;
+
+  border-radius:7px;
+
+  background:#fff;
+
+  color:#222;
+
+  font:inherit;
+
+  outline:none;
+
+  transition:.2s;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+  border-color:#b40000;
+
+  box-shadow:
+    0 0 0 3px
+    rgba(180,0,0,.08);
+}
+
+textarea{
+  min-height:140px;
+
+  resize:vertical;
+}
+
+.hint{
+  font-size:12px;
+
+  color:#777;
+
+  line-height:1.5;
+}
+
+
+/* =========================
+   FILE INPUT
+========================= */
+
+.file-box{
+  border:
+    2px dashed #ddd;
+
+  border-radius:8px;
+
+  padding:15px;
+
+  background:#fafafa;
+
+  transition:.2s;
+}
+
+.file-box:hover{
+  border-color:#c40000;
+  background:#fffafa;
+}
+
+.file-box input{
+  border:0;
+  padding:5px 0;
+  background:transparent;
+  box-shadow:none;
+}
+
+
+/* =========================
+   IMAGE PREVIEW
+========================= */
+
+.preview-title{
+  margin-top:13px;
+
+  font-size:13px;
+
+  font-weight:800;
+
+  color:#444;
+}
+
+.preview{
+  display:grid;
+
+  grid-template-columns:
+    repeat(4,1fr);
+
+  gap:10px;
+
+  margin-top:10px;
+}
+
+.preview-item{
+  position:relative;
+
+  height:110px;
+
+  border-radius:8px;
+
+  overflow:hidden;
+
+  background:#eee;
+
+  border:1px solid #ddd;
+}
+
+.preview-item img{
+  width:100%;
+  height:100%;
+
+  display:block;
+
+  object-fit:cover;
+}
+
+.preview-number{
+  position:absolute;
+
+  left:6px;
+  bottom:6px;
+
+  background:rgba(0,0,0,.7);
+
+  color:#fff;
+
+  font-size:10px;
+
+  padding:4px 7px;
+
+  border-radius:4px;
+}
+
+
+/* =========================
+   SUBMIT BUTTON
+========================= */
+
+.submit{
+  width:100%;
+
+  border:0;
+
+  border-radius:7px;
+
+  background:#c40000;
+
+  color:#fff;
+
+  padding:15px 20px;
+
+  font-size:17px;
+
+  font-weight:900;
+
+  cursor:pointer;
+
+  transition:.2s;
+}
+
+.submit:hover{
+  background:#970000;
+}
+
+.submit:disabled{
+  background:#999;
+
+  cursor:not-allowed;
+
+  opacity:.8;
+}
+
+
+/* =========================
+   STATUS
+========================= */
+
+.status{
+  text-align:center;
+
+  margin-top:17px;
+
+  font-size:14px;
+
+  font-weight:bold;
+
+  line-height:1.6;
+}
+
+.status a{
+  text-decoration:none;
+}
+
+
+/* =========================
+   INFO BOX
+========================= */
+
+.info-box{
+  margin-top:20px;
+
+  padding:15px;
+
+  background:#fff8f8;
+
+  border-left:
+    4px solid #c40000;
+
+  border-radius:6px;
+
+  color:#555;
+
+  font-size:13px;
+
+  line-height:1.6;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer{
+  background:#171717;
+
+  color:#fff;
+
+  text-align:center;
+
+  padding:25px 15px;
+
+  font-size:13px;
+}
+
+.footer span{
+  color:#d00000;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:700px){
+
+  .top{
+    justify-content:center;
+
+    text-align:center;
+
+    font-size:11px;
+
+    padding:9px 10px;
+  }
+
+  .nav{
+    flex-direction:column;
+
+    align-items:center;
+
+    padding:14px 10px;
+  }
+
+  .logo{
+    font-size:22px;
+
+    text-align:center;
+  }
+
+  .badge{
+    text-align:center;
+  }
+
+  nav{
+    justify-content:center;
+  }
+
+  nav a{
+    font-size:11px;
+
+    padding:9px 8px;
+  }
+
+  .hero{
+    min-height:250px;
+
+    padding:40px 15px;
+  }
+
+  .hero h1{
+    font-size:32px;
+  }
+
+  .hero p{
+    font-size:14px;
+  }
+
+  .wrap{
+    margin:-25px auto 40px;
+
+    padding:0 12px;
+  }
+
+  .animation{
+    height:180px;
+
+    border-radius:10px;
+  }
+
+  .animation-text{
+    font-size:23px;
+  }
+
+  .animation-text small{
+    font-size:11px;
+
+    letter-spacing:1.5px;
+  }
+
+  .form{
+    padding:20px 15px;
+
+    border-radius:10px;
+  }
+
+  .form h2{
+    font-size:22px;
+  }
+
+  .grid{
+    grid-template-columns:1fr;
+
+    gap:15px;
+  }
+
+  .full{
+    grid-column:auto;
+  }
+
+  .preview{
+    grid-template-columns:
+      repeat(2,1fr);
+  }
+
+}
+
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media(max-width:400px){
+
+  .logo{
+    font-size:20px;
+  }
+
+  nav a{
+    font-size:10px;
+
+    padding:8px 6px;
+  }
+
+  .hero h1{
+    font-size:28px;
+  }
+
+  .animation{
+    height:165px;
+  }
+
+  .animation-text{
+    font-size:21px;
+  }
+
+  .preview-item{
+    height:100px;
+  }
+
+}
+
 </style>
 </head>
+
+
 <body>
-<div class="top"><span>📍 Army Welfare Trust Phase 2, Lahore</span><span>📞 0302-0941013</span></div>
-<header class="nav"><div><div class="logo">ZEESHAN <span>ESTATE AWT</span></div><div class="badge">AUTHORIZED DEALER</div></div><nav><a href="index.html">HOME</a><a href="properties.html">PROPERTIES</a><a class="active" href="property.html">LIST YOUR PROPERTY</a></nav></header>
-<section class="hero"><div><h1>LIST YOUR PROPERTY</h1><p>Apni property Zeeshan Estate AWT ke through list karein</p></div></section>
+
+
+<!-- =========================
+     TOP BAR
+========================= -->
+
+<div class="top">
+
+  <span>
+    📍 Army Welfare Trust Phase 2, Lahore
+  </span>
+
+  <span>
+    📞 0302-0941013
+  </span>
+
+</div>
+
+
+<!-- =========================
+     NAVIGATION
+========================= -->
+
+<header class="nav">
+
+  <div>
+
+    <div class="logo">
+      ZEESHAN <span>ESTATE AWT</span>
+    </div>
+
+    <div class="badge">
+      AUTHORIZED DEALER
+    </div>
+
+  </div>
+
+
+  <nav>
+
+    <a href="index.html">
+      HOME
+    </a>
+
+    <a href="properties.html">
+      PROPERTIES
+    </a>
+
+    <a
+      class="active"
+      href="property.html"
+    >
+      LIST YOUR PROPERTY
+    </a>
+
+    <a href="index.html#contact">
+      CONTACT
+    </a>
+
+  </nav>
+
+</header>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero">
+
+  <div class="hero-content">
+
+    <h1>
+      LIST YOUR PROPERTY
+    </h1>
+
+    <p>
+      Apni property Zeeshan Estate AWT ke through list karein
+    </p>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     MAIN
+========================= -->
+
 <main class="wrap">
-<div class="animation"><img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=85" alt="Property listing"><div>🏠 SELL • RENT • LIST</div></div>
-<form class="form" id="form">
-<h2>Property Listing Details</h2><p style="color:#666;margin-bottom:20px">Complete details aur clear pictures upload karein.</p>
-<div class="grid">
-<div class="field"><label>Property Purpose *</label><select id="purpose" required><option value="">Select</option><option>For Sale</option><option>For Rent</option></select></div>
-<div class="field"><label>Property Type *</label><select id="type" required><option value="">Select</option><option>Residential Plot</option><option>Commercial Plot</option><option>House</option><option>Commercial Property</option><option>Apartment</option><option>Other</option></select></div>
-<div class="field"><label>Property Size *</label><input id="size" placeholder="e.g. 5 Marla" required></div>
-<div class="field"><label>Expected Price *</label><input id="price" placeholder="e.g. 75 Lac" required></div>
-<div class="field full"><label>Property Location *</label><input id="location" placeholder="e.g. AWT Phase 2, Lahore" required></div>
-<div class="field full"><label>Property Pictures *</label><input id="pictures" type="file" accept="image/jpeg,image/png,image/webp" multiple required><div class="hint">JPG, PNG, WEBP. Multiple pictures allowed.</div><div id="preview" class="preview"></div></div>
-<div class="field full"><label>Property Details</label><textarea id="details" placeholder="Plot number, block, road, facing, possession, development status, etc."></textarea></div>
-<div class="field"><label>Owner Name *</label><input id="owner" required></div>
-<div class="field"><label>Owner Phone *</label><input id="phone" type="tel" required placeholder="03XXXXXXXXX"></div>
-<div class="field full"><button class="submit" id="submit" type="submit">📤 SUBMIT PROPERTY</button></div>
-</div><div id="status" class="status"></div>
-</form></main>
+
+
+  <!-- PROPERTY ANIMATION -->
+
+  <div class="animation">
+
+    <img
+      src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=85"
+      alt="Zeeshan Estate Property"
+    >
+
+    <div class="animation-text">
+
+      🏠 LIST YOUR PROPERTY
+
+      <small>
+        SELL • RENT • BUY • INVEST
+      </small>
+
+    </div>
+
+  </div>
+
+
+  <!-- FORM -->
+
+  <form
+    class="form"
+    id="form"
+    novalidate
+  >
+
+    <h2>
+      Property Listing Details
+    </h2>
+
+    <p class="form-intro">
+      Complete details aur clear pictures upload karein.
+      Aapki property submit hone ke baad Available Properties mein show hogi.
+    </p>
+
+
+    <div class="grid">
+
+
+      <!-- PURPOSE -->
+
+      <div class="field">
+
+        <label for="purpose">
+          Property Purpose <span class="required">*</span>
+        </label>
+
+        <select
+          id="purpose"
+          required
+        >
+
+          <option value="">
+            Select
+          </option>
+
+          <option value="For Sale">
+            For Sale
+          </option>
+
+          <option value="For Rent">
+            For Rent
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <!-- TYPE -->
+
+      <div class="field">
+
+        <label for="type">
+          Property Type <span class="required">*</span>
+        </label>
+
+        <select
+          id="type"
+          required
+        >
+
+          <option value="">
+            Select
+          </option>
+
+          <option value="Residential Plot">
+            Residential Plot
+          </option>
+
+          <option value="Commercial Plot">
+            Commercial Plot
+          </option>
+
+          <option value="House">
+            House
+          </option>
+
+          <option value="Commercial Property">
+            Commercial Property
+          </option>
+
+          <option value="Apartment">
+            Apartment
+          </option>
+
+          <option value="Other">
+            Other
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <!-- SIZE -->
+
+      <div class="field">
+
+        <label for="size">
+          Property Size <span class="required">*</span>
+        </label>
+
+        <input
+          id="size"
+          type="text"
+          placeholder="e.g. 5 Marla"
+          required
+        >
+
+      </div>
+
+
+      <!-- PRICE -->
+
+      <div class="field">
+
+        <label for="price">
+          Expected Price <span class="required">*</span>
+        </label>
+
+        <input
+          id="price"
+          type="text"
+          placeholder="e.g. 75 Lac"
+          required
+        >
+
+      </div>
+
+
+      <!-- LOCATION -->
+
+      <div class="field full">
+
+        <label for="location">
+          Property Location <span class="required">*</span>
+        </label>
+
+        <input
+          id="location"
+          type="text"
+          placeholder="e.g. AWT Phase 2, Lahore"
+          required
+        >
+
+      </div>
+
+
+      <!-- PICTURES -->
+
+      <div class="field full">
+
+        <label for="pictures">
+          Property Pictures <span class="required">*</span>
+        </label>
+
+        <div class="file-box">
+
+          <input
+            id="pictures"
+            type="file"
+            accept="image/jpeg,image/png,image/webp"
+            multiple
+            required
+          >
+
+          <div class="hint">
+            JPG, PNG, WEBP allowed. Multiple pictures allowed.
+          </div>
+
+        </div>
+
+
+        <div
+          id="previewTitle"
+          class="preview-title"
+          style="display:none;"
+        >
+          Selected Pictures
+        </div>
+
+
+        <div
+          id="preview"
+          class="preview"
+        ></div>
+
+      </div>
+
+
+      <!-- DETAILS -->
+
+      <div class="field full">
+
+        <label for="details">
+          Property Details
+        </label>
+
+        <textarea
+          id="details"
+          placeholder="Plot number, block, road, facing, possession, development status, nearby landmarks, etc."
+        ></textarea>
+
+      </div>
+
+
+      <!-- OWNER -->
+
+      <div class="field">
+
+        <label for="owner">
+          Owner Name <span class="required">*</span>
+        </label>
+
+        <input
+          id="owner"
+          type="text"
+          placeholder="Owner Name"
+          required
+        >
+
+      </div>
+
+
+      <!-- PHONE -->
+
+      <div class="field">
+
+        <label for="phone">
+          Owner Phone <span class="required">*</span>
+        </label>
+
+        <input
+          id="phone"
+          type="tel"
+          placeholder="03XXXXXXXXX"
+          required
+        >
+
+      </div>
+
+
+      <!-- SUBMIT -->
+
+      <div class="field full">
+
+        <button
+          class="submit"
+          id="submit"
+          type="submit"
+        >
+          📤 SUBMIT PROPERTY
+        </button>
+
+      </div>
+
+
+    </div>
+
+
+    <!-- STATUS -->
+
+    <div
+      id="status"
+      class="status"
+    ></div>
+
+
+    <!-- INFO -->
+
+    <div class="info-box">
+
+      🔒 Your submitted property details will be stored securely
+      and displayed in the Available Properties section after successful submission.
+
+    </div>
+
+
+  </form>
+
+</main>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer class="footer">
+
+  © 2026
+  <strong>
+    Zeeshan <span>Estate AWT</span>
+  </strong>
+  —
+  Army Welfare Trust Phase 2, Lahore
+
+</footer>
+
+
+<!-- =========================
+     SUPABASE
+========================= -->
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
 <script>
-const SUPABASE_URL="https://rhzsfjolkxqovhonylti.supabase.co",SUPABASE_KEY="sb_publishable_DjOGYqDCgPNMngD7mwMmcw_BM-UUCg8",BUCKET="property-images",sb=supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
-const files=document.getElementById("pictures"),preview=document.getElementById("preview");
-files.addEventListener("change",()=>{preview.innerHTML="";[...files.files].forEach(f=>{const u=URL.createObjectURL(f);preview.insertAdjacentHTML("beforeend",`<img src="${u}" alt="preview">`)})});
-form.addEventListener("submit",async e=>{
- e.preventDefault();const status=document.getElementById("status"),btn=document.getElementById("submit");
- if(!files.files.length){status.textContent="Please select at least one picture.";return}
- btn.disabled=true;btn.textContent="Uploading...";
- try{
-   const urls=[];
-   for(const file of files.files){
-     const ext=(file.name.split(".").pop()||"jpg").toLowerCase();
-     const path=`public/${Date.now()}-${crypto.randomUUID()}.${ext}`;
-     const up=await sb.storage.from(BUCKET).upload(path,file,{upsert:false,contentType:file.type});
-     if(up.error)throw up.error;
-     const pub=sb.storage.from(BUCKET).getPublicUrl(path);
-     urls.push(pub.data.publicUrl);
-   }
-   const row={purpose:purpose.value,property_type:type.value,property_size:size.value.trim(),price:price.value.trim(),location:location.value.trim(),image_urls:urls,details:details.value.trim(),owner_name:owner.value.trim(),owner_phone:phone.value.trim()};
-   const ins=await sb.from("properties").insert([row]);
-   if(ins.error)throw ins.error;
-   status.style.color="green";status.innerHTML='✅ Property submitted successfully! <a href="properties.html" style="color:#b40000">View Available Properties</a>';
-   form.reset();preview.innerHTML="";
- }catch(err){console.error(err);status.style.color="#b40000";status.textContent="Submission failed: "+err.message}
- btn.disabled=false;btn.textContent="📤 SUBMIT PROPERTY";
-});
+
+/* ==========================================
+   SUPABASE CONFIGURATION
+========================================== */
+
+const SUPABASE_URL =
+  "https://rhzsfjolkxqovhonylti.supabase.co";
+
+const SUPABASE_KEY =
+  "sb_publishable_DjOGYqDCgPNMngD7mwMmcw_BM-UUCg8";
+
+const BUCKET =
+  "property-images";
+
+
+/* CREATE SUPABASE CLIENT */
+
+const sb =
+  supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+  );
+
+
+/* ==========================================
+   FORM ELEMENTS
+========================================== */
+
+const form =
+  document.getElementById("form");
+
+const purposeField =
+  document.getElementById("purpose");
+
+const typeField =
+  document.getElementById("type");
+
+const sizeField =
+  document.getElementById("size");
+
+const priceField =
+  document.getElementById("price");
+
+const locationField =
+  document.getElementById("location");
+
+const picturesField =
+  document.getElementById("pictures");
+
+const detailsField =
+  document.getElementById("details");
+
+const ownerField =
+  document.getElementById("owner");
+
+const phoneField =
+  document.getElementById("phone");
+
+const preview =
+  document.getElementById("preview");
+
+const previewTitle =
+  document.getElementById("previewTitle");
+
+const status =
+  document.getElementById("status");
+
+const submitButton =
+  document.getElementById("submit");
+
+
+/* ==========================================
+   IMAGE PREVIEW
+========================================== */
+
+picturesField.addEventListener(
+  "change",
+  function(){
+
+    preview.innerHTML = "";
+
+    const selectedFiles =
+      Array.from(picturesField.files || []);
+
+
+    if(!selectedFiles.length){
+
+      previewTitle.style.display =
+        "none";
+
+      return;
+
+    }
+
+
+    previewTitle.style.display =
+      "block";
+
+
+    selectedFiles.forEach(
+      function(file,index){
+
+        const url =
+          URL.createObjectURL(file);
+
+
+        const item =
+          document.createElement("div");
+
+        item.className =
+          "preview-item";
+
+
+        const img =
+          document.createElement("img");
+
+        img.src =
+          url;
+
+        img.alt =
+          "Property Preview " +
+          (index + 1);
+
+
+        const number =
+          document.createElement("div");
+
+        number.className =
+          "preview-number";
+
+        number.textContent =
+          "Photo " + (index + 1);
+
+
+        item.appendChild(img);
+
+        item.appendChild(number);
+
+        preview.appendChild(item);
+
+      }
+    );
+
+  }
+);
+
+
+/* ==========================================
+   SUBMIT PROPERTY
+========================================== */
+
+form.addEventListener(
+  "submit",
+  async function(e){
+
+    e.preventDefault();
+
+
+    /* RESET STATUS */
+
+    status.textContent = "";
+
+    status.style.color =
+      "#b40000";
+
+
+    /* GET FILES */
+
+    const selectedFiles =
+      Array.from(
+        picturesField.files || []
+      );
+
+
+    /* VALIDATE */
+
+    if(!purposeField.value.trim()){
+
+      status.textContent =
+        "Please select Property Purpose.";
+
+      purposeField.focus();
+
+      return;
+
+    }
+
+
+    if(!typeField.value.trim()){
+
+      status.textContent =
+        "Please select Property Type.";
+
+      typeField.focus();
+
+      return;
+
+    }
+
+
+    if(!sizeField.value.trim()){
+
+      status.textContent =
+        "Please enter Property Size.";
+
+      sizeField.focus();
+
+      return;
+
+    }
+
+
+    if(!priceField.value.trim()){
+
+      status.textContent =
+        "Please enter Expected Price.";
+
+      priceField.focus();
+
+      return;
+
+    }
+
+
+    if(!locationField.value.trim()){
+
+      status.textContent =
+        "Please enter Property Location.";
+
+      locationField.focus();
+
+      return;
+
+    }
+
+
+    if(!selectedFiles.length){
+
+      status.textContent =
+        "Please select at least one property picture.";
+
+      picturesField.focus();
+
+      return;
+
+    }
+
+
+    if(!ownerField.value.trim()){
+
+      status.textContent =
+        "Please enter Owner Name.";
+
+      ownerField.focus();
+
+      return;
+
+    }
+
+
+    if(!phoneField.value.trim()){
+
+      status.textContent =
+        "Please enter Owner Phone.";
+
+      phoneField.focus();
+
+      return;
+
+    }
+
+
+    /* DISABLE BUTTON */
+
+    submitButton.disabled =
+      true;
+
+    submitButton.textContent =
+      "⏳ UPLOADING...";
+
+
+    try{
+
+
+      /* ====================================
+         UPLOAD IMAGES
+      ==================================== */
+
+      const imageUrls = [];
+
+
+      for(
+        let i = 0;
+        i < selectedFiles.length;
+        i++
+      ){
+
+        const file =
+          selectedFiles[i];
+
+
+        const extension =
+          (
+            file.name
+            .split(".")
+            .pop() ||
+            "jpg"
+          )
+          .toLowerCase();
+
+
+        const safeExtension =
+          extension.replace(
+            /[^a-z0-9]/g,
+            ""
+          ) || "jpg";
+
+
+        const filePath =
+          "public/" +
+          Date.now() +
+          "-" +
+          crypto.randomUUID() +
+          "." +
+          safeExtension;
+
+
+        submitButton.textContent =
+          "⏳ UPLOADING PHOTO " +
+          (i + 1) +
+          "/" +
+          selectedFiles.length;
+
+
+        const uploadResult =
+          await sb.storage
+            .from(BUCKET)
+            .upload(
+              filePath,
+              file,
+              {
+                cacheControl:"3600",
+                upsert:false,
+                contentType:
+                  file.type ||
+                  "image/jpeg"
+              }
+            );
+
+
+        if(uploadResult.error){
+
+          throw new Error(
+            "Image upload failed: " +
+            uploadResult.error.message
+          );
+
+        }
+
+
+        const publicResult =
+          sb.storage
+            .from(BUCKET)
+            .getPublicUrl(
+              filePath
+            );
+
+
+        const publicUrl =
+          publicResult
+          ?.data
+          ?.publicUrl;
+
+
+        if(!publicUrl){
+
+          throw new Error(
+            "Could not create public image URL."
+          );
+
+        }
+
+
+        imageUrls.push(
+          publicUrl
+        );
+
+      }
+
+
+      /* ====================================
+         CREATE PROPERTY DATA
+      ==================================== */
+
+      const row = {
+
+        purpose:
+          purposeField.value.trim(),
+
+        property_type:
+          typeField.value.trim(),
+
+        property_size:
+          sizeField.value.trim(),
+
+        price:
+          priceField.value.trim(),
+
+        location:
+          locationField.value.trim(),
+
+        image_urls:
+          imageUrls,
+
+        details:
+          detailsField.value
+          ? detailsField.value.trim()
+          : "",
+
+        owner_name:
+          ownerField.value.trim(),
+
+        owner_phone:
+          phoneField.value.trim()
+
+      };
+
+
+      /* ====================================
+         INSERT INTO DATABASE
+      ==================================== */
+
+      submitButton.textContent =
+        "⏳ SAVING PROPERTY...";
+
+
+      const insertResult =
+        await sb
+          .from("properties")
+          .insert([row]);
+
+
+      if(insertResult.error){
+
+        throw new Error(
+          "Database error: " +
+          insertResult.error.message
+        );
+
+      }
+
+
+      /* ====================================
+         SUCCESS
+      ==================================== */
+
+      status.style.color =
+        "green";
+
+
+      status.innerHTML =
+        "✅ Property submitted successfully! " +
+        '<br>' +
+        '<a href="properties.html">' +
+        "View Available Properties" +
+        "</a>";
+
+
+      /* RESET FORM */
+
+      form.reset();
+
+      preview.innerHTML = "";
+
+      previewTitle.style.display =
+        "none";
+
+
+      /* RESET BUTTON */
+
+      submitButton.disabled =
+        false;
+
+      submitButton.textContent =
+        "📤 SUBMIT PROPERTY";
+
+
+    }catch(error){
+
+      console.error(
+        "PROPERTY SUBMISSION ERROR:",
+        error
+      );
+
+
+      status.style.color =
+        "#b40000";
+
+
+      status.textContent =
+        "Submission failed: " +
+        (
+          error &&
+          error.message
+            ? error.message
+            : "Unknown error"
+        );
+
+
+      submitButton.disabled =
+        false;
+
+      submitButton.textContent =
+        "📤 SUBMIT PROPERTY";
+
+    }
+
+  }
+);
+
 </script>
-</body></html>
+
+
+</body>
+</html>
