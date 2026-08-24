@@ -1,17 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0">
 
-<title>Available Properties | Zeeshan Estate AWT</title>
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Plots for Sale | Zeeshan Estate AWT</title>
 
 <meta name="description"
-content="Available properties for sale and rent by Zeeshan Estate AWT in Army Welfare Trust Phase 2 Lahore.">
+content="Available properties for sale and rent in Army Welfare Trust Phase 2 Lahore by Zeeshan Estate AWT Authorized Dealer.">
 
 <style>
+
+/* =========================
+   RESET
+========================= */
 
 *{
   box-sizing:border-box;
@@ -19,22 +25,26 @@ content="Available properties for sale and rent by Zeeshan Estate AWT in Army We
   padding:0;
 }
 
+html{
+  scroll-behavior:smooth;
+}
+
 body{
   font-family:Arial,Helvetica,sans-serif;
-  background:#f5f6f7;
+  background:#f6f7f8;
   color:#222;
 }
 
-a{
-  text-decoration:none;
-}
 
-/* ================= TOP BAR ================= */
+/* =========================
+   TOP BAR
+========================= */
 
 .topbar{
-  background:#b40000;
+  background:#a90000;
   color:#fff;
-  padding:9px 5%;
+  min-height:38px;
+  padding:8px 5%;
   display:flex;
   justify-content:space-between;
   align-items:center;
@@ -44,45 +54,52 @@ a{
   font-weight:700;
 }
 
-/* ================= HEADER ================= */
+
+/* =========================
+   HEADER
+========================= */
 
 .header{
   background:#fff;
+  border-bottom:1px solid #e8e8e8;
   position:sticky;
   top:0;
   z-index:1000;
-  box-shadow:0 2px 12px rgba(0,0,0,.08);
+  box-shadow:0 2px 12px rgba(0,0,0,.06);
 }
 
 .nav{
-  max-width:1350px;
-  margin:auto;
+  max-width:1400px;
   min-height:76px;
-  padding:12px 20px;
-
+  margin:auto;
+  padding:12px 25px;
   display:flex;
-  align-items:center;
   justify-content:space-between;
+  align-items:center;
+  gap:25px;
+}
 
-  gap:20px;
+.brand{
+  text-decoration:none;
+  color:#111;
 }
 
 .logo{
   font-size:25px;
   font-weight:900;
-  color:#111;
+  letter-spacing:.5px;
 }
 
 .logo span{
-  color:#c40000;
+  color:#b40000;
 }
 
 .authorized{
-  font-size:10px;
-  letter-spacing:2px;
-  font-weight:700;
-  color:#777;
   margin-top:3px;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:2px;
+  color:#777;
 }
 
 .menu{
@@ -93,11 +110,13 @@ a{
 }
 
 .menu a{
+  text-decoration:none;
   color:#333;
-  font-size:12px;
+  font-size:13px;
   font-weight:800;
-  padding:10px 12px;
+  padding:11px 13px;
   border-radius:5px;
+  transition:.2s;
 }
 
 .menu a:hover{
@@ -109,29 +128,31 @@ a{
   color:#b40000;
 }
 
-.list-btn{
-  background:#c40000!important;
-  color:#fff!important;
+.menu .list-property{
+  color:#fff;
+  background:#b40000;
 }
 
-.list-btn:hover{
-  background:#920000!important;
+.menu .list-property:hover{
+  color:#fff;
+  background:#8e0000;
 }
 
-/* ================= HERO ================= */
+
+/* =========================
+   HERO
+========================= */
 
 .hero{
   background:
     linear-gradient(
       135deg,
-      rgba(15,0,0,.96),
-      rgba(180,0,0,.90)
+      rgba(15,0,0,.97),
+      rgba(180,0,0,.92)
     );
-
   color:#fff;
   text-align:center;
-
-  padding:48px 20px;
+  padding:48px 20px 45px;
 }
 
 .hero small{
@@ -139,43 +160,50 @@ a{
   color:#ffdada;
   font-size:11px;
   letter-spacing:2px;
-  font-weight:800;
-  margin-bottom:8px;
-}
-
-.hero h1{
-  font-size:42px;
   font-weight:900;
   margin-bottom:10px;
 }
 
+.hero h1{
+  font-size:40px;
+  line-height:1.15;
+  margin-bottom:10px;
+  font-weight:900;
+}
+
 .hero p{
-  color:#f4f4f4;
+  color:#f2f2f2;
   font-size:15px;
 }
 
-/* ================= CONTAINER ================= */
+
+/* =========================
+   MAIN
+========================= */
 
 .container{
-  max-width:1250px;
+  max-width:1200px;
   margin:auto;
   padding:25px 18px 60px;
 }
 
-/* ================= FILTER ================= */
+
+/* =========================
+   FILTER BAR
+========================= */
 
 .filter-box{
   background:#fff;
-  padding:15px;
-  border-radius:10px;
-  box-shadow:0 3px 15px rgba(0,0,0,.07);
-  border:1px solid #eee;
-  margin-bottom:22px;
+  border:1px solid #e4e4e4;
+  border-radius:12px;
+  padding:14px;
+  margin-bottom:20px;
+  box-shadow:0 3px 14px rgba(0,0,0,.05);
 }
 
-.filter-grid{
+.filters{
   display:grid;
-  grid-template-columns:1fr 180px 180px;
+  grid-template-columns:1fr 170px 170px;
   gap:10px;
 }
 
@@ -192,311 +220,417 @@ a{
   color:#888;
 }
 
-input,
-select{
+.filters input,
+.filters select{
   width:100%;
   height:48px;
-  border:1px solid #ddd;
-  border-radius:6px;
+  border:1px solid #dcdcdc;
+  border-radius:7px;
   background:#fff;
-  outline:none;
+  padding:0 13px;
   font-size:14px;
-  padding:0 14px;
+  outline:none;
 }
 
 .search input{
   padding-left:42px;
 }
 
-input:focus,
-select:focus{
+.filters input:focus,
+.filters select:focus{
   border-color:#b40000;
   box-shadow:0 0 0 3px rgba(180,0,0,.08);
 }
 
-/* ================= RESULTS ================= */
 
-.results{
+/* =========================
+   ACTIVE FILTER
+========================= */
+
+.active-filter{
+  display:none;
+  margin-top:12px;
+  align-items:center;
+  gap:8px;
+}
+
+.filter-chip{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  background:#f1f1f1;
+  border-radius:25px;
+  padding:8px 13px;
+  color:#333;
+  font-size:13px;
+}
+
+.clear-btn{
+  border:0;
+  background:none;
+  color:#1688c8;
+  font-size:14px;
+  cursor:pointer;
+  font-weight:700;
+}
+
+
+/* =========================
+   RESULT HEADER
+========================= */
+
+.result-header{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  margin-bottom:14px;
+  margin:20px 2px 14px;
+  gap:15px;
 }
 
-.results h2{
+.result-title{
   font-size:21px;
+  font-weight:900;
 }
 
-.results p{
+.result-count{
   color:#777;
   font-size:13px;
-  margin-top:3px;
+  margin-top:4px;
 }
 
-/* ================= PROPERTY LIST ================= */
+.sort-label{
+  color:#777;
+  font-size:12px;
+}
 
-.property-list{
+
+/* =========================
+   LIST
+========================= */
+
+.list{
   display:flex;
   flex-direction:column;
-  gap:16px;
+  gap:14px;
 }
 
-/* ================= PROPERTY CARD ================= */
+
+/* =========================
+   PROPERTY CARD
+========================= */
 
 .property-card{
   background:#fff;
-  border:1px solid #e4e4e4;
+  border:1px solid #e2e2e2;
   border-radius:10px;
   overflow:hidden;
-
   display:grid;
-  grid-template-columns:330px 1fr;
-
-  min-height:235px;
-
-  box-shadow:0 4px 18px rgba(0,0,0,.07);
-
-  transition:.25s;
+  grid-template-columns:310px 1fr;
+  min-height:245px;
+  box-shadow:0 3px 12px rgba(0,0,0,.06);
+  transition:.22s ease;
 }
 
 .property-card:hover{
-  transform:translateY(-3px);
-  box-shadow:0 12px 30px rgba(0,0,0,.12);
+  box-shadow:0 9px 26px rgba(0,0,0,.12);
+  transform:translateY(-2px);
 }
 
-/* ================= IMAGE ================= */
 
-.property-photo{
+/* =========================
+   IMAGE AREA
+========================= */
+
+.image-link{
+  display:block;
+  text-decoration:none;
+  height:100%;
+}
+
+.property-image{
+  height:100%;
+  min-height:245px;
   position:relative;
   background:#ddd;
-  min-height:235px;
   overflow:hidden;
 }
 
-.property-photo img{
+.property-image img{
   width:100%;
   height:100%;
   display:block;
   object-fit:cover;
-  transition:.4s;
+  transition:.4s ease;
 }
 
-.property-card:hover .property-photo img{
+.property-card:hover .property-image img{
   transform:scale(1.04);
 }
 
 .no-image{
+  width:100%;
   height:100%;
+  min-height:245px;
   display:flex;
-  align-items:center;
   justify-content:center;
-  font-size:70px;
+  align-items:center;
   background:linear-gradient(135deg,#eee,#ddd);
+  font-size:65px;
 }
 
-/* ================= BADGES ================= */
 
-.sale-badge{
+/* =========================
+   IMAGE BADGES
+========================= */
+
+.hot-badge{
   position:absolute;
   top:12px;
   left:12px;
-
   background:#c40000;
   color:#fff;
-
   padding:7px 11px;
   border-radius:5px;
-
   font-size:11px;
   font-weight:900;
-
-  box-shadow:0 3px 8px rgba(0,0,0,.25);
+  text-transform:uppercase;
+  box-shadow:0 2px 7px rgba(0,0,0,.25);
 }
 
 .photo-count{
   position:absolute;
-  bottom:12px;
   left:12px;
-
-  background:rgba(0,0,0,.75);
+  bottom:12px;
+  background:rgba(0,0,0,.78);
   color:#fff;
-
   padding:7px 10px;
   border-radius:5px;
-
   font-size:12px;
   font-weight:800;
 }
 
-.view-gallery{
+.viewed{
   position:absolute;
-  bottom:12px;
-  right:12px;
-
+  right:10px;
+  bottom:10px;
   background:#fff;
-  color:#222;
-
-  padding:7px 10px;
-  border-radius:5px;
-
-  font-size:11px;
+  color:#333;
+  padding:6px 9px;
+  border-radius:4px;
+  font-size:10px;
   font-weight:900;
 }
 
-/* ================= CARD CONTENT ================= */
+
+/* =========================
+   PROPERTY CONTENT
+========================= */
 
 .property-content{
-  padding:18px 20px;
-
+  padding:20px 18px 17px;
+  position:relative;
   display:flex;
   flex-direction:column;
 }
 
-.property-top{
+
+/* =========================
+   TOP LINE
+========================= */
+
+.top-line{
   display:flex;
   justify-content:space-between;
+  align-items:center;
   gap:10px;
+  margin-bottom:7px;
 }
 
-.property-price{
-  font-size:25px;
+.posted{
+  color:#999;
+  font-size:12px;
+}
+
+.verified{
+  background:#f2f2f2;
+  color:#555;
+  padding:5px 8px;
+  border-radius:4px;
+  font-size:10px;
   font-weight:900;
+}
+
+
+/* =========================
+   PRICE
+========================= */
+
+.price-link{
+  display:block;
   color:#111;
+  text-decoration:none;
+  width:max-content;
+  max-width:100%;
+}
+
+.price{
+  font-size:27px;
+  font-weight:900;
+  line-height:1.15;
+  margin:2px 0 7px;
+  transition:.2s;
+}
+
+.price-link:hover .price{
+  color:#b40000;
+}
+
+
+/* =========================
+   TITLE
+========================= */
+
+.title-link{
+  color:#222;
+  text-decoration:none;
+}
+
+.property-title{
+  font-size:18px;
+  font-weight:800;
+  line-height:1.3;
+  margin-bottom:5px;
+}
+
+.title-link:hover .property-title{
+  color:#b40000;
+}
+
+
+/* =========================
+   LOCATION
+========================= */
+
+.location{
+  color:#555;
+  font-size:14px;
+  line-height:1.4;
+  margin-bottom:6px;
 }
 
 .property-type{
-  margin-top:6px;
-
-  font-size:17px;
-  font-weight:800;
-
-  color:#222;
+  color:#999;
+  font-size:14px;
+  margin-bottom:7px;
 }
 
-.location{
-  color:#666;
-  font-size:13px;
-  margin-top:8px;
-}
 
-/* ================= META ================= */
+/* =========================
+   SIZE
+========================= */
 
-.property-meta{
+.size-row{
   display:flex;
-  flex-wrap:wrap;
+  align-items:center;
   gap:8px;
-
-  margin-top:15px;
+  font-size:15px;
+  font-weight:800;
+  color:#333;
+  margin:4px 0 12px;
 }
 
-.meta-box{
-  background:#fafafa;
-  border:1px solid #eee;
-  border-radius:6px;
-
-  padding:8px 11px;
-
-  font-size:12px;
-  color:#555;
+.size-icon{
+  font-size:19px;
 }
 
-.meta-box strong{
-  color:#222;
-  margin-left:3px;
-}
 
-/* ================= DESCRIPTION ================= */
+/* =========================
+   DETAILS
+========================= */
 
 .short-details{
-  color:#666;
+  color:#777;
   font-size:12px;
-  line-height:1.5;
-
-  margin-top:12px;
-
-  display:-webkit-box;
-  -webkit-line-clamp:2;
-  -webkit-box-orient:vertical;
-  overflow:hidden;
+  line-height:1.45;
+  max-width:700px;
+  margin-bottom:12px;
 }
 
-/* ================= ACTIONS ================= */
 
-.property-actions{
-  margin-top:auto;
-  padding-top:15px;
+/* =========================
+   ACTIONS
+========================= */
 
+.actions{
   display:grid;
-  grid-template-columns:1.4fr 1fr 1fr;
-  gap:8px;
+  grid-template-columns:100px 1fr 100px;
+  gap:7px;
+  margin-top:auto;
 }
 
 .action{
   min-height:43px;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
   border-radius:5px;
-
-  font-size:12px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-decoration:none;
+  font-size:13px;
   font-weight:900;
-
   transition:.2s;
 }
 
-.details{
-  background:#c40000;
-  color:#fff;
-}
-
-.details:hover{
-  background:#920000;
-}
-
-.call{
-  border:1px solid #c40000;
-  color:#c40000;
+.sms{
+  border:2px solid #19a66b;
+  color:#07915a;
   background:#fff;
 }
 
+.sms:hover{
+  background:#effff7;
+}
+
+.call{
+  background:#08a95d;
+  color:#fff;
+}
+
 .call:hover{
-  background:#fff2f2;
+  background:#078b4d;
 }
 
 .whatsapp{
-  background:#168a4b;
+  background:#0aa85d;
   color:#fff;
 }
 
 .whatsapp:hover{
-  background:#116d3b;
+  background:#078c4e;
 }
 
-/* ================= LOADING ================= */
 
-.loading{
+/* =========================
+   EMPTY / LOADING
+========================= */
+
+.loading,
+.empty{
   background:#fff;
+  border:1px solid #e5e5e5;
   border-radius:10px;
-
   padding:70px 20px;
-
   text-align:center;
   color:#777;
+  box-shadow:0 3px 15px rgba(0,0,0,.05);
 }
 
 .loader{
-  width:42px;
-  height:42px;
-
+  width:43px;
+  height:43px;
   border:4px solid #eee;
   border-top-color:#b40000;
-
   border-radius:50%;
-
   animation:spin .8s linear infinite;
-
   margin:0 auto 15px;
 }
 
@@ -506,18 +640,6 @@ select:focus{
   }
 }
 
-/* ================= EMPTY ================= */
-
-.empty{
-  background:#fff;
-  border-radius:10px;
-
-  padding:70px 20px;
-
-  text-align:center;
-  color:#777;
-}
-
 .empty-icon{
   font-size:55px;
   margin-bottom:12px;
@@ -525,33 +647,47 @@ select:focus{
 
 .empty h3{
   color:#222;
-  margin-bottom:6px;
+  margin-bottom:8px;
 }
 
-/* ================= FOOTER ================= */
+.empty p{
+  font-size:14px;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
 
 .footer{
-  background:#151515;
+  background:#171717;
   color:#fff;
   text-align:center;
   padding:25px 15px;
   font-size:13px;
 }
 
+.footer strong{
+  color:#fff;
+}
+
 .footer span{
   color:#d00000;
 }
 
-/* ================= TABLET ================= */
+
+/* =========================
+   TABLET
+========================= */
 
 @media(max-width:900px){
 
   .property-card{
-    grid-template-columns:280px 1fr;
+    grid-template-columns:270px 1fr;
   }
 
-  .filter-grid{
-    grid-template-columns:1fr 1fr;
+  .filters{
+    grid-template-columns:1fr 160px;
   }
 
   .search{
@@ -560,7 +696,10 @@ select:focus{
 
 }
 
-/* ================= MOBILE ================= */
+
+/* =========================
+   MOBILE
+========================= */
 
 @media(max-width:650px){
 
@@ -568,20 +707,34 @@ select:focus{
     justify-content:center;
     text-align:center;
     font-size:11px;
+    padding:8px 10px;
   }
 
   .nav{
+    min-height:auto;
     flex-direction:column;
+    align-items:center;
     padding:13px 10px;
+    gap:12px;
+  }
+
+  .logo{
+    font-size:22px;
+    text-align:center;
+  }
+
+  .authorized{
+    text-align:center;
   }
 
   .menu{
     justify-content:center;
+    width:100%;
   }
 
   .menu a{
     font-size:10px;
-    padding:8px 7px;
+    padding:9px 7px;
   }
 
   .hero{
@@ -592,11 +745,15 @@ select:focus{
     font-size:31px;
   }
 
-  .container{
-    padding:15px 10px 45px;
+  .hero p{
+    font-size:13px;
   }
 
-  .filter-grid{
+  .container{
+    padding:17px 10px 45px;
+  }
+
+  .filters{
     grid-template-columns:1fr;
   }
 
@@ -604,111 +761,141 @@ select:focus{
     grid-column:auto;
   }
 
-  .results{
+  .result-header{
     align-items:flex-start;
+    flex-direction:column;
+    margin-top:16px;
   }
 
-  /* MOBILE ZAMEEN STYLE */
-
   .property-card{
-    grid-template-columns:38% 62%;
-    min-height:215px;
+    display:grid;
+    grid-template-columns:42% 58%;
+    min-height:0;
     border-radius:8px;
   }
 
-  .property-photo{
-    min-height:215px;
+  .property-image{
+    min-height:245px;
+    height:100%;
+  }
+
+  .no-image{
+    min-height:245px;
   }
 
   .property-content{
-    padding:12px;
+    padding:12px 10px 10px;
   }
 
-  .property-price{
-    font-size:20px;
+  .top-line{
+    margin-bottom:5px;
   }
 
-  .property-type{
+  .posted{
+    font-size:10px;
+  }
+
+  .verified{
+    font-size:8px;
+    padding:4px 5px;
+  }
+
+  .price{
+    font-size:21px;
+  }
+
+  .property-title{
     font-size:14px;
-    margin-top:5px;
+    line-height:1.25;
   }
 
   .location{
     font-size:11px;
-
-    white-space:nowrap;
-    overflow:hidden;
-    text-overflow:ellipsis;
+    line-height:1.3;
   }
 
-  .property-meta{
-    margin-top:9px;
-  }
-
-  .meta-box{
-    border:0;
-    padding:3px 0;
-    background:none;
+  .property-type{
     font-size:11px;
+    line-height:1.3;
+  }
+
+  .size-row{
+    font-size:13px;
+    margin:4px 0 9px;
   }
 
   .short-details{
     display:none;
   }
 
-  .property-actions{
+  .actions{
     grid-template-columns:1fr 1.7fr 1fr;
     gap:5px;
-    padding-top:8px;
   }
 
   .action{
-    min-height:38px;
+    min-height:39px;
     font-size:11px;
   }
 
-  .sale-badge{
-    top:8px;
-    left:8px;
-    padding:5px 7px;
-    font-size:9px;
-  }
-
   .photo-count{
-    bottom:8px;
-    left:8px;
+    left:7px;
+    bottom:7px;
     padding:5px 7px;
     font-size:10px;
   }
 
-  .view-gallery{
+  .viewed{
     display:none;
   }
 
 }
 
-/* ================= SMALL MOBILE ================= */
 
-@media(max-width:400px){
+/* =========================
+   VERY SMALL MOBILE
+========================= */
+
+@media(max-width:390px){
+
+  .menu a{
+    font-size:9px;
+    padding:8px 5px;
+  }
 
   .property-card{
     grid-template-columns:40% 60%;
   }
 
-  .property-price{
-    font-size:18px;
-  }
-
-  .property-type{
-    font-size:13px;
+  .property-image,
+  .no-image{
+    min-height:225px;
   }
 
   .property-content{
-    padding:10px;
+    padding:10px 8px;
+  }
+
+  .price{
+    font-size:18px;
+  }
+
+  .property-title{
+    font-size:13px;
+  }
+
+  .location,
+  .property-type{
+    font-size:10px;
+  }
+
+  .size-row{
+    font-size:12px;
   }
 
   .action{
-    font-size:10px;
+    font-size:9px;
+    min-height:36px;
   }
 
 }
@@ -717,9 +904,13 @@ select:focus{
 
 </head>
 
+
 <body>
 
-<!-- TOP -->
+
+<!-- =========================
+     TOP BAR
+========================= -->
 
 <div class="topbar">
 
@@ -734,13 +925,15 @@ select:focus{
 </div>
 
 
-<!-- HEADER -->
+<!-- =========================
+     HEADER
+========================= -->
 
 <header class="header">
 
   <div class="nav">
 
-    <a href="index.html">
+    <a href="index.html" class="brand">
 
       <div class="logo">
         ZEESHAN <span>ESTATE AWT</span>
@@ -763,7 +956,7 @@ select:focus{
         PROPERTIES
       </a>
 
-      <a href="property.html" class="list-btn">
+      <a href="property.html" class="list-property">
         LIST YOUR PROPERTY
       </a>
 
@@ -778,7 +971,9 @@ select:focus{
 </header>
 
 
-<!-- HERO -->
+<!-- =========================
+     HERO
+========================= -->
 
 <section class="hero">
 
@@ -797,7 +992,9 @@ select:focus{
 </section>
 
 
-<!-- MAIN -->
+<!-- =========================
+     MAIN
+========================= -->
 
 <main class="container">
 
@@ -806,7 +1003,8 @@ select:focus{
 
   <div class="filter-box">
 
-    <div class="filter-grid">
+    <div class="filters">
+
 
       <div class="search">
 
@@ -817,7 +1015,7 @@ select:focus{
         <input
           id="search"
           type="text"
-          placeholder="Search location, type or size..."
+          placeholder="Search location, property type or size..."
         >
 
       </div>
@@ -852,41 +1050,80 @@ select:focus{
 
       </select>
 
+
+    </div>
+
+
+    <div
+      id="activeFilter"
+      class="active-filter"
+    >
+
+      <span class="filter-chip">
+        AWT Phase 2
+        <button
+          id="clearFilter"
+          class="clear-btn"
+          type="button"
+        >
+          ×
+        </button>
+      </span>
+
+      <button
+        id="clearAll"
+        class="clear-btn"
+        type="button"
+      >
+        Clear All
+      </button>
+
     </div>
 
   </div>
 
 
-  <!-- RESULTS -->
+  <!-- RESULTS HEADER -->
 
-  <div class="results">
+  <div class="result-header">
 
     <div>
 
-      <h2>
-        Available Properties
-      </h2>
+      <div class="result-title">
+        Properties for Sale
+      </div>
 
-      <p id="resultText">
+      <div
+        id="resultCount"
+        class="result-count"
+      >
         Loading properties...
-      </p>
+      </div>
 
+    </div>
+
+
+    <div class="sort-label">
+      Verified Property Listings
     </div>
 
   </div>
 
 
-  <!-- LIST -->
+  <!-- PROPERTY LIST -->
 
   <div
     id="propertyList"
-    class="property-list">
+    class="list"
+  >
 
     <div class="loading">
 
       <div class="loader"></div>
 
-      Loading available properties...
+      <p>
+        Loading available properties...
+      </p>
 
     </div>
 
@@ -896,11 +1133,14 @@ select:focus{
 </main>
 
 
-<!-- FOOTER -->
+<!-- =========================
+     FOOTER
+========================= -->
 
 <footer class="footer">
 
   © 2026
+
   <strong>
     Zeeshan <span>Estate AWT</span>
   </strong>
@@ -910,11 +1150,19 @@ select:focus{
 </footer>
 
 
-<!-- SUPABASE -->
+<!-- =========================
+     SUPABASE
+========================= -->
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
+
 <script>
+
+
+/* =========================
+   SUPABASE CONFIG
+========================= */
 
 const SUPABASE_URL =
 "https://rhzsfjolkxqovhonylti.supabase.co";
@@ -929,18 +1177,39 @@ supabase.createClient(
 );
 
 
-/* ================= ESCAPE ================= */
+/* =========================
+   ELEMENTS
+========================= */
+
+const propertyList =
+document.getElementById("propertyList");
+
+const searchInput =
+document.getElementById("search");
+
+const purposeSelect =
+document.getElementById("purpose");
+
+const sortSelect =
+document.getElementById("sort");
+
+const resultCount =
+document.getElementById("resultCount");
+
+
+/* =========================
+   HTML ESCAPE
+========================= */
 
 function esc(value){
 
-  if(value == null){
+  if(value === null || value === undefined){
     return "";
   }
 
   return String(value).replace(
     /[&<>"']/g,
-
-    function(c){
+    function(char){
 
       return {
         "&":"&amp;",
@@ -948,7 +1217,7 @@ function esc(value){
         ">":"&gt;",
         '"':"&quot;",
         "'":"&#039;"
-      }[c];
+      }[char];
 
     }
   );
@@ -956,23 +1225,37 @@ function esc(value){
 }
 
 
-/* ================= DATA ================= */
+/* =========================
+   ALL PROPERTIES
+========================= */
 
 let allProperties = [];
 
 
-/* ================= LOAD ================= */
+/* =========================
+   LOAD PROPERTIES
+========================= */
 
 async function loadProperties(){
 
-  const list =
-    document.getElementById(
-      "propertyList"
-    );
+  propertyList.innerHTML = `
+
+    <div class="loading">
+
+      <div class="loader"></div>
+
+      <p>
+        Loading available properties...
+      </p>
+
+    </div>
+
+  `;
+
 
   try{
 
-    const result =
+    const response =
       await supabaseClient
       .from("properties")
       .select("*")
@@ -984,9 +1267,11 @@ async function loadProperties(){
       );
 
 
-    if(result.error){
+    if(response.error){
 
-      list.innerHTML = `
+      console.error(response.error);
+
+      propertyList.innerHTML = `
 
         <div class="empty">
 
@@ -995,16 +1280,19 @@ async function loadProperties(){
           </div>
 
           <h3>
-            Unable to load properties
+            Unable to Load Properties
           </h3>
 
           <p>
-            ${esc(result.error.message)}
+            ${esc(response.error.message)}
           </p>
 
         </div>
 
       `;
+
+      resultCount.textContent =
+        "Unable to load properties.";
 
       return;
 
@@ -1012,7 +1300,7 @@ async function loadProperties(){
 
 
     allProperties =
-      result.data || [];
+      response.data || [];
 
 
     renderProperties();
@@ -1020,7 +1308,9 @@ async function loadProperties(){
 
   }catch(error){
 
-    list.innerHTML = `
+    console.error(error);
+
+    propertyList.innerHTML = `
 
       <div class="empty">
 
@@ -1029,11 +1319,11 @@ async function loadProperties(){
         </div>
 
         <h3>
-          Something went wrong
+          Something Went Wrong
         </h3>
 
         <p>
-          Please try again later.
+          Please refresh the page and try again.
         </p>
 
       </div>
@@ -1045,95 +1335,82 @@ async function loadProperties(){
 }
 
 
-/* ================= RENDER ================= */
+/* =========================
+   RENDER PROPERTIES
+========================= */
 
 function renderProperties(){
 
-  const list =
-    document.getElementById(
-      "propertyList"
-    );
-
-
-  const search =
-    document
-    .getElementById("search")
-    .value
+  const query =
+    searchInput.value
     .toLowerCase()
     .trim();
 
 
   const purpose =
-    document
-    .getElementById("purpose")
-    .value;
+    purposeSelect.value;
 
 
-  const sort =
-    document
-    .getElementById("sort")
-    .value;
+  let list =
+    allProperties.filter(function(property){
+
+      const searchable = [
+
+        property.location,
+        property.property_type,
+        property.property_size,
+        property.price,
+        property.details,
+        property.title,
+        property.owner_name
+
+      ]
+      .join(" ")
+      .toLowerCase();
 
 
-  let properties =
-    allProperties.filter(
-      function(x){
-
-        const searchable = [
-
-          x.location,
-          x.property_type,
-          x.property_size,
-          x.price,
-          x.details
-
-        ]
-        .join(" ")
-        .toLowerCase();
+      const purposeMatch =
+        !purpose ||
+        property.purpose === purpose;
 
 
-        return (
-
-          (!purpose ||
-            x.purpose === purpose)
-
-          &&
-
-          (!search ||
-            searchable.includes(search))
-
-        );
-
-      }
-    );
+      const searchMatch =
+        !query ||
+        searchable.includes(query);
 
 
-  if(sort === "old"){
+      return purposeMatch &&
+             searchMatch;
 
-    properties =
-      properties
-      .slice()
-      .reverse();
+    });
+
+
+  /* SORT */
+
+  if(sortSelect.value === "old"){
+
+    list =
+      list.slice().reverse();
 
   }
 
 
-  document.getElementById(
-    "resultText"
-  ).textContent =
+  /* COUNT */
 
-    properties.length +
-
+  resultCount.textContent =
+    list.length +
     (
-      properties.length === 1
-        ? " property available"
-        : " properties available"
+      list.length === 1
+      ? " property available"
+      : " properties available"
     );
 
 
-  if(!properties.length){
+  /* EMPTY */
 
-    list.innerHTML = `
+  if(!list.length){
+
+    propertyList.innerHTML = `
 
       <div class="empty">
 
@@ -1158,336 +1435,419 @@ function renderProperties(){
   }
 
 
-  list.innerHTML = "";
+  propertyList.innerHTML = "";
 
 
-  properties.forEach(
-    function(x){
+  /* CARDS */
 
-      const images =
-        Array.isArray(
-          x.image_urls
-        )
+  list.forEach(function(property){
 
-        ? x.image_urls.filter(Boolean)
-
-        : [];
+    const id =
+      property.id;
 
 
-      const image =
-        images[0] || "";
+    const detailsURL =
+      "property-details.html?id=" +
+      encodeURIComponent(id);
 
 
-      const purpose =
-        x.purpose ||
-        "For Sale";
+    /* IMAGES */
+
+    let images = [];
 
 
-      const type =
-        x.property_type ||
-        "Property";
+    if(Array.isArray(property.image_urls)){
+
+      images =
+        property.image_urls.filter(Boolean);
+
+    }
 
 
-      const size =
-        x.property_size ||
-        "N/A";
+    const firstImage =
+      images.length
+      ? images[0]
+      : "";
 
 
-      const price =
-        x.price ||
-        "Price on Call";
+    /* VALUES */
+
+    const purpose =
+      property.purpose ||
+      "For Sale";
 
 
-      const location =
-        x.location ||
-        "Army Welfare Trust Phase 2, Lahore";
+    const propertyType =
+      property.property_type ||
+      "Property";
 
 
-      const details =
-        x.details ||
-        "Contact Zeeshan Estate AWT for complete property details.";
+    const propertySize =
+      property.property_size ||
+      "N/A";
 
 
-      const detailsURL =
-        "property-details.html?id=" +
-        encodeURIComponent(
-          x.id
-        );
+    const price =
+      property.price ||
+      "Price on Call";
 
 
-      const whatsappMessage =
-        "I am interested in this property. Property ID: " +
-        x.id;
+    const location =
+      property.location ||
+      "Army Welfare Trust Phase 2, Lahore";
 
 
-      const imageHTML = image
+    /* DATE */
 
-        ? `
-
-          <img
-            src="${esc(image)}"
-            alt="${esc(type)}"
-            loading="lazy"
-          >
-
-        `
-
-        : `
-
-          <div class="no-image">
-            🏠
-          </div>
-
-        `;
+    let posted =
+      "Recently";
 
 
-      list.insertAdjacentHTML(
+    if(property.created_at){
 
-        "beforeend",
-
-        `
-
-        <article class="property-card">
+      const date =
+        new Date(property.created_at);
 
 
-          <!-- IMAGE -->
+      if(!isNaN(date.getTime())){
 
-          <div class="property-photo">
+        const now =
+          new Date();
+
+
+        const diff =
+          Math.floor(
+            (now - date) /
+            (1000 * 60 * 60 * 24)
+          );
+
+
+        if(diff <= 0){
+
+          posted =
+            "Today";
+
+        }else if(diff === 1){
+
+          posted =
+            "1 day ago";
+
+        }else{
+
+          posted =
+            diff + " days ago";
+
+        }
+
+      }
+
+    }
+
+
+    /* DETAILS SHORT TEXT */
+
+    let shortDetails =
+      property.details || "";
+
+
+    shortDetails =
+      shortDetails
+      .replace(/\s+/g," ")
+      .trim();
+
+
+    if(shortDetails.length > 150){
+
+      shortDetails =
+        shortDetails.substring(0,150) +
+        "...";
+
+    }
+
+
+    /* IMAGE */
+
+    let imageHTML;
+
+
+    if(firstImage){
+
+      imageHTML = `
+
+        <img
+          src="${esc(firstImage)}"
+          loading="lazy"
+          alt="${esc(propertyType)}"
+        >
+
+      `;
+
+    }else{
+
+      imageHTML = `
+
+        <div class="no-image">
+          🏠
+        </div>
+
+      `;
+
+    }
+
+
+    /* PHOTO COUNT */
+
+    const photoHTML =
+      images.length
+      ? `
+
+        <div class="photo-count">
+          📷 ${images.length}
+        </div>
+
+      `
+      : "";
+
+
+    /* CARD */
+
+    const card = `
+
+      <article class="property-card">
+
+
+        <!-- IMAGE -->
+
+        <a
+          class="image-link"
+          href="${detailsURL}"
+          aria-label="View property details"
+        >
+
+          <div class="property-image">
 
             ${imageHTML}
 
 
-            <div class="sale-badge">
-
+            <div class="hot-badge">
               ${esc(purpose)}
-
             </div>
 
 
+            ${photoHTML}
+
+
+            <div class="viewed">
+              VERIFIED
+            </div>
+
+          </div>
+
+        </a>
+
+
+        <!-- CONTENT -->
+
+        <div class="property-content">
+
+
+          <!-- TOP -->
+
+          <div class="top-line">
+
+            <span class="posted">
+              ${esc(posted)}
+            </span>
+
+            <span class="verified">
+              ✓ ZEESHAN ESTATE
+            </span>
+
+          </div>
+
+
+          <!-- PRICE -->
+
+          <a
+            href="${detailsURL}"
+            class="price-link"
+          >
+
+            <div class="price">
+              ${esc(price)}
+            </div>
+
+          </a>
+
+
+          <!-- TITLE -->
+
+          <a
+            href="${detailsURL}"
+            class="title-link"
+          >
+
+            <div class="property-title">
+
+              ${esc(propertyType)}
+
+              ${
+                property.property_size
+                ? " • " +
+                  esc(property.property_size)
+                : ""
+              }
+
+            </div>
+
+          </a>
+
+
+          <!-- LOCATION -->
+
+          <div class="location">
+
+            📍 ${esc(location)}
+
+          </div>
+
+
+          <!-- TYPE -->
+
+          <div class="property-type">
+
+            ${esc(propertyType)}
+
             ${
-              images.length
-              ?
-
-              `
-
-              <div class="photo-count">
-
-                📷 ${images.length}
-
-              </div>
-
-              `
-
-              :
-
-              ""
-
-            }
-
-
-            ${
-              images.length > 1
-              ?
-
-              `
-
-              <div class="view-gallery">
-
-                Gallery
-
-              </div>
-
-              `
-
-              :
-
-              ""
-
+              purpose === "For Sale"
+              ? " for Sale"
+              : " for Rent"
             }
 
           </div>
 
 
-          <!-- CONTENT -->
+          <!-- SIZE -->
 
-          <div class="property-content">
+          <div class="size-row">
 
+            <span class="size-icon">
+              ▱
+            </span>
 
-            <div class="property-top">
+            <span>
+              ${esc(propertySize)}
+            </span>
 
-              <div>
-
-                <div class="property-price">
-
-                  ${esc(price)}
-
-                </div>
-
-
-                <div class="property-type">
-
-                  ${esc(type)}
-
-                  ${
-                    x.property_size
-
-                    ?
-
-                    " • " +
-                    esc(x.property_size)
-
-                    :
-
-                    ""
-
-                  }
-
-                </div>
+          </div>
 
 
-                <div class="location">
-
-                  📍 ${esc(location)}
-
-                </div>
-
+          ${
+            shortDetails
+            ? `
+              <div class="short-details">
+                ${esc(shortDetails)}
               </div>
-
-            </div>
-
-
-            <!-- META -->
-
-            <div class="property-meta">
-
-              <div class="meta-box">
-
-                📐
-
-                <strong>
-                  ${esc(size)}
-                </strong>
-
-              </div>
+            `
+            : ""
+          }
 
 
-              <div class="meta-box">
+          <!-- ACTIONS -->
 
-                🏠
-
-                <strong>
-                  ${esc(type)}
-                </strong>
-
-              </div>
+          <div class="actions">
 
 
-              <div class="meta-box">
+            <!-- SMS -->
 
-                ${purpose === "For Rent" ? "🔑" : "📄"}
-
-                <strong>
-                  ${esc(purpose)}
-                </strong>
-
-              </div>
-
-            </div>
+            <a
+              class="action sms"
+              href="sms:+923020941013"
+            >
+              SMS
+            </a>
 
 
-            <!-- DETAILS -->
+            <!-- CALL -->
 
-            <div class="short-details">
-
-              ${esc(details)}
-
-            </div>
-
-
-            <!-- ACTIONS -->
-
-            <div class="property-actions">
+            <a
+              class="action call"
+              href="tel:+923020941013"
+            >
+              ☎ CALL
+            </a>
 
 
-              <a
-                class="action details"
-                href="${detailsURL}"
-              >
+            <!-- WHATSAPP -->
 
-                VIEW DETAILS
-
-              </a>
-
-
-              <a
-                class="action call"
-                href="tel:+923020941013"
-              >
-
-                ☎ CALL
-
-              </a>
-
-
-              <a
-                class="action whatsapp"
-                target="_blank"
-                rel="noopener"
-                href="https://wa.me/923020941013?text=${encodeURIComponent(whatsappMessage)}"
-              >
-
-                WhatsApp
-
-              </a>
-
-
-            </div>
+            <a
+              class="action whatsapp"
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://wa.me/923020941013?text=${encodeURIComponent(
+                "Assalam o Alaikum, I am interested in this property. Property ID: " + id
+              )}"
+            >
+              WhatsApp
+            </a>
 
 
           </div>
 
 
-        </article>
+        </div>
 
-        `
+      </article>
 
-      );
+    `;
 
-    }
-  );
+
+    propertyList.insertAdjacentHTML(
+      "beforeend",
+      card
+    );
+
+  });
 
 }
 
 
-/* ================= EVENTS ================= */
+/* =========================
+   SEARCH
+========================= */
 
-document
-.getElementById("search")
-.addEventListener(
+searchInput.addEventListener(
   "input",
   renderProperties
 );
 
 
-document
-.getElementById("purpose")
-.addEventListener(
+/* =========================
+   PURPOSE
+========================= */
+
+purposeSelect.addEventListener(
   "change",
   renderProperties
 );
 
 
-document
-.getElementById("sort")
-.addEventListener(
+/* =========================
+   SORT
+========================= */
+
+sortSelect.addEventListener(
   "change",
   renderProperties
 );
 
 
-/* ================= START ================= */
+/* =========================
+   START
+========================= */
 
 loadProperties();
+
 
 </script>
 
